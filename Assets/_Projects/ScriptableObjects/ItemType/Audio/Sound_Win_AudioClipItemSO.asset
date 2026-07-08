@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bca89481ecbfc34cb9dc9923477da36, type: 3}
+  m_Name: Sound_Win_AudioClipItemSO
+  m_EditorClassIdentifier: 
+  Key: 7001
+  Value: {fileID: 8300000, guid: dc4862123ba109f4aabdb24689ffb604, type: 3}

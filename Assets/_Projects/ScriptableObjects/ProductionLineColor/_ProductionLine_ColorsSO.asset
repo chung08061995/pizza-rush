@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da9bca78db304e4787dc151a97e79ac, type: 3}
+  m_Name: _ProductionLine_ColorsSO
+  m_EditorClassIdentifier: Assembly-CSharp::ColorsSO
+  entries:
+  - {fileID: 11400000, guid: 2b79f028f7ef6a94cbf12316aabc01d4, type: 2}
+  - {fileID: 11400000, guid: 80a1dc4d4b198e54fa88ec8a29955b20, type: 2}
+  - {fileID: 11400000, guid: 6f6ca34d8183640409e939f51002571a, type: 2}
+  - {fileID: 11400000, guid: 3511803b6abb6ae40847dbc0faa665e1, type: 2}
+  - {fileID: 11400000, guid: b31cc13560ab09246a953228e3522b6e, type: 2}
+  - {fileID: 11400000, guid: 0ccb7071218b1e640aac3fbe14a48ae9, type: 2}
+  - {fileID: 11400000, guid: 518657e84e869bd4eb830403cd6ecfb3, type: 2}
+  - {fileID: 11400000, guid: e9c3025e9a96a5143850fbcdc5535162, type: 2}
+  - {fileID: 11400000, guid: 712efe899c4763140abc8157abb68c8a, type: 2}
+  - {fileID: 11400000, guid: 848cee11c2f351d4ead2e2ebc1eea272, type: 2}
+  - {fileID: 11400000, guid: 6dfad45804da5f84fa571cfae94d30ef, type: 2}

@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8398213159975508794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 961883266464951568}
+  - component: {fileID: 1873700185710407701}
+  m_Layer: 0
+  m_Name: _ContainerFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &961883266464951568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398213159975508794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.69039, y: 0, z: 1.48336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1873700185710407701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398213159975508794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a713430848f71604182e187e85fe16e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContainerFactory
+  rectangle1x1Container: {fileID: 7448929977367509287, guid: 0d4ea2578acb221478f64c09343cfbeb, type: 3}
+  rectangle1x2Container: {fileID: 7448929977367509287, guid: 56e97e501ee637341bbfaee02707da64, type: 3}
+  rectangle1x3Container: {fileID: 7448929977367509287, guid: 4daac4213304d6d4c953744fdf7d135f, type: 3}
+  l1x2Container: {fileID: 7448929977367509287, guid: 8a6831ada7d35504493dcae592031117, type: 3}
+  l1x1Container: {fileID: 7448929977367509287, guid: 1322cb696054f0944bfa84660da447ac, type: 3}
+  rectangle2x2Container: {fileID: 7448929977367509287, guid: 7f540db2176de8247abed6c26ff0860f, type: 3}
+  tContainer: {fileID: 7448929977367509287, guid: 8c7a4a0de38cf44459e7a9b9a1455442, type: 3}
+  plusContainer: {fileID: 7448929977367509287, guid: 99329ebc8cb99004d8338e830f7ae585, type: 3}

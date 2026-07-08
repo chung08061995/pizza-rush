@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 89087328e80bcca439be0d6833057f13
+labels:
+- Cell
+- Cells
+- Data
+- Inventory
+- List
+- Recycle
+- Reuse
+- Scroll
+- ScrollRect
+- ScrollView
+- Scroller
+- UI
+- Virtualize
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - scroller: {instanceID: 0}
+  - cellViewPrefab: {fileID: 1736310140747489049, guid: b98eeaa1f3289c94a89dea60989d81cc, type: 3}
+  - loadingCellViewPrefab: {fileID: 2950854589721000220, guid: 2f03be928d3cbfe40843a5d4a4f61bb4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

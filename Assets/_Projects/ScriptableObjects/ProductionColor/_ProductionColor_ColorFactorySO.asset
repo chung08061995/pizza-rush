@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec7ce390b7645c4792ced648073fce7, type: 3}
+  m_Name: _ProductionColor_ColorFactorySO
+  m_EditorClassIdentifier: Assembly-CSharp::ColorFactorySO
+  entries:
+  - {fileID: 11400000, guid: d02284585c63096418abda6b74d07f0a, type: 2}
+  - {fileID: 11400000, guid: f8d398b125ed12b43896083f9d9bd656, type: 2}
+  - {fileID: 11400000, guid: 345185f5c4112cc46b7a7aca8e14f516, type: 2}

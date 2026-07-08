@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5467c4c263f1e448d8e2a2a23cf85b, type: 3}
+  m_Name: _Background_Icon_SpriteItemsSO
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteItemsSO
+  entries:
+  - {fileID: 11400000, guid: e7e3bc1fea6ff8f499a57cf08f6a80d2, type: 2}
+  - {fileID: 11400000, guid: f660a08e3e938fc4884341e618d6650a, type: 2}
+  - {fileID: 11400000, guid: e0a0e5e0276fda34c86c02c0d762b0e6, type: 2}
+  - {fileID: 11400000, guid: d943e483c5a5d5448a7e447c928d2900, type: 2}
+  - {fileID: 11400000, guid: 9736b5f3941b5744792447673c13ffc3, type: 2}
+  - {fileID: 11400000, guid: 8bb0605fef9bf774083e8066c8f7490d, type: 2}
+  - {fileID: 11400000, guid: 95f17a1b64e051b4eb0bbb4059cf52a7, type: 2}
+  - {fileID: 11400000, guid: 5ae97021841bc654c8c583b2d7f9cb49, type: 2}
+  - {fileID: 11400000, guid: e6184d8ba8a8f814aa0e2f3be19756df, type: 2}
