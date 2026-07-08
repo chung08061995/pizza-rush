@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7389856663857539160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4738305857045022044}
+  - component: {fileID: 1157798108719264652}
+  m_Layer: 0
+  m_Name: _CoverFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4738305857045022044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389856663857539160}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.107474625, y: -0.18181893, z: 0.20250893}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1157798108719264652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389856663857539160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09f22a0b54fea842863623e961acdff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container_Straight_1x1: {fileID: 5831004868109073206, guid: 3c08408b2be06ad4c8fcba0a207cad07, type: 3}
+  container_Straight_1x2: {fileID: 5831004868109073206, guid: 40e9bafa22c586f4ab54714e2763ec43, type: 3}
+  container_Straight_1x3: {fileID: 5831004868109073206, guid: a053319489b8a2c4894b8d15f3896d8c, type: 3}
+  container_L_1x2: {fileID: 5831004868109073206, guid: 48858ccf8665b3d4180c28a4847dd08a, type: 3}
+  container_L_1x1: {fileID: 5831004868109073206, guid: f9c9211a0276fc945a0b5407278cb349, type: 3}
+  container_Rectangle_2x2: {fileID: 5831004868109073206, guid: ce3e66e2def374b4a8365c74f693ba41, type: 3}
+  container_Rectangle_T: {fileID: 5831004868109073206, guid: e4770259e6aa2c74ead97ee7519a8518, type: 3}
+  container_Rectangle_Plus: {fileID: 5831004868109073206, guid: 51c84459b3efe2a4287e7f8f4451735c, type: 3}
