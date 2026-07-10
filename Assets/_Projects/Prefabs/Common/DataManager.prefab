@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5839111202008283054}
-  - component: {fileID: 3696417149490023994}
   m_Layer: 0
   m_Name: AvatarDataCreator
   m_TagString: Untagged
@@ -32,19 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4002881793972065889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3696417149490023994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420855094737059381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa2fb18a2bc5d104f956b894959e1733, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AvatarDataCreator
-  iconSO: {fileID: 11400000, guid: ffbc0184699320544abac6e8317e3f0d, type: 2}
 --- !u!1 &3711711073383761093
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +85,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8238373565464060753}
-  - component: {fileID: 2179901674361176278}
   m_Layer: 0
   m_Name: SkillDataCreator
   m_TagString: Untagged
@@ -122,21 +107,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4002881793972065889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2179901674361176278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5697736892053642902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85db802711b381c4eaa89e47115988e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SkillDataCreator
-  previewIconSO: {fileID: 11400000, guid: bd6e24de342303741a2759448f9c85ab, type: 2}
-  ordersSO: {fileID: 11400000, guid: 5e9f06687343bd2488a7206cd8ebae33, type: 2}
-  tutorialUsingSO: {fileID: 11400000, guid: ca0f9d2817d8e8942982446e893a1cab, type: 2}
 --- !u!1 &6309650325798567001
 GameObject:
   m_ObjectHideFlags: 0

@@ -809,7 +809,6 @@ GameObject:
   - component: {fileID: 4127329743416031125}
   - component: {fileID: 445695296396446722}
   - component: {fileID: 4307165871698965432}
-  - component: {fileID: 8162790198461925067}
   m_Layer: 0
   m_Name: 3_PopupHomeContent
   m_TagString: Untagged
@@ -907,19 +906,6 @@ MonoBehaviour:
             values: []
   heartRecoveryView: {fileID: 517110042409829954}
   unlimitedHeartsView: {fileID: 3250781367991551613}
---- !u!114 &8162790198461925067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8996329474549273119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Mask
-  m_ShowMaskGraphic: 1
 --- !u!1001 &179675567857724102
 PrefabInstance:
   m_ObjectHideFlags: 0
