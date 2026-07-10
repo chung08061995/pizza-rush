@@ -12,16 +12,25 @@ public class LevelFactory : DraftUtils.SceneSingletonMonoBehaviour<LevelFactory>
     [SerializeField] private DraftUtils.ComponentReference<LevelRunner> levelRunnerReference;
     private DraftUtils.PopupFactory _factory = new();
     private LevelRunner _levelRunner;
+    private DraftUtils.Ads.AdsManager _ads;
     public LevelRunner LevelRunner => _levelRunner;
 
     private void Start()
     {
         LoadCurrentLevelData();
-        DraftUtils.Ads.AdsManager.Instance.ShowBanner(DraftUtils.Ads.AdBannerPosition.Bottom);
+        _ads = DraftUtils.Ads.AdsManager.Instance;
+        _ads.ShowBanner(DraftUtils.Ads.AdBannerPosition.Bottom);
     }
     private void OnDestroy()
     {
-        DraftUtils.Ads.AdsManager.Instance.HideBanner();
+        // Không gọi AdsManager.Instance ở đây: getter singleton sẽ hồi sinh GameObject
+        // khi thoát play mode, gây log "objects were not cleaned up". Dùng ref đã cache
+        // (Unity trả "null giả" nếu AdsManager đã bị hủy) để chuyển cảnh runtime vẫn
+        // ẩn banner còn lúc teardown thì bỏ qua.
+        if (_ads != null)
+        {
+            _ads.HideBanner();
+        }
     }
     public void LoadCurrentLevelData()
     {

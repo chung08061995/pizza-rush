@@ -11,6 +11,8 @@ public class SoundManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<S
     private DraftUtils.PersistentValue<bool> backgroundVolume => DataManager.Instance.musicVolume;
     private DraftUtils.PersistentValue<bool> sfxVolume => DataManager.Instance.sfxVolume;
 
+    private bool _listenersRegistered;
+
     private void Start()
     {
         DOVirtual.DelayedCall(0.25f, () =>
@@ -21,6 +23,7 @@ public class SoundManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<S
 
             backgroundVolume.Notifier.AddListener(ChangeBackgroundVolume);
             sfxVolume.Notifier.AddListener(ChangeSfxVolume);
+            _listenersRegistered = true;
 
             ChangeBackgroundVolume(backgroundVolume.Value);
             ChangeSfxVolume(sfxVolume.Value);
@@ -29,7 +32,10 @@ public class SoundManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<S
 
     private void OnDestroy()
     {
-        if (DataManager.Instance == null)
+        // Không truy cập DataManager.Instance ở đây: getter singleton sẽ hồi sinh
+        // DataManager khi thoát play mode, gây log "objects were not cleaned up".
+        // Nếu chưa kịp đăng ký listener thì cũng không có gì để gỡ.
+        if (!_listenersRegistered)
         {
             return;
         }
