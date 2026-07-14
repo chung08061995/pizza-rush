@@ -4,3 +4,9 @@ Logs
 Library
 .DS_Store
 *.sln
+.utmp
+.codex
+.vscode
+Builds
+AGENTS.md
+CLAUDE.md
