@@ -42,6 +42,7 @@ public class UsingAddTileSkillState : DraftUtils.IState
             {
                 _levelRunner.LevelObjectSpawner.AddNewTile(anchorUnderMouse.CellPosition);
                 DataManager.Instance.Using(ItemType.Skill_AddTile, -1);
+                GameAnalytics.LogItemEvent(GameAnalytics.SkillUse, ItemType.Skill_AddTile);
                 CancelSkill();
             }
         }

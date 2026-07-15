@@ -24,6 +24,8 @@ public class WinState : DraftUtils.IState
     {
         _levelRunner.Timer.Pause();
         _isWinTriggered = false;
+        GameAnalytics.LogLevelEvent(GameAnalytics.LevelWin);
+
         if (PopupManager.Instance != null)
         {
             PopupManager.Instance.GetPopupBlockUser(5f);

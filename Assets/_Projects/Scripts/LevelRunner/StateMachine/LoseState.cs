@@ -36,6 +36,8 @@ public class LoseState : DraftUtils.IState
 
     private void Lose()
     {
+        GameAnalytics.LogLevelEvent(GameAnalytics.LevelLose);
+
         if (PopupManager.Instance != null)
         {
             PopupManager.Instance.GetPopupLose();

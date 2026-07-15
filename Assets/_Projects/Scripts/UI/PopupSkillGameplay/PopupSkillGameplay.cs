@@ -96,6 +96,7 @@ public class PopupSkillGameplay : DraftUtils.DraftMonoBehaviour
             }
 
             LevelFactory.Instance?.LevelRunner?.StartFreezeTime(10f);
+            GameAnalytics.LogItemEvent(GameAnalytics.SkillUse, ItemType.Skill_FreezeTime);
             SetFreezeTimeFill(1f);
         }
         else

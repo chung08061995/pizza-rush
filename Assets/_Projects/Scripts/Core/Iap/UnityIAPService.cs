@@ -1,45 +1,30 @@
 ﻿#if UNITY_IAP
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Purchasing;
-using UnityEngine.Purchasing.Extension;
 
 namespace DraftUtils.IAP
 {
     /// <summary>
-    /// Implementation thật của IIAPService sử dụng Unity IAP (com.unity.purchasing).
-    /// 
-    /// File này CHỈ được compile khi có define symbol UNITY_IAP.
-    /// Unity IAP package tự thêm symbol này khi cài qua Package Manager.
-    /// 
-    /// Cách dùng:
-    /// <code>
-    /// // Trong Bootstrap/Initializer:
-    /// var iapService = new UnityIAPService();
-    /// ServiceLocator.Register&lt;IIAPService&gt;(iapService);
-    /// 
-    /// var products = new[]
-    /// {
-    ///     new IAPProductInfo("com.game.remove_ads", IAPProductType.NonConsumable, "Remove Ads"),
-    ///     new IAPProductInfo("com.game.gems_100", IAPProductType.Consumable, "100 Gems"),
-    /// };
-    /// iapService.Initialize(products);
-    /// </code>
+    /// Unity IAP v5 implementation.
     /// </summary>
-    public class UnityIAPService : IIAPService, IDetailedStoreListener
+    public class UnityIAPService : IIAPService
     {
         private const string TAG = "[IAP]";
 
-        private IStoreController _storeController;
-        private IExtensionProvider _extensionProvider;
-        private Dictionary<string, IAPProductInfo> _productInfoMap = new();
+        private StoreController _storeController;
+        private readonly Dictionary<string, IAPProductInfo> _productInfoMap = new();
+        private readonly HashSet<string> _processedOrders = new();
 
         private Action<bool> _initCallback;
         private Action<IAPPurchaseResult> _purchaseCallback;
         private Action<bool> _restoreCallback;
+        private bool _isConnecting;
+        private bool _productsFetched;
 
-        public bool IsInitialized => _storeController != null;
+        public bool IsInitialized => _storeController != null && _productsFetched;
 
         public void Initialize(IAPProductInfo[] products, Action<bool> onComplete = null)
         {
@@ -52,18 +37,39 @@ namespace DraftUtils.IAP
 
             _initCallback = onComplete;
             _productInfoMap.Clear();
+            _productsFetched = false;
 
-            var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
+            if (products == null || products.Length == 0)
+            {
+                Debug.LogWarning($"{TAG} Không có product nào để khởi tạo.");
+                CompleteInitialization(false);
+                return;
+            }
 
             foreach (var info in products)
             {
-                var unityType = ConvertProductType(info.ProductType);
-                builder.AddProduct(info.ProductId, unityType);
+                if (info == null || string.IsNullOrEmpty(info.ProductId))
+                {
+                    continue;
+                }
+
                 _productInfoMap[info.ProductId] = info;
             }
 
-            Debug.Log($"{TAG} Đang khởi tạo với {products.Length} products...");
-            UnityPurchasing.Initialize(this, builder);
+            if (_productInfoMap.Count == 0)
+            {
+                Debug.LogWarning($"{TAG} Không có product hợp lệ để khởi tạo.");
+                CompleteInitialization(false);
+                return;
+            }
+
+            if (_storeController == null)
+            {
+                _storeController = UnityIAPServices.StoreController();
+                RegisterCallbacks();
+            }
+
+            ConnectStore();
         }
 
         public void PurchaseProduct(string productId, Action<IAPPurchaseResult> onResult = null)
@@ -71,23 +77,21 @@ namespace DraftUtils.IAP
             if (!IsInitialized)
             {
                 Debug.LogWarning($"{TAG} Chưa khởi tạo, không thể mua '{productId}'.");
-                onResult?.Invoke(IAPPurchaseResult.Failure(
-                    productId, IAPFailureReason.NotInitialized));
+                onResult?.Invoke(IAPPurchaseResult.Failure(productId, IAPFailureReason.NotInitialized));
                 return;
             }
 
-            var product = _storeController.products.WithID(productId);
+            var product = _storeController.GetProductById(productId);
             if (product == null || !product.availableToPurchase)
             {
                 Debug.LogWarning($"{TAG} Product '{productId}' không khả dụng.");
-                onResult?.Invoke(IAPPurchaseResult.Failure(
-                    productId, IAPFailureReason.ProductUnavailable));
+                onResult?.Invoke(IAPPurchaseResult.Failure(productId, IAPFailureReason.ProductUnavailable));
                 return;
             }
 
             _purchaseCallback = onResult;
             Debug.Log($"{TAG} Bắt đầu mua '{productId}'...");
-            _storeController.InitiatePurchase(product);
+            _storeController.PurchaseProduct(product);
         }
 
         public void RestorePurchases(Action<bool> onComplete = null)
@@ -100,82 +104,109 @@ namespace DraftUtils.IAP
             }
 
             _restoreCallback = onComplete;
+            Debug.Log($"{TAG} Đang restore purchases...");
+            _storeController.RestoreTransactions((success, error) =>
+            {
+                if (!success)
+                {
+                    Debug.LogWarning($"{TAG} Restore thất bại: {error}");
+                }
 
-#if UNITY_IOS
-            var apple = _extensionProvider.GetExtension<IAppleExtensions>();
-            Debug.Log($"{TAG} Đang restore purchases (iOS)...");
-            apple.RestoreTransactions((success, error) =>
-            {
-                Debug.Log($"{TAG} Restore iOS: {(success ? "thành công" : $"thất bại - {error}")}");
                 _restoreCallback?.Invoke(success);
                 _restoreCallback = null;
             });
-#elif UNITY_ANDROID
-            var google = _extensionProvider.GetExtension<IGooglePlayStoreExtensions>();
-            Debug.Log($"{TAG} Đang restore purchases (Android)...");
-            google.RestoreTransactions((success, error) =>
-            {
-                Debug.Log($"{TAG} Restore Android: {(success ? "thành công" : $"thất bại - {error}")}");
-                _restoreCallback?.Invoke(success);
-                _restoreCallback = null;
-            });
-#else
-            Debug.Log($"{TAG} Restore không hỗ trợ trên platform này.");
-            onComplete?.Invoke(false);
-#endif
         }
 
         public bool IsProductOwned(string productId)
         {
-            if (!IsInitialized) return false;
+            if (_storeController == null || string.IsNullOrEmpty(productId))
+            {
+                return false;
+            }
 
-            var product = _storeController.products.WithID(productId);
-            if (product == null) return false;
-
-            // Non-consumable hoặc Subscription: check receipt
-            return product.hasReceipt;
+            return _storeController.GetPurchases().Any(order =>
+                order is ConfirmedOrder &&
+                string.Equals(GetProductId(order), productId, StringComparison.Ordinal));
         }
 
         public string GetLocalizedPrice(string productId)
         {
-            if (!IsInitialized) return "N/A";
+            if (_storeController == null)
+            {
+                return "N/A";
+            }
 
-            var product = _storeController.products.WithID(productId);
-            if (product == null) return "N/A";
-
-            return product.metadata.localizedPriceString;
+            var product = _storeController.GetProductById(productId);
+            return product?.metadata?.localizedPriceString ?? "N/A";
         }
 
         public IAPProductInfo GetProductInfo(string productId)
         {
-            if (_productInfoMap.TryGetValue(productId, out var info))
+            if (!_productInfoMap.TryGetValue(productId, out var info))
             {
-                // Cập nhật giá localized nếu đã init
-                if (IsInitialized)
-                {
-                    var product = _storeController.products.WithID(productId);
-                    if (product != null)
-                    {
-                        info.LocalizedPrice = product.metadata.localizedPriceString;
-                    }
-                }
-                return info;
+                return null;
             }
-            return null;
+
+            info.LocalizedPrice = GetLocalizedPrice(productId);
+            return info;
         }
 
-        // ─────────────────────────────────────────────
-        // IDetailedStoreListener Implementation
-        // ─────────────────────────────────────────────
-
-        public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
+        private async void ConnectStore()
         {
-            Debug.Log($"{TAG} Khởi tạo thành công!");
-            _storeController = controller;
-            _extensionProvider = extensions;
+            if (_isConnecting)
+            {
+                return;
+            }
 
-            // Cập nhật localized price cho tất cả products
-            foreach (var product in controller.products.all)
+            _isConnecting = true;
+            try
+            {
+                Debug.Log($"{TAG} Đang kết nối store...");
+                await _storeController.Connect();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"{TAG} Kết nối store thất bại: {ex.Message}");
+                CompleteInitialization(false);
+            }
+            finally
+            {
+                _isConnecting = false;
+            }
+        }
+
+        private void RegisterCallbacks()
+        {
+            _storeController.OnStoreConnected += HandleStoreConnected;
+            _storeController.OnStoreDisconnected += HandleStoreDisconnected;
+
+            _storeController.OnProductsFetched += HandleProductsFetched;
+            _storeController.OnProductsFetchFailed += HandleProductsFetchFailed;
+
+            _storeController.OnPurchasePending += HandlePurchasePending;
+            _storeController.OnPurchaseConfirmed += HandlePurchaseConfirmed;
+            _storeController.OnPurchaseFailed += HandlePurchaseFailed;
+            _storeController.OnPurchaseDeferred += HandlePurchaseDeferred;
+
+            _storeController.OnPurchasesFetched += HandlePurchasesFetched;
+            _storeController.OnPurchasesFetchFailed += HandlePurchasesFetchFailed;
+        }
+
+        private void HandleStoreConnected()
+        {
+            Debug.Log($"{TAG} Kết nối store thành công. Fetch {_productInfoMap.Count} products...");
+            _storeController.FetchProducts(BuildProductDefinitions());
+        }
+
+        private void HandleStoreDisconnected(StoreConnectionFailureDescription failure)
+        {
+            Debug.LogWarning($"{TAG} Store disconnected: {failure.Message}");
+            CompleteInitialization(false);
+        }
+
+        private void HandleProductsFetched(List<Product> products)
+        {
+            foreach (var product in products)
             {
                 if (_productInfoMap.TryGetValue(product.definition.id, out var info))
                 {
@@ -183,63 +214,123 @@ namespace DraftUtils.IAP
                 }
             }
 
-            _initCallback?.Invoke(true);
+            _productsFetched = true;
+            Debug.Log($"{TAG} Fetch products thành công: {products.Count}.");
+            CompleteInitialization(true);
+
+            _storeController.FetchPurchases();
+        }
+
+        private void HandleProductsFetchFailed(ProductFetchFailed failure)
+        {
+            Debug.LogError($"{TAG} Fetch products thất bại: {failure.FailureReason}");
+            CompleteInitialization(false);
+        }
+
+        private void HandlePurchasePending(PendingOrder order)
+        {
+            var productId = GetProductId(order);
+            var orderKey = GetOrderKey(order);
+
+            if (!string.IsNullOrEmpty(orderKey) && _processedOrders.Contains(orderKey))
+            {
+                Debug.Log($"{TAG} Bỏ qua pending order đã xử lý: {productId}");
+                _storeController.ConfirmPurchase(order);
+                return;
+            }
+
+            Debug.Log($"{TAG} Purchase pending: {productId}");
+
+            if (!string.IsNullOrEmpty(orderKey))
+            {
+                _processedOrders.Add(orderKey);
+            }
+
+            _purchaseCallback?.Invoke(IAPPurchaseResult.Success(
+                productId,
+                order.Info.Receipt,
+                order.Info.TransactionID));
+            _purchaseCallback = null;
+
+            _storeController.ConfirmPurchase(order);
+        }
+
+        private void HandlePurchaseConfirmed(Order order)
+        {
+            switch (order)
+            {
+                case ConfirmedOrder confirmedOrder:
+                    Debug.Log($"{TAG} Purchase confirmed: {GetProductId(confirmedOrder)}");
+                    break;
+                case FailedOrder failedOrder:
+                    HandlePurchaseFailure(failedOrder);
+                    break;
+            }
+        }
+
+        private void HandlePurchaseFailed(FailedOrder failedOrder)
+        {
+            HandlePurchaseFailure(failedOrder);
+        }
+
+        private void HandlePurchaseDeferred(DeferredOrder order)
+        {
+            Debug.Log($"{TAG} Purchase deferred: {GetProductId(order)}");
+        }
+
+        private void HandlePurchasesFetched(Orders orders)
+        {
+            Debug.Log($"{TAG} Existing purchases fetched. Confirmed: {orders.ConfirmedOrders.Count}, Pending: {orders.PendingOrders.Count}, Deferred: {orders.DeferredOrders.Count}");
+        }
+
+        private void HandlePurchasesFetchFailed(PurchasesFetchFailureDescription failure)
+        {
+            Debug.LogWarning($"{TAG} Fetch purchases thất bại: {failure.FailureReason} - {failure.Message}");
+        }
+
+        private void HandlePurchaseFailure(FailedOrder failedOrder)
+        {
+            var productId = GetProductId(failedOrder);
+            var reason = MapFailureReason(failedOrder.FailureReason);
+
+            Debug.LogWarning($"{TAG} Purchase failed '{productId}': {failedOrder.FailureReason} - {failedOrder.Details}");
+
+            _purchaseCallback?.Invoke(IAPPurchaseResult.Failure(productId, reason, failedOrder.Details));
+            _purchaseCallback = null;
+        }
+
+        private List<ProductDefinition> BuildProductDefinitions()
+        {
+            return _productInfoMap.Values
+                .Select(info => new ProductDefinition(info.ProductId, ConvertProductType(info.ProductType)))
+                .ToList();
+        }
+
+        private void CompleteInitialization(bool success)
+        {
+            _initCallback?.Invoke(success);
             _initCallback = null;
         }
 
-        public void OnInitializeFailed(InitializationFailureReason error)
+        private static string GetProductId(Order order)
         {
-            Debug.LogError($"{TAG} Khởi tạo thất bại: {error}");
-            _initCallback?.Invoke(false);
-            _initCallback = null;
+            return order?.CartOrdered?.Items()?.FirstOrDefault()?.Product?.definition?.id ?? string.Empty;
         }
 
-        public void OnInitializeFailed(InitializationFailureReason error, string message)
+        private static string GetOrderKey(Order order)
         {
-            Debug.LogError($"{TAG} Khởi tạo thất bại: {error} — {message}");
-            _initCallback?.Invoke(false);
-            _initCallback = null;
+            if (order == null)
+            {
+                return string.Empty;
+            }
+
+            if (!string.IsNullOrEmpty(order.Info.TransactionID))
+            {
+                return order.Info.TransactionID;
+            }
+
+            return $"{GetProductId(order)}:{order.Info.Receipt}";
         }
-
-        public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
-        {
-            var productId = args.purchasedProduct.definition.id;
-            var receipt = args.purchasedProduct.receipt;
-            var transactionId = args.purchasedProduct.transactionID;
-
-            Debug.Log($"{TAG} Mua thành công: '{productId}'");
-
-            _purchaseCallback?.Invoke(IAPPurchaseResult.Success(productId, receipt, transactionId));
-            _purchaseCallback = null;
-
-            return PurchaseProcessingResult.Complete;
-        }
-
-        public void OnPurchaseFailed(Product product, PurchaseFailureDescription failureDescription)
-        {
-            var productId = product.definition.id;
-            var reason = MapFailureReason(failureDescription.reason);
-
-            Debug.LogWarning($"{TAG} Mua thất bại '{productId}': {failureDescription.reason} — {failureDescription.message}");
-
-            _purchaseCallback?.Invoke(IAPPurchaseResult.Failure(productId, reason, failureDescription.message));
-            _purchaseCallback = null;
-        }
-
-        public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
-        {
-            var productId = product.definition.id;
-            var reason = MapFailureReason(failureReason);
-
-            Debug.LogWarning($"{TAG} Mua thất bại '{productId}': {failureReason}");
-
-            _purchaseCallback?.Invoke(IAPPurchaseResult.Failure(productId, reason, failureReason.ToString()));
-            _purchaseCallback = null;
-        }
-
-        // ─────────────────────────────────────────────
-        // Helpers
-        // ─────────────────────────────────────────────
 
         private static ProductType ConvertProductType(IAPProductType type)
         {
