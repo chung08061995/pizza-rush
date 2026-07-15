@@ -45,7 +45,6 @@ public class PopupSelectBooter : MonoBehaviour
 
     private void SelectItem(SelectBooterItem item)
     {
-        Debug.LogError(item.GetData().ToString());
         if (item == null)
         {
             return;
@@ -65,6 +64,7 @@ public class PopupSelectBooter : MonoBehaviour
         {
             _booterItems.Add(item.GetData());
             item.Select();
+            GameAnalytics.LogItemEvent(GameAnalytics.BoosterUse, item.GetData());
         }
     }
 

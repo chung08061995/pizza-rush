@@ -36,12 +36,15 @@ public class PopupLose : DraftUtils.DraftMonoBehaviour
 
     private void ClickWatchAdsButton()
     {
+        GameAnalytics.Log(GameAnalytics.RewardedAdShow);
         DraftUtils.Ads.AdsManager.Instance.ShowRewarded("PlayOnLose", (success) =>
         {
             if (!success)
             {
                 return;
             }
+
+            GameAnalytics.Log(GameAnalytics.RewardedAdComplete);
 
             int bonusTime = 50;
             var levelRunner = LevelFactory.Instance.LevelRunner;
@@ -52,6 +55,7 @@ public class PopupLose : DraftUtils.DraftMonoBehaviour
                 levelRunner.GameplayStateMachine.ChangeToDragContainerState();
             }
 
+            GameAnalytics.LogLevelEvent(GameAnalytics.LevelRetry);
             popup.HideWithAnimation();
         });
     }
@@ -74,6 +78,7 @@ public class PopupLose : DraftUtils.DraftMonoBehaviour
                     levelRunner.GameplayStateMachine.ChangeToDragContainerState();
                 }
 
+                GameAnalytics.LogLevelEvent(GameAnalytics.LevelRetry);
                 popup.HideWithAnimation();
             }
             else

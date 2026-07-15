@@ -140,6 +140,8 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
 
     internal void SetData(LevelData levelData)
     {
+        GameAnalytics.LogLevelEvent(GameAnalytics.LevelStart);
+
         if (SoundManager.Instance != null)
         {
             SoundManager.Instance.PlayBackgroundGame(transform);

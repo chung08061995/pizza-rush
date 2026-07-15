@@ -348,7 +348,6 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
         productionLine = null;
 
         var containerColor = container.Data.containerData.containerColorData.colorType;
-        Debug.Log($"[TryGetProduction] Container color: {containerColor}, containerIndex: {containerIndex}");
 
         foreach (var line in productionLinePooler.ActiveItems)
         {
@@ -359,7 +358,6 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
                 hasColor = line.ProductionPooler.ActiveItems[0].ColorType == containerColor;
             }
             var productionLineIndex = grid.WorldToCell(line.transform.position);
-            Debug.Log($"[TryGetProduction] Line at {productionLineIndex}, activeCount: {line.ProductionPooler.ActiveItems.Count}, firstActiveColor: {(line.ProductionPooler.ActiveItems.Count > 0 ? line.ProductionPooler.ActiveItems[0].ColorType.ToString() : "EMPTY")}, hasFirstColor: {hasColor}");
 
             if (!hasColor) continue;
 
@@ -368,12 +366,9 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
             var rotatedDirection = RotateDirection(baseDirection, rotationType);
             var targetIndex = productionLineIndex + rotatedDirection;
 
-            Debug.Log($"[TryGetProduction] rotationType: {rotationType}, baseDir: {baseDirection}, rotatedDir: {rotatedDirection}, targetIndex: {targetIndex}");
-
             foreach (var partPos in container.GetPartPositions())
             {
                 var partIndex = containerIndex + partPos;
-                Debug.Log($"[TryGetProduction] partPos: {partPos}, partIndex: {partIndex}, targetIndex: {targetIndex}, match: {partIndex == targetIndex}");
                 if (partIndex != targetIndex)
                 {
                     continue;

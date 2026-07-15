@@ -147,6 +147,17 @@ namespace DraftUtils.IAP
         /// </summary>
         public string GetPrice(string productId) => Service.GetLocalizedPrice(productId);
 
+        public string GetDisplayPrice(string productId, Func<string> fallback = null)
+        {
+            var localizedPrice = GetPrice(productId);
+            if (!string.IsNullOrEmpty(localizedPrice) && localizedPrice != "N/A")
+            {
+                return localizedPrice;
+            }
+
+            return fallback?.Invoke() ?? "N/A";
+        }
+
         /// <summary>
         /// Tạo service phù hợp dựa trên define symbol.
         /// </summary>

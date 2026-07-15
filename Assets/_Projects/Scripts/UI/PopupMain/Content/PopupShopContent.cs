@@ -64,12 +64,17 @@ public class PopupShopContent : DraftUtils.DraftMonoBehaviour
         {
             if (result.IsSuccess)
             {
+                GameAnalytics.LogPurchaseEvent(GameAnalytics.IapPurchaseSuccess, prodId);
                 var rewards = MultipleIAPDataExtensions.GetRewards(x.Data);
                 if (rewards.Count > 0)
                 {
                     DataManager.Instance.Reward(rewards);
                 }
                 PopupManager.Instance.ShowPopupMultipleIapReward(x.Data);
+            }
+            else
+            {
+                GameAnalytics.LogPurchaseEvent(GameAnalytics.IapPurchaseFail, prodId, result.FailureReason.ToString());
             }
         });
     }

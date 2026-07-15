@@ -84,7 +84,10 @@ public class PopupSettingContent : DraftUtils.DraftMonoBehaviour
 
     private void ClickRestorePurchaseButton()
     {
-        Debug.Log("Click Restore Purchase Button");
+        DraftUtils.IAP.IAPManager.Instance.Restore(success =>
+        {
+            Debug.Log($"Restore Purchase {(success ? "Success" : "Failed")}");
+        });
     }
 
     private void ClickContactUsButton()

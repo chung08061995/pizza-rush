@@ -68,6 +68,7 @@ public class UsingSplitTileSkillState : DraftUtils.IState
         }
 
         DataManager.Instance.Using(ItemType.Skill_SplitContainer, -1);
+        GameAnalytics.LogItemEvent(GameAnalytics.SkillUse, ItemType.Skill_SplitContainer);
         CancelSkill();
         _isSplitting = false;
     }

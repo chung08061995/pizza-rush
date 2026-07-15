@@ -81,6 +81,7 @@ public class UsingDestroySkillState : DraftUtils.IState
             _levelRunner.LevelObjectSpawner.DestroyContainer(containerUnderMouse);
 
             DataManager.Instance.Using(ItemType.Skill_DestroyContainer, -1);
+            GameAnalytics.LogItemEvent(GameAnalytics.SkillUse, ItemType.Skill_DestroyContainer);
             CancelSkill();
             _isDestroying = false;
         });

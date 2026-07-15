@@ -27,8 +27,13 @@ public class SingleIAPDataView : DraftUtils.DraftMonoBehaviour
         {
             if (result.IsSuccess)
             {
+                GameAnalytics.LogPurchaseEvent(GameAnalytics.IapPurchaseSuccess, prodId);
                 DataManager.Instance.Reward(new() { _data.reward });
                 PopupManager.Instance.ShowPopupRewardSingle(_data.reward);
+            }
+            else
+            {
+                GameAnalytics.LogPurchaseEvent(GameAnalytics.IapPurchaseFail, prodId, result.FailureReason.ToString());
             }
         });
     }
@@ -52,7 +57,9 @@ public class SingleIAPDataView : DraftUtils.DraftMonoBehaviour
 
     private void SetPriceText()
     {
-        priceText.SetText(DataManager.Instance.iapData.GetCost(_data.productId));
+        priceText.SetText(DraftUtils.IAP.IAPManager.Instance.GetDisplayPrice(
+            _data.productId,
+            () => DataManager.Instance.iapData.GetCost(_data.productId).ToString()));
     }
     private void SetItemView()
     {

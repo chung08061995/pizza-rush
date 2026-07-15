@@ -69,3 +69,75 @@ public class RuntimeStorage : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour
 
     public int Count => _storage.Count;
 }
+
+public static class GameAnalytics
+{
+    public const string AppStart = "app_start";
+    public const string LevelStart = "level_start";
+    public const string LevelWin = "level_win";
+    public const string LevelLose = "level_lose";
+    public const string LevelRetry = "level_retry";
+    public const string BoosterUse = "booster_use";
+    public const string SkillUse = "skill_use";
+    public const string RewardedAdShow = "rewarded_ad_show";
+    public const string RewardedAdComplete = "rewarded_ad_complete";
+    public const string IapPurchaseSuccess = "iap_purchase_success";
+    public const string IapPurchaseFail = "iap_purchase_fail";
+
+    public static void Log(string eventName)
+    {
+        Debug.Log($"[Analytics] {eventName}");
+    }
+
+    public static void Log(string eventName, Dictionary<string, object> parameters)
+    {
+        if (parameters == null || parameters.Count == 0)
+        {
+            Log(eventName);
+            return;
+        }
+
+        Debug.Log($"[Analytics] {eventName}: {string.Join(", ", FormatParameters(parameters))}");
+    }
+
+    public static void LogLevelEvent(string eventName)
+    {
+        Log(eventName, new Dictionary<string, object>
+        {
+            { "level", DataManager.Instance != null ? DataManager.Instance.Level.Value : 0 },
+        });
+    }
+
+    public static void LogItemEvent(string eventName, ItemType itemType)
+    {
+        Log(eventName, new Dictionary<string, object>
+        {
+            { "item_type", itemType.ToString() },
+            { "level", DataManager.Instance != null ? DataManager.Instance.Level.Value : 0 },
+        });
+    }
+
+    public static void LogPurchaseEvent(string eventName, string productId, string failureReason = "")
+    {
+        var parameters = new Dictionary<string, object>
+        {
+            { "product_id", productId },
+            { "level", DataManager.Instance != null ? DataManager.Instance.Level.Value : 0 },
+        };
+
+        if (!string.IsNullOrEmpty(failureReason))
+        {
+            parameters["failure_reason"] = failureReason;
+        }
+
+        Log(eventName, parameters);
+    }
+
+    private static IEnumerable<string> FormatParameters(Dictionary<string, object> parameters)
+    {
+        foreach (var pair in parameters)
+        {
+            yield return $"{pair.Key}={pair.Value}";
+        }
+    }
+}
