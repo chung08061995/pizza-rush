@@ -1,0 +1,58 @@
+{
+  "level": 31,
+  "solver": "grid-bfs-no-skill-v1",
+  "expandedNodes": 5,
+  "dragCount": 5,
+  "actions": [
+    {
+      "container": 0,
+      "anchor": {
+        "x": 4,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 1,
+      "anchor": {
+        "x": 4,
+        "y": 2
+      },
+      "fedLine": 2,
+      "fedColor": 400,
+      "fedAmount": 12
+    },
+    {
+      "container": 0,
+      "anchor": {
+        "x": 5,
+        "y": 1
+      },
+      "fedLine": 3,
+      "fedColor": 200,
+      "fedAmount": 12
+    },
+    {
+      "container": 0,
+      "anchor": {
+        "x": 3,
+        "y": 4
+      },
+      "fedLine": 0,
+      "fedColor": 100,
+      "fedAmount": 12
+    },
+    {
+      "container": 1,
+      "anchor": {
+        "x": 6,
+        "y": 3
+      },
+      "fedLine": 1,
+      "fedColor": 300,
+      "fedAmount": 12
+    }
+  ]
+}

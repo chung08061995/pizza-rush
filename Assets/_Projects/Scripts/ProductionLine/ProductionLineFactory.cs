@@ -1,6 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class ProductionLineFactory : DraftUtils.DraftMonoBehaviour
 {
@@ -31,7 +31,11 @@ public class ProductionLineFactory : DraftUtils.DraftMonoBehaviour
             {
                 continue;
             }
-            var prefab = DraftUtils.Utils.ListUtils.GetRandomElement(productionLines);
+            var prefab = GetPrefab(savedContainer);
+            if (prefab == null)
+            {
+                continue;
+            }
 
             pooler.SetItem(prefab);
             var container = pooler.Spawn();
@@ -45,5 +49,43 @@ public class ProductionLineFactory : DraftUtils.DraftMonoBehaviour
                 container.SetColor(ColorTypeUtils.ToColor(savedContainer.productionCollections[0].colorType));
             }
         }
+    }
+
+    private ProductionLine GetPrefab(ProductionLineSaveData savedLine)
+    {
+        if (productionLines == null || productionLines.Count == 0)
+        {
+            return null;
+        }
+
+        if (savedLine.productionLineVisualType == ProductionLineVisualType.LegacyRandom)
+        {
+            return DraftUtils.Utils.ListUtils.GetRandomElement(productionLines);
+        }
+
+        string requiredPrefabName = savedLine.productionLineVisualType switch
+        {
+            ProductionLineVisualType.SafeStraight => "ProductionLine_Straing",
+            ProductionLineVisualType.SafeCurvedRight => "ProductionLine_Belt",
+            ProductionLineVisualType.SafeCurvedLeft => "ProductionLine_Belt",
+            _ => null,
+        };
+
+        if (string.IsNullOrEmpty(requiredPrefabName))
+        {
+            Debug.LogError($"Unsupported production-line visual: {savedLine.productionLineVisualType}");
+            return null;
+        }
+
+        var prefab = productionLines.FirstOrDefault(line =>
+            line != null &&
+            string.Equals(line.name, requiredPrefabName, System.StringComparison.Ordinal));
+
+        if (prefab == null)
+        {
+            Debug.LogError($"Production-line prefab '{requiredPrefabName}' is not configured on {name}.");
+        }
+
+        return prefab;
     }
 }

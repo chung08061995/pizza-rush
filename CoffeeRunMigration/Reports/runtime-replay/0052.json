@@ -1,0 +1,10 @@
+{
+  "level": 52,
+  "result": "Passed",
+  "completedActions": 35,
+  "dragCount": 35,
+  "remainingProduction": 0,
+  "usedSkillOrBooster": false,
+  "utc": "2026-07-15T21:18:58.2439670Z",
+  "message": "Level 0052 runtime replay passed without skill or booster."
+}

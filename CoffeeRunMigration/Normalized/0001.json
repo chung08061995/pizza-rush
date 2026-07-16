@@ -1,0 +1,219 @@
+{
+  "sourcePackage": "com.coffee.run.puzzle",
+  "sourceVersion": "3.20.0",
+  "sourceVersionCode": 790,
+  "configVariant": "Default",
+  "extractionMethod": "Il2CppAsset",
+  "level": 1,
+  "timerSeconds": 180,
+  "grid": {
+    "rows": 5,
+    "columns": 4,
+    "cells": [
+      {
+        "x": 3,
+        "y": 5
+      },
+      {
+        "x": 4,
+        "y": 5
+      },
+      {
+        "x": 5,
+        "y": 5
+      },
+      {
+        "x": 6,
+        "y": 5
+      },
+      {
+        "x": 3,
+        "y": 4
+      },
+      {
+        "x": 4,
+        "y": 4
+      },
+      {
+        "x": 5,
+        "y": 4
+      },
+      {
+        "x": 6,
+        "y": 4
+      },
+      {
+        "x": 3,
+        "y": 3
+      },
+      {
+        "x": 4,
+        "y": 3
+      },
+      {
+        "x": 5,
+        "y": 3
+      },
+      {
+        "x": 6,
+        "y": 3
+      },
+      {
+        "x": 3,
+        "y": 2
+      },
+      {
+        "x": 4,
+        "y": 2
+      },
+      {
+        "x": 5,
+        "y": 2
+      },
+      {
+        "x": 6,
+        "y": 2
+      },
+      {
+        "x": 3,
+        "y": 1
+      },
+      {
+        "x": 4,
+        "y": 1
+      },
+      {
+        "x": 5,
+        "y": 1
+      },
+      {
+        "x": 6,
+        "y": 1
+      }
+    ]
+  },
+  "containers": [
+    {
+      "id": "block-1",
+      "position": {
+        "x": 5,
+        "y": 2
+      },
+      "shape": "Three",
+      "rotationQuarterTurns": 1,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-7",
+      "colorKeys": [
+        "source-color-7"
+      ],
+      "colorAmounts": [
+        12
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-2",
+      "position": {
+        "x": 6,
+        "y": 4
+      },
+      "shape": "Three",
+      "rotationQuarterTurns": 1,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-3",
+      "colorKeys": [
+        "source-color-3"
+      ],
+      "colorAmounts": [
+        12
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    }
+  ],
+  "productionLines": [
+    {
+      "id": "door-1",
+      "position": {
+        "x": 5,
+        "y": 6
+      },
+      "rotationQuarterTurns": 0,
+      "visualKey": "Straight",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-3",
+          "amount": 12
+        }
+      ],
+      "path": [
+        {
+          "direction": "Up",
+          "length": 2
+        },
+        {
+          "direction": "Up",
+          "length": 20
+        }
+      ]
+    },
+    {
+      "id": "door-2",
+      "position": {
+        "x": 4,
+        "y": 0
+      },
+      "rotationQuarterTurns": 2,
+      "visualKey": "CurvedLeft",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-7",
+          "amount": 12
+        }
+      ],
+      "path": [
+        {
+          "direction": "Down",
+          "length": 2
+        },
+        {
+          "direction": "Right",
+          "length": 2
+        },
+        {
+          "direction": "Down",
+          "length": 20
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    "AssetRipper Unity YAML: Level_1.asset",
+    "Runtime bundle/config variant: Default"
+  ]
+}

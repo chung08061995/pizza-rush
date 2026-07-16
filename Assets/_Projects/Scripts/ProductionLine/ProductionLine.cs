@@ -58,6 +58,10 @@ public class ProductionLine : DraftUtils.DraftMonoBehaviour
 
         if (root != null)
         {
+            var scale = root.localScale;
+            scale.x = Mathf.Abs(scale.x) *
+                (data.productionLineVisualType == ProductionLineVisualType.SafeCurvedLeft ? -1f : 1f);
+            root.localScale = scale;
             root.localEulerAngles = new Vector3(0, RotationTypeExtensions.ConvertToAngle(data.rotationType), 0);
         }
 

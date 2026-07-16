@@ -1,0 +1,108 @@
+{
+  "level": 21,
+  "solver": "grid-bfs-no-skill-v1",
+  "expandedNodes": 22,
+  "dragCount": 10,
+  "actions": [
+    {
+      "container": 2,
+      "anchor": {
+        "x": 6,
+        "y": 5
+      },
+      "fedLine": 2,
+      "fedColor": 300,
+      "fedAmount": 6
+    },
+    {
+      "container": 1,
+      "anchor": {
+        "x": 3,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 2,
+      "anchor": {
+        "x": 6,
+        "y": 1
+      },
+      "fedLine": 3,
+      "fedColor": 300,
+      "fedAmount": 6
+    },
+    {
+      "container": 1,
+      "anchor": {
+        "x": 6,
+        "y": 5
+      },
+      "fedLine": 2,
+      "fedColor": 200,
+      "fedAmount": 6
+    },
+    {
+      "container": 0,
+      "anchor": {
+        "x": 4,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 1,
+      "anchor": {
+        "x": 3,
+        "y": 6
+      },
+      "fedLine": 1,
+      "fedColor": 200,
+      "fedAmount": 6
+    },
+    {
+      "container": 0,
+      "anchor": {
+        "x": 5,
+        "y": 4
+      },
+      "fedLine": 2,
+      "fedColor": 100,
+      "fedAmount": 8
+    },
+    {
+      "container": 3,
+      "anchor": {
+        "x": 6,
+        "y": 1
+      },
+      "fedLine": 3,
+      "fedColor": 400,
+      "fedAmount": 8
+    },
+    {
+      "container": 4,
+      "anchor": {
+        "x": 4,
+        "y": 6
+      },
+      "fedLine": 0,
+      "fedColor": 500,
+      "fedAmount": 8
+    },
+    {
+      "container": 0,
+      "anchor": {
+        "x": 3,
+        "y": 5
+      },
+      "fedLine": 0,
+      "fedColor": 100,
+      "fedAmount": 4
+    }
+  ]
+}

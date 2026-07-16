@@ -438,7 +438,7 @@ public class DragContainerState : DraftUtils.IState
 
         if (_levelRunner.LevelObjectSpawner.TryGetProductionNearAndSamleColor(progressData.selectedContainer, nearestCell, out var productionLine))
         {
-            var color = progressData.selectedContainer.Data.containerData.containerColorData.colorType;
+            var color = productionLine.ProductionPooler.ActiveItems[0].ColorType;
 
             // Double-check: container phải cùng màu với production đầu tiên trên line
             if (!ProductionLineRuntimeDataExensions.HasFirstProductionColor(productionLine.Data, color))
@@ -447,7 +447,7 @@ public class DragContainerState : DraftUtils.IState
                 return;
             }
 
-            var sortedEmptyPlaces = progressData.selectedContainer.GetEmptyPlacesSortLeftToRightTopToBottom();
+            var sortedEmptyPlaces = progressData.selectedContainer.GetEmptyPlacesForColor(color);
 
             var firstColors = ProductionLineRuntimeDataExensions.GetFirstColors(productionLine.Data, color);
 
@@ -461,7 +461,7 @@ public class DragContainerState : DraftUtils.IState
             var allProductionInLineColorAsContainer = productionLine.GetAllProductionInLineSampleColorAsContainer(color, productionLine)
                 .GetRange(0, numberToRelease);
 
-            MoveProductionsToContainerLogic(productionLine, progressData.selectedContainer);
+            MoveProductionsToContainerLogic(productionLine, progressData.selectedContainer, color);
             _levelRunner.StartCoroutine(AnimationMove(progressData.selectedContainer, productionLine, allProductionInLineColorAsContainer, sortedEmptyPlaces));
         }
         progressData.selectedContainer = null;
@@ -480,7 +480,7 @@ public class DragContainerState : DraftUtils.IState
     /// </summary>
     /// <param name="productionLine">Production line là nguồn của products</param>
     /// <param name="container">Container là đích đến của products</param>
-    private void MoveProductionsToContainerLogic(ProductionLine productionLine, Container container)
+    private void MoveProductionsToContainerLogic(ProductionLine productionLine, Container container, ColorType color)
     {
         if (container.Places == null)
         {
@@ -491,14 +491,14 @@ public class DragContainerState : DraftUtils.IState
             return;
         }
 
-        List<Production> productions = productionLine.GetAllProductionInLineSampleColorAsContainer(container.Data.containerData.containerColorData.colorType, productionLine);
+        List<Production> productions = productionLine.GetAllProductionInLineSampleColorAsContainer(color, productionLine);
         if (productions.Count() == 0)
         {
             return;
         }
 
         // Sắp xếp các vị trí trống theo thứ tự: trái → phải, trên → dưới
-        var sortedPlaces = container.GetEmptyPlacesSortLeftToRightTopToBottom();
+        var sortedPlaces = container.GetEmptyPlacesForColor(color);
 
         if (sortedPlaces.Count == 0)
         {
@@ -523,7 +523,7 @@ public class DragContainerState : DraftUtils.IState
             }
         }
         productionLine.ChangeProductionLineColor();
-        if (container.IsFull())
+        if (container.IsFull() && !container.HasNextColorLayer())
         {
             container.ContainerView.HideAll();
             _levelRunner.LevelObjectSpawner.ContainerPooler.Despawn(container);
@@ -659,7 +659,16 @@ public class DragContainerState : DraftUtils.IState
         // Đợi thêm một chút cho sản phẩm cuối hoàn toàn tiếp đất và ổn định
         yield return new WaitForSeconds(0.2f);
 
-        if (container.IsFull())
+        if (container.IsFull() && container.TryAdvanceColorLayer())
+        {
+            // Coffee Run counts a completed LayerBox layer as one resolved box for
+            // Ice unlock thresholds, even though the physical container remains.
+            _levelRunner.LevelTracking.resolvedContainer.SetValue(
+                _levelRunner.LevelTracking.resolvedContainer.Value + 1);
+            _levelRunner.LevelTracking.resolvedContainer.Notifier.Notify();
+            container.isAnimating = false;
+        }
+        else if (container.IsFull())
         {
             container.StateMachine.ChangeToFlyAwayState();
         }

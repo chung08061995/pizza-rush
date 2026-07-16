@@ -1,0 +1,228 @@
+{
+  "level": 7,
+  "solver": "grid-bfs-no-skill-v1",
+  "expandedNodes": 126,
+  "dragCount": 22,
+  "actions": [
+    {
+      "container": 6,
+      "anchor": {
+        "x": 2,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 9,
+      "anchor": {
+        "x": 2,
+        "y": 6
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 0,
+      "anchor": {
+        "x": 2,
+        "y": 4
+      },
+      "fedLine": 2,
+      "fedColor": 100,
+      "fedAmount": 8
+    },
+    {
+      "container": 2,
+      "anchor": {
+        "x": 2,
+        "y": 3
+      },
+      "fedLine": 2,
+      "fedColor": 200,
+      "fedAmount": 6
+    },
+    {
+      "container": 2,
+      "anchor": {
+        "x": 2,
+        "y": 1
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 3,
+      "anchor": {
+        "x": 2,
+        "y": 4
+      },
+      "fedLine": 2,
+      "fedColor": 300,
+      "fedAmount": 8
+    },
+    {
+      "container": 10,
+      "anchor": {
+        "x": 4,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 4,
+      "anchor": {
+        "x": 6,
+        "y": 5
+      },
+      "fedLine": 1,
+      "fedColor": 400,
+      "fedAmount": 12
+    },
+    {
+      "container": 5,
+      "anchor": {
+        "x": 6,
+        "y": 6
+      },
+      "fedLine": 1,
+      "fedColor": 500,
+      "fedAmount": 8
+    },
+    {
+      "container": 1,
+      "anchor": {
+        "x": 5,
+        "y": 6
+      },
+      "fedLine": 0,
+      "fedColor": 100,
+      "fedAmount": 8
+    },
+    {
+      "container": 6,
+      "anchor": {
+        "x": 6,
+        "y": 4
+      },
+      "fedLine": 3,
+      "fedColor": 600,
+      "fedAmount": 4
+    },
+    {
+      "container": 10,
+      "anchor": {
+        "x": 6,
+        "y": 4
+      },
+      "fedLine": 3,
+      "fedColor": 900,
+      "fedAmount": 8
+    },
+    {
+      "container": 12,
+      "anchor": {
+        "x": 6,
+        "y": 2
+      },
+      "fedLine": 4,
+      "fedColor": 300,
+      "fedAmount": 4
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 6,
+        "y": 2
+      },
+      "fedLine": 4,
+      "fedColor": 300,
+      "fedAmount": 4
+    },
+    {
+      "container": 8,
+      "anchor": {
+        "x": 5,
+        "y": 7
+      },
+      "fedLine": 0,
+      "fedColor": 400,
+      "fedAmount": 4
+    },
+    {
+      "container": 7,
+      "anchor": {
+        "x": 4,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 2,
+      "anchor": {
+        "x": 5,
+        "y": 1
+      },
+      "fedLine": 5,
+      "fedColor": 200,
+      "fedAmount": 6
+    },
+    {
+      "container": 7,
+      "anchor": {
+        "x": 3,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 10,
+      "anchor": {
+        "x": 5,
+        "y": 1
+      },
+      "fedLine": 5,
+      "fedColor": 900,
+      "fedAmount": 4
+    },
+    {
+      "container": 7,
+      "anchor": {
+        "x": 5,
+        "y": 7
+      },
+      "fedLine": 0,
+      "fedColor": 700,
+      "fedAmount": 8
+    },
+    {
+      "container": 7,
+      "anchor": {
+        "x": 5,
+        "y": 5
+      },
+      "fedLine": 3,
+      "fedColor": 700,
+      "fedAmount": 8
+    },
+    {
+      "container": 9,
+      "anchor": {
+        "x": 5,
+        "y": 1
+      },
+      "fedLine": 5,
+      "fedColor": 800,
+      "fedAmount": 4
+    }
+  ]
+}

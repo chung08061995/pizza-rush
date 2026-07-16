@@ -1,0 +1,19 @@
+{
+  "package": "com.coffee.run.puzzle",
+  "versionName": "3.20.0",
+  "versionCode": 790,
+  "unityVersion": "2022.3.62f2",
+  "runtimeConfigVariant": "Default",
+  "extractedOn": "2026-07-15",
+  "apks": [
+    {
+      "role": "base",
+      "sha256": "782f048898c9f102ab0c475ee3ae4d6064fa400a7d89d25e09e48b3574e00660"
+    },
+    {
+      "role": "split_config.arm64_v8a",
+      "sha256": "13f5774f840cd0f86158c355d8df7c6c525e5fc04277e45f6d5760c131d8bdc8"
+    }
+  ],
+  "notes": "APK files, IL2CPP metadata, extracted assets and account data are intentionally not stored in this repository."
+}
