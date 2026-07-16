@@ -8,6 +8,9 @@ namespace UI.Cheat
     /// </summary>
     public class CheatTimeWindow : EditorWindow
     {
+        private int selectedLevel = 1;
+        private bool randomLoop;
+
         [MenuItem("Tools/Cheat Time Window")]
         public static void ShowWindow()
         {
@@ -48,12 +51,73 @@ namespace UI.Cheat
             {
                 Time.timeScale = 1.0f;
             }
+
+            GUILayout.Space(15);
+            GUILayout.Label("Level preview", EditorStyles.boldLabel);
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Level", GUILayout.Width(45));
+            selectedLevel = Mathf.Clamp(EditorGUILayout.IntField(selectedLevel), 1, LevelPreview.MaxLevel);
+            if (GUILayout.Button("Set Level", GUILayout.Height(22)))
+            {
+                randomLoop = false;
+                LevelPreview.Load(selectedLevel);
+            }
+            if (GUILayout.Button("Next", GUILayout.Height(22)))
+            {
+                LevelPreview.LoadNext(ref selectedLevel, ref randomLoop);
+            }
+            GUILayout.EndHorizontal();
+
+            GUILayout.Label(
+                $"Next đi tuần tự đến Level {LevelPreview.MaxLevel}, sau đó chọn ngẫu nhiên 1–{LevelPreview.MaxLevel}.",
+                EditorStyles.wordWrappedMiniLabel);
         }
         
         private void Update()
         {
             // Tự động vẽ lại cửa sổ khi giá trị TimeScale thay đổi
             Repaint();
+        }
+
+        private static class LevelPreview
+        {
+            public const int MaxLevel = 100;
+
+            public static void Load(int level)
+            {
+                if (!EditorApplication.isPlaying || DataManager.Instance == null)
+                {
+                    EditorUtility.DisplayDialog(
+                        "Level preview",
+                        "Hãy vào Play Mode bằng MyMenu > StartGame trước khi mở level.",
+                        "OK");
+                    return;
+                }
+
+                level = Mathf.Clamp(level, 1, MaxLevel);
+                DataManager.Instance.Level.SetValue(level);
+                DataManager.Instance.Level.Notifier.Notify();
+                DataManager.Instance.Level.Save();
+                SceneControllerExtensions.LoadGameplay();
+            }
+
+            public static void LoadNext(ref int selectedLevel, ref bool randomLoop)
+            {
+                if (!EditorApplication.isPlaying)
+                {
+                    Load(selectedLevel);
+                    return;
+                }
+
+                var current = DataManager.Instance != null
+                    ? DataManager.Instance.Level.Value
+                    : selectedLevel;
+                randomLoop |= current >= MaxLevel;
+                selectedLevel = randomLoop
+                    ? Random.Range(1, MaxLevel + 1)
+                    : current + 1;
+                Load(selectedLevel);
+            }
         }
     }
 }
