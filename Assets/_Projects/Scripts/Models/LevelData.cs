@@ -56,9 +56,18 @@ public static class ContainerSaveDataExtensions
 public class ProductionLineSaveData
 {
     public ProductionLineMode productionLineMode;
+    public ProductionLineVisualType productionLineVisualType;
     public SerializableVector2Int position;
     public RotationType rotationType;
     public List<ProductionCollectionSaveData> productionCollections = new();
+}
+
+public enum ProductionLineVisualType
+{
+    LegacyRandom = 0,
+    SafeStraight = 1,
+    SafeCurvedRight = 2,
+    SafeCurvedLeft = 3,
 }
 
 public enum ProductionLineMode
@@ -273,10 +282,17 @@ public class LevelData
         {
             foreach (var container in containers)
             {
-                var color = container?.containerData?.containerColorData?.colorType ?? ColorType.None;
-                if (color != ColorType.None && !colors.Contains(color))
+                var colorData = container?.containerData?.containerColorData;
+                if (colorData == null) continue;
+                var containerColors = colorData.colors != null && colorData.colors.Count > 0
+                    ? colorData.colors
+                    : new List<ColorType> { colorData.colorType };
+                foreach (var color in containerColors)
                 {
-                    colors.Add(color);
+                    if (color != ColorType.None && !colors.Contains(color))
+                    {
+                        colors.Add(color);
+                    }
                 }
             }
         }
@@ -308,11 +324,7 @@ public class LevelData
             foreach (var container in containers)
             {
                 if (container?.containerData == null) continue;
-                var oldColor = container.containerData.containerColorData.colorType;
-                if (colorMap.TryGetValue(oldColor, out var newColor))
-                {
-                    container.containerData.containerColorData.colorType = newColor;
-                }
+                ReplaceContainerDataColors(container.containerData, colorMap);
             }
         }
 
@@ -331,6 +343,34 @@ public class LevelData
                     }
                 }
             }
+        }
+    }
+
+    private static void ReplaceContainerDataColors(ContainerData data, Dictionary<ColorType, ColorType> colorMap)
+    {
+        if (data?.containerColorData != null)
+        {
+            var colorData = data.containerColorData;
+            if (colorMap.TryGetValue(colorData.colorType, out var newColor))
+            {
+                colorData.colorType = newColor;
+            }
+            if (colorData.colors != null)
+            {
+                for (var colorIndex = 0; colorIndex < colorData.colors.Count; colorIndex++)
+                {
+                    if (colorMap.TryGetValue(colorData.colors[colorIndex], out var newLayerColor))
+                    {
+                        colorData.colors[colorIndex] = newLayerColor;
+                    }
+                }
+            }
+        }
+
+        var inner = data?.containerIceData?.innerContainerData;
+        if (inner != null && !ReferenceEquals(inner, data))
+        {
+            ReplaceContainerDataColors(inner, colorMap);
         }
     }
 }

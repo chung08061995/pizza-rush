@@ -29,7 +29,8 @@ public class ContainerView : DraftUtils.DraftMonoBehaviour
         {
             return;
         }
-        if (DataManager.Instance.ProductionLineColorsSO.TryGetValue(_data.containerColorData.colorType, out var color))
+        var displayColor = _data.isStone ? ColorType.Gray : _data.containerColorData.colorType;
+        if (DataManager.Instance.ProductionLineColorsSO.TryGetValue(displayColor, out var color))
         {
             if (borderRenderer.value != null && borderRenderer.value.Renderers != null)
             {

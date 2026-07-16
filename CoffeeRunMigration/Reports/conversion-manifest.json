@@ -1,0 +1,909 @@
+{
+  "generatedUtc": "2026-07-15T17:58:43.3339610Z",
+  "sourcePackage": "com.coffee.run.puzzle",
+  "sourceVersion": "3.20.0",
+  "sourceVersionCode": 790,
+  "configVariant": "Default",
+  "levels": [
+    {
+      "level": 1,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0001.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0001.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 2,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0002.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0002.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 3,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0003.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0003.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 4,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0004.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0004.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 5,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0005.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0005.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 6,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0006.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0006.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 7,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0007.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0007.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 8,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0008.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0008.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 9,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0009.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0009.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 10,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0010.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0010.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 11,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0011.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0011.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 12,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0012.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0012.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 13,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0013.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0013.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 14,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0014.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0014.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 15,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0015.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0015.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 16,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0016.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0016.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 17,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0017.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0017.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 18,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0018.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0018.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 19,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0019.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0019.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 20,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0020.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0020.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 21,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0021.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0021.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 22,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0022.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0022.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 23,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0023.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0023.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 24,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0024.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0024.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 25,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0025.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0025.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 26,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0026.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0026.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 27,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0027.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0027.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 28,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0028.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0028.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 29,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0029.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0029.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 30,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0030.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0030.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 31,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0031.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0031.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 32,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0032.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0032.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 33,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0033.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0033.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 34,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0034.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0034.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 35,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0035.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0035.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 36,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0036.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0036.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 37,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0037.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0037.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 38,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0038.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0038.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 39,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0039.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0039.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 40,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0040.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0040.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 41,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0041.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0041.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 42,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0042.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0042.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 43,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0043.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0043.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 44,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0044.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0044.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 45,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0045.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0045.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 46,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0046.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0046.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 47,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0047.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0047.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 48,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0048.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0048.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 49,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0049.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0049.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 50,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0050.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0050.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 51,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0051.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0051.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 52,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0052.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0052.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 53,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0053.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0053.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 54,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0054.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0054.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 55,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0055.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0055.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 56,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0056.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0056.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 57,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0057.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0057.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 58,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0058.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0058.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 59,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0059.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0059.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 60,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0060.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0060.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 61,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0061.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0061.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 62,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0062.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0062.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 63,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0063.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0063.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 64,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0064.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0064.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 65,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0065.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0065.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 66,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0066.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0066.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 67,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0067.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0067.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 68,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0068.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0068.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 69,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0069.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0069.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 70,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0070.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0070.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 71,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0071.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0071.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 72,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0072.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0072.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 73,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0073.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0073.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 74,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0074.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0074.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 75,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0075.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0075.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 76,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0076.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0076.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 77,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0077.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0077.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 78,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0078.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0078.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 79,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0079.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0079.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 80,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0080.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0080.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 81,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0081.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0081.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 82,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0082.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0082.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 83,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0083.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0083.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 84,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0084.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0084.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 85,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0085.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0085.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 86,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0086.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0086.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 87,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0087.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0087.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 88,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0088.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0088.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 89,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0089.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0089.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 90,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0090.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0090.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 91,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0091.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0091.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 92,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0092.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0092.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 93,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0093.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0093.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 94,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0094.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0094.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 95,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0095.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0095.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 96,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0096.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0096.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 97,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0097.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0097.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 98,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0098.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0098.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 99,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0099.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0099.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    },
+    {
+      "level": 100,
+      "status": "Exact",
+      "sourceFile": "CoffeeRunMigration/Normalized/0100.json",
+      "outputFile": "Assets/_Projects/Resources/LevelData/0100.json",
+      "messages": [
+        "Normalized source and output are exact."
+      ]
+    }
+  ]
+}

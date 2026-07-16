@@ -22,6 +22,7 @@ public class Container : DraftUtils.DraftMonoBehaviour
     public Transform ShapeRoot => shapeRoot;
     public bool IsFlyingAway { get; set; } = false;
     public bool isAnimating { get; set; } = false;
+    private int currentColorLayerIndex;
 
     [ShowInInspector] private ContainerSaveData _data;
     public ContainerSaveData Data => _data;
@@ -43,6 +44,8 @@ public class Container : DraftUtils.DraftMonoBehaviour
     {
         IsFlyingAway = false;
         _data = data;
+        currentColorLayerIndex = 0;
+        EnsureRuntimeColors();
         containerView.SetData(data.containerData);
         containerMaterialView.SetData(_data.containerData.containerMaterialType);
 
@@ -145,6 +148,76 @@ public class Container : DraftUtils.DraftMonoBehaviour
             .OrderBy(place => place.transform.position.x)
             .ThenByDescending(place => place.transform.position.z)
             .ToList();
+    }
+
+    public bool CanAcceptColor(ColorType color)
+    {
+        if (_data == null || _data.containerData == null || _data.containerData.isStone)
+        {
+            return false;
+        }
+        var colorData = _data.containerData.containerColorData;
+        if (colorData.isMultiColor)
+        {
+            if (!colorData.colors.Contains(color)) return false;
+            var quota = GetColorQuota(color);
+            return Places.Count(place => place.Production != null && place.Production.ColorType == color) < quota;
+        }
+        return colorData.colorType == color;
+    }
+
+    public List<ContainerPlace> GetEmptyPlacesForColor(ColorType color)
+    {
+        var empty = GetEmptyPlacesSortLeftToRightTopToBottom();
+        var colorData = _data.containerData.containerColorData;
+        if (!colorData.isMultiColor)
+        {
+            return colorData.colorType == color ? empty : new List<ContainerPlace>();
+        }
+        var quota = GetColorQuota(color);
+        var filled = Places.Count(place => place.Production != null && place.Production.ColorType == color);
+        return empty.Take(Mathf.Max(0, quota - filled)).ToList();
+    }
+
+    public bool HasNextColorLayer()
+    {
+        var colors = _data?.containerData?.containerColorData?.colors;
+        return _data != null && _data.containerData.containerColorData.isLayerBox &&
+               colors != null && currentColorLayerIndex + 1 < colors.Count;
+    }
+
+    public bool TryAdvanceColorLayer()
+    {
+        if (!HasNextColorLayer()) return false;
+        currentColorLayerIndex++;
+        foreach (var place in Places) place.ClearProduction();
+        _data.containerData.containerColorData.colorType =
+            _data.containerData.containerColorData.colors[currentColorLayerIndex];
+        containerView.SetData(_data.containerData);
+        return true;
+    }
+
+    private void EnsureRuntimeColors()
+    {
+        var colorData = _data.containerData.containerColorData ??= new ContainerColorData();
+        colorData.colors ??= new List<ColorType>();
+        if (colorData.colors.Count == 0)
+        {
+            colorData.colors.Add(colorData.colorType);
+        }
+        colorData.colorType = colorData.colors[0];
+    }
+
+    private int GetColorQuota(ColorType color)
+    {
+        var colorData = _data.containerData.containerColorData;
+        var index = colorData.colors.IndexOf(color);
+        if (index < 0) return 0;
+        if (colorData.colorAmounts != null && index < colorData.colorAmounts.Count)
+        {
+            return colorData.colorAmounts[index];
+        }
+        return Places.Count / Mathf.Max(1, colorData.colors.Count);
     }
 
     public List<Vector2Int> GetPartPositions()

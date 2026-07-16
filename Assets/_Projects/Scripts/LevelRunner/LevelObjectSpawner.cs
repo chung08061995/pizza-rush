@@ -101,6 +101,7 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
     public void ReplaceContainer(Container oldContainer, ContainerData newData)
     {
         var cell = grid.WorldToCell(oldContainer.transform.position);
+        var runtimeName = oldContainer.name;
 
         containerPooler.Despawn(oldContainer);
         oldContainer.gameObject.SetActive(false);
@@ -113,7 +114,11 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
             containerData = newData
         };
 
-        containerFactory.SpawnSingleContainer(newSaveData, containerPooler, grid);
+        var replacement = containerFactory.SpawnSingleContainer(newSaveData, containerPooler, grid);
+        if (replacement != null)
+        {
+            replacement.name = runtimeName;
+        }
     }
 
     private Sequence _showAddTileSequence;
@@ -347,15 +352,13 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
     {
         productionLine = null;
 
-        var containerColor = container.Data.containerData.containerColorData.colorType;
-
         foreach (var line in productionLinePooler.ActiveItems)
         {
             // Check trực tiếp production đầu tiên trên line có cùng màu container không
             bool hasColor = false;
             if (line.ProductionPooler.ActiveItems.Count > 0)
             {
-                hasColor = line.ProductionPooler.ActiveItems[0].ColorType == containerColor;
+                hasColor = container.CanAcceptColor(line.ProductionPooler.ActiveItems[0].ColorType);
             }
             var productionLineIndex = grid.WorldToCell(line.transform.position);
 

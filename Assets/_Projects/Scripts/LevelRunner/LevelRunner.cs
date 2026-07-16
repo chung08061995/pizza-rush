@@ -68,7 +68,7 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
 
     private void LevelTracking_ResolvedContainer_OnChanged()
     {
-        foreach (var container in levelObjectSpawner.ContainerPooler.ActiveItems)
+        foreach (var container in levelObjectSpawner.ContainerPooler.ActiveItems.ToList())
         {
             if (!container.ContainerView.ContainerIceDataView.isPresent)
             {
@@ -78,7 +78,11 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
             int remainingAmount = container.Data.containerData.containerIceData.iceAmount - _levelTracking.resolvedContainer.Value;
             if (remainingAmount <= 0)
             {
-                LevelFactory.Instance.LevelRunner.LevelObjectSpawner.ReplaceContainer(container, container.Data.containerData.containerIceData.innerContainerData);
+                var inner = container.Data.containerData.containerIceData.innerContainerData;
+                if (inner != null)
+                {
+                    LevelFactory.Instance.LevelRunner.LevelObjectSpawner.ReplaceContainer(container, inner);
+                }
             }
 
         }

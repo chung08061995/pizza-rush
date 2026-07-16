@@ -6,6 +6,10 @@ using UnityEngine;
 public class ContainerColorData
 {
     public ColorType colorType;
+    public List<ColorType> colors = new();
+    public List<int> colorAmounts = new();
+    public bool isLayerBox;
+    public bool isMultiColor;
 }
 public class ContainerIceData
 {
@@ -33,6 +37,7 @@ public class ContainerData
     public ContainerIceData containerIceData = new();
     public ContainerBoombData containerBoombData = new();
     public ContainerKeyData containerKeyData = new();
+    public bool isStone;
 }
 
 public class SplitContainerData

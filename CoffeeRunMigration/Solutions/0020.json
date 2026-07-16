@@ -1,0 +1,1258 @@
+{
+  "level": 20,
+  "solver": "grid-bfs-no-skill-v1",
+  "expandedNodes": 10789,
+  "dragCount": 125,
+  "actions": [
+    {
+      "container": 3,
+      "anchor": {
+        "x": 0,
+        "y": 3
+      },
+      "fedLine": 4,
+      "fedColor": 300,
+      "fedAmount": 12
+    },
+    {
+      "container": 8,
+      "anchor": {
+        "x": 1,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 9,
+      "anchor": {
+        "x": 4,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 8,
+      "anchor": {
+        "x": 0,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 8,
+        "y": 3
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 19,
+      "anchor": {
+        "x": 6,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 20,
+      "anchor": {
+        "x": 8,
+        "y": 6
+      },
+      "fedLine": 3,
+      "fedColor": 600,
+      "fedAmount": 6
+    },
+    {
+      "container": 9,
+      "anchor": {
+        "x": 3,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 19,
+      "anchor": {
+        "x": 5,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 3,
+        "y": 1
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 16,
+      "anchor": {
+        "x": 5,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 1,
+      "anchor": {
+        "x": 8,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 13,
+      "anchor": {
+        "x": 3,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 10,
+      "anchor": {
+        "x": 4,
+        "y": 9
+      },
+      "fedLine": 0,
+      "fedColor": 700,
+      "fedAmount": 4
+    },
+    {
+      "container": 4,
+      "anchor": {
+        "x": 7,
+        "y": 1
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 10,
+      "anchor": {
+        "x": 5,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 1,
+      "anchor": {
+        "x": 5,
+        "y": 9
+      },
+      "fedLine": 0,
+      "fedColor": 200,
+      "fedAmount": 12
+    },
+    {
+      "container": 20,
+      "anchor": {
+        "x": 7,
+        "y": 8
+      },
+      "fedLine": 1,
+      "fedColor": 600,
+      "fedAmount": 6
+    },
+    {
+      "container": 17,
+      "anchor": {
+        "x": 5,
+        "y": 9
+      },
+      "fedLine": 0,
+      "fedColor": 1100,
+      "fedAmount": 12
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 6,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 10,
+      "anchor": {
+        "x": 8,
+        "y": 3
+      },
+      "fedLine": 5,
+      "fedColor": 700,
+      "fedAmount": 4
+    },
+    {
+      "container": 7,
+      "anchor": {
+        "x": 0,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 14,
+      "anchor": {
+        "x": 8,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 16,
+      "anchor": {
+        "x": 7,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 14,
+      "anchor": {
+        "x": 6,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 6,
+        "y": 2
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 22,
+      "anchor": {
+        "x": 6,
+        "y": 1
+      },
+      "fedLine": 7,
+      "fedColor": 900,
+      "fedAmount": 8
+    },
+    {
+      "container": 4,
+      "anchor": {
+        "x": 7,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 8,
+        "y": 3
+      },
+      "fedLine": 5,
+      "fedColor": 700,
+      "fedAmount": 8
+    },
+    {
+      "container": 18,
+      "anchor": {
+        "x": 5,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 4,
+      "anchor": {
+        "x": 7,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 13,
+      "anchor": {
+        "x": 4,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 0,
+      "anchor": {
+        "x": 2,
+        "y": 8
+      },
+      "fedLine": 0,
+      "fedColor": 100,
+      "fedAmount": 16
+    },
+    {
+      "container": 8,
+      "anchor": {
+        "x": 6,
+        "y": 9
+      },
+      "fedLine": 1,
+      "fedColor": 600,
+      "fedAmount": 4
+    },
+    {
+      "container": 9,
+      "anchor": {
+        "x": 6,
+        "y": 9
+      },
+      "fedLine": 1,
+      "fedColor": 600,
+      "fedAmount": 2
+    },
+    {
+      "container": 2,
+      "anchor": {
+        "x": 0,
+        "y": 6
+      },
+      "fedLine": 2,
+      "fedColor": 200,
+      "fedAmount": 6
+    },
+    {
+      "container": 16,
+      "anchor": {
+        "x": 8,
+        "y": 1
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 7,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 13,
+      "anchor": {
+        "x": 3,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 19,
+      "anchor": {
+        "x": 2,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 18,
+      "anchor": {
+        "x": 4,
+        "y": 1
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 7,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 12,
+      "anchor": {
+        "x": 5,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 4,
+      "anchor": {
+        "x": 5,
+        "y": 1
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 5,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 6,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 12,
+      "anchor": {
+        "x": 3,
+        "y": 6
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 7,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 6,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 13,
+      "anchor": {
+        "x": 8,
+        "y": 3
+      },
+      "fedLine": 5,
+      "fedColor": 800,
+      "fedAmount": 8
+    },
+    {
+      "container": 4,
+      "anchor": {
+        "x": 8,
+        "y": 2
+      },
+      "fedLine": 5,
+      "fedColor": 300,
+      "fedAmount": 8
+    },
+    {
+      "container": 5,
+      "anchor": {
+        "x": 8,
+        "y": 2
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 9,
+      "anchor": {
+        "x": 4,
+        "y": 9
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 12,
+      "anchor": {
+        "x": 3,
+        "y": 2
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 14,
+      "anchor": {
+        "x": 6,
+        "y": 2
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 18,
+      "anchor": {
+        "x": 6,
+        "y": 9
+      },
+      "fedLine": 1,
+      "fedColor": 1000,
+      "fedAmount": 4
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 8,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 5,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 19,
+      "anchor": {
+        "x": 5,
+        "y": 6
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 9,
+      "anchor": {
+        "x": 2,
+        "y": 9
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 6,
+        "y": 6
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 5,
+      "anchor": {
+        "x": 3,
+        "y": 6
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 7,
+        "y": 1
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 8,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 7,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 14,
+      "anchor": {
+        "x": 5,
+        "y": 3
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 5,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 5,
+      "anchor": {
+        "x": 8,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 2,
+        "y": 3
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 6,
+        "y": 3
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 5,
+      "anchor": {
+        "x": 5,
+        "y": 1
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 19,
+      "anchor": {
+        "x": 6,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 7,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 7,
+        "y": 2
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 2,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 12,
+      "anchor": {
+        "x": 3,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 14,
+      "anchor": {
+        "x": 3,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 12,
+      "anchor": {
+        "x": 6,
+        "y": 3
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 5,
+        "y": 2
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 3,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 12,
+      "anchor": {
+        "x": 6,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 14,
+      "anchor": {
+        "x": 4,
+        "y": 6
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 5,
+      "anchor": {
+        "x": 3,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 5,
+        "y": 1
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 7,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 14,
+      "anchor": {
+        "x": 8,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 5,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 6,
+      "anchor": {
+        "x": 6,
+        "y": 1
+      },
+      "fedLine": 7,
+      "fedColor": 400,
+      "fedAmount": 10
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 4,
+        "y": 2
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 19,
+      "anchor": {
+        "x": 4,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 12,
+      "anchor": {
+        "x": 4,
+        "y": 6
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 6,
+      "anchor": {
+        "x": 6,
+        "y": 2
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 5,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 2,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 5,
+      "anchor": {
+        "x": 1,
+        "y": 1
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 2,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 14,
+      "anchor": {
+        "x": 8,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 19,
+      "anchor": {
+        "x": 4,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 16,
+      "anchor": {
+        "x": 1,
+        "y": 2
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 6,
+      "anchor": {
+        "x": 7,
+        "y": 4
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 6,
+        "y": 1
+      },
+      "fedLine": 7,
+      "fedColor": 900,
+      "fedAmount": 4
+    },
+    {
+      "container": 12,
+      "anchor": {
+        "x": 3,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 9,
+      "anchor": {
+        "x": 6,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 2,
+        "y": 9
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 19,
+      "anchor": {
+        "x": 3,
+        "y": 2
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 8,
+        "y": 1
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 9,
+      "anchor": {
+        "x": 6,
+        "y": 7
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 12,
+      "anchor": {
+        "x": 2,
+        "y": 3
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 14,
+      "anchor": {
+        "x": 7,
+        "y": 1
+      },
+      "fedLine": 7,
+      "fedColor": 800,
+      "fedAmount": 8
+    },
+    {
+      "container": 12,
+      "anchor": {
+        "x": 6,
+        "y": 1
+      },
+      "fedLine": 7,
+      "fedColor": 700,
+      "fedAmount": 12
+    },
+    {
+      "container": 7,
+      "anchor": {
+        "x": 3,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 19,
+      "anchor": {
+        "x": 5,
+        "y": 8
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 2,
+      "anchor": {
+        "x": 2,
+        "y": 1
+      },
+      "fedLine": 6,
+      "fedColor": 200,
+      "fedAmount": 6
+    },
+    {
+      "container": 11,
+      "anchor": {
+        "x": 2,
+        "y": 1
+      },
+      "fedLine": 6,
+      "fedColor": 700,
+      "fedAmount": 4
+    },
+    {
+      "container": 6,
+      "anchor": {
+        "x": 1,
+        "y": 5
+      },
+      "fedLine": 2,
+      "fedColor": 400,
+      "fedAmount": 10
+    },
+    {
+      "container": 7,
+      "anchor": {
+        "x": 7,
+        "y": 5
+      },
+      "fedLine": 3,
+      "fedColor": 500,
+      "fedAmount": 10
+    },
+    {
+      "container": 15,
+      "anchor": {
+        "x": 0,
+        "y": 4
+      },
+      "fedLine": 2,
+      "fedColor": 900,
+      "fedAmount": 8
+    },
+    {
+      "container": 16,
+      "anchor": {
+        "x": 0,
+        "y": 6
+      },
+      "fedLine": 2,
+      "fedColor": 1000,
+      "fedAmount": 4
+    },
+    {
+      "container": 9,
+      "anchor": {
+        "x": 4,
+        "y": 1
+      },
+      "fedLine": 6,
+      "fedColor": 600,
+      "fedAmount": 4
+    },
+    {
+      "container": 7,
+      "anchor": {
+        "x": 2,
+        "y": 5
+      },
+      "fedLine": -1,
+      "fedColor": 0,
+      "fedAmount": 0
+    },
+    {
+      "container": 9,
+      "anchor": {
+        "x": 8,
+        "y": 6
+      },
+      "fedLine": 3,
+      "fedColor": 600,
+      "fedAmount": 6
+    },
+    {
+      "container": 5,
+      "anchor": {
+        "x": 2,
+        "y": 1
+      },
+      "fedLine": 6,
+      "fedColor": 300,
+      "fedAmount": 8
+    },
+    {
+      "container": 19,
+      "anchor": {
+        "x": 8,
+        "y": 6
+      },
+      "fedLine": 3,
+      "fedColor": 1200,
+      "fedAmount": 8
+    },
+    {
+      "container": 21,
+      "anchor": {
+        "x": 8,
+        "y": 6
+      },
+      "fedLine": 3,
+      "fedColor": 300,
+      "fedAmount": 8
+    },
+    {
+      "container": 7,
+      "anchor": {
+        "x": 7,
+        "y": 5
+      },
+      "fedLine": 3,
+      "fedColor": 500,
+      "fedAmount": 6
+    }
+  ]
+}

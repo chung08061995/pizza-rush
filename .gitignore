@@ -10,3 +10,11 @@ Library
 Builds
 AGENTS.md
 CLAUDE.md
+
+# Coffee Run source binaries and extracted artifacts stay local.
+CoffeeRunMigration/Source/
+CoffeeRunMigration/Captures/
+CoffeeRunMigration/Extracted/
+*.apk
+*.apks
+*.aab

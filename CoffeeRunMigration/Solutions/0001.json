@@ -1,0 +1,28 @@
+{
+  "level": 1,
+  "solver": "grid-bfs-no-skill-v1",
+  "expandedNodes": 2,
+  "dragCount": 2,
+  "actions": [
+    {
+      "container": 0,
+      "anchor": {
+        "x": 6,
+        "y": 1
+      },
+      "fedLine": 1,
+      "fedColor": 100,
+      "fedAmount": 12
+    },
+    {
+      "container": 1,
+      "anchor": {
+        "x": 5,
+        "y": 5
+      },
+      "fedLine": 0,
+      "fedColor": 200,
+      "fedAmount": 12
+    }
+  ]
+}

@@ -14,6 +14,9 @@ public enum ColorType
     DarkPurple = 900,
     Pink = 1000,
     Violet = 1100,
+    Lime = 1200,
+    Navy = 1300,
+    Gray = 1400,
 
 }
 

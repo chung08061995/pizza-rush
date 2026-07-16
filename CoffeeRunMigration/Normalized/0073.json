@@ -1,0 +1,823 @@
+{
+  "sourcePackage": "com.coffee.run.puzzle",
+  "sourceVersion": "3.20.0",
+  "sourceVersionCode": 790,
+  "configVariant": "Default",
+  "extractionMethod": "Il2CppAsset",
+  "level": 73,
+  "timerSeconds": 90,
+  "grid": {
+    "rows": 8,
+    "columns": 6,
+    "cells": [
+      {
+        "x": 3,
+        "y": 8
+      },
+      {
+        "x": 4,
+        "y": 8
+      },
+      {
+        "x": 5,
+        "y": 8
+      },
+      {
+        "x": 6,
+        "y": 8
+      },
+      {
+        "x": 3,
+        "y": 7
+      },
+      {
+        "x": 4,
+        "y": 7
+      },
+      {
+        "x": 5,
+        "y": 7
+      },
+      {
+        "x": 6,
+        "y": 7
+      },
+      {
+        "x": 3,
+        "y": 6
+      },
+      {
+        "x": 4,
+        "y": 6
+      },
+      {
+        "x": 5,
+        "y": 6
+      },
+      {
+        "x": 6,
+        "y": 6
+      },
+      {
+        "x": 2,
+        "y": 5
+      },
+      {
+        "x": 3,
+        "y": 5
+      },
+      {
+        "x": 4,
+        "y": 5
+      },
+      {
+        "x": 5,
+        "y": 5
+      },
+      {
+        "x": 6,
+        "y": 5
+      },
+      {
+        "x": 7,
+        "y": 5
+      },
+      {
+        "x": 2,
+        "y": 4
+      },
+      {
+        "x": 3,
+        "y": 4
+      },
+      {
+        "x": 4,
+        "y": 4
+      },
+      {
+        "x": 5,
+        "y": 4
+      },
+      {
+        "x": 6,
+        "y": 4
+      },
+      {
+        "x": 7,
+        "y": 4
+      },
+      {
+        "x": 2,
+        "y": 3
+      },
+      {
+        "x": 3,
+        "y": 3
+      },
+      {
+        "x": 4,
+        "y": 3
+      },
+      {
+        "x": 5,
+        "y": 3
+      },
+      {
+        "x": 6,
+        "y": 3
+      },
+      {
+        "x": 7,
+        "y": 3
+      },
+      {
+        "x": 2,
+        "y": 2
+      },
+      {
+        "x": 3,
+        "y": 2
+      },
+      {
+        "x": 4,
+        "y": 2
+      },
+      {
+        "x": 5,
+        "y": 2
+      },
+      {
+        "x": 6,
+        "y": 2
+      },
+      {
+        "x": 7,
+        "y": 2
+      },
+      {
+        "x": 2,
+        "y": 1
+      },
+      {
+        "x": 3,
+        "y": 1
+      },
+      {
+        "x": 4,
+        "y": 1
+      },
+      {
+        "x": 5,
+        "y": 1
+      },
+      {
+        "x": 6,
+        "y": 1
+      },
+      {
+        "x": 7,
+        "y": 1
+      }
+    ]
+  },
+  "containers": [
+    {
+      "id": "block-1",
+      "position": {
+        "x": 6,
+        "y": 1
+      },
+      "shape": "Square",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-9",
+      "colorKeys": [
+        "source-color-9",
+        "source-color-2"
+      ],
+      "colorAmounts": [
+        8,
+        8
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 1,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-2",
+      "position": {
+        "x": 3,
+        "y": 7
+      },
+      "shape": "Square",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-0",
+      "colorKeys": [
+        "source-color-0"
+      ],
+      "colorAmounts": [
+        16
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-3",
+      "position": {
+        "x": 4,
+        "y": 5
+      },
+      "shape": "Two",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "AxisY",
+      "material": "Color",
+      "colorKey": "source-color-0",
+      "colorKeys": [
+        "source-color-0"
+      ],
+      "colorAmounts": [
+        8
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 1,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-4",
+      "position": {
+        "x": 3,
+        "y": 6
+      },
+      "shape": "One",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-13",
+      "colorKeys": [
+        "source-color-13"
+      ],
+      "colorAmounts": [
+        4
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-5",
+      "position": {
+        "x": 5,
+        "y": 6
+      },
+      "shape": "Two",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-3",
+      "colorKeys": [
+        "source-color-3"
+      ],
+      "colorAmounts": [
+        8
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-6",
+      "position": {
+        "x": 6,
+        "y": 6
+      },
+      "shape": "Two",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-7",
+      "colorKeys": [
+        "source-color-7",
+        "source-color-4"
+      ],
+      "colorAmounts": [
+        4,
+        4
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 1,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-7",
+      "position": {
+        "x": 5,
+        "y": 4
+      },
+      "shape": "One",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-3",
+      "colorKeys": [
+        "source-color-3"
+      ],
+      "colorAmounts": [
+        4
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-8",
+      "position": {
+        "x": 7,
+        "y": 4
+      },
+      "shape": "Two",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-7",
+      "colorKeys": [
+        "source-color-7"
+      ],
+      "colorAmounts": [
+        8
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-9",
+      "position": {
+        "x": 6,
+        "y": 4
+      },
+      "shape": "LShort",
+      "rotationQuarterTurns": 0,
+      "flipX": true,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-11",
+      "colorKeys": [
+        "source-color-11"
+      ],
+      "colorAmounts": [
+        12
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-10",
+      "position": {
+        "x": 4,
+        "y": 2
+      },
+      "shape": "Two",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-1",
+      "colorKeys": [
+        "source-color-1"
+      ],
+      "colorAmounts": [
+        8
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-11",
+      "position": {
+        "x": 3,
+        "y": 2
+      },
+      "shape": "LShort",
+      "rotationQuarterTurns": 1,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-4",
+      "colorKeys": [
+        "source-color-4"
+      ],
+      "colorAmounts": [
+        12
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-12",
+      "position": {
+        "x": 5,
+        "y": 1
+      },
+      "shape": "Two",
+      "rotationQuarterTurns": 1,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-13",
+      "colorKeys": [
+        "source-color-13"
+      ],
+      "colorAmounts": [
+        8
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-13",
+      "position": {
+        "x": 7,
+        "y": 3
+      },
+      "shape": "Two",
+      "rotationQuarterTurns": 1,
+      "flipX": false,
+      "movement": "AxisX",
+      "material": "Color",
+      "colorKey": "source-color-13",
+      "colorKeys": [
+        "source-color-13"
+      ],
+      "colorAmounts": [
+        8
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 1,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-14",
+      "position": {
+        "x": 3,
+        "y": 4
+      },
+      "shape": "LShort",
+      "rotationQuarterTurns": 0,
+      "flipX": true,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-6",
+      "colorKeys": [
+        "source-color-6"
+      ],
+      "colorAmounts": [
+        12
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    }
+  ],
+  "productionLines": [
+    {
+      "id": "door-1",
+      "position": {
+        "x": 3,
+        "y": 9
+      },
+      "rotationQuarterTurns": 0,
+      "visualKey": "CurvedRight",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-4",
+          "amount": 8
+        },
+        {
+          "colorKey": "source-color-0",
+          "amount": 8
+        },
+        {
+          "colorKey": "source-color-3",
+          "amount": 8
+        }
+      ],
+      "path": [
+        {
+          "direction": "Up",
+          "length": 2
+        },
+        {
+          "direction": "Right",
+          "length": 1
+        },
+        {
+          "direction": "Up",
+          "length": 20
+        }
+      ]
+    },
+    {
+      "id": "door-2",
+      "position": {
+        "x": 6,
+        "y": 9
+      },
+      "rotationQuarterTurns": 0,
+      "visualKey": "Straight",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-11",
+          "amount": 6
+        },
+        {
+          "colorKey": "source-color-13",
+          "amount": 8
+        },
+        {
+          "colorKey": "source-color-11",
+          "amount": 6
+        },
+        {
+          "colorKey": "source-color-3",
+          "amount": 4
+        }
+      ],
+      "path": [
+        {
+          "direction": "Up",
+          "length": 25
+        }
+      ]
+    },
+    {
+      "id": "door-3",
+      "position": {
+        "x": 1,
+        "y": 4
+      },
+      "rotationQuarterTurns": 1,
+      "visualKey": "Straight",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-7",
+          "amount": 12
+        },
+        {
+          "colorKey": "source-color-4",
+          "amount": 4
+        }
+      ],
+      "path": [
+        {
+          "direction": "Left",
+          "length": 25
+        }
+      ]
+    },
+    {
+      "id": "door-4",
+      "position": {
+        "x": 8,
+        "y": 4
+      },
+      "rotationQuarterTurns": 3,
+      "visualKey": "CurvedLeft",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-9",
+          "amount": 8
+        },
+        {
+          "colorKey": "source-color-1",
+          "amount": 8
+        },
+        {
+          "colorKey": "source-color-13",
+          "amount": 4
+        }
+      ],
+      "path": [
+        {
+          "direction": "Right",
+          "length": 1
+        },
+        {
+          "direction": "Up",
+          "length": 1
+        },
+        {
+          "direction": "Right",
+          "length": 20
+        }
+      ]
+    },
+    {
+      "id": "door-5",
+      "position": {
+        "x": 3,
+        "y": 0
+      },
+      "rotationQuarterTurns": 2,
+      "visualKey": "CurvedLeft",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-6",
+          "amount": 12
+        },
+        {
+          "colorKey": "source-color-4",
+          "amount": 4
+        }
+      ],
+      "path": [
+        {
+          "direction": "Down",
+          "length": 2
+        },
+        {
+          "direction": "Right",
+          "length": 1
+        },
+        {
+          "direction": "Down",
+          "length": 20
+        }
+      ]
+    },
+    {
+      "id": "door-6",
+      "position": {
+        "x": 6,
+        "y": 0
+      },
+      "rotationQuarterTurns": 2,
+      "visualKey": "Straight",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-0",
+          "amount": 8
+        },
+        {
+          "colorKey": "source-color-2",
+          "amount": 8
+        }
+      ],
+      "path": [
+        {
+          "direction": "Down",
+          "length": 2
+        },
+        {
+          "direction": "Down",
+          "length": 20
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    "AssetRipper Unity YAML: Level_73.asset",
+    "Runtime bundle/config variant: Default"
+  ]
+}
