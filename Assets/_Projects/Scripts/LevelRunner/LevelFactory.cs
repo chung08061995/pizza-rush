@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class LevelFactory : DraftUtils.SceneSingletonMonoBehaviour<LevelFactory>
 {
+    private static int _lastRandomLevelIndex;
     private DraftUtils.FormattedLogger _logger = new DraftUtils.FormattedLogger(nameof(LevelFactory));
     [SerializeField] private DraftUtils.ComponentReference<LevelRunner> levelRunnerReference;
     private DraftUtils.PopupFactory _factory = new();
@@ -48,7 +49,7 @@ public class LevelFactory : DraftUtils.SceneSingletonMonoBehaviour<LevelFactory>
 
         if (index > maxIndex)
         {
-            index = index % maxIndex + 1;
+            index = GetRandomLoopLevel(maxIndex);
         }
 
         var path = string.Format(GameConstain.StringFormats.LevelDataFileNameFormat, index);
@@ -80,6 +81,24 @@ public class LevelFactory : DraftUtils.SceneSingletonMonoBehaviour<LevelFactory>
         }
 
         return levelAssets.Length;
+    }
+
+    private static int GetRandomLoopLevel(int maxIndex)
+    {
+        if (maxIndex <= 1)
+        {
+            return 1;
+        }
+
+        int index;
+        do
+        {
+            index = UnityEngine.Random.Range(1, maxIndex + 1);
+        }
+        while (index == _lastRandomLevelIndex);
+
+        _lastRandomLevelIndex = index;
+        return index;
     }
 
     private void TryUseCoffeeTimeBooster()
