@@ -183,6 +183,14 @@ public class PopupManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<P
         popupGameplayReference.DestroyImmediate();
         popupUsingSkillReference.DestroyImmediate();
         popupSkillGameplayReference.DestroyImmediate();
+        popupLoseReference.DestroyImmediate();
+        popupWinReference.DestroyImmediate();
+        popupSettingContentReference.DestroyImmediate();
+        popupConfirmReplayReference.DestroyImmediate();
+        popupUsingBooterReference.DestroyImmediate();
+        popupCoffeeTimeReference.DestroyImmediate();
+        popupBlockUserReference.DestroyImmediate();
+        popupCongratulationReference.DestroyImmediate();
     }
 
     [Button]
