@@ -14,6 +14,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
     [SerializeField] private HomeNavigationButton homeButton;
     [SerializeField] private HomeNavigationButton screenShotButton;
     [SerializeField] private HomeNavigationButton settingButton;
+    [SerializeField] private Button noAdsButton;
     // [SerializeField] private DraftUtils.PersistentValueTextBinder<int> startText;
     // [SerializeField] private DraftUtils.PersistentValueTextBinder<int> goldText;
     [SerializeField] private DraftUtils.OptionalButtonGroup goldMoreButton;
@@ -32,6 +33,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         homeButton.Button.OnClickAction = ClickHome;
         screenShotButton.Button.OnClickAction = ClickScreenShort;
         settingButton.Button.OnClickAction = ClickSetting;
+        noAdsButton.onClick.AddListener(ClickNoAds);
 
         // goldMoreButton.RegisterClickEvents();
         // goldMoreButton.OnClickAction = ClickShop;
@@ -129,6 +131,12 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         PlayButtonPress(settingButton.transform);
         var popup = PopupManager.Instance.homeContentsController.ShowPopupSettingContent(contentRoot);
         tabSlideAnimator.SwitchTo(popup);
+    }
+
+    private void ClickNoAds()
+    {
+        PlayButtonPress(noAdsButton.transform);
+        PopupManager.Instance.GetPopupNoAdsDetail();
     }
 
     private void DoMoveDisableButtonBackground(Transform activeButton)
