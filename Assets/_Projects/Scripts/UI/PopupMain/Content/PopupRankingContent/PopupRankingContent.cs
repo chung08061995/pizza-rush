@@ -77,6 +77,12 @@ public class PopupRankingContent : DraftUtils.DraftMonoBehaviour
         SetTop1Item(data);
         SetTop2Item(data);
         SetTop3Item(data);
+
+        var popupMain = GetComponentInParent<PopupMain>();
+        if (popupMain != null)
+        {
+            popupMain.ApplyCleanTextRendering(this);
+        }
     }
 
     private void SetTop1Item(List<RankItemData> data)

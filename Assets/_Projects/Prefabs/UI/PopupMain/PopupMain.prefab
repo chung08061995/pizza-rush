@@ -709,6 +709,7 @@ MonoBehaviour:
   screenShotButton: {fileID: 2039554307931926785}
   settingButton: {fileID: 6048725497758080166}
   noAdsButton: {fileID: 2655650219310071479}
+  cleanUiFont: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
   goldMoreButton:
     value:
       isPresent: 0

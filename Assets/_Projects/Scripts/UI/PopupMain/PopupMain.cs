@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
     [SerializeField] private HomeNavigationButton screenShotButton;
     [SerializeField] private HomeNavigationButton settingButton;
     [SerializeField] private Button noAdsButton;
+    [SerializeField] private TMP_FontAsset cleanUiFont;
     // [SerializeField] private DraftUtils.PersistentValueTextBinder<int> startText;
     // [SerializeField] private DraftUtils.PersistentValueTextBinder<int> goldText;
     [SerializeField] private DraftUtils.OptionalButtonGroup goldMoreButton;
@@ -105,6 +107,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         DoMoveDisableButtonBackground(rankingButton.transform);
         PlayButtonPress(rankingButton.transform);
         var popup = PopupManager.Instance.homeContentsController.ShowPopupRankingContent(contentRoot);
+        ApplyCleanTextRendering(popup);
         tabSlideAnimator.SwitchTo(popup);
     }
 
@@ -130,7 +133,36 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         DoMoveDisableButtonBackground(settingButton.transform);
         PlayButtonPress(settingButton.transform);
         var popup = PopupManager.Instance.homeContentsController.ShowPopupSettingContent(contentRoot);
+        ApplyCleanTextRendering(popup);
         tabSlideAnimator.SwitchTo(popup);
+    }
+
+    public void ApplyCleanTextRendering(Component content)
+    {
+        if (cleanUiFont == null)
+        {
+            foreach (var font in Resources.FindObjectsOfTypeAll<TMP_FontAsset>())
+            {
+                if (font.name == "Montserrat-Black NewUI Bitmap")
+                {
+                    cleanUiFont = font;
+                    break;
+                }
+            }
+        }
+
+        if (cleanUiFont == null)
+        {
+            Debug.LogError("Clean UI font could not be loaded.");
+            return;
+        }
+
+        foreach (var text in content.GetComponentsInChildren<TMP_Text>(true))
+        {
+            text.font = cleanUiFont;
+            text.fontSharedMaterial = cleanUiFont.material;
+            text.fontStyle &= ~(FontStyles.Underline | FontStyles.Strikethrough);
+        }
     }
 
     private void ClickNoAds()
