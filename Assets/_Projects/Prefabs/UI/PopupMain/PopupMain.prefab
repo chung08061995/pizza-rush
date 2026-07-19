@@ -1117,9 +1117,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1611599472648780963, guid: 3098e4e0e5083a14095d47b6337b0fd6, type: 3}
+      propertyPath: m_fontAsset
+      value:
+      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
+    - target: {fileID: 1611599472648780963, guid: 3098e4e0e5083a14095d47b6337b0fd6, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
+      value:
+      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 1611599472648780963, guid: 3098e4e0e5083a14095d47b6337b0fd6, type: 3}
       propertyPath: m_VerticalAlignment
       value: 512
@@ -1551,9 +1555,13 @@ PrefabInstance:
       value: Camera
       objectReference: {fileID: 0}
     - target: {fileID: 5243392719613729835, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
+      propertyPath: m_fontAsset
+      value:
+      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
+    - target: {fileID: 5243392719613729835, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
+      value:
+      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 5827377303495234044, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Name
       value: ScreenShortHomeNavigationButton
@@ -1564,7 +1572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7111857606956587399, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: 2f7af85ba857a3b46a896704285d8c6b, type: 3}
     - target: {fileID: 8339668381064002152, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Pivot.x
@@ -1676,9 +1684,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 8788124152929673199}
     m_Modifications:
     - target: {fileID: 5243392719613729835, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
+      propertyPath: m_fontAsset
+      value:
+      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
+    - target: {fileID: 5243392719613729835, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
+      value:
+      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 5827377303495234044, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Name
       value: HomeHomeNavigationButton
@@ -1689,7 +1701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7111857606956587399, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: a5894ab9de82e8f428f92aa388702c19, type: 3}
     - target: {fileID: 8339668381064002152, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Pivot.x
@@ -1805,9 +1817,13 @@ PrefabInstance:
       value: Shop
       objectReference: {fileID: 0}
     - target: {fileID: 5243392719613729835, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
+      propertyPath: m_fontAsset
+      value:
+      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
+    - target: {fileID: 5243392719613729835, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
+      value:
+      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 5827377303495234044, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Name
       value: ShopHomeNavigationButton
@@ -1818,7 +1834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7111857606956587399, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: 7314c38e95f435b4cb9a4c70ec36de2c, type: 3}
     - target: {fileID: 8339668381064002152, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Pivot.x
@@ -1998,12 +2014,16 @@ PrefabInstance:
       value: Ranking
       objectReference: {fileID: 0}
     - target: {fileID: 5243392719613729835, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
+      propertyPath: m_fontAsset
+      value:
+      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
+    - target: {fileID: 5243392719613729835, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
+      value:
+      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 5800514020159685529, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: b1e66261f436540949aa046f9d0e08e5, type: 3}
     - target: {fileID: 5800514020159685529, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Color.a
@@ -2019,7 +2039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7111857606956587399, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: f9a777540e0cc4a24921b6e85ffb1843, type: 3}
     - target: {fileID: 8339668381064002152, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Pivot.x
@@ -2199,12 +2219,16 @@ PrefabInstance:
       value: Setting
       objectReference: {fileID: 0}
     - target: {fileID: 5243392719613729835, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
+      propertyPath: m_fontAsset
+      value:
+      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
+    - target: {fileID: 5243392719613729835, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
+      value:
+      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 5800514020159685529, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: b1e66261f436540949aa046f9d0e08e5, type: 3}
     - target: {fileID: 5800514020159685529, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Color.a
@@ -2220,7 +2244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7111857606956587399, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: 7d3689ee6215547f898199d27e715764, type: 3}
     - target: {fileID: 8339668381064002152, guid: 3af7a54b98fd9334f8ecbbac2d99525e, type: 3}
       propertyPath: m_Pivot.x
