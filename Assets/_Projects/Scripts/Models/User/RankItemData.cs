@@ -21,7 +21,7 @@ public static class RankItemDataExtensions
             list.Add(new RankItemData()
             {
                 rank = i,
-                name = $"Player_{random}_{i}",
+                name = $"Player {random} {i}",
                 avatarType = DraftUtils.Utils.ListUtils.GetRandomElement(DataManager.Instance.avatarTypes),
                 score = currentScore
             });
