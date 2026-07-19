@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class PopupRankingContent : DraftUtils.DraftMonoBehaviour
 {
+    private enum RankingTab
+    {
+        Weekly,
+        World,
+        Country
+    }
+
     [SerializeField] private Button backButton;
     [SerializeField] private Button weeklyButton;
     [SerializeField] private Button worldButton;
@@ -19,6 +26,8 @@ public class PopupRankingContent : DraftUtils.DraftMonoBehaviour
     private int unlockAtLevel = 2;
 
     private SingleSelectableButtonGroup tabButtons = new();
+    private readonly Dictionary<RankingTab, List<RankItemData>> rankingData = new();
+    private readonly Dictionary<RankingTab, RankItemData> mineData = new();
 
     private void Start()
     {
@@ -45,34 +54,40 @@ public class PopupRankingContent : DraftUtils.DraftMonoBehaviour
     private void ClickWeeklyButton()
     {
         tabButtons.Select(weeklyButton);
-        Debug.Log("Click Weekly Button");
-        SetData();
+        SetData(RankingTab.Weekly);
     }
 
     private void ClickWorldButton()
     {
         tabButtons.Select(worldButton);
-        Debug.Log("Click World Button");
-        SetData();
+        SetData(RankingTab.World);
     }
 
     private void ClickYourCountryButton()
     {
         tabButtons.Select(yourCountryButton);
-        Debug.Log("Click Your Country Button");
-        SetData();
+        SetData(RankingTab.Country);
     }
 
-    public void SetData()
+    private void SetData(RankingTab selectedTab)
     {
         lockContent.SetData(unlockAtLevel);
 
+        if (!rankingData.TryGetValue(selectedTab, out var data))
+        {
+            data = RankItemDataExtensions.GenerateFakeLeaderboard(
+                count: 100,
+                topScore: GetTopScore(selectedTab),
+                out var playerData);
+            rankingData.Add(selectedTab, data);
+            mineData.Add(selectedTab, playerData);
+        }
+
         rankScroller.Initialize();
-        var data = RankItemDataExtensions.GenerateFakeData(1000);
         rankScroller.UpdateData(data);
         rankScroller.JumpToTop();
 
-        mineItem.SetData(RankItemDataExtensions.GetFakeMineData());
+        mineItem.SetData(mineData[selectedTab]);
 
         SetTop1Item(data);
         SetTop2Item(data);
@@ -83,6 +98,17 @@ public class PopupRankingContent : DraftUtils.DraftMonoBehaviour
         {
             popupMain.ApplyCleanTextRendering(this);
         }
+    }
+
+    private static int GetTopScore(RankingTab selectedTab)
+    {
+        return selectedTab switch
+        {
+            RankingTab.Weekly => 9000,
+            RankingTab.World => 12000,
+            RankingTab.Country => 7500,
+            _ => 9000
+        };
     }
 
     private void SetTop1Item(List<RankItemData> data)

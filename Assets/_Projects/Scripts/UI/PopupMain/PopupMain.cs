@@ -89,6 +89,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
 
     private void ClickHome()
     {
+        SetMainButtonsVisible(true);
         SelectHomeNavigationButton(homeButton);
         DoMoveDisableButtonBackground(homeButton.transform);
         PlayButtonPress(homeButton.transform);
@@ -109,6 +110,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         var popup = PopupManager.Instance.homeContentsController.ShowPopupRankingContent(contentRoot);
         ApplyCleanTextRendering(popup);
         tabSlideAnimator.SwitchTo(popup);
+        SetMainButtonsVisible(false);
     }
 
     private void ClickShop()
@@ -135,6 +137,12 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         var popup = PopupManager.Instance.homeContentsController.ShowPopupSettingContent(contentRoot);
         ApplyCleanTextRendering(popup);
         tabSlideAnimator.SwitchTo(popup);
+        SetMainButtonsVisible(false);
+    }
+
+    private void SetMainButtonsVisible(bool isVisible)
+    {
+        noAdsButton.transform.parent.gameObject.SetActive(isVisible);
     }
 
     public void ApplyCleanTextRendering(Component content)
