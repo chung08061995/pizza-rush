@@ -22,8 +22,11 @@ public class PopupHomeContent : DraftUtils.DraftMonoBehaviour
         avatarDataListenerView.ItemView.Button.OnClickAction = ClickAvatar;
         startButton.onClick.AddListener(OnClickStart);
 
-        levelText.TextView.ValueToDisplayTextFunc = (value) => string.Format(GameConstain.StringFormats.LevelDisplayFormat, value);
-        levelText.Bind(DataManager.Instance.level);
+        if (levelText != null)
+        {
+            levelText.TextView.ValueToDisplayTextFunc = (value) => string.Format(GameConstain.StringFormats.LevelDisplayFormat, value);
+            levelText.Bind(DataManager.Instance.level);
+        }
 
         goldView.RemaningText.ValueToDisplayTextFunc = x => DraftUtils.Utils.Common.FormatNumber((int)x);
         goldView.SetData(ItemType.Gold);

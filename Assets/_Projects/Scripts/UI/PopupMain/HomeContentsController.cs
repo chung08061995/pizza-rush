@@ -24,7 +24,13 @@ public class HomeContentsController : DraftUtils.DraftMonoBehaviour
     }
     public PopupHomeContent ShowPopupHomeContent(Transform root)
     {
-        var popup = _popupFactory.DestroyCurrentAndCreate(popupHomeContentReference, root);
+        if (popupHomeContentReference.instance == null)
+        {
+            popupHomeContentReference.instance = root.GetComponentInChildren<PopupHomeContent>(true);
+        }
+
+        var popup = _popupFactory.GetOrCreate(popupHomeContentReference, root);
+        popup.gameObject.SetActive(true);
         return popup;
     }
 
