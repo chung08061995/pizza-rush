@@ -1849,6 +1849,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldArea
       objectReference: {fileID: 0}
+    - target: {fileID: 6824388943869201604, guid: 2850c2bcc70a68f4f8265459b20751ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8236511616034805802, guid: 2850c2bcc70a68f4f8265459b20751ba, type: 3}
       propertyPath: m_fontAsset
       value:
