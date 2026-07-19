@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PopupRankingContent : DraftUtils.DraftMonoBehaviour
 {
+    [SerializeField] private Button backButton;
     [SerializeField] private Button weeklyButton;
     [SerializeField] private Button worldButton;
     [SerializeField] private Button yourCountryButton;
@@ -21,7 +22,7 @@ public class PopupRankingContent : DraftUtils.DraftMonoBehaviour
 
     private void Start()
     {
-
+        backButton.onClick.AddListener(ReturnHome);
         weeklyButton.onClick.AddListener(ClickWeeklyButton);
         worldButton.onClick.AddListener(ClickWorldButton);
         yourCountryButton.onClick.AddListener(ClickYourCountryButton);
@@ -33,6 +34,11 @@ public class PopupRankingContent : DraftUtils.DraftMonoBehaviour
         );
 
         ClickWeeklyButton();
+    }
+
+    private void ReturnHome()
+    {
+        GetComponentInParent<PopupMain>().ShowHome();
     }
 
 

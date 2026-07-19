@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PopupSettingContent : DraftUtils.DraftMonoBehaviour
 {
+    [SerializeField] private Button backButton;
     [SerializeField] public DraftUtils.Popup popup;
     [SerializeField] private DraftUtils.OptionalButtonGroup quitButton = new();
     [SerializeField] private DraftUtils.OptionalButtonGroup privacyButton = new();
@@ -23,6 +25,7 @@ public class PopupSettingContent : DraftUtils.DraftMonoBehaviour
 
     private void Start()
     {
+        backButton.onClick.AddListener(ReturnHome);
         quitButton.RegisterClickEvents();
         quitButton.OnClickAction = ClickQuitButton;
 
@@ -49,6 +52,11 @@ public class PopupSettingContent : DraftUtils.DraftMonoBehaviour
 
         vibrateButton.Button.OnClickAction = ClickVibrateButton;
         vibrateButton.ApplyImmediate(vibrate.Value);
+    }
+
+    private void ReturnHome()
+    {
+        GetComponentInParent<PopupMain>().ShowHome();
     }
 
     private void ClickMusicButton()

@@ -92,6 +92,11 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         popup.AddGoldButton.OnClickAction = ClickShop;
         tabSlideAnimator.SwitchTo(popup);
     }
+
+    public void ShowHome()
+    {
+        ClickHome();
+    }
     private void ClickRanking()
     {
         SelectHomeNavigationButton(rankingButton);
