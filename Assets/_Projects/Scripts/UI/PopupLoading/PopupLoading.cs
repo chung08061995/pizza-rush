@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PopupLoading : DraftUtils.DraftMonoBehaviour
 {
+    private const float MaxProgressDeltaPerFrame = 1f / 30f;
+
     [SerializeField] private DraftUtils.Popup popup;
     [SerializeField] private DraftUtils.ImageFilledSlider progressSlider;
     [SerializeField] private Image progressFillImage;
@@ -32,7 +34,9 @@ public class PopupLoading : DraftUtils.DraftMonoBehaviour
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            elapsed += Time.unscaledDeltaTime;
+            // Startup services can block the Editor main thread for a long frame.
+            // Do not let that single frame consume the whole visual animation.
+            elapsed += Mathf.Min(Time.unscaledDeltaTime, MaxProgressDeltaPerFrame);
             SetValue(elapsed / duration);
             yield return null;
         }
