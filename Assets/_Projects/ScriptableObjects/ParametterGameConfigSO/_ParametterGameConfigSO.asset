@@ -18,7 +18,7 @@ MonoBehaviour:
   DragContainerBonusY: 0.2
   DefaultLevelTime: 60
   WinDelay: 3
-  InitDelay: 0.2
+  InitDelay: 1
   MainPopupFollowerSpeed: 2000
   MaxProductionOnLine: 20
   AnimationWait: 0.4
