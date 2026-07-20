@@ -29,6 +29,7 @@ public class GameConstain
         public const string BooterCoffeeTime = nameof(BooterCoffeeTime);
         public const string BooterMagic = nameof(BooterMagic);
         public const string LevelUpRewardClaimedPrefix = "LevelUpRewardClaimed_";
+        public const string RankingSnapshotPrefix = "RankingSnapshotV1_";
     }
 
     public static class SenceName
