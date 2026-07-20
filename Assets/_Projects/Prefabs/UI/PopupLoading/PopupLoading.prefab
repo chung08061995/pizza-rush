@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PopupInitProgress
   popup: {fileID: 5271753071535338227}
   progressSlider: {fileID: 5679002197137509720}
+  progressFillImage: {fileID: 6645981847807631352}
 --- !u!114 &5271753071535338227
 MonoBehaviour:
   m_ObjectHideFlags: 0
