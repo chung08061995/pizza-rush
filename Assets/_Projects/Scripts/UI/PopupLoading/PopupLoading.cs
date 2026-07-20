@@ -11,6 +11,15 @@ public class PopupLoading : DraftUtils.DraftMonoBehaviour
     [SerializeField] private DraftUtils.ImageFilledSlider progressSlider;
     [SerializeField] private Image progressFillImage;
     private Coroutine progressCoroutine;
+    private Vector2 progressFillOffsetMin;
+    private Vector2 progressFillOffsetMax;
+
+    private void Awake()
+    {
+        var fillRect = progressFillImage.rectTransform;
+        progressFillOffsetMin = fillRect.offsetMin;
+        progressFillOffsetMax = fillRect.offsetMax;
+    }
 
     public void SetData(float duration, Action onComplete = null)
     {
@@ -58,8 +67,10 @@ public class PopupLoading : DraftUtils.DraftMonoBehaviour
         var fillRect = progressFillImage.rectTransform;
         fillRect.anchorMin = Vector2.zero;
         fillRect.anchorMax = new Vector2(progress, 1f);
-        fillRect.offsetMin = Vector2.zero;
-        fillRect.offsetMax = Vector2.zero;
+        fillRect.offsetMin = progressFillOffsetMin;
+        fillRect.offsetMax = new Vector2(
+            Mathf.Lerp(progressFillOffsetMin.x, progressFillOffsetMax.x, progress),
+            progressFillOffsetMax.y);
         progressFillImage.enabled = progress > 0f;
     }
 }
