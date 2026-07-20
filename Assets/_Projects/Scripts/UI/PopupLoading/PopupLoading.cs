@@ -1,5 +1,5 @@
 using System;
-using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,25 +8,43 @@ public class PopupLoading : DraftUtils.DraftMonoBehaviour
     [SerializeField] private DraftUtils.Popup popup;
     [SerializeField] private DraftUtils.ImageFilledSlider progressSlider;
     [SerializeField] private Image progressFillImage;
+    private Coroutine progressCoroutine;
 
     public void SetData(float duration, Action onComplete = null)
     {
         progressSlider.ValueToDisplayTextFunc = progressSlider.ValueToDisplayTextLoading;
         progressSlider.SetMaxValue(1);
-        SetValue(0f);
 
-        float value = 0;
-        DOTween.To(() => value, x => SetValue(x), 1f, duration)
-            .From(0f)
-            .SetEase(Ease.Linear)
-            .SetUpdate(true)
-            .OnComplete(() =>
-            {
-                SetValue(1f);
-                popup.Hide();
-                onComplete?.Invoke();
-            });
+        if (progressCoroutine != null)
+        {
+            StopCoroutine(progressCoroutine);
+        }
+
+        progressCoroutine = StartCoroutine(AnimateProgress(duration, onComplete));
     }
+
+    private IEnumerator AnimateProgress(float duration, Action onComplete)
+    {
+        duration = Mathf.Max(0.1f, duration);
+        SetValue(0f);
+        yield return null;
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            SetValue(elapsed / duration);
+            yield return null;
+        }
+
+        SetValue(1f);
+        yield return null;
+
+        progressCoroutine = null;
+        popup.Hide();
+        onComplete?.Invoke();
+    }
+
     private void SetValue(float progress)
     {
         progress = Mathf.Clamp01(progress);
