@@ -1,15 +1,16 @@
 using DG.Tweening;
 using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PopupGameplay : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<PopupGameplay>
 {
     [SerializeField] private DraftUtils.Popup popup;
     [SerializeField] private Button replayButton;
-    [SerializeField] private Button settingButton;
+    [FormerlySerializedAs("settingButton")]
+    [SerializeField] private Button backButton;
     [SerializeField] private TMP_Text levelText;
     [SerializeField] private DraftUtils.OptionalTMPTextGroup timeText;
     public DraftUtils.OptionalTMPTextGroup TimeText => timeText;
@@ -20,8 +21,7 @@ public class PopupGameplay : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<
     private void Start()
     {
         replayButton.onClick.AddListener(OnReplayButtonClicked);
-        settingButton.onClick.AddListener(OnSettingButtonClicked);
-
+        backButton.onClick.AddListener(OnBackButtonClicked);
     }
 
     public void SetData(float time)
@@ -81,14 +81,15 @@ public class PopupGameplay : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<
 
         rect.DOScale(Vector3.one * 1.2f, 0.2f).SetEase(Ease.OutBack);
     }
-    private void OnSettingButtonClicked()
+    private void OnBackButtonClicked()
     {
-        var popup = PopupManager.Instance.GetPopupSettingGameplay();
+        PopupConfirmReplay confirmPopup = PopupManager.Instance.GetPopupConfirmReplay();
+        confirmPopup.ShowQuitConfirmation();
     }
 
     private void OnReplayButtonClicked()
     {
-        var popup = PopupManager.Instance.GetPopupConfirmReplay();
-        popup.ReplayButton.OnClickAction = popup.Replay;
+        PopupConfirmReplay confirmPopup = PopupManager.Instance.GetPopupConfirmReplay();
+        confirmPopup.ShowReplayConfirmation();
     }
 }

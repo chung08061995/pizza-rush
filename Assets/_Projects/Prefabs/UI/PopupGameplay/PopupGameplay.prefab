@@ -494,7 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PopupGameplay
   popup: {fileID: 3830086399428411135}
   replayButton: {fileID: 3586096958091447233}
-  settingButton: {fileID: 1043155824395435496}
+  backButton: {fileID: 1043155824395435496}
   levelText: {fileID: 4617300086932634020}
   timeText:
     value:
@@ -679,12 +679,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1349971618610172672, guid: 865a44c4039da3345bc5680c5cb805d2, type: 3}
       propertyPath: m_Name
-      value: SettingButton
+      value: BackButton
       objectReference: {fileID: 0}
     - target: {fileID: 1349971618610172672, guid: 865a44c4039da3345bc5680c5cb805d2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8064152398505018341, guid: 865a44c4039da3345bc5680c5cb805d2, type: 3}
+      propertyPath: m_Sprite
+      value:
+      objectReference: {fileID: 21300000, guid: 58c2d95945aac124dabbb1684c928de3, type: 3}
     - target: {fileID: 1962784097636869133, guid: 865a44c4039da3345bc5680c5cb805d2, type: 3}
       propertyPath: m_Transition
       value: 3
