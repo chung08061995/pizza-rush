@@ -77,10 +77,10 @@ public class PopupManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<P
     }
 
     [Button]
-    public PopupLoading GetPopupLoading(float duration)
+    public PopupLoading GetPopupLoading(float duration, Action onComplete = null)
     {
         var popup = _popupFactory.DestroyCurrentAndCreate(popupLoadingReference, panel2);
-        popup.SetData(duration);
+        popup.SetData(duration, onComplete);
         return popup;
     }
     [Button]
