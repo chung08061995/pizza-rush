@@ -1167,7 +1167,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4315043243881618370, guid: f332019dd1a4a5d408af93171c6f3fc9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1038560059782805418, guid: f332019dd1a4a5d408af93171c6f3fc9, type: 3}
@@ -1721,6 +1722,10 @@ PrefabInstance:
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_text
       value: Play On
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339874844190392976, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -2815,7 +2820,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 95
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4315043243881618370, guid: 8eec46c8c4168ea438e5e011ee1c639d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8063744805787679901, guid: 8eec46c8c4168ea438e5e011ee1c639d, type: 3}
