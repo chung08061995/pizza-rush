@@ -136,6 +136,7 @@ MonoBehaviour:
           value:
             isPresent: 0
             values: []
+  quitContentSprite: {fileID: 21300000, guid: e8e0fc9746fdcfe418fb490d0e9236e0, type: 3}
 --- !u!114 &1683241189597989822
 MonoBehaviour:
   m_ObjectHideFlags: 0
