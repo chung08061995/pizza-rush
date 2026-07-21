@@ -5,6 +5,18 @@
   "dragCount": 2,
   "remainingProduction": 0,
   "usedSkillOrBooster": false,
-  "utc": "2026-07-15T22:09:57.8953480Z",
-  "message": "Level 0061 runtime replay passed without skill or booster."
+  "utc": "2026-07-16T14:45:24.3050260Z",
+  "message": "Level 0061 runtime replay passed without skill or booster.",
+  "startCapture": "CoffeeRunMigration/Captures/PizzaRush/0061/visual-start.png",
+  "movementAudit": [
+    {
+      "container": 0,
+      "movement": "Walkable",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": true,
+      "reachableCellCount": 15,
+      "result": "Pass",
+      "message": null
+    }
+  ]
 }

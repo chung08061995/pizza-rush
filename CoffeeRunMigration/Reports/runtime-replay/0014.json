@@ -5,6 +5,117 @@
   "dragCount": 23,
   "remainingProduction": 0,
   "usedSkillOrBooster": false,
-  "utc": "2026-07-15T20:47:33.1840980Z",
-  "message": "Level 0014 runtime replay passed without skill or booster."
+  "utc": "2026-07-16T09:53:52.0356920Z",
+  "message": "Level 0014 runtime replay passed without skill or booster.",
+  "startCapture": "CoffeeRunMigration/Captures/PizzaRush/0014/visual-start.png",
+  "movementAudit": [
+    {
+      "container": 0,
+      "movement": "Walkable",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": false,
+      "reachableCellCount": 1,
+      "result": "NoAlternativeCell",
+      "message": null
+    },
+    {
+      "container": 1,
+      "movement": "Walkable",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": true,
+      "reachableCellCount": 2,
+      "result": "Pass",
+      "message": null
+    },
+    {
+      "container": 2,
+      "movement": "Horizontal",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": true,
+      "reachableCellCount": 2,
+      "result": "Pass",
+      "message": null
+    },
+    {
+      "container": 3,
+      "movement": "Walkable",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": true,
+      "reachableCellCount": 4,
+      "result": "Pass",
+      "message": null
+    },
+    {
+      "container": 4,
+      "movement": "Walkable",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": true,
+      "reachableCellCount": 3,
+      "result": "Pass",
+      "message": null
+    },
+    {
+      "container": 5,
+      "movement": "Walkable",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": false,
+      "reachableCellCount": 1,
+      "result": "NoAlternativeCell",
+      "message": null
+    },
+    {
+      "container": 6,
+      "movement": "Horizontal",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": false,
+      "reachableCellCount": 1,
+      "result": "NoAlternativeCell",
+      "message": null
+    },
+    {
+      "container": 7,
+      "movement": "Walkable",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": false,
+      "reachableCellCount": 1,
+      "result": "NoAlternativeCell",
+      "message": null
+    },
+    {
+      "container": 8,
+      "movement": "Walkable",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": false,
+      "reachableCellCount": 1,
+      "result": "NoAlternativeCell",
+      "message": null
+    },
+    {
+      "container": 9,
+      "movement": "Horizontal",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": true,
+      "reachableCellCount": 2,
+      "result": "Pass",
+      "message": null
+    },
+    {
+      "container": 10,
+      "movement": "Walkable",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": true,
+      "reachableCellCount": 2,
+      "result": "Pass",
+      "message": null
+    },
+    {
+      "container": 11,
+      "movement": "Walkable",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": true,
+      "reachableCellCount": 2,
+      "result": "Pass",
+      "message": null
+    }
+  ]
 }

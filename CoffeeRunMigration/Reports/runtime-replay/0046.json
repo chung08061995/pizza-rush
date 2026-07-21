@@ -1,10 +1,12 @@
 {
   "level": 46,
-  "result": "Passed",
-  "completedActions": 4,
-  "dragCount": 4,
+  "result": "Failed",
+  "completedActions": 0,
+  "dragCount": 0,
   "remainingProduction": 0,
   "usedSkillOrBooster": false,
-  "utc": "2026-07-15T21:08:26.9092730Z",
-  "message": "Level 0046 runtime replay passed without skill or booster."
+  "utc": "2026-07-20T16:38:20.5369170Z",
+  "message": "Enter Play Mode through MyMenu > StartGame before replaying.",
+  "startCapture": "CoffeeRunMigration/Captures/PizzaRush/0046/visual-start.png",
+  "movementAudit": []
 }

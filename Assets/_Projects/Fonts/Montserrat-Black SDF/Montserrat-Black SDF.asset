@@ -2731,9 +2731,9 @@ Texture2D:
     m_FilterMode: 1
     m_Aniso: 1
     m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
   m_LightmapFormat: 0
   m_ColorSpace: 0
   m_PlatformBlob: 
@@ -2755,7 +2755,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - OUTLINE_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

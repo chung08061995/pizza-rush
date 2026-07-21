@@ -60,15 +60,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.12, g: 0.48, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 385e20fdaf667804da383f8b8c3ef852, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b261ccfb8be1c4ae59946b268c822d0c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_text: 'Background: Light'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: ec7a64da8228f4949b167b351a296516, type: 2}
+  m_sharedMaterial: {fileID: 8542388411281414431, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
