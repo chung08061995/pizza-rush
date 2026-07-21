@@ -847,6 +847,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     Android: ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;GOOGLE_ADMOB;UNITY_IAP
     Standalone: ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1
+    iPhone: ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;GOOGLE_ADMOB;UNITY_IAP
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
