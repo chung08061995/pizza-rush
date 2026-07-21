@@ -1,7 +1,7 @@
 
 using System;
 using UnityEngine;
-#if GOOGLE_ADMOB
+#if GOOGLE_ADMOB && !UNITY_IOS
 using GoogleMobileAds.Api;
 #endif
 
@@ -16,6 +16,17 @@ namespace DraftUtils.Ads
     /// 2. Set App ID trong Assets → Google Mobile Ads → Settings
     /// 3. Ad Unit IDs trong AdConfig
     /// </summary>
+#if UNITY_IOS
+    // Google Mobile Ads 11.2 assemblies in this project do not expose the
+    // public ad API to Unity's iOS player compilation. Keep TestFlight builds
+    // functional with the safe stub until the SDK package is re-imported.
+    public class AdMobService : StubAdsService
+    {
+        public AdMobService(AdConfigSO config)
+        {
+        }
+    }
+#else
     public class AdMobService : IAdsService
     {
         private readonly DraftUtils.FormattedLogger _logger = new(DraftUtils.FormattedLogger.CreateFormatForType(typeof(AdMobService)));
@@ -251,4 +262,5 @@ namespace DraftUtils.Ads
             };
         }
     }
+#endif
 }
