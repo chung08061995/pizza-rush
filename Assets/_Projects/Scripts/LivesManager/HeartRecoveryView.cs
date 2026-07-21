@@ -11,6 +11,7 @@ public class HeartRecoveryView : DraftUtils.DraftMonoBehaviour
     [SerializeField] private DraftUtils.OptionalTMPTextGroup remainingHeartsText = new();
     [SerializeField] private DraftUtils.OptionalTMPTextGroup countdownText = new();
     [SerializeField] private DraftUtils.OptionalButtonGroup addMoreButton = new();
+    [SerializeField] private bool showAddMoreButton = true;
     public DraftUtils.OptionalButtonGroup AddMoreButton => addMoreButton;
 
     [ShowInInspector][ReadOnly] private HeartRecoveryState _data;
@@ -50,7 +51,7 @@ public class HeartRecoveryView : DraftUtils.DraftMonoBehaviour
     private void SetAddMoreButton()
     {
         if (_data == null) return;
-        addMoreButton.SetActive(!_data.IsMaxHearts());
+        addMoreButton.SetActive(showAddMoreButton && !_data.IsMaxHearts());
     }
     /// <summary>
     /// Thiết lập dữ liệu trạng thái tim để hiển thị.
