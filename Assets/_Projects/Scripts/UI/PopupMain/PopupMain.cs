@@ -14,8 +14,9 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
     [SerializeField] private HomeNavigationButton rankingButton;
     [SerializeField] private HomeNavigationButton homeButton;
     [SerializeField] private HomeNavigationButton screenShotButton;
-    [SerializeField] private HomeNavigationButton settingButton;
     [SerializeField] private Button noAdsButton;
+    [SerializeField] private DraftUtils.AnimatedToggleController musicButton;
+    [SerializeField] private DraftUtils.AnimatedToggleController vibrateButton;
     [SerializeField] private TMP_FontAsset cleanUiFont;
     // [SerializeField] private DraftUtils.PersistentValueTextBinder<int> startText;
     // [SerializeField] private DraftUtils.PersistentValueTextBinder<int> goldText;
@@ -34,8 +35,11 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         rankingButton.Button.OnClickAction = ClickRanking;
         homeButton.Button.OnClickAction = ClickHome;
         screenShotButton.Button.OnClickAction = ClickScreenShort;
-        settingButton.Button.OnClickAction = ClickSetting;
         noAdsButton.onClick.AddListener(ClickNoAds);
+        musicButton.Button.OnClickAction = ClickMusicButton;
+        musicButton.ApplyImmediate(DataManager.Instance.musicVolume.Value);
+        vibrateButton.Button.OnClickAction = ClickVibrateButton;
+        vibrateButton.ApplyImmediate(DataManager.Instance.vibrate.Value);
 
         // goldMoreButton.RegisterClickEvents();
         // goldMoreButton.OnClickAction = ClickShop;
@@ -45,8 +49,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
             typeof(PopupShopContent),
             typeof(PopupRankingContent),
             typeof(PopupHomeContent),
-            typeof(PopupLevelUpContent),
-            typeof(PopupSettingContent)
+            typeof(PopupLevelUpContent)
         );
 
         disableFollowerFollowTarget.SetModel(disableFollower.transform);
@@ -66,7 +69,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
     {
         List<HomeNavigationButton> btns = new()
             {
-                shopButton, rankingButton, homeButton, screenShotButton, settingButton
+                shopButton, rankingButton, homeButton, screenShotButton
             };
 
         btns.Remove(selectedButton);
@@ -78,15 +81,6 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
 
         selectedButton.Select();
     }
-    private void ClickRank()
-    {
-        SelectHomeNavigationButton(settingButton);
-        DoMoveDisableButtonBackground(settingButton.transform);
-        PlayButtonPress(settingButton.transform);
-        var popup = PopupManager.Instance.homeContentsController.ShowPopupRankingContent(contentRoot);
-        tabSlideAnimator.SwitchTo(popup);
-    }
-
     private void ClickHome()
     {
         SetMainButtonsVisible(true);
@@ -129,17 +123,6 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         var popup = PopupManager.Instance.homeContentsController.ShowPopupLevelUpContent(contentRoot);
         tabSlideAnimator.SwitchTo(popup);
     }
-    private void ClickSetting()
-    {
-        SelectHomeNavigationButton(settingButton);
-        DoMoveDisableButtonBackground(settingButton.transform);
-        PlayButtonPress(settingButton.transform);
-        var popup = PopupManager.Instance.homeContentsController.ShowPopupSettingContent(contentRoot);
-        ApplyCleanTextRendering(popup);
-        tabSlideAnimator.SwitchTo(popup);
-        SetMainButtonsVisible(false);
-    }
-
     private void SetMainButtonsVisible(bool isVisible)
     {
         noAdsButton.transform.parent.gameObject.SetActive(isVisible);
@@ -177,6 +160,18 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
     {
         PlayButtonPress(noAdsButton.transform);
         PopupManager.Instance.GetPopupNoAdsDetail();
+    }
+
+    private void ClickMusicButton()
+    {
+        DataManager.Instance.musicVolume.Value = !DataManager.Instance.musicVolume.Value;
+        musicButton.ApplyWithAnimation(DataManager.Instance.musicVolume.Value);
+    }
+
+    private void ClickVibrateButton()
+    {
+        DataManager.Instance.vibrate.Value = !DataManager.Instance.vibrate.Value;
+        vibrateButton.ApplyWithAnimation(DataManager.Instance.vibrate.Value);
     }
 
     private void DoMoveDisableButtonBackground(Transform activeButton)
