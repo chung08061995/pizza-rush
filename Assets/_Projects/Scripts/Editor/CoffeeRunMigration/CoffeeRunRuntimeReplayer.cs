@@ -44,6 +44,20 @@ namespace CoffeeRunMigration
             public bool usedSkillOrBooster;
             public string utc;
             public string message;
+            public string startCapture;
+            public List<MovementAuditEntry> movementAudit = new();
+        }
+
+        [Serializable]
+        private sealed class MovementAuditEntry
+        {
+            public int container;
+            public string movement;
+            public bool beginDragSucceeded;
+            public bool hasAlternativeCell;
+            public int reachableCellCount;
+            public string result;
+            public string message;
         }
 
         private enum ReplayPhase
@@ -56,6 +70,14 @@ namespace CoffeeRunMigration
 
         private const string SolutionDirectory = "CoffeeRunMigration/Solutions";
         private const string EvidenceDirectory = "CoffeeRunMigration/Reports/runtime-replay";
+        private const float ReplayTimeScale = 32f;
+        private const double LevelLoadDelay = 0.2d;
+        private const double SettlePollDelay = 0.01d;
+        private const double FeedDelay = 0.04d;
+        private const double WinDelay = 0.2d;
+        private const double MotionTimeout = 5d;
+        private const double VisualStartHold = 5d;
+        private const string StartCaptureDirectory = "CoffeeRunMigration/Captures/PizzaRush";
         private static readonly BindingFlags InstancePrivate = BindingFlags.Instance | BindingFlags.NonPublic;
         private static readonly FieldInfo DragStateField =
             typeof(GameplayStateMachine).GetField("dragContainerState", InstancePrivate);
@@ -63,6 +85,8 @@ namespace CoffeeRunMigration
             typeof(DragContainerState).GetMethod("BeginDrag", InstancePrivate);
         private static readonly MethodInfo EndDragMethod =
             typeof(DragContainerState).GetMethod("EndDrag", InstancePrivate);
+        private static readonly MethodInfo GetConnectedCellsMethod =
+            typeof(DragContainerState).GetMethod("GetConnectedValidBaseCells", InstancePrivate);
 
         private static ReplayPhase _phase;
         private static Solution _solution;
@@ -70,6 +94,13 @@ namespace CoffeeRunMigration
         private static int _actionIndex;
         private static double _nextActionAt;
         private static string _lastMessage;
+        private static double _motionWaitStartedAt;
+        private static List<MovementAuditEntry> _movementAudit = new();
+        private static float _previousTimeScale = 1f;
+        private static bool _ownsTimeScale;
+        private static bool _visualAuditMode;
+        private static bool _visualHoldActive;
+        private static bool _captureOnlyMode;
 
         public static bool IsRunning => _phase != ReplayPhase.Idle;
         public static string LastMessage => _lastMessage;
@@ -80,10 +111,32 @@ namespace CoffeeRunMigration
         public static void Start(int level)
         {
             Cancel();
+            _visualAuditMode = false;
+            EnableFastReplay();
             BeginLevel(level);
         }
 
         public static void StartRange(int firstLevel, int lastLevel)
+        {
+            StartRangeInternal(firstLevel, lastLevel, false, false);
+        }
+
+        /// <summary>
+        /// Run a human-reviewable range. Each level is captured and held at its
+        /// start state before any replay input is sent.
+        /// </summary>
+        public static void StartVisualAuditRange(int firstLevel, int lastLevel)
+        {
+            StartRangeInternal(firstLevel, lastLevel, true, false);
+        }
+
+        /// <summary>Refresh start screenshots using the source timer without replaying actions.</summary>
+        public static void StartVisualCaptureRange(int firstLevel, int lastLevel)
+        {
+            StartRangeInternal(firstLevel, lastLevel, true, true);
+        }
+
+        private static void StartRangeInternal(int firstLevel, int lastLevel, bool visualAudit, bool captureOnly)
         {
             Cancel();
             if (firstLevel < 1 || lastLevel < firstLevel || lastLevel > 100)
@@ -91,6 +144,9 @@ namespace CoffeeRunMigration
                 Fail(0, 0, $"Invalid replay range {firstLevel}–{lastLevel}.");
                 return;
             }
+            _visualAuditMode = visualAudit;
+            _captureOnlyMode = captureOnly;
+            EnableFastReplay();
             for (var level = firstLevel + 1; level <= lastLevel; level++)
             {
                 PendingLevels.Enqueue(level);
@@ -133,11 +189,12 @@ namespace CoffeeRunMigration
                     GameConstain.RuntimeStorage.StartBooterItems,
                     new List<ItemType>());
             }
+            PopupManager.Instance?.HideAllPopupInGameplay();
             SceneControllerExtensions.LoadGameplay();
 
             _phase = ReplayPhase.WaitingForLevel;
             _actionIndex = 0;
-            _nextActionAt = EditorApplication.timeSinceStartup + 0.5d;
+            _nextActionAt = EditorApplication.timeSinceStartup + LevelLoadDelay;
             _lastMessage = $"Waiting for Pizza Rush Level {level:0000}.";
             EditorApplication.update += Tick;
             Debug.Log($"[CoffeeRunRuntimeReplayer] {_lastMessage}");
@@ -149,7 +206,27 @@ namespace CoffeeRunMigration
             _phase = ReplayPhase.Idle;
             _solution = null;
             _actionIndex = 0;
+            _movementAudit.Clear();
             PendingLevels.Clear();
+            _visualHoldActive = false;
+            _captureOnlyMode = false;
+            if (_ownsTimeScale)
+            {
+                Time.timeScale = _previousTimeScale;
+                _ownsTimeScale = false;
+            }
+        }
+
+        private static void EnableFastReplay()
+        {
+            if (!EditorApplication.isPlaying || _ownsTimeScale)
+            {
+                return;
+            }
+
+            _previousTimeScale = Time.timeScale;
+            Time.timeScale = _visualAuditMode ? 1f : ReplayTimeScale;
+            _ownsTimeScale = true;
         }
 
         private static void Tick()
@@ -190,11 +267,10 @@ namespace CoffeeRunMigration
             var runner = LevelFactory.Instance != null ? LevelFactory.Instance.LevelRunner : null;
             if (runner == null || runner.LevelData == null || runner.LevelData.levelIndex != _solution.level)
             {
-                _nextActionAt = EditorApplication.timeSinceStartup + 0.25d;
+                _nextActionAt = EditorApplication.timeSinceStartup + SettlePollDelay;
                 return;
             }
 
-            runner.Timer.SetRemaining(100000f);
             var active = runner.LevelObjectSpawner.ContainerPooler.ActiveItems
                 .Where(container => container != null && container.gameObject.activeInHierarchy)
                 .ToList();
@@ -217,27 +293,164 @@ namespace CoffeeRunMigration
                 matches[0].name = RuntimeContainerName(index);
             }
 
+            if (_visualAuditMode)
+            {
+                Time.timeScale = 0f;
+                runner.Timer.SetRemaining(runner.Timer.Duration);
+            }
+            else
+            {
+                runner.Timer.SetRemaining(100000f);
+            }
+
+            CaptureStartState(runner);
+            RunMovementAudit(runner, active);
+
+            // Freeze the actual game clock while the start-state screenshot is
+            // reviewed. EditorApplication.timeSinceStartup remains live, so
+            // the audit advances after the hold without animating containers or
+            // allowing a block to visually overlap another block mid-motion.
+            if (_visualAuditMode)
+            {
+                Time.timeScale = 0f;
+                _visualHoldActive = true;
+            }
+
             _phase = ReplayPhase.Replaying;
-            _nextActionAt = EditorApplication.timeSinceStartup + 0.25d;
+            _motionWaitStartedAt = EditorApplication.timeSinceStartup;
+            _nextActionAt = EditorApplication.timeSinceStartup +
+                (_visualAuditMode ? VisualStartHold : SettlePollDelay);
             _lastMessage = $"Replaying {_solution.actions.Count} actions for Level {_solution.level:0000}.";
             Debug.Log($"[CoffeeRunRuntimeReplayer] {_lastMessage}");
         }
 
+        private static void CaptureStartState(LevelRunner runner)
+        {
+            var directory = Path.Combine(StartCaptureDirectory, $"{runner.LevelData.levelIndex:0000}");
+            Directory.CreateDirectory(directory);
+            var path = Path.Combine(directory, "visual-start.png");
+            ScreenCapture.CaptureScreenshot(path);
+            Debug.Log($"[CoffeeRunRuntimeReplayer] Capturing start state: {path}");
+        }
+
+        private static void RunMovementAudit(LevelRunner runner, List<Container> active)
+        {
+            var dragState = DragStateField?.GetValue(runner.GameplayStateMachine) as DragContainerState;
+            if (dragState == null || GetConnectedCellsMethod == null)
+            {
+                throw new MissingMemberException("Movement audit reflection members are unavailable.");
+            }
+
+            var audit = new List<MovementAuditEntry>(active.Count);
+            foreach (var container in active.OrderBy(item => item.name))
+            {
+                var entry = new MovementAuditEntry
+                {
+                    container = ParseRuntimeContainerIndex(container.name),
+                    movement = container.Data.containerData.containerMovementType.ToString(),
+                };
+                try
+                {
+                    var occupied = new HashSet<Vector2Int>();
+                    foreach (var other in active)
+                    {
+                        if (other == container)
+                        {
+                            continue;
+                        }
+                        var otherAnchor = runner.LevelObjectSpawner.Grid.WorldToCell(other.transform.position);
+                        foreach (var part in other.GetPartPositions())
+                        {
+                            occupied.Add(otherAnchor + part);
+                        }
+                    }
+                    var available = runner.LevelData.gridPositions
+                        .Select(position => position.ToVector2Int())
+                        .Where(cell => !occupied.Contains(cell))
+                        .ToHashSet();
+                    var connected = GetConnectedCellsMethod.Invoke(
+                        dragState,
+                        new object[]
+                        {
+                            container,
+                            runner.LevelObjectSpawner.Grid,
+                            container.transform.position,
+                            available,
+                        }) as HashSet<Vector2Int>;
+                    entry.beginDragSucceeded = connected != null;
+                    entry.reachableCellCount = connected?.Count ?? 0;
+                    var start = runner.LevelObjectSpawner.Grid.WorldToCell(container.transform.position);
+                    entry.hasAlternativeCell = connected != null && connected.Any(cell => cell != start);
+                    entry.result = entry.hasAlternativeCell ? "Pass" : "NoAlternativeCell";
+                }
+                catch (Exception exception)
+                {
+                    entry.result = "Fail";
+                    entry.message = exception.GetBaseException().Message;
+                }
+                audit.Add(entry);
+            }
+
+            _movementAudit = audit;
+            var failed = audit.Where(entry => entry.result == "Fail").ToList();
+            if (failed.Count > 0)
+            {
+                throw new InvalidOperationException(
+                    $"Movement audit failed for {failed.Count} container(s): " +
+                    string.Join(", ", failed.Select(entry => entry.container)));
+            }
+        }
+
+        private static int ParseRuntimeContainerIndex(string name)
+        {
+            return int.TryParse(name.Replace("CoffeeRunContainer_", string.Empty), out var index) ? index : -1;
+        }
+
         private static void ReplayNextAction()
         {
+            if (_visualHoldActive)
+            {
+                Time.timeScale = 1f;
+                _visualHoldActive = false;
+                if (_captureOnlyMode)
+                {
+                    if (PendingLevels.Count == 0)
+                    {
+                        Cancel();
+                        return;
+                    }
+                    var nextLevel = PendingLevels.Dequeue();
+                    EditorApplication.update -= Tick;
+                    _phase = ReplayPhase.Idle;
+                    _solution = null;
+                    _actionIndex = 0;
+                    EditorApplication.delayCall += () => BeginLevel(nextLevel);
+                    return;
+                }
+                _nextActionAt = EditorApplication.timeSinceStartup + SettlePollDelay;
+                return;
+            }
+
             var runner = RequireRunner();
             if (_actionIndex >= _solution.actions.Count)
             {
                 _phase = ReplayPhase.WaitingForWin;
-                _nextActionAt = EditorApplication.timeSinceStartup + 2.5d;
+                _nextActionAt = EditorApplication.timeSinceStartup + WinDelay;
                 return;
             }
 
             if (!AllContainerMotionSettled(runner))
             {
-                _nextActionAt = EditorApplication.timeSinceStartup + 0.05d;
+                if (EditorApplication.timeSinceStartup - _motionWaitStartedAt > MotionTimeout)
+                {
+                    throw new TimeoutException(
+                        $"Action {_actionIndex + 1}: container animation did not settle within {MotionTimeout:0.#} seconds.");
+                }
+                _nextActionAt = EditorApplication.timeSinceStartup + SettlePollDelay;
                 return;
             }
+
+            _motionWaitStartedAt = EditorApplication.timeSinceStartup;
 
             var action = _solution.actions[_actionIndex];
             var container = Resources.FindObjectsOfTypeAll<Container>()
@@ -251,7 +464,7 @@ namespace CoffeeRunMigration
             }
             if (container.isAnimating)
             {
-                _nextActionAt = EditorApplication.timeSinceStartup + 0.1d;
+                _nextActionAt = EditorApplication.timeSinceStartup + SettlePollDelay;
                 return;
             }
 
@@ -284,7 +497,7 @@ namespace CoffeeRunMigration
             _actionIndex++;
             _lastMessage = $"Level {_solution.level:0000}: action {_actionIndex}/{_solution.actions.Count}, feed={consumed}.";
             Debug.Log($"[CoffeeRunRuntimeReplayer] {_lastMessage}");
-            _nextActionAt = EditorApplication.timeSinceStartup + (consumed > 0 ? 1.8d : 0.05d);
+            _nextActionAt = EditorApplication.timeSinceStartup + (consumed > 0 ? FeedDelay : SettlePollDelay);
         }
 
         private static bool AllContainerMotionSettled(LevelRunner runner)
@@ -324,6 +537,8 @@ namespace CoffeeRunMigration
                 usedSkillOrBooster = false,
                 utc = DateTime.UtcNow.ToString("O"),
                 message = message,
+                startCapture = $"{StartCaptureDirectory}/{_solution.level:0000}/visual-start.png",
+                movementAudit = _movementAudit,
             });
             _lastMessage = message;
             Debug.Log($"[CoffeeRunRuntimeReplayer] {message}");
@@ -380,6 +595,8 @@ namespace CoffeeRunMigration
                     usedSkillOrBooster = false,
                     utc = DateTime.UtcNow.ToString("O"),
                     message = message,
+                    startCapture = $"{StartCaptureDirectory}/{level:0000}/visual-start.png",
+                    movementAudit = _movementAudit,
                 });
             }
             Cancel();

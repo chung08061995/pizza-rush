@@ -51,6 +51,7 @@
     <Compile Include="Assets/_Projects/Scripts/Core/Ads/AdBannerPosition.cs" />
     <Compile Include="Assets/_Projects/Scripts/Models/Skill/AudioClipData.cs" />
     <Compile Include="Assets/_Projects/Scripts/UI/PopupMain/Content/PopupLevelUpContent/PopupLevelUpContent.cs" />
+    <Compile Include="Assets/_Projects/Scripts/Ranking/RankingService.cs" />
     <Compile Include="Assets/_Projects/Scripts/Core/ImplementEnhancedScroller/Example7/EnhancedScroller7.cs" />
     <Compile Include="Assets/_Projects/Scripts/Core/InputListenerPersistentValue/InputListenerIntPersistentValue.cs" />
     <Compile Include="Assets/_Projects/Scripts/Core/ImplementEnhancedScroller/Example10/ICellView10.cs" />

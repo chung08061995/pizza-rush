@@ -108,7 +108,10 @@ public class ProductionLine : DraftUtils.DraftMonoBehaviour
 
     public void AnimateProductionToShift(Production production, int index, float duration)
     {
-        if (places.Count == 0) return;
+        // A production already scheduled to leave the line can be shifted again by
+        // the staggered transfer animation. Its index is then negative, which means
+        // it no longer has a valid line place and must not be repositioned.
+        if (production == null || places.Count == 0 || index < 0) return;
 
         if (index < places.Count)
         {

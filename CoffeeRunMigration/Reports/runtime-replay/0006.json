@@ -1,0 +1,40 @@
+{
+  "level": 6,
+  "result": "Passed",
+  "completedActions": 3,
+  "dragCount": 3,
+  "remainingProduction": 0,
+  "usedSkillOrBooster": false,
+  "utc": "2026-07-16T09:52:44.3215640Z",
+  "message": "Level 0006 runtime replay passed without skill or booster.",
+  "startCapture": "CoffeeRunMigration/Captures/PizzaRush/0006/visual-start.png",
+  "movementAudit": [
+    {
+      "container": 0,
+      "movement": "Horizontal",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": false,
+      "reachableCellCount": 1,
+      "result": "NoAlternativeCell",
+      "message": null
+    },
+    {
+      "container": 1,
+      "movement": "Vertical",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": true,
+      "reachableCellCount": 3,
+      "result": "Pass",
+      "message": null
+    },
+    {
+      "container": 2,
+      "movement": "Horizontal",
+      "beginDragSucceeded": true,
+      "hasAlternativeCell": true,
+      "reachableCellCount": 3,
+      "result": "Pass",
+      "message": null
+    }
+  ]
+}

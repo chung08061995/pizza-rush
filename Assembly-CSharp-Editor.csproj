@@ -48,10 +48,18 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/6000.4.10f1/Unity.app/Contents/Resources/BuildPipeline/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/_Projects/Scripts/Editor/CoffeeRunMigration/CoffeeRunMigrationPipeline.cs" />
     <Compile Include="Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" />
+    <Compile Include="Assets/_Projects/Scripts/Editor/CoffeeRunMigration/CoffeeRunUnityAssetImporter.cs" />
+    <Compile Include="Assets/_Projects/Scripts/Editor/CoffeeRunMigration/CoffeeRunRuntimeReplayer.cs" />
     <Compile Include="Assets/_Projects/Editor/CheatTimeWindow.cs" />
+    <Compile Include="Assets/_Projects/Scripts/Editor/CoffeeRunMigration/CoffeeRunLevelValidator.cs" />
     <Compile Include="Assets/_Projects/Scripts/Editor/SpriteAtlasImporterWindow.cs" />
     <Compile Include="Assets/_Projects/Scripts/Editor/ToolMenuEditor.cs" />
+    <Compile Include="Assets/_Projects/Scripts/Editor/CoffeeRunMigration/CoffeeRunMigrationSelfTests.cs" />
+    <Compile Include="Assets/_Projects/Scripts/Editor/CoffeeRunMigration/CoffeeRunMigrationModels.cs" />
+    <Compile Include="Assets/_Projects/Scripts/Editor/CoffeeRunMigration/CoffeeRunRuntimeAudit.cs" />
+    <Compile Include="Assets/_Projects/Scripts/Editor/CoffeeRunMigration/CoffeeRunLevelConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/ExternalDependencyManager/Editor/1.2.187/Google.IOSResolver.dll" />

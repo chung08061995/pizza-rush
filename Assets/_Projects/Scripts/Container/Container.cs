@@ -46,10 +46,11 @@ public class Container : DraftUtils.DraftMonoBehaviour
         _data = data;
         currentColorLayerIndex = 0;
         EnsureRuntimeColors();
-        containerView.SetData(data.containerData);
-        containerMaterialView.SetData(_data.containerData.containerMaterialType);
-
         SetShapeRootTransform(shapeRoot, _data.rotationType, _data.flipX);
+        containerView.SetData(data.containerData);
+        containerMaterialView.SetData(
+            _data.containerData.containerMaterialType,
+            ContainerShapeTypeExtensions.GetPartPositions(_data.containerData.containerShapeType));
         foreach (var place in Places)
         {
             if (place != null)
