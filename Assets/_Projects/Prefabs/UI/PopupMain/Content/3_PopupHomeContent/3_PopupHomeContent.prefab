@@ -471,6 +471,7 @@ MonoBehaviour:
           value:
             isPresent: 0
             values: []
+  showAddMoreButton: 0
 --- !u!1 &3968397508923154741
 GameObject:
   m_ObjectHideFlags: 0
