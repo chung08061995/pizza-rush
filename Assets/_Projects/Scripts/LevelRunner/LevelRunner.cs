@@ -8,6 +8,10 @@ using System;
 
 public class LevelRunner : DraftUtils.DraftMonoBehaviour
 {
+    // Temporary playtest switch: keep the level timer from expiring while debugging a level.
+    // Remove this switch when the manual playtest is complete.
+    private const bool DisableLevelTimerForPlaytest = true;
+
     [SerializeField] private LevelObjectSpawner levelObjectSpawner;
 
     private DraftUtils.TimeCountdown _timer = new();
@@ -70,15 +74,22 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
     {
         foreach (var container in levelObjectSpawner.ContainerPooler.ActiveItems.ToList())
         {
-            if (!container.ContainerView.ContainerIceDataView.isPresent)
+            var containerData = container.Data?.containerData;
+            if (containerData == null || containerData.containerMaterialType != ContainerMaterialType.Ice ||
+                containerData.containerIceData == null || containerData.containerIceData.iceAmount <= 0)
             {
                 continue;
             }
-            container.ContainerView.ContainerIceDataView.value.UpdateAmountText(_levelTracking.resolvedContainer.Value);
-            int remainingAmount = container.Data.containerData.containerIceData.iceAmount - _levelTracking.resolvedContainer.Value;
+
+            if (container.ContainerView.ContainerIceDataView.isPresent)
+            {
+                container.ContainerView.ContainerIceDataView.value.UpdateAmountText(_levelTracking.resolvedContainer.Value);
+            }
+
+            int remainingAmount = containerData.containerIceData.iceAmount - _levelTracking.resolvedContainer.Value;
             if (remainingAmount <= 0)
             {
-                var inner = container.Data.containerData.containerIceData.innerContainerData;
+                var inner = containerData.containerIceData.innerContainerData;
                 if (inner != null)
                 {
                     LevelFactory.Instance.LevelRunner.LevelObjectSpawner.ReplaceContainer(container, inner);
@@ -118,6 +129,11 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
     private void Update()
     {
         gameplayStateMachine.StateMachine.Update();
+
+        if (DisableLevelTimerForPlaytest)
+        {
+            return;
+        }
         
         if (_isFreezeTime)
         {
@@ -162,7 +178,10 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         _timer.SetDuration(levelDuration);
         _timer.ResetCountdown();
         _timer.AddTickListener(PopupManager.Instance.popupGameplayReference.instance.SetData);
-        _timer.AddOnFinishedListener(EndGame);
+        if (!DisableLevelTimerForPlaytest)
+        {
+            _timer.AddOnFinishedListener(EndGame);
+        }
         _timer.StartCountdown();
 
         CenterCameraOnLevel(levelData);
