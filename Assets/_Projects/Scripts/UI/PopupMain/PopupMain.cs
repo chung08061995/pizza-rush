@@ -60,8 +60,17 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
 
         ClickHome();
         Canvas.ForceUpdateCanvases();
+        NormalizeQuickButtonLayout();
         disableFollowerFollowTarget.Force();
 
+    }
+
+    private void NormalizeQuickButtonLayout()
+    {
+        if (rankingButton.transform is RectTransform rankingRect)
+        {
+            rankingRect.anchoredPosition = Vector2.zero;
+        }
     }
 
 
