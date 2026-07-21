@@ -8,10 +8,6 @@ using System;
 
 public class LevelRunner : DraftUtils.DraftMonoBehaviour
 {
-    // Temporary playtest switch: keep the level timer from expiring while debugging a level.
-    // Remove this switch when the manual playtest is complete.
-    private const bool DisableLevelTimerForPlaytest = true;
-
     [SerializeField] private LevelObjectSpawner levelObjectSpawner;
 
     private DraftUtils.TimeCountdown _timer = new();
@@ -130,11 +126,6 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
     {
         gameplayStateMachine.StateMachine.Update();
 
-        if (DisableLevelTimerForPlaytest)
-        {
-            return;
-        }
-        
         if (_isFreezeTime)
         {
             _freezeTimer.Update(Time.deltaTime);
@@ -178,10 +169,7 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         _timer.SetDuration(levelDuration);
         _timer.ResetCountdown();
         _timer.AddTickListener(PopupManager.Instance.popupGameplayReference.instance.SetData);
-        if (!DisableLevelTimerForPlaytest)
-        {
-            _timer.AddOnFinishedListener(EndGame);
-        }
+        _timer.AddOnFinishedListener(EndGame);
         _timer.StartCountdown();
 
         CenterCameraOnLevel(levelData);
