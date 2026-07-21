@@ -8,7 +8,6 @@ public class PopupBuyItem : DraftUtils.DraftMonoBehaviour
 {
     [SerializeField] public DraftUtils.Popup popup;
     [SerializeField] private ItemView itemView;
-    [SerializeField] private ItemView goldView;
     [SerializeField] private Button watchAdsButton;
     [SerializeField] private Button buyButton;
 
@@ -29,8 +28,6 @@ public class PopupBuyItem : DraftUtils.DraftMonoBehaviour
         _data = data;
         itemView.SetData(data);
         itemView.SetRemaningTextActive();
-        goldView.RemaningText.ValueToDisplayTextFunc = x => DraftUtils.Utils.Common.FormatNumber((int)x);
-        goldView.SetData(ItemType.Gold);
     }
 
     private void ClickBuy()

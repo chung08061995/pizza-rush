@@ -111,7 +111,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -7.4, y: -0.000040054}
-  m_SizeDelta: {x: 142.0108, y: 177.162}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8298964255807726876
 CanvasRenderer:
@@ -143,7 +143,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: beb3026133ccf284e802007dd6b429fc, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -314,7 +314,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 3922600687553328995}
   itemView: {fileID: 6889249747755637571}
-  goldView: {fileID: 1899536835948531470}
   watchAdsButton: {fileID: 8416140473454220631}
   buyButton: {fileID: 1994842910315547715}
 --- !u!1 &6831742238068868479
@@ -920,6 +919,10 @@ PrefabInstance:
     - target: {fileID: 3706575900412186549, guid: 2850c2bcc70a68f4f8265459b20751ba, type: 3}
       propertyPath: m_Name
       value: GoldArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 3706575900412186549, guid: 2850c2bcc70a68f4f8265459b20751ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

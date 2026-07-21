@@ -323,6 +323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_Circle_AddMore
       objectReference: {fileID: 0}
+    - target: {fileID: 4763468023184924871, guid: ba30e6131f7b32c4cbbdc44f03a17a7e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8686743772918380555, guid: ba30e6131f7b32c4cbbdc44f03a17a7e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

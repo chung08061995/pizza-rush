@@ -43,7 +43,6 @@ public class WinState : DraftUtils.IState
             DataManager.Instance.Reward(new() { new RewardData { itemType = ItemType.Gold, amount = goldReward } });
         }
 
-        PopupManager.Instance.ShowPopupCongratulation(2f);
         PopupManager.Instance.ShowPopupWin(goldReward);
         if (SoundManager.Instance != null)
         {

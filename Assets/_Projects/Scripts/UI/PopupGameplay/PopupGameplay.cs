@@ -12,6 +12,7 @@ public class PopupGameplay : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<
     [FormerlySerializedAs("settingButton")]
     [SerializeField] private Button backButton;
     [SerializeField] private TMP_Text levelText;
+    [SerializeField] private ItemView goldView;
     [SerializeField] private DraftUtils.OptionalTMPTextGroup timeText;
     public DraftUtils.OptionalTMPTextGroup TimeText => timeText;
 
@@ -28,7 +29,8 @@ public class PopupGameplay : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<
     {
         SetTimeText(time);
         levelText.text = string.Format(GameConstain.StringFormats.LevelDisplayFormat, DataManager.Instance.level.Value);
-
+        goldView.RemaningText.ValueToDisplayTextFunc = x => DraftUtils.Utils.Common.FormatNumber((int)x);
+        goldView.SetData(ItemType.Gold);
     }
     private void SetTimeText(float time)
     {
