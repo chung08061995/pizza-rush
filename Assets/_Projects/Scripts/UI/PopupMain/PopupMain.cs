@@ -40,6 +40,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         musicButton.ApplyImmediate(DataManager.Instance.musicVolume.Value);
         vibrateButton.Button.OnClickAction = ClickVibrateButton;
         vibrateButton.ApplyImmediate(DataManager.Instance.vibrate.Value);
+        ConfigureQuickButtonHover();
 
         // goldMoreButton.RegisterClickEvents();
         // goldMoreButton.OnClickAction = ClickShop;
@@ -71,6 +72,35 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         {
             rankingRect.anchoredPosition = Vector2.zero;
         }
+    }
+
+    private void ConfigureQuickButtonHover()
+    {
+        var hoverController = musicButton.GetComponent<Animator>()?.runtimeAnimatorController;
+        if (hoverController == null)
+        {
+            return;
+        }
+
+        ApplyHoverAnimation(noAdsButton, hoverController);
+        ApplyHoverAnimation(rankingButton.GetComponent<Button>(), hoverController);
+    }
+
+    private static void ApplyHoverAnimation(Button button, RuntimeAnimatorController hoverController)
+    {
+        if (button == null)
+        {
+            return;
+        }
+
+        var animator = button.GetComponent<Animator>();
+        if (animator == null)
+        {
+            animator = button.gameObject.AddComponent<Animator>();
+        }
+
+        animator.runtimeAnimatorController = hoverController;
+        button.transition = Selectable.Transition.Animation;
     }
 
 
