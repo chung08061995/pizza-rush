@@ -85,3 +85,8 @@ Ads and IAP are behind interfaces with swappable implementations and stubs for e
 - Blender uses meters, Y-up, and forward Z. Unity imports with the existing project scale; every exported asset needs a named root, stable pivot, applied transforms, UVs, and documented material/texture dependencies.
 - Before accepting a 3D change, run `MyMenu > StartGame`, test Level 301 in the Game view, inspect three portrait aspect ratios, and check the Unity Console for errors.
 - Keep generated Blender/AI assets in a clearly named art folder with a manifest. Do not replace existing models destructively until the vertical-slice review is accepted.
+
+## Agent tool-call guardrails
+
+- `view_image` accepts only `detail: "high"` or `detail: "original"`; omit `detail` for the default. Never send `detail: "low"` or `detail: "auto"`.
+- The concept reference is `docs/reference/pizza-factory-concept.png`. When an agent needs to inspect it, use `view_image` with `detail: "high"` or `"original"`.
