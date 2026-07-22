@@ -1,6 +1,6 @@
 # 001 — Pizza 3D vertical slice
 
-Status: Ready
+Status: Review blocked — rollout not approved
 Issue: Forge Plan Sync / Pizza Rush 3D reskin
 Branch/worktree: TBD — use a dedicated art branch before prefab promotion.
 
@@ -77,3 +77,26 @@ Level 301 only for acceptance. The slice covers board, rails, connectors, color 
 ## Handoff notes
 
 The repository is the source of truth. Forge imports this plan by task ID; do not create duplicate task IDs in another plan file.
+
+## PR3D-012 review record (2026-07-22)
+
+### Evidence reviewed
+
+- Level 301 source data is present at `Assets/_Projects/Resources/LevelData/0301.json` and contains 49 grid positions, 23 containers, 7 production lines, and a 90-second duration. This verifies the source contract only; it is not runtime validation.
+- No Level 301 Game view or Blender viewport before/after captures are present in the repository.
+- No Unity Console export, profiler frame-time sample, memory sample, three-portrait-ratio capture, or completed-playthrough record is present.
+- No `PR3D_manifest.json` or clearly identified PR3D art export folder is present. Existing model/material files are not sufficient evidence of Level 301 integration or prefab-contract preservation.
+- `Assets/_Projects/UIReview/before_home.png`, `before_home_2.png`, `after_home.png`, and `after_splash.png` are 1080×1920 solid-color placeholders and have the same SHA-1 (`e150ea0ab499571de5114c98e521695febf399a4`); they do not evidence a 3D before/after comparison.
+
+### Decision
+
+**Not approved for rollout.** PR3D-012 remains unchecked. Do not create or execute a separate plan for the remaining 319 levels until the Level 301 review package is complete and an explicit approval is recorded.
+
+### Required fixes before re-review
+
+1. Capture matched baseline and after Game-view evidence for Level 301, plus Blender viewport screenshots, with device/build and portrait aspect ratio recorded.
+2. Run the required `MyMenu > StartGame` Level 301 playthrough and record drag, Ice, pizza transfer, gate/ray directions, timer, win/lose, boosters, popups, and ad-area results.
+3. Export Unity Console and profiler evidence; report baseline versus after GPU frame time and memory, demonstrating the +20%/+30% limits.
+4. Verify the acceptance contract from runtime (49 cells, 23 containers, 7 lines, four shapes, Ice, ten colors) and attach evidence that rails/gates align and pizza variants remain readable without overflow at three portrait ratios.
+5. Produce `PR3D_manifest.json` for imported assets and document roots, pivots, colliders, serialized references, materials, textures, triangle counts, and rollback path.
+6. Re-run the review, list any residual defects with owners, and record explicit approval before drafting the 319-level rollout plan.
