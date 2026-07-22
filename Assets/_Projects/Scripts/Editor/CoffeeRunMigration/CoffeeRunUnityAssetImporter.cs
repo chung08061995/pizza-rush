@@ -171,6 +171,8 @@ namespace CoffeeRunMigration
                     cap = ReadInt(yaml, @"(?m)^      isCapActive: (-?\d+)") != 0,
                     linked = ReadInt(yaml, @"(?m)^      groupConnectId: (-?\d+)") >= 0,
                     barrier = ReadInt(yaml, @"(?m)^      isBarrier: (-?\d+)") != 0,
+                    timedExplodeSeconds = ReadInt(yaml, @"(?m)^      timeExplode: (-?\d+)"),
+                    scissor = ReadInt(yaml, @"(?m)^        isActive: (-?\d+)", false) != 0,
                     ropes = Regex.Matches(yaml, @"(?m)^      - direction:").Count,
                 },
             };
@@ -226,6 +228,13 @@ namespace CoffeeRunMigration
                 },
                 // ProductionLine probes local (0,-1); rotate it toward the board interior.
                 rotationQuarterTurns = direction switch { 0 => 3, 1 => 1, 2 => 0, 3 => 2, _ => 0 },
+                modifiers = new CoffeeRunProductionLineModifierRecord
+                {
+                    keyLock = ReadInt(yaml, @"(?m)^      isActive: (-?\d+)", false) != 0,
+                    iceLayers = ReadInt(yaml, @"(?m)^    iceCount: (-?\d+)", false),
+                    cap = ReadInt(yaml, @"(?m)^    isCapActive: (-?\d+)", false) != 0,
+                    directionalLock = ReadInt(yaml, @"(?m)^    isDirectionalLock: (-?\d+)", false) != 0,
+                },
             };
 
             foreach (Match item in Regex.Matches(yaml, @"(?m)^    - color: (-?\d+)\s*\n      quantity: (-?\d+)$"))

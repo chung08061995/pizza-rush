@@ -50,6 +50,7 @@ namespace CoffeeRunMigration
             {
                 var source = JsonConvert.DeserializeObject<CoffeeRunLevelRecord>(File.ReadAllText(sourcePath));
                 entry.level = source?.level ?? 0;
+                entry.sourceLevel = source?.sourceLevel > 0 ? source.sourceLevel : entry.level;
                 var expectedName = $"{entry.level:0000}.json";
                 if (!string.Equals(Path.GetFileName(sourcePath), expectedName, StringComparison.Ordinal))
                 {

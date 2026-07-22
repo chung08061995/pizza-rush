@@ -131,7 +131,8 @@ namespace CoffeeRunMigration
             }
 
             var modifiers = source.modifiers ?? new CoffeeRunModifierRecord();
-            if (modifiers.cap || modifiers.linked || modifiers.barrier || modifiers.ropes > 0)
+            if (modifiers.keyCount > 0 || modifiers.cap || modifiers.linked || modifiers.barrier ||
+                modifiers.timedExplodeSeconds >= 0 || modifiers.scissor || modifiers.ropes > 0)
             {
                 report.Unsupported($"Container '{source.id}' uses a modifier without Pizza Rush runtime support.");
                 return false;
@@ -229,6 +230,12 @@ namespace CoffeeRunMigration
             out ProductionLineSaveData output)
         {
             output = null;
+            var modifiers = source.modifiers ?? new CoffeeRunProductionLineModifierRecord();
+            if (modifiers.keyLock || modifiers.iceLayers > 0 || modifiers.cap || modifiers.directionalLock)
+            {
+                report.Unsupported($"Production line '{source.id}' uses a modifier without Pizza Rush runtime support.");
+                return false;
+            }
             if (!TryMapVisual(source.visualKey, out var visual))
             {
                 report.Unsupported($"Production line '{source.id}' uses unsupported visual key '{source.visualKey}'.");

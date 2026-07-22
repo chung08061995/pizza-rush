@@ -109,10 +109,11 @@ public class DataManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<Da
     };
     public Dictionary<ItemType, int> levelUnlockItems = new()
     {
-        {ItemType.Skill_FreezeTime, 2 },
-        {ItemType.Skill_SplitContainer, 3 },
-        {ItemType.Skill_DestroyContainer, 4 },
-        {ItemType.Skill_AddTile, 5 },
+        // Coffee Run helper order shown in the bottom gameplay bar.
+        {ItemType.Skill_FreezeTime, 8 },
+        {ItemType.Skill_SplitContainer, 10 },
+        {ItemType.Skill_DestroyContainer, 13 },
+        {ItemType.Skill_AddTile, 16 },
     };
     public Dictionary<ItemType, int> costItems = new()
     {

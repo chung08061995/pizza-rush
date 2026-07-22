@@ -1,0 +1,5219 @@
+{
+  "sourceLevelCount": 883,
+  "convertedCandidateCount": 320,
+  "skippedCount": 563,
+  "mapping": [
+    {
+      "targetLevel": 1,
+      "sourceLevel": 1
+    },
+    {
+      "targetLevel": 2,
+      "sourceLevel": 2
+    },
+    {
+      "targetLevel": 3,
+      "sourceLevel": 3
+    },
+    {
+      "targetLevel": 4,
+      "sourceLevel": 4
+    },
+    {
+      "targetLevel": 5,
+      "sourceLevel": 5
+    },
+    {
+      "targetLevel": 6,
+      "sourceLevel": 6
+    },
+    {
+      "targetLevel": 7,
+      "sourceLevel": 7
+    },
+    {
+      "targetLevel": 8,
+      "sourceLevel": 8
+    },
+    {
+      "targetLevel": 9,
+      "sourceLevel": 9
+    },
+    {
+      "targetLevel": 10,
+      "sourceLevel": 10
+    },
+    {
+      "targetLevel": 11,
+      "sourceLevel": 11
+    },
+    {
+      "targetLevel": 12,
+      "sourceLevel": 12
+    },
+    {
+      "targetLevel": 13,
+      "sourceLevel": 13
+    },
+    {
+      "targetLevel": 14,
+      "sourceLevel": 14
+    },
+    {
+      "targetLevel": 15,
+      "sourceLevel": 15
+    },
+    {
+      "targetLevel": 16,
+      "sourceLevel": 16
+    },
+    {
+      "targetLevel": 17,
+      "sourceLevel": 17
+    },
+    {
+      "targetLevel": 18,
+      "sourceLevel": 18
+    },
+    {
+      "targetLevel": 19,
+      "sourceLevel": 19
+    },
+    {
+      "targetLevel": 20,
+      "sourceLevel": 20
+    },
+    {
+      "targetLevel": 21,
+      "sourceLevel": 21
+    },
+    {
+      "targetLevel": 22,
+      "sourceLevel": 22
+    },
+    {
+      "targetLevel": 23,
+      "sourceLevel": 23
+    },
+    {
+      "targetLevel": 24,
+      "sourceLevel": 24
+    },
+    {
+      "targetLevel": 25,
+      "sourceLevel": 25
+    },
+    {
+      "targetLevel": 26,
+      "sourceLevel": 26
+    },
+    {
+      "targetLevel": 27,
+      "sourceLevel": 27
+    },
+    {
+      "targetLevel": 28,
+      "sourceLevel": 28
+    },
+    {
+      "targetLevel": 29,
+      "sourceLevel": 29
+    },
+    {
+      "targetLevel": 30,
+      "sourceLevel": 30
+    },
+    {
+      "targetLevel": 31,
+      "sourceLevel": 31
+    },
+    {
+      "targetLevel": 32,
+      "sourceLevel": 32
+    },
+    {
+      "targetLevel": 33,
+      "sourceLevel": 33
+    },
+    {
+      "targetLevel": 34,
+      "sourceLevel": 34
+    },
+    {
+      "targetLevel": 35,
+      "sourceLevel": 35
+    },
+    {
+      "targetLevel": 36,
+      "sourceLevel": 36
+    },
+    {
+      "targetLevel": 37,
+      "sourceLevel": 37
+    },
+    {
+      "targetLevel": 38,
+      "sourceLevel": 38
+    },
+    {
+      "targetLevel": 39,
+      "sourceLevel": 39
+    },
+    {
+      "targetLevel": 40,
+      "sourceLevel": 40
+    },
+    {
+      "targetLevel": 41,
+      "sourceLevel": 41
+    },
+    {
+      "targetLevel": 42,
+      "sourceLevel": 42
+    },
+    {
+      "targetLevel": 43,
+      "sourceLevel": 43
+    },
+    {
+      "targetLevel": 44,
+      "sourceLevel": 44
+    },
+    {
+      "targetLevel": 45,
+      "sourceLevel": 45
+    },
+    {
+      "targetLevel": 46,
+      "sourceLevel": 46
+    },
+    {
+      "targetLevel": 47,
+      "sourceLevel": 47
+    },
+    {
+      "targetLevel": 48,
+      "sourceLevel": 48
+    },
+    {
+      "targetLevel": 49,
+      "sourceLevel": 49
+    },
+    {
+      "targetLevel": 50,
+      "sourceLevel": 50
+    },
+    {
+      "targetLevel": 51,
+      "sourceLevel": 51
+    },
+    {
+      "targetLevel": 52,
+      "sourceLevel": 52
+    },
+    {
+      "targetLevel": 53,
+      "sourceLevel": 53
+    },
+    {
+      "targetLevel": 54,
+      "sourceLevel": 54
+    },
+    {
+      "targetLevel": 55,
+      "sourceLevel": 55
+    },
+    {
+      "targetLevel": 56,
+      "sourceLevel": 56
+    },
+    {
+      "targetLevel": 57,
+      "sourceLevel": 57
+    },
+    {
+      "targetLevel": 58,
+      "sourceLevel": 58
+    },
+    {
+      "targetLevel": 59,
+      "sourceLevel": 59
+    },
+    {
+      "targetLevel": 60,
+      "sourceLevel": 60
+    },
+    {
+      "targetLevel": 61,
+      "sourceLevel": 61
+    },
+    {
+      "targetLevel": 62,
+      "sourceLevel": 62
+    },
+    {
+      "targetLevel": 63,
+      "sourceLevel": 63
+    },
+    {
+      "targetLevel": 64,
+      "sourceLevel": 64
+    },
+    {
+      "targetLevel": 65,
+      "sourceLevel": 65
+    },
+    {
+      "targetLevel": 66,
+      "sourceLevel": 66
+    },
+    {
+      "targetLevel": 67,
+      "sourceLevel": 67
+    },
+    {
+      "targetLevel": 68,
+      "sourceLevel": 68
+    },
+    {
+      "targetLevel": 69,
+      "sourceLevel": 69
+    },
+    {
+      "targetLevel": 70,
+      "sourceLevel": 70
+    },
+    {
+      "targetLevel": 71,
+      "sourceLevel": 71
+    },
+    {
+      "targetLevel": 72,
+      "sourceLevel": 72
+    },
+    {
+      "targetLevel": 73,
+      "sourceLevel": 73
+    },
+    {
+      "targetLevel": 74,
+      "sourceLevel": 74
+    },
+    {
+      "targetLevel": 75,
+      "sourceLevel": 75
+    },
+    {
+      "targetLevel": 76,
+      "sourceLevel": 76
+    },
+    {
+      "targetLevel": 77,
+      "sourceLevel": 77
+    },
+    {
+      "targetLevel": 78,
+      "sourceLevel": 78
+    },
+    {
+      "targetLevel": 79,
+      "sourceLevel": 79
+    },
+    {
+      "targetLevel": 80,
+      "sourceLevel": 80
+    },
+    {
+      "targetLevel": 81,
+      "sourceLevel": 81
+    },
+    {
+      "targetLevel": 82,
+      "sourceLevel": 82
+    },
+    {
+      "targetLevel": 83,
+      "sourceLevel": 83
+    },
+    {
+      "targetLevel": 84,
+      "sourceLevel": 84
+    },
+    {
+      "targetLevel": 85,
+      "sourceLevel": 85
+    },
+    {
+      "targetLevel": 86,
+      "sourceLevel": 86
+    },
+    {
+      "targetLevel": 87,
+      "sourceLevel": 87
+    },
+    {
+      "targetLevel": 88,
+      "sourceLevel": 88
+    },
+    {
+      "targetLevel": 89,
+      "sourceLevel": 89
+    },
+    {
+      "targetLevel": 90,
+      "sourceLevel": 90
+    },
+    {
+      "targetLevel": 91,
+      "sourceLevel": 91
+    },
+    {
+      "targetLevel": 92,
+      "sourceLevel": 92
+    },
+    {
+      "targetLevel": 93,
+      "sourceLevel": 93
+    },
+    {
+      "targetLevel": 94,
+      "sourceLevel": 94
+    },
+    {
+      "targetLevel": 95,
+      "sourceLevel": 95
+    },
+    {
+      "targetLevel": 96,
+      "sourceLevel": 96
+    },
+    {
+      "targetLevel": 97,
+      "sourceLevel": 97
+    },
+    {
+      "targetLevel": 98,
+      "sourceLevel": 98
+    },
+    {
+      "targetLevel": 99,
+      "sourceLevel": 99
+    },
+    {
+      "targetLevel": 100,
+      "sourceLevel": 100
+    },
+    {
+      "targetLevel": 101,
+      "sourceLevel": 101
+    },
+    {
+      "targetLevel": 102,
+      "sourceLevel": 102
+    },
+    {
+      "targetLevel": 103,
+      "sourceLevel": 103
+    },
+    {
+      "targetLevel": 104,
+      "sourceLevel": 104
+    },
+    {
+      "targetLevel": 105,
+      "sourceLevel": 105
+    },
+    {
+      "targetLevel": 106,
+      "sourceLevel": 106
+    },
+    {
+      "targetLevel": 107,
+      "sourceLevel": 107
+    },
+    {
+      "targetLevel": 108,
+      "sourceLevel": 108
+    },
+    {
+      "targetLevel": 109,
+      "sourceLevel": 109
+    },
+    {
+      "targetLevel": 110,
+      "sourceLevel": 110
+    },
+    {
+      "targetLevel": 111,
+      "sourceLevel": 111
+    },
+    {
+      "targetLevel": 112,
+      "sourceLevel": 112
+    },
+    {
+      "targetLevel": 113,
+      "sourceLevel": 113
+    },
+    {
+      "targetLevel": 114,
+      "sourceLevel": 114
+    },
+    {
+      "targetLevel": 115,
+      "sourceLevel": 115
+    },
+    {
+      "targetLevel": 116,
+      "sourceLevel": 116
+    },
+    {
+      "targetLevel": 117,
+      "sourceLevel": 117
+    },
+    {
+      "targetLevel": 118,
+      "sourceLevel": 118
+    },
+    {
+      "targetLevel": 119,
+      "sourceLevel": 119
+    },
+    {
+      "targetLevel": 120,
+      "sourceLevel": 120
+    },
+    {
+      "targetLevel": 121,
+      "sourceLevel": 123
+    },
+    {
+      "targetLevel": 122,
+      "sourceLevel": 124
+    },
+    {
+      "targetLevel": 123,
+      "sourceLevel": 131
+    },
+    {
+      "targetLevel": 124,
+      "sourceLevel": 132
+    },
+    {
+      "targetLevel": 125,
+      "sourceLevel": 133
+    },
+    {
+      "targetLevel": 126,
+      "sourceLevel": 134
+    },
+    {
+      "targetLevel": 127,
+      "sourceLevel": 135
+    },
+    {
+      "targetLevel": 128,
+      "sourceLevel": 136
+    },
+    {
+      "targetLevel": 129,
+      "sourceLevel": 137
+    },
+    {
+      "targetLevel": 130,
+      "sourceLevel": 138
+    },
+    {
+      "targetLevel": 131,
+      "sourceLevel": 139
+    },
+    {
+      "targetLevel": 132,
+      "sourceLevel": 140
+    },
+    {
+      "targetLevel": 133,
+      "sourceLevel": 141
+    },
+    {
+      "targetLevel": 134,
+      "sourceLevel": 142
+    },
+    {
+      "targetLevel": 135,
+      "sourceLevel": 143
+    },
+    {
+      "targetLevel": 136,
+      "sourceLevel": 145
+    },
+    {
+      "targetLevel": 137,
+      "sourceLevel": 146
+    },
+    {
+      "targetLevel": 138,
+      "sourceLevel": 147
+    },
+    {
+      "targetLevel": 139,
+      "sourceLevel": 148
+    },
+    {
+      "targetLevel": 140,
+      "sourceLevel": 150
+    },
+    {
+      "targetLevel": 141,
+      "sourceLevel": 151
+    },
+    {
+      "targetLevel": 142,
+      "sourceLevel": 152
+    },
+    {
+      "targetLevel": 143,
+      "sourceLevel": 153
+    },
+    {
+      "targetLevel": 144,
+      "sourceLevel": 154
+    },
+    {
+      "targetLevel": 145,
+      "sourceLevel": 155
+    },
+    {
+      "targetLevel": 146,
+      "sourceLevel": 156
+    },
+    {
+      "targetLevel": 147,
+      "sourceLevel": 157
+    },
+    {
+      "targetLevel": 148,
+      "sourceLevel": 158
+    },
+    {
+      "targetLevel": 149,
+      "sourceLevel": 159
+    },
+    {
+      "targetLevel": 150,
+      "sourceLevel": 160
+    },
+    {
+      "targetLevel": 151,
+      "sourceLevel": 161
+    },
+    {
+      "targetLevel": 152,
+      "sourceLevel": 162
+    },
+    {
+      "targetLevel": 153,
+      "sourceLevel": 163
+    },
+    {
+      "targetLevel": 154,
+      "sourceLevel": 165
+    },
+    {
+      "targetLevel": 155,
+      "sourceLevel": 166
+    },
+    {
+      "targetLevel": 156,
+      "sourceLevel": 167
+    },
+    {
+      "targetLevel": 157,
+      "sourceLevel": 168
+    },
+    {
+      "targetLevel": 158,
+      "sourceLevel": 169
+    },
+    {
+      "targetLevel": 159,
+      "sourceLevel": 170
+    },
+    {
+      "targetLevel": 160,
+      "sourceLevel": 171
+    },
+    {
+      "targetLevel": 161,
+      "sourceLevel": 172
+    },
+    {
+      "targetLevel": 162,
+      "sourceLevel": 173
+    },
+    {
+      "targetLevel": 163,
+      "sourceLevel": 174
+    },
+    {
+      "targetLevel": 164,
+      "sourceLevel": 175
+    },
+    {
+      "targetLevel": 165,
+      "sourceLevel": 176
+    },
+    {
+      "targetLevel": 166,
+      "sourceLevel": 177
+    },
+    {
+      "targetLevel": 167,
+      "sourceLevel": 178
+    },
+    {
+      "targetLevel": 168,
+      "sourceLevel": 179
+    },
+    {
+      "targetLevel": 169,
+      "sourceLevel": 180
+    },
+    {
+      "targetLevel": 170,
+      "sourceLevel": 190
+    },
+    {
+      "targetLevel": 171,
+      "sourceLevel": 191
+    },
+    {
+      "targetLevel": 172,
+      "sourceLevel": 193
+    },
+    {
+      "targetLevel": 173,
+      "sourceLevel": 194
+    },
+    {
+      "targetLevel": 174,
+      "sourceLevel": 195
+    },
+    {
+      "targetLevel": 175,
+      "sourceLevel": 198
+    },
+    {
+      "targetLevel": 176,
+      "sourceLevel": 199
+    },
+    {
+      "targetLevel": 177,
+      "sourceLevel": 200
+    },
+    {
+      "targetLevel": 178,
+      "sourceLevel": 201
+    },
+    {
+      "targetLevel": 179,
+      "sourceLevel": 202
+    },
+    {
+      "targetLevel": 180,
+      "sourceLevel": 203
+    },
+    {
+      "targetLevel": 181,
+      "sourceLevel": 204
+    },
+    {
+      "targetLevel": 182,
+      "sourceLevel": 205
+    },
+    {
+      "targetLevel": 183,
+      "sourceLevel": 206
+    },
+    {
+      "targetLevel": 184,
+      "sourceLevel": 207
+    },
+    {
+      "targetLevel": 185,
+      "sourceLevel": 208
+    },
+    {
+      "targetLevel": 186,
+      "sourceLevel": 209
+    },
+    {
+      "targetLevel": 187,
+      "sourceLevel": 210
+    },
+    {
+      "targetLevel": 188,
+      "sourceLevel": 211
+    },
+    {
+      "targetLevel": 189,
+      "sourceLevel": 212
+    },
+    {
+      "targetLevel": 190,
+      "sourceLevel": 213
+    },
+    {
+      "targetLevel": 191,
+      "sourceLevel": 214
+    },
+    {
+      "targetLevel": 192,
+      "sourceLevel": 215
+    },
+    {
+      "targetLevel": 193,
+      "sourceLevel": 216
+    },
+    {
+      "targetLevel": 194,
+      "sourceLevel": 217
+    },
+    {
+      "targetLevel": 195,
+      "sourceLevel": 218
+    },
+    {
+      "targetLevel": 196,
+      "sourceLevel": 219
+    },
+    {
+      "targetLevel": 197,
+      "sourceLevel": 220
+    },
+    {
+      "targetLevel": 198,
+      "sourceLevel": 221
+    },
+    {
+      "targetLevel": 199,
+      "sourceLevel": 222
+    },
+    {
+      "targetLevel": 200,
+      "sourceLevel": 223
+    },
+    {
+      "targetLevel": 201,
+      "sourceLevel": 224
+    },
+    {
+      "targetLevel": 202,
+      "sourceLevel": 225
+    },
+    {
+      "targetLevel": 203,
+      "sourceLevel": 228
+    },
+    {
+      "targetLevel": 204,
+      "sourceLevel": 229
+    },
+    {
+      "targetLevel": 205,
+      "sourceLevel": 231
+    },
+    {
+      "targetLevel": 206,
+      "sourceLevel": 232
+    },
+    {
+      "targetLevel": 207,
+      "sourceLevel": 234
+    },
+    {
+      "targetLevel": 208,
+      "sourceLevel": 235
+    },
+    {
+      "targetLevel": 209,
+      "sourceLevel": 236
+    },
+    {
+      "targetLevel": 210,
+      "sourceLevel": 237
+    },
+    {
+      "targetLevel": 211,
+      "sourceLevel": 238
+    },
+    {
+      "targetLevel": 212,
+      "sourceLevel": 239
+    },
+    {
+      "targetLevel": 213,
+      "sourceLevel": 240
+    },
+    {
+      "targetLevel": 214,
+      "sourceLevel": 241
+    },
+    {
+      "targetLevel": 215,
+      "sourceLevel": 242
+    },
+    {
+      "targetLevel": 216,
+      "sourceLevel": 243
+    },
+    {
+      "targetLevel": 217,
+      "sourceLevel": 244
+    },
+    {
+      "targetLevel": 218,
+      "sourceLevel": 245
+    },
+    {
+      "targetLevel": 219,
+      "sourceLevel": 246
+    },
+    {
+      "targetLevel": 220,
+      "sourceLevel": 247
+    },
+    {
+      "targetLevel": 221,
+      "sourceLevel": 248
+    },
+    {
+      "targetLevel": 222,
+      "sourceLevel": 249
+    },
+    {
+      "targetLevel": 223,
+      "sourceLevel": 250
+    },
+    {
+      "targetLevel": 224,
+      "sourceLevel": 261
+    },
+    {
+      "targetLevel": 225,
+      "sourceLevel": 262
+    },
+    {
+      "targetLevel": 226,
+      "sourceLevel": 263
+    },
+    {
+      "targetLevel": 227,
+      "sourceLevel": 264
+    },
+    {
+      "targetLevel": 228,
+      "sourceLevel": 265
+    },
+    {
+      "targetLevel": 229,
+      "sourceLevel": 267
+    },
+    {
+      "targetLevel": 230,
+      "sourceLevel": 268
+    },
+    {
+      "targetLevel": 231,
+      "sourceLevel": 270
+    },
+    {
+      "targetLevel": 232,
+      "sourceLevel": 271
+    },
+    {
+      "targetLevel": 233,
+      "sourceLevel": 274
+    },
+    {
+      "targetLevel": 234,
+      "sourceLevel": 275
+    },
+    {
+      "targetLevel": 235,
+      "sourceLevel": 276
+    },
+    {
+      "targetLevel": 236,
+      "sourceLevel": 277
+    },
+    {
+      "targetLevel": 237,
+      "sourceLevel": 278
+    },
+    {
+      "targetLevel": 238,
+      "sourceLevel": 279
+    },
+    {
+      "targetLevel": 239,
+      "sourceLevel": 280
+    },
+    {
+      "targetLevel": 240,
+      "sourceLevel": 282
+    },
+    {
+      "targetLevel": 241,
+      "sourceLevel": 283
+    },
+    {
+      "targetLevel": 242,
+      "sourceLevel": 284
+    },
+    {
+      "targetLevel": 243,
+      "sourceLevel": 285
+    },
+    {
+      "targetLevel": 244,
+      "sourceLevel": 286
+    },
+    {
+      "targetLevel": 245,
+      "sourceLevel": 287
+    },
+    {
+      "targetLevel": 246,
+      "sourceLevel": 288
+    },
+    {
+      "targetLevel": 247,
+      "sourceLevel": 290
+    },
+    {
+      "targetLevel": 248,
+      "sourceLevel": 291
+    },
+    {
+      "targetLevel": 249,
+      "sourceLevel": 292
+    },
+    {
+      "targetLevel": 250,
+      "sourceLevel": 293
+    },
+    {
+      "targetLevel": 251,
+      "sourceLevel": 295
+    },
+    {
+      "targetLevel": 252,
+      "sourceLevel": 296
+    },
+    {
+      "targetLevel": 253,
+      "sourceLevel": 297
+    },
+    {
+      "targetLevel": 254,
+      "sourceLevel": 298
+    },
+    {
+      "targetLevel": 255,
+      "sourceLevel": 299
+    },
+    {
+      "targetLevel": 256,
+      "sourceLevel": 318
+    },
+    {
+      "targetLevel": 257,
+      "sourceLevel": 324
+    },
+    {
+      "targetLevel": 258,
+      "sourceLevel": 334
+    },
+    {
+      "targetLevel": 259,
+      "sourceLevel": 336
+    },
+    {
+      "targetLevel": 260,
+      "sourceLevel": 337
+    },
+    {
+      "targetLevel": 261,
+      "sourceLevel": 338
+    },
+    {
+      "targetLevel": 262,
+      "sourceLevel": 339
+    },
+    {
+      "targetLevel": 263,
+      "sourceLevel": 341
+    },
+    {
+      "targetLevel": 264,
+      "sourceLevel": 342
+    },
+    {
+      "targetLevel": 265,
+      "sourceLevel": 343
+    },
+    {
+      "targetLevel": 266,
+      "sourceLevel": 344
+    },
+    {
+      "targetLevel": 267,
+      "sourceLevel": 345
+    },
+    {
+      "targetLevel": 268,
+      "sourceLevel": 346
+    },
+    {
+      "targetLevel": 269,
+      "sourceLevel": 347
+    },
+    {
+      "targetLevel": 270,
+      "sourceLevel": 349
+    },
+    {
+      "targetLevel": 271,
+      "sourceLevel": 350
+    },
+    {
+      "targetLevel": 272,
+      "sourceLevel": 366
+    },
+    {
+      "targetLevel": 273,
+      "sourceLevel": 374
+    },
+    {
+      "targetLevel": 274,
+      "sourceLevel": 376
+    },
+    {
+      "targetLevel": 275,
+      "sourceLevel": 384
+    },
+    {
+      "targetLevel": 276,
+      "sourceLevel": 387
+    },
+    {
+      "targetLevel": 277,
+      "sourceLevel": 391
+    },
+    {
+      "targetLevel": 278,
+      "sourceLevel": 396
+    },
+    {
+      "targetLevel": 279,
+      "sourceLevel": 400
+    },
+    {
+      "targetLevel": 280,
+      "sourceLevel": 466
+    },
+    {
+      "targetLevel": 281,
+      "sourceLevel": 481
+    },
+    {
+      "targetLevel": 282,
+      "sourceLevel": 507
+    },
+    {
+      "targetLevel": 283,
+      "sourceLevel": 512
+    },
+    {
+      "targetLevel": 284,
+      "sourceLevel": 523
+    },
+    {
+      "targetLevel": 285,
+      "sourceLevel": 537
+    },
+    {
+      "targetLevel": 286,
+      "sourceLevel": 549
+    },
+    {
+      "targetLevel": 287,
+      "sourceLevel": 557
+    },
+    {
+      "targetLevel": 288,
+      "sourceLevel": 560
+    },
+    {
+      "targetLevel": 289,
+      "sourceLevel": 561
+    },
+    {
+      "targetLevel": 290,
+      "sourceLevel": 563
+    },
+    {
+      "targetLevel": 291,
+      "sourceLevel": 565
+    },
+    {
+      "targetLevel": 292,
+      "sourceLevel": 566
+    },
+    {
+      "targetLevel": 293,
+      "sourceLevel": 567
+    },
+    {
+      "targetLevel": 294,
+      "sourceLevel": 568
+    },
+    {
+      "targetLevel": 295,
+      "sourceLevel": 569
+    },
+    {
+      "targetLevel": 296,
+      "sourceLevel": 570
+    },
+    {
+      "targetLevel": 297,
+      "sourceLevel": 575
+    },
+    {
+      "targetLevel": 298,
+      "sourceLevel": 578
+    },
+    {
+      "targetLevel": 299,
+      "sourceLevel": 579
+    },
+    {
+      "targetLevel": 300,
+      "sourceLevel": 581
+    },
+    {
+      "targetLevel": 301,
+      "sourceLevel": 582
+    },
+    {
+      "targetLevel": 302,
+      "sourceLevel": 583
+    },
+    {
+      "targetLevel": 303,
+      "sourceLevel": 584
+    },
+    {
+      "targetLevel": 304,
+      "sourceLevel": 585
+    },
+    {
+      "targetLevel": 305,
+      "sourceLevel": 586
+    },
+    {
+      "targetLevel": 306,
+      "sourceLevel": 587
+    },
+    {
+      "targetLevel": 307,
+      "sourceLevel": 588
+    },
+    {
+      "targetLevel": 308,
+      "sourceLevel": 589
+    },
+    {
+      "targetLevel": 309,
+      "sourceLevel": 594
+    },
+    {
+      "targetLevel": 310,
+      "sourceLevel": 601
+    },
+    {
+      "targetLevel": 311,
+      "sourceLevel": 607
+    },
+    {
+      "targetLevel": 312,
+      "sourceLevel": 615
+    },
+    {
+      "targetLevel": 313,
+      "sourceLevel": 628
+    },
+    {
+      "targetLevel": 314,
+      "sourceLevel": 633
+    },
+    {
+      "targetLevel": 315,
+      "sourceLevel": 634
+    },
+    {
+      "targetLevel": 316,
+      "sourceLevel": 641
+    },
+    {
+      "targetLevel": 317,
+      "sourceLevel": 649
+    },
+    {
+      "targetLevel": 318,
+      "sourceLevel": 777
+    },
+    {
+      "targetLevel": 319,
+      "sourceLevel": 793
+    },
+    {
+      "targetLevel": 320,
+      "sourceLevel": 874
+    }
+  ],
+  "skipped": [
+    {
+      "sourceLevel": 121,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 122,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 125,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 126,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 127,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 128,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 129,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 130,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 144,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 149,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 164,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 181,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 182,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 183,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 184,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 185,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 186,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 187,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 188,
+      "reasons": [
+        "block-cap",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 189,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 192,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 196,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 197,
+      "reasons": [
+        "block-cap",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 226,
+      "reasons": [
+        "block-cap",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 227,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 230,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 233,
+      "reasons": [
+        "block-cap",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 251,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 252,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 253,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 254,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 255,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 256,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 257,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 258,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 259,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 260,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 266,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 269,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 272,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 273,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 281,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 289,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 294,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 300,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 301,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 302,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 303,
+      "reasons": [
+        "door-ice",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 304,
+      "reasons": [
+        "block-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 305,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 306,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 307,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 308,
+      "reasons": [
+        "door-ice",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 309,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 310,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 311,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 312,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 313,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 314,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 315,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 316,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 317,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 319,
+      "reasons": [
+        "door-ice",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 320,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 321,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 322,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 323,
+      "reasons": [
+        "block-key-lock",
+        "door-ice",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 325,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 326,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 327,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 328,
+      "reasons": [
+        "block-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 329,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 330,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 331,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 332,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 333,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 335,
+      "reasons": [
+        "block-key-lock",
+        "door-ice",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 340,
+      "reasons": [
+        "door-ice",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 348,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 351,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 352,
+      "reasons": [
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 353,
+      "reasons": [
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 354,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 355,
+      "reasons": [
+        "block-cap",
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 356,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 357,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 358,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 359,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 360,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 361,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 362,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 363,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 364,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 365,
+      "reasons": [
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 367,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 368,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 369,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 370,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 371,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 372,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 373,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 375,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 377,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 378,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 379,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 380,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 381,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 382,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 383,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 385,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 386,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 388,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 389,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 390,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 392,
+      "reasons": [
+        "door-ice",
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 393,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 394,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 395,
+      "reasons": [
+        "block-key-lock",
+        "door-ice",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 397,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 398,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 399,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 401,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 402,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 403,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 404,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 405,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 406,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 407,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 408,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 409,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 410,
+      "reasons": [
+        "barrier",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 411,
+      "reasons": [
+        "barrier",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 412,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 413,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 414,
+      "reasons": [
+        "block-cap",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 415,
+      "reasons": [
+        "barrier",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 416,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 417,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 418,
+      "reasons": [
+        "block-cap",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 419,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 420,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 421,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 422,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 423,
+      "reasons": [
+        "barrier",
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 424,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 425,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 426,
+      "reasons": [
+        "barrier",
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 427,
+      "reasons": [
+        "barrier",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 428,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 429,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 430,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 431,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 432,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 433,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 434,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 435,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 436,
+      "reasons": [
+        "block-cap",
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 437,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 438,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 439,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 440,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 441,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 442,
+      "reasons": [
+        "barrier",
+        "block-key-lock",
+        "door-ice",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 443,
+      "reasons": [
+        "barrier",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 444,
+      "reasons": [
+        "barrier",
+        "block-key-lock",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 445,
+      "reasons": [
+        "barrier",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 446,
+      "reasons": [
+        "barrier",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 447,
+      "reasons": [
+        "barrier",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 448,
+      "reasons": [
+        "barrier",
+        "block-cap",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 449,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 450,
+      "reasons": [
+        "barrier",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 451,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 452,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 453,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 454,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 455,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 456,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 457,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 458,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 459,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 460,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 461,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 462,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 463,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 464,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 465,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 467,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 468,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 469,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 470,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 471,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 472,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 473,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 474,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 475,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 476,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 477,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 478,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 479,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 480,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 482,
+      "reasons": [
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 483,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 484,
+      "reasons": [
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 485,
+      "reasons": [
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 486,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 487,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 488,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 489,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 490,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 491,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 492,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 493,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 494,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 495,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 496,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 497,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 498,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 499,
+      "reasons": [
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 500,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 501,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 502,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 503,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 504,
+      "reasons": [
+        "door-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 505,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 506,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 508,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 509,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 510,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 511,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 513,
+      "reasons": [
+        "barrier",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 514,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 515,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 516,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 517,
+      "reasons": [
+        "rope",
+        "scissor",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 518,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 519,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 520,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 521,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 522,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 524,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 525,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 526,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 527,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 528,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 529,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 530,
+      "reasons": [
+        "door-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 531,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 532,
+      "reasons": [
+        "barrier",
+        "block-cap",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 533,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 534,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 535,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 536,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 538,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 539,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 540,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 541,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 542,
+      "reasons": [
+        "block-cap",
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 543,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 544,
+      "reasons": [
+        "barrier",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 545,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 546,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 547,
+      "reasons": [
+        "barrier",
+        "block-key-lock",
+        "door-ice",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 548,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 550,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 551,
+      "reasons": [
+        "barrier",
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 552,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 553,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 554,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 555,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 556,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 558,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 559,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 562,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 564,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 571,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 572,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 573,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 574,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 576,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 577,
+      "reasons": [
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 580,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 590,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 591,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 592,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 593,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 595,
+      "reasons": [
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 596,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 597,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 598,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 599,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 600,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 602,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 603,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 604,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 605,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 606,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 608,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 609,
+      "reasons": [
+        "door-cap",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 610,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 611,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 612,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 613,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 614,
+      "reasons": [
+        "block-key-lock",
+        "door-cap",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 616,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 617,
+      "reasons": [
+        "door-cap",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 618,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 619,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 620,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 621,
+      "reasons": [
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 622,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 623,
+      "reasons": [
+        "barrier",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 624,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 625,
+      "reasons": [
+        "barrier",
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 626,
+      "reasons": [
+        "door-cap",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 627,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 629,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 630,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 631,
+      "reasons": [
+        "door-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 632,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 635,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 636,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 637,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 638,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 639,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 640,
+      "reasons": [
+        "block-key-lock",
+        "door-ice",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 642,
+      "reasons": [
+        "block-key-lock",
+        "door-cap",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 643,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 644,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 645,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 646,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 647,
+      "reasons": [
+        "block-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 648,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 650,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 651,
+      "reasons": [
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 652,
+      "reasons": [
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 653,
+      "reasons": [
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 654,
+      "reasons": [
+        "block-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 655,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 656,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 657,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 658,
+      "reasons": [
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 659,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 660,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 661,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 662,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 663,
+      "reasons": [
+        "door-ice",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 664,
+      "reasons": [
+        "barrier",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 665,
+      "reasons": [
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 666,
+      "reasons": [
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 667,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 668,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 669,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 670,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 671,
+      "reasons": [
+        "barrier",
+        "block-key-lock",
+        "door-ice",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 672,
+      "reasons": [
+        "barrier",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 673,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 674,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 675,
+      "reasons": [
+        "barrier",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 676,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 677,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 678,
+      "reasons": [
+        "barrier",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 679,
+      "reasons": [
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 680,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 681,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 682,
+      "reasons": [
+        "barrier",
+        "block-key-lock",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 683,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 684,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 685,
+      "reasons": [
+        "block-key-lock",
+        "door-ice",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 686,
+      "reasons": [
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 687,
+      "reasons": [
+        "door-ice",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 688,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 689,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 690,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 691,
+      "reasons": [
+        "barrier",
+        "block-cap",
+        "block-key-lock",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 692,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 693,
+      "reasons": [
+        "block-cap",
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 694,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 695,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 696,
+      "reasons": [
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 697,
+      "reasons": [
+        "barrier",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 698,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 699,
+      "reasons": [
+        "barrier",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 700,
+      "reasons": [
+        "door-directional-lock"
+      ]
+    },
+    {
+      "sourceLevel": 701,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 702,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 703,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 704,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 705,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 706,
+      "reasons": [
+        "door-directional-lock"
+      ]
+    },
+    {
+      "sourceLevel": 707,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 708,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 709,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 710,
+      "reasons": [
+        "door-directional-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 711,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 712,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 713,
+      "reasons": [
+        "door-directional-lock"
+      ]
+    },
+    {
+      "sourceLevel": 714,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 715,
+      "reasons": [
+        "barrier",
+        "door-directional-lock"
+      ]
+    },
+    {
+      "sourceLevel": 716,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 717,
+      "reasons": [
+        "door-directional-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 718,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 719,
+      "reasons": [
+        "door-directional-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 720,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 721,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 722,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 723,
+      "reasons": [
+        "barrier",
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 724,
+      "reasons": [
+        "door-cap",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 725,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 726,
+      "reasons": [
+        "door-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 727,
+      "reasons": [
+        "door-cap",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 728,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 729,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 730,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 731,
+      "reasons": [
+        "door-directional-lock"
+      ]
+    },
+    {
+      "sourceLevel": 732,
+      "reasons": [
+        "door-directional-lock"
+      ]
+    },
+    {
+      "sourceLevel": 733,
+      "reasons": [
+        "door-directional-lock"
+      ]
+    },
+    {
+      "sourceLevel": 734,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 735,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 736,
+      "reasons": [
+        "door-directional-lock"
+      ]
+    },
+    {
+      "sourceLevel": 737,
+      "reasons": [
+        "barrier",
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 738,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 739,
+      "reasons": [
+        "barrier",
+        "door-directional-lock"
+      ]
+    },
+    {
+      "sourceLevel": 740,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 741,
+      "reasons": [
+        "barrier",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 742,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 743,
+      "reasons": [
+        "block-key-lock",
+        "door-cap",
+        "door-ice",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 744,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 745,
+      "reasons": [
+        "door-directional-lock",
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 746,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 747,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 748,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 749,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 750,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 751,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 752,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 753,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 754,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 755,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 756,
+      "reasons": [
+        "door-directional-lock",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 757,
+      "reasons": [
+        "door-cap",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 758,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 759,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 760,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 761,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 762,
+      "reasons": [
+        "block-key-lock",
+        "door-cap",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 763,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 764,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 765,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 766,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 767,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 768,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 769,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 770,
+      "reasons": [
+        "door-directional-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 771,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 772,
+      "reasons": [
+        "barrier",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 773,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 774,
+      "reasons": [
+        "barrier",
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 775,
+      "reasons": [
+        "door-cap",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 776,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 778,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 779,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 780,
+      "reasons": [
+        "door-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 781,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 782,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 783,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 784,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 785,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 786,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 787,
+      "reasons": [
+        "barrier"
+      ]
+    },
+    {
+      "sourceLevel": 788,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 789,
+      "reasons": [
+        "block-key-lock",
+        "door-ice",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 790,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 791,
+      "reasons": [
+        "block-key-lock",
+        "door-cap",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 792,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 794,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 795,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 796,
+      "reasons": [
+        "block-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 797,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 798,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 799,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 800,
+      "reasons": [
+        "door-cap",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 801,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 802,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 803,
+      "reasons": [
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 804,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 805,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 806,
+      "reasons": [
+        "door-cap",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 807,
+      "reasons": [
+        "door-cap",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 808,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 809,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 810,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 811,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 812,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 813,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 814,
+      "reasons": [
+        "block-key-lock",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 815,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 816,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 817,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 818,
+      "reasons": [
+        "door-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 819,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 820,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 821,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 822,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 823,
+      "reasons": [
+        "block-cap",
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 824,
+      "reasons": [
+        "door-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 825,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 826,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 827,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 828,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 829,
+      "reasons": [
+        "door-cap",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 830,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 831,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 832,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 833,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 834,
+      "reasons": [
+        "block-key-lock",
+        "door-cap",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 835,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 836,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 837,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 838,
+      "reasons": [
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 839,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 840,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 841,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 842,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 843,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 844,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 845,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 846,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 847,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 848,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 849,
+      "reasons": [
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 850,
+      "reasons": [
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 851,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 852,
+      "reasons": [
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 853,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 854,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 855,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 856,
+      "reasons": [
+        "rope",
+        "scissor",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 857,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 858,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 859,
+      "reasons": [
+        "door-cap",
+        "door-ice"
+      ]
+    },
+    {
+      "sourceLevel": 860,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 861,
+      "reasons": [
+        "block-key-lock",
+        "door-cap",
+        "door-key-lock"
+      ]
+    },
+    {
+      "sourceLevel": 862,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 863,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 864,
+      "reasons": [
+        "block-key-lock",
+        "door-cap",
+        "door-key-lock",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 865,
+      "reasons": [
+        "door-cap",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 866,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 867,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 868,
+      "reasons": [
+        "barrier",
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 869,
+      "reasons": [
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 870,
+      "reasons": [
+        "door-cap",
+        "linked-group",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 871,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 872,
+      "reasons": [
+        "door-cap"
+      ]
+    },
+    {
+      "sourceLevel": 873,
+      "reasons": [
+        "door-ice",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 875,
+      "reasons": [
+        "door-cap",
+        "door-ice",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 876,
+      "reasons": [
+        "door-cap",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 877,
+      "reasons": [
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 878,
+      "reasons": [
+        "door-cap",
+        "rope",
+        "scissor"
+      ]
+    },
+    {
+      "sourceLevel": 879,
+      "reasons": [
+        "linked-group",
+        "timed-explode"
+      ]
+    },
+    {
+      "sourceLevel": 880,
+      "reasons": [
+        "block-cap"
+      ]
+    },
+    {
+      "sourceLevel": 881,
+      "reasons": [
+        "normalized-validator-mismatch"
+      ]
+    },
+    {
+      "sourceLevel": 882,
+      "reasons": [
+        "door-cap",
+        "linked-group"
+      ]
+    },
+    {
+      "sourceLevel": 883,
+      "reasons": [
+        "door-ice"
+      ]
+    }
+  ]
+}

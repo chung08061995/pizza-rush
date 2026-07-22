@@ -18,10 +18,16 @@ namespace CoffeeRunMigration
             AuditRange(1, 6, null);
         }
 
-        [MenuItem("MyMenu/Coffee Run/Audit converted Pizza Rush levels 1-100")]
+        [MenuItem("MyMenu/Coffee Run/Audit all converted Pizza Rush levels")]
         public static void AuditAll()
         {
-            AuditRange(1, 100, "CoffeeRunMigration/Reports/runtime-audit-1-100.md");
+            var last = Directory.GetFiles(LevelDirectory, "*.json")
+                .Select(Path.GetFileNameWithoutExtension)
+                .Where(name => int.TryParse(name, out _))
+                .Select(int.Parse)
+                .DefaultIfEmpty(1)
+                .Max();
+            AuditRange(1, last, "CoffeeRunMigration/Reports/runtime-audit-all.md");
         }
 
         private static void AuditRange(int first, int last, string outputPath)

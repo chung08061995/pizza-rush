@@ -15,9 +15,13 @@ namespace CoffeeRunMigration
                 report.Mismatch("Source record is null.");
                 return report;
             }
-            if (source.level < 1 || source.level > 100)
+            if (source.level < 1 || source.level > 883)
             {
-                report.Mismatch($"Level index {source.level} is outside 1-100.");
+                report.Mismatch($"Level index {source.level} is outside 1-883.");
+            }
+            if (source.sourceLevel < 0 || source.sourceLevel > 883)
+            {
+                report.Mismatch($"Source level index {source.sourceLevel} is outside 0-883.");
             }
             if (source.sourceVersion != "3.20.0" || source.sourceVersionCode != 790)
             {

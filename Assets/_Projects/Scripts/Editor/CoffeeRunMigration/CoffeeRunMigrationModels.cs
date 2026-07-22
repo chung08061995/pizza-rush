@@ -13,6 +13,7 @@ namespace CoffeeRunMigration
         public int sourceVersionCode = 790;
         public string configVariant = "Default";
         public string extractionMethod;
+        public int sourceLevel;
         public int level;
         public int timerSeconds;
         public CoffeeRunGridRecord grid = new();
@@ -64,6 +65,8 @@ namespace CoffeeRunMigration
         public bool cap;
         public bool linked;
         public bool barrier;
+        public int timedExplodeSeconds = -1;
+        public bool scissor;
         public int ropes;
     }
 
@@ -74,8 +77,18 @@ namespace CoffeeRunMigration
         public CoffeeRunPosition position = new();
         public int rotationQuarterTurns;
         public string visualKey;
+        public CoffeeRunProductionLineModifierRecord modifiers = new();
         public List<CoffeeRunProductionItemRecord> productionOrder = new();
         public List<CoffeeRunPathSegmentRecord> path = new();
+    }
+
+    [Serializable]
+    public sealed class CoffeeRunProductionLineModifierRecord
+    {
+        public bool keyLock;
+        public int iceLayers;
+        public bool cap;
+        public bool directionalLock;
     }
 
     [Serializable]
@@ -138,6 +151,7 @@ namespace CoffeeRunMigration
     public sealed class CoffeeRunManifestEntry
     {
         public int level;
+        public int sourceLevel;
         public CoffeeRunComparisonStatus status;
         public string sourceFile;
         public string outputFile;

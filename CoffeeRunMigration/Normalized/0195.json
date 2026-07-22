@@ -1,0 +1,586 @@
+{
+  "sourcePackage": "com.coffee.run.puzzle",
+  "sourceVersion": "3.20.0",
+  "sourceVersionCode": 790,
+  "configVariant": "Default",
+  "extractionMethod": "Il2CppAsset",
+  "sourceLevel": 218,
+  "level": 195,
+  "timerSeconds": 90,
+  "grid": {
+    "rows": 6,
+    "columns": 5,
+    "cells": [
+      {
+        "x": 2,
+        "y": 6
+      },
+      {
+        "x": 3,
+        "y": 6
+      },
+      {
+        "x": 4,
+        "y": 6
+      },
+      {
+        "x": 5,
+        "y": 6
+      },
+      {
+        "x": 6,
+        "y": 6
+      },
+      {
+        "x": 2,
+        "y": 5
+      },
+      {
+        "x": 3,
+        "y": 5
+      },
+      {
+        "x": 4,
+        "y": 5
+      },
+      {
+        "x": 5,
+        "y": 5
+      },
+      {
+        "x": 6,
+        "y": 5
+      },
+      {
+        "x": 2,
+        "y": 4
+      },
+      {
+        "x": 3,
+        "y": 4
+      },
+      {
+        "x": 4,
+        "y": 4
+      },
+      {
+        "x": 5,
+        "y": 4
+      },
+      {
+        "x": 6,
+        "y": 4
+      },
+      {
+        "x": 2,
+        "y": 3
+      },
+      {
+        "x": 3,
+        "y": 3
+      },
+      {
+        "x": 4,
+        "y": 3
+      },
+      {
+        "x": 5,
+        "y": 3
+      },
+      {
+        "x": 6,
+        "y": 3
+      },
+      {
+        "x": 2,
+        "y": 2
+      },
+      {
+        "x": 3,
+        "y": 2
+      },
+      {
+        "x": 4,
+        "y": 2
+      },
+      {
+        "x": 5,
+        "y": 2
+      },
+      {
+        "x": 6,
+        "y": 2
+      },
+      {
+        "x": 2,
+        "y": 1
+      },
+      {
+        "x": 3,
+        "y": 1
+      },
+      {
+        "x": 4,
+        "y": 1
+      },
+      {
+        "x": 5,
+        "y": 1
+      },
+      {
+        "x": 6,
+        "y": 1
+      }
+    ]
+  },
+  "containers": [
+    {
+      "id": "block-1",
+      "position": {
+        "x": 2,
+        "y": 5
+      },
+      "shape": "LShort",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-6",
+      "colorKeys": [
+        "source-color-6"
+      ],
+      "colorAmounts": [
+        12
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 1,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-2",
+      "position": {
+        "x": 3,
+        "y": 3
+      },
+      "shape": "One",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-6",
+      "colorKeys": [
+        "source-color-6"
+      ],
+      "colorAmounts": [
+        4
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 1,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-3",
+      "position": {
+        "x": 5,
+        "y": 2
+      },
+      "shape": "One",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-6",
+      "colorKeys": [
+        "source-color-6"
+      ],
+      "colorAmounts": [
+        4
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 1,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-4",
+      "position": {
+        "x": 5,
+        "y": 4
+      },
+      "shape": "Two",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-6",
+      "colorKeys": [
+        "source-color-6"
+      ],
+      "colorAmounts": [
+        8
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 1,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-5",
+      "position": {
+        "x": 3,
+        "y": 1
+      },
+      "shape": "LShort",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-8",
+      "colorKeys": [
+        "source-color-8",
+        "source-color-12"
+      ],
+      "colorAmounts": [
+        8,
+        4
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 1,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-6",
+      "position": {
+        "x": 6,
+        "y": 2
+      },
+      "shape": "Two",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-12",
+      "colorKeys": [
+        "source-color-12",
+        "source-color-1"
+      ],
+      "colorAmounts": [
+        4,
+        4
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 1,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-7",
+      "position": {
+        "x": 6,
+        "y": 4
+      },
+      "shape": "One",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-11",
+      "colorKeys": [
+        "source-color-11"
+      ],
+      "colorAmounts": [
+        4
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-8",
+      "position": {
+        "x": 5,
+        "y": 3
+      },
+      "shape": "Two",
+      "rotationQuarterTurns": 1,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-4",
+      "colorKeys": [
+        "source-color-4",
+        "source-color-6"
+      ],
+      "colorAmounts": [
+        4,
+        4
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 1,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-9",
+      "position": {
+        "x": 6,
+        "y": 6
+      },
+      "shape": "Two",
+      "rotationQuarterTurns": 1,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-0",
+      "colorKeys": [
+        "source-color-0",
+        "source-color-7"
+      ],
+      "colorAmounts": [
+        8,
+        8
+      ],
+      "modifiers": {
+        "iceLayers": 0,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 1,
+        "layerBox": true,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    },
+    {
+      "id": "block-10",
+      "position": {
+        "x": 4,
+        "y": 4
+      },
+      "shape": "Three",
+      "rotationQuarterTurns": 0,
+      "flipX": false,
+      "movement": "Free",
+      "material": "Color",
+      "colorKey": "source-color-12",
+      "colorKeys": [
+        "source-color-12"
+      ],
+      "colorAmounts": [
+        12
+      ],
+      "modifiers": {
+        "iceLayers": 3,
+        "bombCount": 0,
+        "keyCount": 0,
+        "stoneLayers": 0,
+        "colorLayers": 0,
+        "layerBox": false,
+        "cap": false,
+        "linked": false,
+        "barrier": false,
+        "ropes": 0
+      }
+    }
+  ],
+  "productionLines": [
+    {
+      "id": "door-1",
+      "position": {
+        "x": 4,
+        "y": 7
+      },
+      "rotationQuarterTurns": 0,
+      "visualKey": "Straight",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-0",
+          "amount": 8
+        },
+        {
+          "colorKey": "source-color-12",
+          "amount": 16
+        }
+      ],
+      "path": [
+        {
+          "direction": "Up",
+          "length": 2
+        },
+        {
+          "direction": "Up",
+          "length": 20
+        }
+      ]
+    },
+    {
+      "id": "door-2",
+      "position": {
+        "x": 1,
+        "y": 5
+      },
+      "rotationQuarterTurns": 1,
+      "visualKey": "CurvedLeft",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-4",
+          "amount": 4
+        },
+        {
+          "colorKey": "source-color-7",
+          "amount": 8
+        },
+        {
+          "colorKey": "source-color-11",
+          "amount": 4
+        }
+      ],
+      "path": [
+        {
+          "direction": "Left",
+          "length": 1
+        },
+        {
+          "direction": "Down",
+          "length": 1
+        },
+        {
+          "direction": "Left",
+          "length": 20
+        }
+      ]
+    },
+    {
+      "id": "door-3",
+      "position": {
+        "x": 7,
+        "y": 5
+      },
+      "rotationQuarterTurns": 3,
+      "visualKey": "Straight",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-6",
+          "amount": 4
+        },
+        {
+          "colorKey": "source-color-12",
+          "amount": 4
+        },
+        {
+          "colorKey": "source-color-8",
+          "amount": 8
+        }
+      ],
+      "path": [
+        {
+          "direction": "Right",
+          "length": 25
+        }
+      ]
+    },
+    {
+      "id": "door-4",
+      "position": {
+        "x": 5,
+        "y": 0
+      },
+      "rotationQuarterTurns": 2,
+      "visualKey": "CurvedRight",
+      "productionOrder": [
+        {
+          "colorKey": "source-color-1",
+          "amount": 4
+        }
+      ],
+      "path": [
+        {
+          "direction": "Down",
+          "length": 2
+        },
+        {
+          "direction": "Left",
+          "length": 1
+        },
+        {
+          "direction": "Down",
+          "length": 20
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    "UnityPy typetree: Level_218",
+    "Runtime bundle/config variant: Default"
+  ]
+}
