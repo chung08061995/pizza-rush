@@ -929,7 +929,7 @@ PrefabInstance:
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 6d34f79b35307284caf8c63c43f2131d, type: 2}
+      objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
@@ -1227,6 +1227,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldArea
       objectReference: {fileID: 0}
+    - target: {fileID: 7321035698124976873, guid: f1b71578a893fe24dbf700b223065cce, type: 3}
+      propertyPath: m_fontAsset
+      value:
+      objectReference: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
+    - target: {fileID: 7321035698124976873, guid: f1b71578a893fe24dbf700b223065cce, type: 3}
+      propertyPath: m_sharedMaterial
+      value:
+      objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
