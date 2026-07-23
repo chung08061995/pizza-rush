@@ -4,7 +4,12 @@
 
 - Added the active Google Play `no_ads` one-time product at USD 1.99.
 - Connected the No Ads purchase popup to Unity IAP and persisted/restored the
-  entitlement so banner and interstitial ads remain disabled after purchase.
+  entitlement so banner, interstitial, and rewarded ads remain disabled after
+  purchase.
+- Generated `GooglePlayTangle` from the Play Console licensing key and added
+  Android receipt validation before granting the No Ads entitlement.
+- Removed No Ads buttons and the `no_ads` Shop product after ownership is granted
+  or restored.
 - Added persisted Music/Vibrate toggle synchronization across Main and Settings UI.
 - Added Android/iOS vibration feedback for toggle confirmation, pizza placement,
   container completion, win, and lose events.

@@ -13,10 +13,13 @@ Pizza Rush is a Unity 6000.4.10f1 URP mobile game. Init bootstraps Main and Leve
 - `ContainerFactory` and `ProductionLineFactory` select visual prefabs while preserving data-driven placement.
 - `PopupManager` owns gameplay UI and remains independent of the 3D art layer.
 - `IAPManager` registers store products through `CoffeeRunIAPProductProvider`. The
-  permanent No Ads entitlement uses the Google Play product ID `no_ads`.
+  permanent No Ads entitlement uses the Google Play product ID `no_ads`. Android
+  pending orders are locally validated with the generated `GooglePlayTangle`
+  before the purchase is confirmed or the entitlement is granted.
 - `AdsManager` persists the No Ads entitlement locally and reconciles it with the
-  store purchase history after Unity IAP initialization. It suppresses banner and
-  interstitial ads while leaving opt-in rewarded ads available.
+  store purchase history after Unity IAP initialization. It suppresses banner,
+  interstitial, and rewarded ads, and notifies the Home/Shop UI to remove No Ads
+  purchase controls immediately.
 - `VibrationManager` provides guarded mobile haptic feedback. It reads the persisted
   `DataManager.vibrate` setting and is called for pizza placement, container
   completion, win, lose, and toggle-on confirmation events.
