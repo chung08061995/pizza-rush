@@ -76,7 +76,7 @@ Mỗi task phải ưu tiên gọi server **`unityMCP` tại `http://127.0.0.1:80
   Chỉ thêm hoặc thay visual child/material; không đổi script, enum, JSON, collider hay serialized gameplay root. Dùng Unity MCP để thao tác prefab, apply thay đổi và kiểm tra reference trước khi lưu.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
-  Evidence: Unity MCP created 44 additive visual prefabs under `Assets/_Projects/Art/PR3D/Prefabs/`: two board, five container, five rail, ten shared-mesh gate variants, ten shared-mesh pizza variants, eleven environment modules, and one Level 301 environment composition. Audit: zero colliders, zero MonoBehaviours, zero missing components; all ten pizza variants reference one shared Unity mesh. Existing gameplay prefabs, scripts, scenes, enums, colliders, and level JSON were not modified. Promotion into shared gameplay prefabs remains intentionally held for review.
+  Evidence: Unity MCP created 44 additive visual prefabs under `Assets/_Projects/Art/PR3D/Prefabs/` and applied an additive Level 301 preview to shared container, production-line, production-pizza, and LevelRunner prefabs. Audit: zero visual colliders, zero missing components, and all ten pizza variants reference one shared Unity mesh. Scripts, enums, JSON, gameplay colliders, places, and serialized gameplay roots were preserved. Rollout beyond Level 301 remains held for review.
 
 - [x] [PR3D-011] Validate Level 301
   Chơi hết level và kiểm tra drag, Ice, pizza transfer, hướng ray, gate, ba portrait ratio, console, frame time, memory, HUD, booster và vùng quảng cáo. Dùng Unity MCP để chạy test, chụp evidence và đọc profiler.
@@ -88,7 +88,7 @@ Mỗi task phải ưu tiên gọi server **`unityMCP` tại `http://127.0.0.1:80
   So sánh evidence trước/sau, liệt kê lỗi cần sửa và chỉ tạo plan riêng cho 319 level còn lại sau khi được duyệt. Dùng Unity MCP để mở evidence/runtime và Blender MCP để review asset source.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
-  Evidence: review recorded in `docs/reviews/pr3d-level301-vertical-slice.md`. Decision: the Level 301 visual slice is ready for stakeholder review, but rollout/promotion to shared gameplay prefabs and the other 319 levels is on hold until explicit approval. No rollout plan was created.
+  Evidence: review recorded in `docs/reviews/pr3d-level301-vertical-slice.md`. Decision: the Level 301 integration preview is applied and ready for stakeholder review; rollout to the other 319 levels is on hold until explicit approval. No rollout plan was created.
 
 ## Acceptance criteria
 

@@ -1,16 +1,17 @@
 # Pizza Rush 3D — Level 301 vertical-slice review
 
-Date: 2026-07-23
+Date: 2026-07-24
 Scope: PR3D-002 through PR3D-012
-Decision: **Review ready; rollout held pending explicit approval**
+Decision: **Level 301 integration preview applied; rollout held pending explicit approval**
 
 ## Outcome
 
 The Level 301 pizza-factory visual slice is complete as an additive review
 package. Blender sources, exports, Unity models, shared materials, 44 visual
 prefabs, three portrait captures, and validation evidence are present. No
-gameplay prefab, script, scene, enum, collider, serialized gameplay root, or
-level JSON changed.
+shared container, production-line, production-pizza, and LevelRunner prefabs as
+visual children only. Scripts, enums, level JSON, gameplay colliders, places,
+and serialized gameplay roots remain unchanged.
 
 The Unity visual library contains:
 
@@ -83,8 +84,7 @@ exceeded the GPU budget; it is not part of the final integration guidance.
 
 ## Rollout decision
 
-Do not promote the visual children into shared gameplay prefabs and do not
-create a 319-level rollout plan yet. The asset package is ready for stakeholder
-review. After explicit approval, create a separate rollout plan covering
-level-scoped binding, prefab promotion, device profiling, content batching, and
-rollback for the remaining levels.
+The Level 301 preview is bound into shared gameplay prefabs for stakeholder
+review. Do not roll it out to the remaining 319 levels yet. After explicit
+approval, create a separate rollout plan covering level-scoped binding, device
+profiling, content batching, and rollback.

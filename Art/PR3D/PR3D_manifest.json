@@ -13,7 +13,7 @@
     "PR3D-011",
     "PR3D-012"
   ],
-  "status": "review_ready_rollout_held",
+  "status": "level301_integration_preview_rollout_held",
   "generated_on": "2026-07-23",
   "toolchain": {
     "blender": "5.2.0 LTS",
@@ -188,5 +188,29 @@
     }
   },
   "gameplay_contract_changes": [],
-  "rollout_decision": "hold_pending_stakeholder_approval"
+  "integration_preview": {
+    "status": "applied_to_level301_shared_visual_prefabs",
+    "prefabs": [
+      "Assets/_Projects/Prefabs/Containers/Container/Rectangle1x1Container.prefab",
+      "Assets/_Projects/Prefabs/Containers/Container/Rectangle1x2Container.prefab",
+      "Assets/_Projects/Prefabs/Containers/Container/Rectangle1x3Container.prefab",
+      "Assets/_Projects/Prefabs/Containers/Container/TContainer.prefab",
+      "Assets/_Projects/Prefabs/ProductionLine/ProductionLine_Straing.prefab",
+      "Assets/_Projects/Prefabs/ProductionLine/ProductionLine_Belt.prefab",
+      "Assets/_Projects/Prefabs/Production/Production.prefab",
+      "Assets/_Projects/Prefabs/LevelRunner/LevelRunner.prefab"
+    ],
+    "runtime_audit": {
+      "level": 301,
+      "containers": 23,
+      "production_lines": 7,
+      "gates": 7,
+      "pizza_visual_instances": 128,
+      "visual_colliders": 0,
+      "missing_components": 0,
+      "new_console_errors": 0,
+      "new_console_warnings": 0
+    }
+  },
+  "rollout_decision": "hold_remaining_319_levels_pending_preview_approval"
 }

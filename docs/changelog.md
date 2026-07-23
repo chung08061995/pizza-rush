@@ -17,6 +17,10 @@
   same-session performance/memory A/B checks.
 - Held shared-prefab and 319-level rollout pending stakeholder approval; no
   gameplay prefab, script, scene, enum, collider, or level JSON was changed.
+- Applied the Level 301 PR3D integration preview to shared container,
+  production-line, pizza, and LevelRunner prefabs as additive visual children.
+  Scripts, enums, JSON, gameplay colliders, places, and serialized gameplay
+  roots remain unchanged; rollout to the other 319 levels stays held.
 - Added the active Google Play `no_ads` one-time product at USD 1.99.
 - Connected the No Ads purchase popup to Unity IAP and persisted/restored the
   entitlement so banner and interstitial ads remain disabled after purchase.
