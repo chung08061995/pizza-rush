@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "task_id": "PR3D-003",
+  "status": "verified",
+  "generated_on": "2026-07-23",
+  "concept_reference": "docs/reference/pizza-factory-concept.png",
+  "toolchain": {
+    "blender": "5.2.0 LTS",
+    "blender_mcp": "socket bridge on 127.0.0.1:9876",
+    "unity": "6000.4.10f1",
+    "unity_mcp": "3.4.4 at http://127.0.0.1:8080/mcp"
+  },
+  "coordinate_contract": {
+    "authoring": "Blender native Z-up",
+    "unit_system": "METRIC",
+    "meters_per_blender_unit": 1.0,
+    "unity_result": "Y-up, +Z-forward",
+    "fbx_axis_forward": "-Z",
+    "fbx_axis_up": "Y",
+    "fbx_apply_scale_options": "FBX_SCALE_UNITS",
+    "apply_unit_scale": true,
+    "bake_space_transform": false
+  },
+  "level_301_contract": {
+    "grid_cells": 49,
+    "grid_shape": [7, 7],
+    "cell_pitch_m": 1.0,
+    "cell_center_x_range": [1.5, 7.5],
+    "cell_center_z_range": [1.5, 7.5],
+    "board_center_unity": [4.5, 0.0, 4.5],
+    "containers": 23,
+    "production_lines": 7
+  },
+  "assets": [
+    {
+      "name": "PR3D_Board_7x7",
+      "role": "additive board tray and frame visual",
+      "source_root": "PR3D_Board_7x7",
+      "pivot_blender": [0.0, 0.0, 0.0],
+      "unity_placement": [4.5, 0.0, 4.5],
+      "blender_dimensions_m": [7.78, 7.78, 0.36],
+      "unity_import_bounds_m": [7.78, 0.36, 7.78],
+      "triangles": 956,
+      "uv_layers_per_mesh": 1,
+      "materials": [
+        "PR3D003_MAT_FrameBlue",
+        "PR3D003_MAT_TrayBlue"
+      ],
+      "fbx": {
+        "path": "Assets/_Projects/Art/PR3D/Board/Models/PR3D_Board_7x7.fbx",
+        "sha256": "78dfcd6f7af7becd2c653d26f1365b0f69c6b2519f95fbd026f305cd4a294226"
+      },
+      "glb": {
+        "path": "Art/PR3D/Exports/Board/PR3D_Board_7x7.glb",
+        "sha256": "f67854e6b591b31ec8cb44b55c5fcfa25741d978b2f5b4723d2a26599c43ef78"
+      }
+    },
+    {
+      "name": "PR3D_Tile_Ceramic",
+      "role": "additive per-cell ceramic tile visual",
+      "source_root": "PR3D_Tile_Ceramic",
+      "pivot_contract": "cell center at gameplay plane",
+      "pivot_blender": [0.0, 0.0, 0.0],
+      "cell_footprint_m": [1.0, 1.0],
+      "blender_dimensions_m": [0.9, 0.9, 0.1175],
+      "unity_import_bounds_m": [0.9, 0.1175, 0.9],
+      "triangles": 376,
+      "uv_layers_per_mesh": 1,
+      "materials": [
+        "PR3D003_MAT_CeramicCream",
+        "PR3D003_MAT_CeramicHighlight"
+      ],
+      "fbx": {
+        "path": "Assets/_Projects/Art/PR3D/Board/Models/PR3D_Tile_Ceramic.fbx",
+        "sha256": "bad8a2cdec191dc7a03670524edd5df231580ebc6da74aee49485eeda1aeb6e1"
+      },
+      "glb": {
+        "path": "Art/PR3D/Exports/Board/PR3D_Tile_Ceramic.glb",
+        "sha256": "859475e150a5807b1835f01b34369a6d96c109c50ae14911ee68473cd241ee02"
+      }
+    },
+    {
+      "role": "master_scene",
+      "path": "Art/PR3D/Source/PR3D_PizzaFactory_Master.blend",
+      "sha256": "1e38085466d5c5fd3d03b0507d48a153d7ec3c1c11a4720766b5c83e26f88c05"
+    },
+    {
+      "role": "rebuild_script",
+      "path": "Art/PR3D/Source/build_pr3d_003_board.py",
+      "sha256": "8049c872bf0ce98c4d8b8aeab56f14e8597ff97190143f384eac433154802025"
+    },
+    {
+      "role": "portrait_preview",
+      "path": "Art/PR3D/Previews/PR3D_003_BoardTile.png",
+      "sha256": "8c7b82b8715e681c45848964116001eada97f0bb4b9f77aa282a2b8c1c860d81"
+    }
+  ],
+  "unity_mcp_evidence": {
+    "active_scene": "LevelRunner",
+    "runtime_level": 301,
+    "runtime_tile_count": 49,
+    "runtime_container_count": 23,
+    "runtime_production_line_count": 7,
+    "overlay_children": 50,
+    "overlay_result": "board center and all 49 tile centers aligned in Game view",
+    "temporary_import_cleaned": true,
+    "importer_global_scale": 1.0,
+    "use_file_scale": true,
+    "bake_axis_conversion": false,
+    "all_meshes_have_uv": true,
+    "collider_count": 0,
+    "mono_behaviour_count": 0,
+    "task_specific_console_errors": 0,
+    "known_unrelated_console_error": "Missing .meta in immutable com.draft.unitydraftutils package surfaced during AssetDatabase.Refresh."
+  },
+  "gameplay_contract_changes": []
+}
