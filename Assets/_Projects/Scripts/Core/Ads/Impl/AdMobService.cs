@@ -214,6 +214,12 @@ namespace DraftUtils.Ads
 
         public void ShowRewarded(string placement = "default", Action<bool> onResult = null)
         {
+            if (AdsDisabled)
+            {
+                onResult?.Invoke(false);
+                return;
+            }
+
             if (!IsRewardedReady)
             {
                 _logger.Log("Rewarded not ready.");

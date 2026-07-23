@@ -33,6 +33,7 @@ namespace DraftUtils.Ads
 
         public void ShowBanner(AdBannerPosition position = AdBannerPosition.Bottom)
         {
+            if (AdsDisabled) return;
             Debug.Log($"{TAG} ShowBanner at {position} (stub — no-op)");
         }
 
@@ -55,6 +56,12 @@ namespace DraftUtils.Ads
 
         public void ShowInterstitial(string placement = "default", Action onClosed = null)
         {
+            if (AdsDisabled)
+            {
+                onClosed?.Invoke();
+                return;
+            }
+
             Debug.Log($"{TAG} ShowInterstitial '{placement}' (stub — simulating close)");
             onClosed?.Invoke();
             OnAdShown?.Invoke(new AdEventInfo(AdType.Interstitial, placement, "Stub"));
@@ -70,6 +77,12 @@ namespace DraftUtils.Ads
 
         public void ShowRewarded(string placement = "default", Action<bool> onResult = null)
         {
+            if (AdsDisabled)
+            {
+                onResult?.Invoke(false);
+                return;
+            }
+
             Debug.Log($"{TAG} ShowRewarded '{placement}' (stub — simulating reward granted)");
             onResult?.Invoke(true); // Simulate user watched full ad
             var info = new AdEventInfo(AdType.Rewarded, placement, "Stub");

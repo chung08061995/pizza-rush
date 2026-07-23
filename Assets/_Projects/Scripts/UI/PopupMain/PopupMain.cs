@@ -40,6 +40,10 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         homeButton.Button.OnClickAction = ClickHome;
         screenShotButton.Button.OnClickAction = ClickScreenShort;
         noAdsButton.onClick.AddListener(ClickNoAds);
+        if (DraftUtils.Ads.AdsManager.Instance != null)
+        {
+            DraftUtils.Ads.AdsManager.Instance.OnNoAdsEntitlementChanged += RefreshNoAdsVisibility;
+        }
 
         _musicVolume = DataManager.Instance.musicVolume;
         _vibrate = DataManager.Instance.vibrate;
@@ -168,7 +172,14 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
     }
     private void SetMainButtonsVisible(bool isVisible)
     {
-        noAdsButton.transform.parent.gameObject.SetActive(isVisible);
+        bool hasNoAds = DraftUtils.Ads.AdsManager.Instance != null &&
+                        DraftUtils.Ads.AdsManager.Instance.HasNoAds;
+        noAdsButton.transform.parent.gameObject.SetActive(isVisible && !hasNoAds);
+    }
+
+    private void RefreshNoAdsVisibility()
+    {
+        noAdsButton.transform.parent.gameObject.SetActive(false);
     }
 
     public void ApplyCleanTextRendering(Component content)
@@ -231,6 +242,11 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
 
     private void OnDestroy()
     {
+        if (DraftUtils.Ads.AdsManager.Instance != null)
+        {
+            DraftUtils.Ads.AdsManager.Instance.OnNoAdsEntitlementChanged -= RefreshNoAdsVisibility;
+        }
+
         if (!_settingListenersRegistered)
         {
             return;

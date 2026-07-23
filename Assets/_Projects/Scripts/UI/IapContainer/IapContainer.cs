@@ -28,13 +28,18 @@ public class IapContainer : MonoBehaviour
 
         var list = new List<MultipleIAPData>
         {
-            iapData.noAds,
             iapData.noAdsBundle,
             iapData.smallBundle,
             iapData.mediumBundle,
             iapData.largeBundle,
             iapData.starter
         };
+
+        if (DraftUtils.Ads.AdsManager.Instance == null ||
+            !DraftUtils.Ads.AdsManager.Instance.HasNoAds)
+        {
+            list.Insert(0, iapData.noAds);
+        }
 
         scroller.UpdateData(list);
 

@@ -37,13 +37,17 @@ namespace DraftUtils.Ads
 
         /// <summary>Event khi ads init xong.</summary>
         public event Action<bool> OnAdsInitialized;
+        /// <summary>Event khi quyền No Ads được cấp hoặc khôi phục.</summary>
+        public event Action OnNoAdsEntitlementChanged;
+        public bool HasNoAds => PlayerPrefs.GetInt(GameConstain.PlayerPrefsKey.NoAdsOwned, 0) == 1;
+        public bool AdsDisabled => _service != null && _service.AdsDisabled;
         private DraftUtils.UnityMainThread _unityMainThread;
 
         protected override void OnAwake()
         {
             _service = CreateService();
 
-            if (PlayerPrefs.GetInt(GameConstain.PlayerPrefsKey.NoAdsOwned, 0) == 1)
+            if (HasNoAds)
             {
                 _service.AdsDisabled = true;
             }
@@ -100,6 +104,7 @@ namespace DraftUtils.Ads
             PlayerPrefs.SetInt(GameConstain.PlayerPrefsKey.NoAdsOwned, 1);
             PlayerPrefs.Save();
             DisableAds();
+            OnNoAdsEntitlementChanged?.Invoke();
         }
         private void AdsServiceInitializeCompleted(bool success)
         {
@@ -113,6 +118,7 @@ namespace DraftUtils.Ads
         [Button]
         public void ShowBanner(AdBannerPosition position)
         {
+            if (_service.AdsDisabled) return;
             _service.ShowBanner(position);
         }
 
@@ -128,6 +134,12 @@ namespace DraftUtils.Ads
         [Button]
         public void ShowInterstitial(string placement = "default", Action onClosed = null)
         {
+            if (_service.AdsDisabled)
+            {
+                onClosed?.Invoke();
+                return;
+            }
+
             _service.ShowInterstitial(placement, onClosed);
         }
 
@@ -140,13 +152,18 @@ namespace DraftUtils.Ads
         [Button]
         public void ShowRewarded(string placement = "default", Action<bool> onResult = null)
         {
+            if (_service.AdsDisabled)
+            {
+                onResult?.Invoke(false);
+                return;
+            }
+
             _service.ShowRewarded(placement, onResult);
         }
 
         /// <summary>
         /// Tắt ads (vd: sau khi mua Remove Ads).
-        /// Banner bị ẩn, interstitial không hiện.
-        /// Rewarded vẫn hiện (user chủ động xem).
+        /// Banner bị xoá; interstitial và rewarded không được phép hiện.
         /// </summary>
 
         [Button]

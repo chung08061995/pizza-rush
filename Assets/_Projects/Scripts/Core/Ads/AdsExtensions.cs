@@ -31,7 +31,9 @@ namespace DraftUtils.Ads
         /// <summary>Hiện banner ad.</summary>
         public static void ShowBanner(AdBannerPosition position = AdBannerPosition.Bottom)
         {
-            GetService()?.ShowBanner(position);
+            var service = GetService();
+            if (service == null || service.AdsDisabled) return;
+            service.ShowBanner(position);
         }
 
         /// <summary>Ẩn banner.</summary>
@@ -81,26 +83,30 @@ namespace DraftUtils.Ads
         /// <summary>Rewarded video sẵn sàng hiện chưa.</summary>
         public static bool IsRewardedReady()
         {
-            return GetService()?.IsRewardedReady ?? false;
+            var service = GetService();
+            return service != null && !service.AdsDisabled && service.IsRewardedReady;
         }
 
         /// <summary>Load rewarded trước.</summary>
         public static void LoadRewarded()
         {
-            GetService()?.LoadRewarded();
+            var service = GetService();
+            if (service == null || service.AdsDisabled) return;
+            service.LoadRewarded();
         }
 
         /// <summary>
-        /// Hiện rewarded video. KHÔNG skip khi ads disabled (user chủ động xem).
+        /// Hiện rewarded video. Trả false ngay khi user đã mua No Ads.
         /// </summary>
         /// <param name="placement">Placement name cho analytics</param>
         /// <param name="onResult">true = user xem hết, cho reward</param>
         public static void ShowRewarded(string placement = "default", Action<bool> onResult = null)
         {
             var service = GetService();
-            if (service == null)
+            if (service == null || service.AdsDisabled)
             {
-                Debug.LogWarning("[Ads] IAdsService chưa đăng ký.");
+                if (service == null)
+                    Debug.LogWarning("[Ads] IAdsService chưa đăng ký.");
                 onResult?.Invoke(false);
                 return;
             }
@@ -170,7 +176,7 @@ namespace DraftUtils.Ads
 
         private static IAdsService GetService()
         {
-            return AdsManager.Instance.Service;
+            return AdsManager.Instance != null ? AdsManager.Instance.Service : null;
         }
     }
 }

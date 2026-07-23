@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Purchasing;
+#if UNITY_ANDROID && !UNITY_EDITOR
+using UnityEngine.Purchasing.Security;
+#endif
 
 namespace DraftUtils.IAP
 {
@@ -244,6 +247,16 @@ namespace DraftUtils.IAP
 
             Debug.Log($"{TAG} Purchase pending: {productId}");
 
+            if (!ValidateReceipt(order.Info.Receipt, productId))
+            {
+                _purchaseCallback?.Invoke(IAPPurchaseResult.Failure(
+                    productId,
+                    IAPFailureReason.Unknown,
+                    "Google Play receipt validation failed."));
+                _purchaseCallback = null;
+                return;
+            }
+
             if (!string.IsNullOrEmpty(orderKey))
             {
                 _processedOrders.Add(orderKey);
@@ -256,6 +269,33 @@ namespace DraftUtils.IAP
             _purchaseCallback = null;
 
             _storeController.ConfirmPurchase(order);
+        }
+
+        private static bool ValidateReceipt(string receipt, string productId)
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            if (!GooglePlayTangle.IsPopulated || string.IsNullOrEmpty(receipt))
+            {
+                Debug.LogError($"{TAG} GooglePlayTangle/receipt chưa hợp lệ cho '{productId}'.");
+                return false;
+            }
+
+            try
+            {
+                var validator = new CrossPlatformValidator(
+                    GooglePlayTangle.Data(),
+                    Application.identifier);
+                validator.Validate(receipt);
+                return true;
+            }
+            catch (IAPSecurityException ex)
+            {
+                Debug.LogError($"{TAG} Receipt validation thất bại cho '{productId}': {ex.Message}");
+                return false;
+            }
+#else
+            return true;
+#endif
         }
 
         private void HandlePurchaseConfirmed(Order order)

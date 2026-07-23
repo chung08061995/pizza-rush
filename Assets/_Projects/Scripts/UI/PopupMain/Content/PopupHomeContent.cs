@@ -32,6 +32,11 @@ public class PopupHomeContent : DraftUtils.DraftMonoBehaviour
         goldView.SetData(ItemType.Gold);
 
         noAdsButton.onClick.AddListener(ClickNoAdsButton);
+        if (DraftUtils.Ads.AdsManager.Instance != null)
+        {
+            DraftUtils.Ads.AdsManager.Instance.OnNoAdsEntitlementChanged += RefreshNoAdsVisibility;
+        }
+        RefreshNoAdsVisibility();
         starterButton.onClick.AddListener(ClickStarterIapButton);
         dailyButton.onClick.AddListener(ClickDailyButton);
 
@@ -50,6 +55,11 @@ public class PopupHomeContent : DraftUtils.DraftMonoBehaviour
 
     private void OnDestroy()
     {
+        if (DraftUtils.Ads.AdsManager.Instance != null)
+        {
+            DraftUtils.Ads.AdsManager.Instance.OnNoAdsEntitlementChanged -= RefreshNoAdsVisibility;
+        }
+
         if (HeartsManager.Instance != null)
         {
             if (HeartsManager.Instance.HeartRecoveryController != null)
@@ -61,6 +71,13 @@ public class PopupHomeContent : DraftUtils.DraftMonoBehaviour
                 HeartsManager.Instance.UnlimitedHeartsController.OnUpdateAction -= UpdateLivesVisibility;
             }
         }
+    }
+
+    private void RefreshNoAdsVisibility()
+    {
+        bool hasNoAds = DraftUtils.Ads.AdsManager.Instance != null &&
+                        DraftUtils.Ads.AdsManager.Instance.HasNoAds;
+        noAdsButton.gameObject.SetActive(!hasNoAds);
     }
 
     private void UpdateLivesVisibility()
