@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
+using DraftUtils.IAP;
 
 namespace DraftUtils.Ads
 {
@@ -41,8 +42,64 @@ namespace DraftUtils.Ads
         protected override void OnAwake()
         {
             _service = CreateService();
+
+            if (PlayerPrefs.GetInt(GameConstain.PlayerPrefsKey.NoAdsOwned, 0) == 1)
+            {
+                _service.AdsDisabled = true;
+            }
+
             _service.Initialize(AdsServiceInitializeCompleted);
             _unityMainThread = UnityMainThread.Reuse(_unityMainThread, transform);
+        }
+
+        private void Start()
+        {
+            var iapManager = IAPManager.Instance;
+            if (iapManager == null)
+            {
+                _logger.Log("Warning: IAPManager not found; No Ads ownership cannot be restored.");
+                return;
+            }
+
+            iapManager.OnInitialized += HandleIAPInitialized;
+            iapManager.OnPurchaseCompleted += HandlePurchaseCompleted;
+
+            if (iapManager.Service.IsInitialized)
+            {
+                RestoreNoAdsOwnership(iapManager);
+            }
+        }
+
+        private void HandleIAPInitialized(bool success)
+        {
+            if (success)
+            {
+                RestoreNoAdsOwnership(IAPManager.Instance);
+            }
+        }
+
+        private void HandlePurchaseCompleted(IAPPurchaseResult result)
+        {
+            if (result.IsSuccess &&
+                string.Equals(result.ProductId, GameConstain.IAPProductId.NoAds, StringComparison.Ordinal))
+            {
+                GrantNoAdsEntitlement();
+            }
+        }
+
+        private void RestoreNoAdsOwnership(IAPManager iapManager)
+        {
+            if (iapManager != null && iapManager.IsOwned(GameConstain.IAPProductId.NoAds))
+            {
+                GrantNoAdsEntitlement();
+            }
+        }
+
+        private void GrantNoAdsEntitlement()
+        {
+            PlayerPrefs.SetInt(GameConstain.PlayerPrefsKey.NoAdsOwned, 1);
+            PlayerPrefs.Save();
+            DisableAds();
         }
         private void AdsServiceInitializeCompleted(bool success)
         {

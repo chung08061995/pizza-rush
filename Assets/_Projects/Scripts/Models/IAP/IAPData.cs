@@ -345,7 +345,7 @@ public class IAPData
         { ItemType.SingleIAPData_50_000_Coin, "test.50000gold" },
         { ItemType.SingleIAPData_100_000_Coin, "test.100000gold" },
 
-        { ItemType.MultipleIAPData_NoAds, "test.noads" },
+        { ItemType.MultipleIAPData_NoAds, GameConstain.IAPProductId.NoAds },
         { ItemType.MultipleIAPData_NoAdsBundle, "test.noadsbundle" },
         { ItemType.MultipleIAPData_SmallBundle, "test.smallbundle" },
         { ItemType.MultipleIAPData_MediumBundle, "test.mediumbundle" },

@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class GameConstain
 {
+    public static class IAPProductId
+    {
+        public const string NoAds = "no_ads";
+    }
+
     public class RuntimeStorage
     {
         public const string StartBooterItems = nameof(StartBooterItems);
@@ -28,6 +33,7 @@ public class GameConstain
         public const string Skill_SplitContainer = nameof(Skill_SplitContainer);
         public const string BooterCoffeeTime = nameof(BooterCoffeeTime);
         public const string BooterMagic = nameof(BooterMagic);
+        public const string NoAdsOwned = nameof(NoAdsOwned);
         public const string LevelUpRewardClaimedPrefix = "LevelUpRewardClaimed_";
         public const string RankingSnapshotPrefix = "RankingSnapshotV1_";
     }

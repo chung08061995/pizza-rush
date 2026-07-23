@@ -23,8 +23,12 @@ namespace DraftUtils.IAP
         private Action<bool> _restoreCallback;
         private bool _isConnecting;
         private bool _productsFetched;
+        private bool _purchasesFetched;
 
-        public bool IsInitialized => _storeController != null && _productsFetched;
+        public bool IsInitialized =>
+            _storeController != null &&
+            _productsFetched &&
+            _purchasesFetched;
 
         public void Initialize(IAPProductInfo[] products, Action<bool> onComplete = null)
         {
@@ -38,6 +42,7 @@ namespace DraftUtils.IAP
             _initCallback = onComplete;
             _productInfoMap.Clear();
             _productsFetched = false;
+            _purchasesFetched = false;
 
             if (products == null || products.Length == 0)
             {
@@ -216,8 +221,6 @@ namespace DraftUtils.IAP
 
             _productsFetched = true;
             Debug.Log($"{TAG} Fetch products thành công: {products.Count}.");
-            CompleteInitialization(true);
-
             _storeController.FetchPurchases();
         }
 
@@ -281,11 +284,17 @@ namespace DraftUtils.IAP
         private void HandlePurchasesFetched(Orders orders)
         {
             Debug.Log($"{TAG} Existing purchases fetched. Confirmed: {orders.ConfirmedOrders.Count}, Pending: {orders.PendingOrders.Count}, Deferred: {orders.DeferredOrders.Count}");
+            _purchasesFetched = true;
+            CompleteInitialization(true);
         }
 
         private void HandlePurchasesFetchFailed(PurchasesFetchFailureDescription failure)
         {
             Debug.LogWarning($"{TAG} Fetch purchases thất bại: {failure.FailureReason} - {failure.Message}");
+            // Product metadata is already usable. Do not block new purchases just
+            // because Play could not restore ownership during this session.
+            _purchasesFetched = true;
+            CompleteInitialization(true);
         }
 
         private void HandlePurchaseFailure(FailedOrder failedOrder)
