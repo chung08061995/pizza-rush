@@ -23,10 +23,14 @@ Mỗi task phải ưu tiên gọi server **`unityMCP` tại `http://127.0.0.1:80
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
 
-- [ ] [PR3D-002] Tạo Blender master scene
+- [x] [PR3D-002] Tạo Blender master scene
   Thiết lập đơn vị mét, trục Y-up/forward-Z, camera portrait, collection, quy tắc đặt tên, preset export và concept `docs/reference/pizza-factory-concept.png`. Dùng Blender MCP để dựng scene; dùng Unity MCP để kiểm tra import thử trong Unity.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: `Art/PR3D/Source/PR3D_PizzaFactory_Master.blend`,
+  `Art/PR3D/PR3D_manifest.json`, Blender MCP 1.28.1 và Unity MCP 3.4.4.
+  Import probe đạt scale 1 m, pivot gốc, Y-up và +Z-forward; asset thử đã
+  được xóa khỏi project Unity sau khi kiểm tra.
 
 - [ ] [PR3D-003] Dựng board và bộ tile
   Dựng tray/frame 7×7 và visual tile theo concept nhưng giữ nguyên cell size, pivot và vị trí grid. Dùng Blender MCP để model và Unity MCP để đối chiếu Level 301 trong Unity.
