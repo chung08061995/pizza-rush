@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "task_id": "PR3D-002",
+  "status": "verified",
+  "generated_on": "2026-07-23",
+  "toolchain": {
+    "blender": "5.2.0 LTS",
+    "blender_mcp": "1.28.1",
+    "unity": "6000.4.10f1",
+    "unity_mcp": "3.4.4"
+  },
+  "coordinate_contract": {
+    "authoring": "Blender native Z-up",
+    "unit_system": "METRIC",
+    "meters_per_blender_unit": 1.0,
+    "unity_result": "Y-up, +Z-forward",
+    "fbx_axis_forward": "-Z",
+    "fbx_axis_up": "Y",
+    "apply_unit_scale": true,
+    "bake_space_transform": false
+  },
+  "camera": {
+    "name": "PR3D_CAM_Portrait",
+    "projection": "orthographic",
+    "resolution": [1080, 1920],
+    "preview_resolution": [540, 960]
+  },
+  "collections": [
+    "00_REFERENCE",
+    "10_GAMEPLAY_VISUALS",
+    "20_ENVIRONMENT",
+    "80_CAMERAS_LIGHTS",
+    "90_EXPORT",
+    "99_GUIDES"
+  ],
+  "concept_reference": "docs/reference/pizza-factory-concept.png",
+  "naming_contract": {
+    "root": "PR3D_<Family>_<Variant>",
+    "render_children": ["Visual", "GateGlow", "Topping"]
+  },
+  "assets": [
+    {
+      "role": "master_scene",
+      "path": "Art/PR3D/Source/PR3D_PizzaFactory_Master.blend",
+      "sha256": "8b3e783055167ced365b2461318786b4b2565d9af686268505057109a21c8d8d"
+    },
+    {
+      "role": "rebuild_script",
+      "path": "Art/PR3D/Source/setup_master.py",
+      "sha256": "cd168badb2a8d11017cbf3eeb9ea5fd8b70cd105eb8215db8779418e44d8d964"
+    },
+    {
+      "role": "unity_import_probe",
+      "path": "Art/PR3D/Exports/PR3D_ImportProbe.fbx",
+      "sha256": "c911dc39f80248317e9b23bf8855d258157110d12c2c7a622ea1300ca98cc3aa"
+    },
+    {
+      "role": "portrait_preview",
+      "path": "Art/PR3D/Previews/PR3D_MasterScene.png",
+      "sha256": "964e7b569ff06640cb7cc6753147657777f149ec2703bc99ed2edced601007a8"
+    }
+  ],
+  "unity_import_evidence": {
+    "method": "Temporary import through unityMCP, followed by cleanup",
+    "asset_type": "UnityEngine.GameObject",
+    "importer_global_scale": 1.0,
+    "use_file_scale": true,
+    "bake_axis_conversion": false,
+    "root_pivot": [0.0, 0.0, 0.0],
+    "meter_cube_center": [0.0, 0.5, 0.0],
+    "meter_cube_size": [1.0, 1.0, 1.0],
+    "forward_marker_center": [0.0, 0.275, 0.92],
+    "forward_marker_size": [0.381, 0.33, 0.55],
+    "result": "pass"
+  },
+  "gameplay_contract_changes": []
+}

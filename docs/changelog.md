@@ -13,6 +13,10 @@
 - Added persisted Music/Vibrate toggle synchronization across Main and Settings UI.
 - Added Android/iOS vibration feedback for toggle confirmation, pizza placement,
   container completion, win, and lose events.
+- Added the PR3D Blender master scene, reproducible setup script, portrait
+  preview, Unity import probe, and asset manifest.
+- Verified meter scale, root pivot, Y-up, and +Z-forward import through
+  Blender MCP and Unity MCP without changing gameplay contracts.
 
 ## 2026-07-22
 
