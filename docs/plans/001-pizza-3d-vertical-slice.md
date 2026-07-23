@@ -18,10 +18,11 @@ Mỗi task phải ưu tiên gọi server **`unityMCP` tại `http://127.0.0.1:80
 
 ## Tasks
 
-- [ ] [PR3D-001] Chụp baseline Level 301
+- [x] [PR3D-001] Chụp baseline Level 301
   Ghi lại Game view, hierarchy, camera, ánh sáng, material, prefab root, frame time, memory và một lượt chơi hoàn chỉnh trước khi thay 3D. Dùng Unity MCP để mở scene, chụp ảnh và đọc profiler; concept nằm ở `docs/reference/pizza-factory-concept.png`.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: `docs/baseline/level-301-baseline.md`, `Assets/_Baseline/Level301_GameView.png`, `Assets/_Baseline/Level301_EndState.png`, `Assets/_Baseline/Level301_FullRun_Complete.mp4` (Unity Recorder, 1080x1920/30 FPS, continuous timer `01:22` to `Time Up`).
 
 - [ ] [PR3D-002] Tạo Blender master scene
   Thiết lập đơn vị mét, trục Y-up/forward-Z, camera portrait, collection, quy tắc đặt tên, preset export và concept `docs/reference/pizza-factory-concept.png`. Dùng Blender MCP để dựng scene; dùng Unity MCP để kiểm tra import thử trong Unity.
