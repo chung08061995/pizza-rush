@@ -1,0 +1,23 @@
+{
+  "task": "PR3D-004",
+  "units": "metres",
+  "blender_axis": "Z-up",
+  "unity_axis": "Y-up, +Z-forward",
+  "module_spacing_m": 0.48,
+  "track_width_m": 0.82,
+  "straight_length_m": 5.279999999999999,
+  "curve_radius_m": 1.89,
+  "variants": [
+    "PR3D_Rail_Straight_5p28",
+    "PR3D_Rail_Curve90_Right",
+    "PR3D_Rail_Curve90_Left",
+    "PR3D_Rail_Connector",
+    "PR3D_Rail_Support"
+  ],
+  "reuse": {
+    "curve": "Right/Left variants share dimensions; rotate in 90-degree steps",
+    "connector": "0.24m half-module bridge between modular pieces",
+    "support": "instance at module joints or every 0.96m"
+  },
+  "gameplay_contract": "visual-only; no prefab, scene, collider, JSON, enum, or Place edits"
+}

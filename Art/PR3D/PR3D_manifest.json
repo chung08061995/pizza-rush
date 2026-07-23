@@ -1,0 +1,192 @@
+{
+  "schema_version": 2,
+  "task_ids": [
+    "PR3D-002",
+    "PR3D-003",
+    "PR3D-004",
+    "PR3D-005",
+    "PR3D-006",
+    "PR3D-007",
+    "PR3D-008",
+    "PR3D-009",
+    "PR3D-010",
+    "PR3D-011",
+    "PR3D-012"
+  ],
+  "status": "review_ready_rollout_held",
+  "generated_on": "2026-07-23",
+  "toolchain": {
+    "blender": "5.2.0 LTS",
+    "blender_mcp": "1.28.1",
+    "unity": "6000.4.10f1",
+    "unity_mcp": "3.4.4"
+  },
+  "coordinate_contract": {
+    "authoring": "Blender native Z-up",
+    "unit_system": "METRIC",
+    "meters_per_blender_unit": 1.0,
+    "unity_result": "Y-up, +Z-forward",
+    "fbx_axis_forward": "-Z",
+    "fbx_axis_up": "Y",
+    "apply_unit_scale": true,
+    "bake_space_transform": false
+  },
+  "camera": {
+    "name": "PR3D_CAM_Portrait",
+    "projection": "orthographic",
+    "resolution": [1080, 1920],
+    "preview_resolution": [540, 960]
+  },
+  "concept_reference": "docs/reference/pizza-factory-concept.png",
+  "naming_contract": {
+    "root": "PR3D_<Family>_<Variant>_Root",
+    "render_children": ["Visual", "GateGlow", "Topping"]
+  },
+  "asset_groups": [
+    {
+      "family": "master",
+      "source": "Art/PR3D/Source/PR3D_PizzaFactory_Master.blend",
+      "exports": ["Art/PR3D/Exports/PR3D_ImportProbe.fbx"],
+      "unity_folder": null,
+      "source_sha256": "8b3e783055167ced365b2461318786b4b2565d9af686268505057109a21c8d8d"
+    },
+    {
+      "family": "board",
+      "source": "Art/PR3D/Source/Board/PR3D_003_BoardTile.blend",
+      "exports": [
+        "Art/PR3D/Exports/Board/PR3D_Board_7x7.glb",
+        "Art/PR3D/Exports/Board/PR3D_Tile_Ceramic.glb"
+      ],
+      "unity_folder": "Assets/_Projects/Art/PR3D/Board",
+      "source_sha256": "9f1dccfb113eb105b1da0ef7950b1fc0408e9259f49313f1069181a5679d4e6f"
+    },
+    {
+      "family": "rails",
+      "source": "Art/PR3D/Source/Rails/PR3D_Rails_Master.blend",
+      "exports": [
+        "Art/PR3D/Exports/Rails/PR3D_Rail_Straight_5p28.fbx",
+        "Art/PR3D/Exports/Rails/PR3D_Rail_Curve90_Left.fbx",
+        "Art/PR3D/Exports/Rails/PR3D_Rail_Curve90_Right.fbx",
+        "Art/PR3D/Exports/Rails/PR3D_Rail_Connector.fbx",
+        "Art/PR3D/Exports/Rails/PR3D_Rail_Support.fbx"
+      ],
+      "unity_folder": "Assets/_Projects/Art/PR3D/Rails",
+      "source_sha256": "ee12eb7b78cabd51c68145f551b6b207e2ff397af21e3fc4c1d5a212e00714bd"
+    },
+    {
+      "family": "gates",
+      "source": "Art/PR3D/Source/Gates/PR3D_Gates.blend",
+      "exports": [
+        "Art/PR3D/Exports/Gates/PR3D_Gate_Shared.fbx",
+        "Art/PR3D/Exports/Gates/PR3D_Gate_Shared.glb"
+      ],
+      "unity_folder": "Assets/_Projects/Art/PR3D/Gates",
+      "material_variants": 10,
+      "source_sha256": "86614fbb6c7b4bd1dcc453c0715d33dfc1e7d172e3c850f22d97d687fca52262"
+    },
+    {
+      "family": "pizza",
+      "source": "Art/PR3D/Source/Pizza/PR3D_006_PizzaVariants.blend",
+      "exports": [
+        "Art/PR3D/Exports/Pizza/PR3D_PizzaSlice_Shared.fbx",
+        "Art/PR3D/Exports/Pizza/PR3D_PizzaSlice_Shared.glb",
+        "Art/PR3D/Exports/Pizza/PR3D_PizzaVariants_Kit.fbx",
+        "Art/PR3D/Exports/Pizza/PR3D_PizzaVariants_Kit.glb"
+      ],
+      "unity_folder": "Assets/_Projects/Art/PR3D/Pizza",
+      "mesh_datablocks": 1,
+      "mesh_users": 11,
+      "variants": 10,
+      "uv_count_unity_probe": 324
+    },
+    {
+      "family": "containers",
+      "source": "Art/PR3D/Source/Containers/PR3D_Containers_Master.blend",
+      "exports": [
+        "Art/PR3D/Exports/Containers/PR3D_Container_1x1.fbx",
+        "Art/PR3D/Exports/Containers/PR3D_Container_1x2.fbx",
+        "Art/PR3D/Exports/Containers/PR3D_Container_1x3.fbx",
+        "Art/PR3D/Exports/Containers/PR3D_Container_T.fbx",
+        "Art/PR3D/Exports/Containers/PR3D_Container_Ice.fbx"
+      ],
+      "unity_folder": "Assets/_Projects/Art/PR3D/Containers",
+      "source_sha256": "dc92d268894075b9f4b2e4c6f82e089d21b86846f79ba78fee775a99d79c6151"
+    },
+    {
+      "family": "environment",
+      "source": "Art/PR3D/Source/Environment/PR3D_008_Environment.blend",
+      "exports_folder": "Art/PR3D/Exports/Environment",
+      "unity_folder": "Assets/_Projects/Art/PR3D/Environment",
+      "modules": [
+        "Oven",
+        "WallBlue",
+        "FloorTerracotta",
+        "Counter",
+        "Shelf",
+        "PendantLight",
+        "Jar",
+        "Bowl",
+        "Basil",
+        "Utensils",
+        "IngredientCrate"
+      ],
+      "source_sha256": "7f6a6c0e28bfa9c332225378531980a29f5fa497891d87b76b7b7f933c74f309"
+    }
+  ],
+  "validation": {
+    "all_source_units_metric": true,
+    "all_source_mesh_scales_applied": true,
+    "all_final_export_meshes_have_uvs": true,
+    "unity_import_scale": 1.0,
+    "unity_use_file_scale": true,
+    "unity_bake_axis_conversion": false,
+    "unity_probe_colliders": 0,
+    "unity_probe_mono_behaviours": 0,
+    "unity_console_errors_matching_pr3d": 0,
+    "temporary_unity_imports_deleted": true,
+    "unity_visual_prefabs": {
+      "folder": "Assets/_Projects/Art/PR3D/Prefabs",
+      "count": 44,
+      "colliders": 0,
+      "mono_behaviours": 0,
+      "missing_components": 0,
+      "pizza_variant_count": 10,
+      "pizza_shared_mesh_count": 1
+    },
+    "level_301_runtime_replay": {
+      "platform": "Android",
+      "drag_count": 293,
+      "feed_count": 26,
+      "used_skill_or_booster": false,
+      "remaining_production": 0,
+      "ice_start": 12,
+      "ice_end": 0,
+      "console_errors": 0,
+      "console_warnings": 0,
+      "portrait_resolutions": [
+        [1080, 1920],
+        [1080, 2160],
+        [1440, 2960]
+      ]
+    },
+    "same_session_ab": {
+      "control_gpu_median_ms": 7.611,
+      "integrated_gpu_median_ms": 6.615,
+      "control_cpu_median_ms": 16.888,
+      "integrated_cpu_median_ms": 17.208,
+      "control_allocated_bytes": 697135782,
+      "integrated_allocated_bytes": 718189900,
+      "reserved_memory_delta_bytes": 0
+    },
+    "level_301_contract": {
+      "grid_cells": 49,
+      "containers": 23,
+      "production_lines": 7,
+      "shape_families": 4,
+      "colors": 10,
+      "ice_containers": 1
+    }
+  },
+  "gameplay_contract_changes": [],
+  "rollout_decision": "hold_pending_stakeholder_approval"
+}
