@@ -375,4 +375,14 @@ public class IAPData
     {
         return 51_000;
     }
+
+    public string GetFallbackDisplayPrice(string productId)
+    {
+        if (productId == GameConstain.IAPProductId.NoAds)
+        {
+            return "$1.99";
+        }
+
+        return GetCost(productId).ToString();
+    }
 }

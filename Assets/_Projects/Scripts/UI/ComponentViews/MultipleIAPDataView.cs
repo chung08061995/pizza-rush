@@ -48,7 +48,7 @@ public class MultipleIAPDataView : DraftUtils.DraftMonoBehaviour
     {
         priceText.SetText(DraftUtils.IAP.IAPManager.Instance.GetDisplayPrice(
             _data.productId,
-            () => DataManager.Instance.iapData.GetCost(_data.productId).ToString()));
+            () => DataManager.Instance.iapData.GetFallbackDisplayPrice(_data.productId)));
     }
 
 
