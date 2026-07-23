@@ -51,6 +51,36 @@ def _material(
     return material
 
 
+def _rounded_box(
+    name: str,
+    size: tuple[float, float, float],
+    location: tuple[float, float, float],
+    material: bpy.types.Material,
+    collection: bpy.types.Collection,
+    bevel: float,
+) -> bpy.types.Object:
+    bpy.ops.mesh.primitive_cube_add(size=1.0, location=location)
+    obj = bpy.context.object
+    obj.name = name
+    obj.data.name = f"{name}_MESH"
+    obj.dimensions = size
+    bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+    _link_only(obj, collection)
+    obj.data.materials.append(material)
+
+    modifier = obj.modifiers.new(name="PR3D_Bevel", type="BEVEL")
+    modifier.width = bevel
+    modifier.segments = 2
+    modifier.limit_method = "ANGLE"
+    bpy.context.view_layer.objects.active = obj
+    obj.select_set(True)
+    bpy.ops.object.modifier_apply(modifier=modifier.name)
+    obj.select_set(False)
+    if not obj.data.uv_layers:
+        obj.data.uv_layers.new(name="UVMap")
+    return obj
+
+
 def _look_at(obj: bpy.types.Object, target: tuple[float, float, float]) -> None:
     direction = Vector(target) - obj.location
     obj.rotation_euler = direction.to_track_quat("-Z", "Y").to_euler()
@@ -110,6 +140,7 @@ def _create_import_probe(
     root = bpy.data.objects.new("PR3D_ImportProbe_Root", None)
     root.empty_display_type = "ARROWS"
     root.empty_display_size = 0.35
+    root.hide_render = True
     export_collection.objects.link(root)
     root["purpose"] = "Unity scale, pivot, Y-up and +Z-forward validation"
 
@@ -204,10 +235,10 @@ def _create_camera_and_lights(
     camera_collection.objects.link(camera)
     camera.location = (8.6, -11.8, 13.5)
     camera.data.type = "ORTHO"
-    camera.data.ortho_scale = 12.5
+    camera.data.ortho_scale = 13.8
     camera.data.lens = 50
     camera.data.dof.use_dof = False
-    _look_at(camera, (1.7, 0.0, 0.0))
+    _look_at(camera, (0.0, 0.0, 0.0))
     bpy.context.scene.camera = camera
 
     area_data = bpy.data.lights.new("PR3D_LGT_Key_Data", "AREA")
@@ -230,14 +261,163 @@ def _create_camera_and_lights(
     return camera
 
 
-def _export_probe(
-    root: bpy.types.Object,
-    children: list[bpy.types.Object],
-    output_path: Path,
-) -> None:
+def _create_board_and_tiles(
+    board_collection: bpy.types.Collection,
+    export_collection: bpy.types.Collection,
+) -> dict[str, bpy.types.Object]:
+    blue = _material("PR3D_MAT_TrayBlue", (0.025, 0.17, 0.48, 1.0), 0.2, 0.28)
+    trim = _material("PR3D_MAT_TrayTrim", (0.14, 0.34, 0.76, 1.0), 0.28, 0.22)
+    cream = _material("PR3D_MAT_TileCream", (0.98, 0.71, 0.47, 1.0), 0.0, 0.38)
+    grout = _material("PR3D_MAT_Grout", (0.48, 0.12, 0.045, 1.0), 0.0, 0.62)
+
+    board_root = bpy.data.objects.new("PR3D_Board_7x7_Root", None)
+    board_root.empty_display_type = "CUBE"
+    board_root.empty_display_size = 0.35
+    board_root["cell_size_m"] = 1.0
+    board_root["grid_size"] = "7x7"
+    board_root["pivot"] = "Board center at floor plane"
+    board_collection.objects.link(board_root)
+    export_collection.objects.link(board_root)
+
+    base = _rounded_box(
+        "Visual_TrayBase",
+        (7.6, 7.6, 0.18),
+        (0.0, 0.0, 0.09),
+        blue,
+        board_collection,
+        0.16,
+    )
+    base.parent = board_root
+    grout_bed = _rounded_box(
+        "Visual_GroutBed",
+        (7.08, 7.08, 0.03),
+        (0.0, 0.0, 0.195),
+        grout,
+        board_collection,
+        0.08,
+    )
+    grout_bed.parent = board_root
+
+    for name, size, location in (
+        ("Visual_FrameLeft", (0.32, 7.28, 0.34), (-3.64, 0.0, 0.25)),
+        ("Visual_FrameRight", (0.32, 7.28, 0.34), (3.64, 0.0, 0.25)),
+        ("Visual_FrameTop", (7.28, 0.32, 0.34), (0.0, 3.64, 0.25)),
+        ("Visual_FrameBottom", (7.28, 0.32, 0.34), (0.0, -3.64, 0.25)),
+    ):
+        frame = _rounded_box(name, size, location, trim, board_collection, 0.12)
+        frame.parent = board_root
+
+    tile_template = _rounded_box(
+        "Visual_Tile_r04_c04",
+        (0.92, 0.92, 0.12),
+        (0.0, 0.0, 0.24),
+        cream,
+        board_collection,
+        0.08,
+    )
+    tile_template.parent = board_root
+    for row in range(7):
+        for column in range(7):
+            if row == 3 and column == 3:
+                continue
+            tile = tile_template.copy()
+            tile.data = tile_template.data.copy()
+            tile.data.name = f"PR3D_MESH_Tile_r{row + 1:02d}_c{column + 1:02d}"
+            tile.name = f"Visual_Tile_r{row + 1:02d}_c{column + 1:02d}"
+            tile.location = (column - 3.0, row - 3.0, 0.0)
+            board_collection.objects.link(tile)
+            tile.parent = board_root
+
+    tile_center_root = bpy.data.objects.new("PR3D_Tile_Center_Root", None)
+    board_collection.objects.link(tile_center_root)
+    export_collection.objects.link(tile_center_root)
+    tile_center_root["cell_size_m"] = 1.0
+    tile_center_root["pivot"] = "Cell center at floor plane"
+    center_visual = _rounded_box(
+        "Visual_Center",
+        (0.92, 0.92, 0.12),
+        (0.0, 0.0, 0.06),
+        cream,
+        board_collection,
+        0.08,
+    )
+    center_visual.parent = tile_center_root
+    tile_center_root.hide_render = True
+
+    tile_edge_root = bpy.data.objects.new("PR3D_Tile_Edge_Root", None)
+    board_collection.objects.link(tile_edge_root)
+    export_collection.objects.link(tile_edge_root)
+    tile_edge_root["cell_size_m"] = 1.0
+    tile_edge_root["outward_direction_blender"] = "+Y"
+    edge_visual = _rounded_box(
+        "Visual_EdgeTile",
+        (0.92, 0.92, 0.12),
+        (0.0, 0.0, 0.06),
+        cream,
+        board_collection,
+        0.08,
+    )
+    edge_lip = _rounded_box(
+        "Visual_EdgeLip",
+        (1.02, 0.12, 0.2),
+        (0.0, 0.50, 0.10),
+        trim,
+        board_collection,
+        0.05,
+    )
+    edge_visual.parent = tile_edge_root
+    edge_lip.parent = tile_edge_root
+    tile_edge_root.hide_render = True
+
+    tile_corner_root = bpy.data.objects.new("PR3D_Tile_Corner_Root", None)
+    board_collection.objects.link(tile_corner_root)
+    export_collection.objects.link(tile_corner_root)
+    tile_corner_root["cell_size_m"] = 1.0
+    tile_corner_root["outward_directions_blender"] = "+X,+Y"
+    corner_visual = _rounded_box(
+        "Visual_CornerTile",
+        (0.92, 0.92, 0.12),
+        (0.0, 0.0, 0.06),
+        cream,
+        board_collection,
+        0.08,
+    )
+    corner_lip_y = _rounded_box(
+        "Visual_CornerLipY",
+        (1.02, 0.12, 0.2),
+        (0.0, 0.50, 0.10),
+        trim,
+        board_collection,
+        0.05,
+    )
+    corner_lip_x = _rounded_box(
+        "Visual_CornerLipX",
+        (0.12, 1.02, 0.2),
+        (0.50, 0.0, 0.10),
+        trim,
+        board_collection,
+        0.05,
+    )
+    corner_visual.parent = tile_corner_root
+    corner_lip_y.parent = tile_corner_root
+    corner_lip_x.parent = tile_corner_root
+    tile_corner_root.hide_render = True
+
+    board_root["material_dependencies"] = ",".join(
+        material.name for material in (blue, trim, cream, grout)
+    )
+    return {
+        "board": board_root,
+        "tile_center": tile_center_root,
+        "tile_edge": tile_edge_root,
+        "tile_corner": tile_corner_root,
+    }
+
+
+def _export_hierarchy(root: bpy.types.Object, output_path: Path) -> None:
     bpy.ops.object.select_all(action="DESELECT")
     root.select_set(True)
-    for child in children:
+    for child in root.children_recursive:
         child.select_set(True)
     bpy.context.view_layer.objects.active = root
     bpy.ops.export_scene.fbx(
@@ -275,6 +455,16 @@ def build_master_scene(repo_root: str | os.PathLike[str]) -> dict[str, str]:
         bpy.data.collections.remove(collection)
     for text in list(bpy.data.texts):
         bpy.data.texts.remove(text)
+    for data_blocks in (
+        bpy.data.meshes,
+        bpy.data.curves,
+        bpy.data.cameras,
+        bpy.data.lights,
+        bpy.data.materials,
+        bpy.data.images,
+    ):
+        for data_block in list(data_blocks):
+            data_blocks.remove(data_block)
 
     scene.name = MASTER_NAME
     scene.unit_settings.system = "METRIC"
@@ -307,8 +497,9 @@ def build_master_scene(repo_root: str | os.PathLike[str]) -> dict[str, str]:
     camera_lights = _collection(top, "80_CAMERAS_LIGHTS")
     export = _collection(top, "90_EXPORT")
     guides = _collection(top, "99_GUIDES")
+    gameplay_collections = {}
     for name in ("Board", "Rails", "Gates", "Pizza", "Containers", "Ice"):
-        _collection(gameplay, name)
+        gameplay_collections[name] = _collection(gameplay, name)
     for name in ("Architecture", "Props"):
         _collection(environment, name)
 
@@ -320,13 +511,24 @@ def build_master_scene(repo_root: str | os.PathLike[str]) -> dict[str, str]:
     export_root.empty_display_type = "CUBE"
     export_root.empty_display_size = 0.25
     export.objects.link(export_root)
-    probe_root, probe_children = _create_import_probe(export)
+    probe_root, _ = _create_import_probe(export)
     probe_root.parent = export_root
+    board_assets = _create_board_and_tiles(gameplay_collections["Board"], export)
 
     blend_path = source_dir / f"{MASTER_NAME}.blend"
     export_path = export_dir / "PR3D_ImportProbe.fbx"
+    board_export_dir = export_dir / "Board"
+    board_export_dir.mkdir(parents=True, exist_ok=True)
+    board_export_path = board_export_dir / "PR3D_Board_7x7.fbx"
+    tile_center_path = board_export_dir / "PR3D_Tile_Center.fbx"
+    tile_edge_path = board_export_dir / "PR3D_Tile_Edge.fbx"
+    tile_corner_path = board_export_dir / "PR3D_Tile_Corner.fbx"
     preview_path = preview_dir / "PR3D_MasterScene.png"
-    _export_probe(probe_root, probe_children, export_path)
+    _export_hierarchy(probe_root, export_path)
+    _export_hierarchy(board_assets["board"], board_export_path)
+    _export_hierarchy(board_assets["tile_center"], tile_center_path)
+    _export_hierarchy(board_assets["tile_edge"], tile_edge_path)
+    _export_hierarchy(board_assets["tile_corner"], tile_corner_path)
 
     scene.render.filepath = str(preview_path)
     file_preferences = bpy.context.preferences.filepaths
@@ -345,6 +547,10 @@ def build_master_scene(repo_root: str | os.PathLike[str]) -> dict[str, str]:
     return {
         "blend": str(blend_path),
         "fbx": str(export_path),
+        "board_fbx": str(board_export_path),
+        "tile_center_fbx": str(tile_center_path),
+        "tile_edge_fbx": str(tile_edge_path),
+        "tile_corner_fbx": str(tile_corner_path),
         "preview": str(preview_path),
         "scene": scene.name,
     }

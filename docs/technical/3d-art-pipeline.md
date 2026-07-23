@@ -45,3 +45,19 @@ Before promoting an FBX, import the asymmetric probe without target-size
 normalization. A passing Unity result has importer scale 1, a 1×1×1 meter cube
 centered at `(0, 0.5, 0)`, and the orange marker extending toward +Z. Do not
 enable Unity `Bake Axis Conversion` for this preset.
+
+## Level 301 board and tile contract
+
+`GridXZ` uses 1-meter spacing and maps a cell to its center at
+`(x + 0.5, 0, z + 0.5)`. The PR3D board source therefore keeps:
+
+- a board-center pivot at the floor plane;
+- 49 tile centers on a 7×7 grid with exact 1-meter spacing;
+- a 0.92×0.12×0.92 meter cream center tile;
+- rotatable edge and corner modules sharing the cell-center pivot;
+- visual-only meshes with UVs and no colliders or gameplay components.
+
+`PR3D_Board_7x7.fbx` imports at scale 1 with bounds 7.6×0.42×7.6 meters.
+The board currently costs about 5.9k triangles and is within the core asset
+budget. Integration must remain an additive visual child; it must not replace
+the existing `TileMap3D` roots or colliders.

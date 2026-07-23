@@ -6,6 +6,8 @@
   preview, Unity import probe, and asset manifest.
 - Verified meter scale, root pivot, Y-up, and +Z-forward import through
   Blender MCP and Unity MCP without changing gameplay contracts.
+- Added the PR3D 7×7 pizza tray and reusable center, edge, and corner tile
+  modules with Blender/Unity import validation.
 
 ## 2026-07-22
 

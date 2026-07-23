@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "task_id": "PR3D-002",
+  "task_ids": ["PR3D-002", "PR3D-003"],
   "status": "verified",
   "generated_on": "2026-07-23",
   "toolchain": {
@@ -25,6 +25,30 @@
     "resolution": [1080, 1920],
     "preview_resolution": [540, 960]
   },
+  "board_contract": {
+    "root": "PR3D_Board_7x7_Root",
+    "pivot": [0.0, 0.0, 0.0],
+    "grid": [7, 7],
+    "cell_size_m": 1.0,
+    "tile_count": 49,
+    "bounds_m": [7.6, 0.42, 7.6],
+    "source_mesh_count": 55,
+    "source_triangle_count": 5940,
+    "unity_triangle_count": 5922,
+    "all_transforms_applied": true,
+    "all_meshes_have_uvs": true,
+    "tile_modules": {
+      "center_bounds_m": [0.92, 0.12, 0.92],
+      "edge_bounds_m": [1.02, 0.2, 1.02],
+      "corner_bounds_m": [1.07, 0.2, 1.07]
+    },
+    "materials": [
+      "PR3D_MAT_TrayBlue",
+      "PR3D_MAT_TrayTrim",
+      "PR3D_MAT_TileCream",
+      "PR3D_MAT_Grout"
+    ]
+  },
   "collections": [
     "00_REFERENCE",
     "10_GAMEPLAY_VISUALS",
@@ -42,36 +66,79 @@
     {
       "role": "master_scene",
       "path": "Art/PR3D/Source/PR3D_PizzaFactory_Master.blend",
-      "sha256": "8b3e783055167ced365b2461318786b4b2565d9af686268505057109a21c8d8d"
+      "sha256": "b74d41243eccc03c34904e8453c14b329043ae7727f3933eba1877b4dda2b629"
     },
     {
       "role": "rebuild_script",
       "path": "Art/PR3D/Source/setup_master.py",
-      "sha256": "cd168badb2a8d11017cbf3eeb9ea5fd8b70cd105eb8215db8779418e44d8d964"
+      "sha256": "6797c71e6931e1bf7b513a5005d3b308cd9238f1b043cfa0e6bd744d6d2c41d7"
+    },
+    {
+      "role": "validation_script",
+      "path": "Art/PR3D/Source/validate_master.py",
+      "sha256": "603879844b36df1a27369d78e629331a245ee2ad5e1a41c1d0755275ab364427"
     },
     {
       "role": "unity_import_probe",
       "path": "Art/PR3D/Exports/PR3D_ImportProbe.fbx",
-      "sha256": "c911dc39f80248317e9b23bf8855d258157110d12c2c7a622ea1300ca98cc3aa"
+      "sha256": "2bca70d61d55b21fec008511ef2a290498dbde6669bb1213886a1b0f06c04e6c"
+    },
+    {
+      "role": "board_7x7",
+      "path": "Art/PR3D/Exports/Board/PR3D_Board_7x7.fbx",
+      "sha256": "81514186fe4f3b0627719d43e1bfa0eb1e119a2a5c171615965b6ed1077d7aa2"
+    },
+    {
+      "role": "tile_center",
+      "path": "Art/PR3D/Exports/Board/PR3D_Tile_Center.fbx",
+      "sha256": "6e4033a1107d000f0534f3a10eba94972ad01db0bfc0bc7211e82ef937366987"
+    },
+    {
+      "role": "tile_edge",
+      "path": "Art/PR3D/Exports/Board/PR3D_Tile_Edge.fbx",
+      "sha256": "fd4d4a8936e102842d8304a1d78ad0924b253ba00bf3602d5c6af7fd90169321"
+    },
+    {
+      "role": "tile_corner",
+      "path": "Art/PR3D/Exports/Board/PR3D_Tile_Corner.fbx",
+      "sha256": "2c73226f2b534726974a443474675c4e208e17baf7598dc9d92426be22927c57"
     },
     {
       "role": "portrait_preview",
       "path": "Art/PR3D/Previews/PR3D_MasterScene.png",
-      "sha256": "964e7b569ff06640cb7cc6753147657777f149ec2703bc99ed2edced601007a8"
+      "sha256": "da7d91452d5833b40e958f8359541abc94d3e29548d0a3e35d365504757306f7"
     }
   ],
   "unity_import_evidence": {
-    "method": "Temporary import through unityMCP, followed by cleanup",
-    "asset_type": "UnityEngine.GameObject",
-    "importer_global_scale": 1.0,
-    "use_file_scale": true,
-    "bake_axis_conversion": false,
-    "root_pivot": [0.0, 0.0, 0.0],
-    "meter_cube_center": [0.0, 0.5, 0.0],
-    "meter_cube_size": [1.0, 1.0, 1.0],
-    "forward_marker_center": [0.0, 0.275, 0.92],
-    "forward_marker_size": [0.381, 0.33, 0.55],
-    "result": "pass"
+    "pr3d_002_import_probe": {
+      "method": "Temporary import through unityMCP, followed by cleanup",
+      "asset_type": "UnityEngine.GameObject",
+      "importer_global_scale": 1.0,
+      "use_file_scale": true,
+      "bake_axis_conversion": false,
+      "root_pivot": [0.0, 0.0, 0.0],
+      "meter_cube_center": [0.0, 0.5, 0.0],
+      "meter_cube_size": [1.0, 1.0, 1.0],
+      "forward_marker_center": [0.0, 0.275, 0.92],
+      "forward_marker_size": [0.381, 0.33, 0.55],
+      "result": "pass"
+    },
+    "pr3d_003_board": {
+      "method": "Temporary import of final FBX files through unityMCP, followed by cleanup",
+      "importer_global_scale": 1.0,
+      "use_file_scale": true,
+      "bake_axis_conversion": false,
+      "root_pivot": [0.0, 0.0, 0.0],
+      "board_bounds_m": [7.6, 0.42, 7.6],
+      "tile_count": 49,
+      "unique_cell_centers_x": 7,
+      "unique_cell_centers_z": 7,
+      "cell_center_range_x": [-3.0, 3.0],
+      "cell_center_range_z": [-3.0, 3.0],
+      "collider_count": 0,
+      "console_errors_matching_pr3d": 0,
+      "result": "pass"
+    }
   },
   "gameplay_contract_changes": []
 }

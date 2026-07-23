@@ -32,10 +32,15 @@ Mỗi task phải ưu tiên gọi server **`unityMCP` tại `http://127.0.0.1:80
   Import probe đạt scale 1 m, pivot gốc, Y-up và +Z-forward; asset thử đã
   được xóa khỏi project Unity sau khi kiểm tra.
 
-- [ ] [PR3D-003] Dựng board và bộ tile
+- [x] [PR3D-003] Dựng board và bộ tile
   Dựng tray/frame 7×7 và visual tile theo concept nhưng giữ nguyên cell size, pivot và vị trí grid. Dùng Blender MCP để model và Unity MCP để đối chiếu Level 301 trong Unity.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: `Art/PR3D/Exports/Board/PR3D_Board_7x7.fbx` và ba module
+  `PR3D_Tile_{Center,Edge,Corner}.fbx`. Blender xác nhận 49 tile, spacing 1 m,
+  pivot gốc, UV đầy đủ và khoảng 5.9k triangles. Unity MCP xác nhận scale 1,
+  bounds 7.6×0.42×7.6 m, không collider và không lỗi Console liên quan PR3D;
+  asset import thử đã được xóa sau kiểm tra.
 
 - [ ] [PR3D-004] Dựng bộ ray procedural
   Dựng ray thẳng, ray cong 90° có thể mirror/rotate, support, mũi tên và connector board khớp production place hiện tại. Dùng Blender MCP để tạo kit và Unity MCP để kiểm tra anchor, hướng ray và khoảng cách.
