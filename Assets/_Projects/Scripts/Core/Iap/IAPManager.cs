@@ -149,6 +149,12 @@ namespace DraftUtils.IAP
 
         public string GetDisplayPrice(string productId, Func<string> fallback = null)
         {
+#if UNITY_EDITOR
+            // Unity IAP uses FakeStore in the Editor and supplies synthetic prices.
+            // Show the project's configured fallback so the UI matches the real
+            // product instead of displaying FakeStore test metadata.
+            return fallback?.Invoke() ?? "N/A";
+#else
             var localizedPrice = GetPrice(productId);
             if (!string.IsNullOrEmpty(localizedPrice) && localizedPrice != "N/A")
             {
@@ -156,6 +162,7 @@ namespace DraftUtils.IAP
             }
 
             return fallback?.Invoke() ?? "N/A";
+#endif
         }
 
         /// <summary>
