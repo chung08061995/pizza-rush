@@ -23,6 +23,7 @@ public class ContainerFlyAwayState : DraftUtils.IState
     public void OnEnter()
     {
         _container.IsFlyingAway = true;
+        VibrationManager.Vibrate(VibrationType.Completion);
         _container.transform.DOKill();
         var startPos = _container.transform.position;
         var endPosUp = new Vector3(startPos.x, FULL_CONTAINER_HEIGHT, startPos.z);

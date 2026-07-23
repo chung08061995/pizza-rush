@@ -17,6 +17,9 @@ Pizza Rush is a Unity 6000.4.10f1 URP mobile game. Init bootstraps Main and Leve
 - `AdsManager` persists the No Ads entitlement locally and reconciles it with the
   store purchase history after Unity IAP initialization. It suppresses banner and
   interstitial ads while leaving opt-in rewarded ads available.
+- `VibrationManager` provides guarded mobile haptic feedback. It reads the persisted
+  `DataManager.vibrate` setting and is called for pizza placement, container
+  completion, win, lose, and toggle-on confirmation events.
 
 ## 3D visual boundary
 

@@ -48,6 +48,7 @@ public class WinState : DraftUtils.IState
         {
             SoundManager.Instance.PlayWin(_levelRunner.transform);
         }
+        VibrationManager.Vibrate(VibrationType.Success);
     }
     public void OnExit()
     {

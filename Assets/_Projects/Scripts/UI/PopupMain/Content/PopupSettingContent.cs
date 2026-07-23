@@ -8,34 +8,76 @@ public class PopupSettingContent : DraftUtils.DraftMonoBehaviour
     [SerializeField] private DraftUtils.AnimatedToggleController musicButton;
     [SerializeField] private DraftUtils.AnimatedToggleController vibrateButton;
 
-    private DraftUtils.PersistentValue<bool> musicVolume => DataManager.Instance.musicVolume;
-    private DraftUtils.PersistentValue<bool> vibrate => DataManager.Instance.vibrate;
+    private DraftUtils.PersistentValue<bool> _musicVolume;
+    private DraftUtils.PersistentValue<bool> _vibrate;
+    private bool _settingListenersRegistered;
 
     private void Start()
     {
-        backButton.onClick.AddListener(ReturnHome);
+        if (backButton != null)
+        {
+            backButton.onClick.AddListener(ReturnHome);
+        }
+        else if (popup != null)
+        {
+            popup.closeButton.OnClickAction = popup.HideWithAnimation;
+        }
+
+        _musicVolume = DataManager.Instance.musicVolume;
+        _vibrate = DataManager.Instance.vibrate;
 
         musicButton.Button.OnClickAction = ClickMusicButton;
-        musicButton.ApplyImmediate(musicVolume.Value);
-
         vibrateButton.Button.OnClickAction = ClickVibrateButton;
-        vibrateButton.ApplyImmediate(vibrate.Value);
+
+        _musicVolume.Notifier.AddListener(RefreshMusicButton);
+        _vibrate.Notifier.AddListener(RefreshVibrateButton);
+        _settingListenersRegistered = true;
+
+        musicButton.ApplyImmediate(_musicVolume.Value);
+        vibrateButton.ApplyImmediate(_vibrate.Value);
     }
 
     private void ReturnHome()
     {
-        GetComponentInParent<PopupMain>().ShowHome();
+        var popupMain = GetComponentInParent<PopupMain>();
+        if (popupMain != null)
+        {
+            popupMain.ShowHome();
+        }
     }
 
     private void ClickMusicButton()
     {
-        musicVolume.Value = !musicVolume.Value;
-        musicButton.ApplyWithAnimation(musicVolume.Value);
+        _musicVolume.Value = !_musicVolume.Value;
     }
 
     private void ClickVibrateButton()
     {
-        vibrate.Value = !vibrate.Value;
-        vibrateButton.ApplyWithAnimation(vibrate.Value);
+        _vibrate.Value = !_vibrate.Value;
+        if (_vibrate.Value)
+        {
+            VibrationManager.Vibrate(VibrationType.Selection);
+        }
+    }
+
+    private void RefreshMusicButton()
+    {
+        musicButton.ApplyWithAnimation(_musicVolume.Value);
+    }
+
+    private void RefreshVibrateButton()
+    {
+        vibrateButton.ApplyWithAnimation(_vibrate.Value);
+    }
+
+    private void OnDestroy()
+    {
+        if (!_settingListenersRegistered)
+        {
+            return;
+        }
+
+        _musicVolume.Notifier.RemoveListener(RefreshMusicButton);
+        _vibrate.Notifier.RemoveListener(RefreshVibrateButton);
     }
 }

@@ -24,6 +24,10 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
 
     private DraftUtils.TabSlideAnimator tabSlideAnimator = new();
     private DraftUtils.SmoothFollow disableFollowerFollowTarget = new();
+    private DraftUtils.PersistentValue<bool> _musicVolume;
+    private DraftUtils.PersistentValue<bool> _vibrate;
+    private bool _settingListenersRegistered;
+
     void Start()
     {
         PlayBackgroundLobby();
@@ -36,10 +40,19 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         homeButton.Button.OnClickAction = ClickHome;
         screenShotButton.Button.OnClickAction = ClickScreenShort;
         noAdsButton.onClick.AddListener(ClickNoAds);
+
+        _musicVolume = DataManager.Instance.musicVolume;
+        _vibrate = DataManager.Instance.vibrate;
+
         musicButton.Button.OnClickAction = ClickMusicButton;
-        musicButton.ApplyImmediate(DataManager.Instance.musicVolume.Value);
         vibrateButton.Button.OnClickAction = ClickVibrateButton;
-        vibrateButton.ApplyImmediate(DataManager.Instance.vibrate.Value);
+
+        _musicVolume.Notifier.AddListener(RefreshMusicButton);
+        _vibrate.Notifier.AddListener(RefreshVibrateButton);
+        _settingListenersRegistered = true;
+
+        musicButton.ApplyImmediate(_musicVolume.Value);
+        vibrateButton.ApplyImmediate(_vibrate.Value);
         ConfigureQuickButtonHover();
 
         // goldMoreButton.RegisterClickEvents();
@@ -194,14 +207,37 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
 
     private void ClickMusicButton()
     {
-        DataManager.Instance.musicVolume.Value = !DataManager.Instance.musicVolume.Value;
-        musicButton.ApplyWithAnimation(DataManager.Instance.musicVolume.Value);
+        _musicVolume.Value = !_musicVolume.Value;
     }
 
     private void ClickVibrateButton()
     {
-        DataManager.Instance.vibrate.Value = !DataManager.Instance.vibrate.Value;
-        vibrateButton.ApplyWithAnimation(DataManager.Instance.vibrate.Value);
+        _vibrate.Value = !_vibrate.Value;
+        if (_vibrate.Value)
+        {
+            VibrationManager.Vibrate(VibrationType.Selection);
+        }
+    }
+
+    private void RefreshMusicButton()
+    {
+        musicButton.ApplyWithAnimation(_musicVolume.Value);
+    }
+
+    private void RefreshVibrateButton()
+    {
+        vibrateButton.ApplyWithAnimation(_vibrate.Value);
+    }
+
+    private void OnDestroy()
+    {
+        if (!_settingListenersRegistered)
+        {
+            return;
+        }
+
+        _musicVolume.Notifier.RemoveListener(RefreshMusicButton);
+        _vibrate.Notifier.RemoveListener(RefreshVibrateButton);
     }
 
     private void DoMoveDisableButtonBackground(Transform activeButton)

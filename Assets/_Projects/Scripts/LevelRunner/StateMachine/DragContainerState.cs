@@ -612,6 +612,8 @@ public class DragContainerState : DraftUtils.IState
             }).SetTarget(capturedProduction.transform).SetEase(DataManager.Instance.ParametterGameConfigSO.ProductionEase)
             .OnComplete(() =>
             {
+                VibrationManager.Vibrate(VibrationType.ItemPlaced);
+
                 if (container != null && container.transform != null)
                 {
                     if (container.IsFlyingAway)
@@ -661,6 +663,8 @@ public class DragContainerState : DraftUtils.IState
 
         if (container.IsFull() && container.TryAdvanceColorLayer())
         {
+            VibrationManager.Vibrate(VibrationType.Completion);
+
             // Coffee Run counts a completed LayerBox layer as one resolved box for
             // Ice unlock thresholds, even though the physical container remains.
             _levelRunner.LevelTracking.resolvedContainer.SetValue(

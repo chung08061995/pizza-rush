@@ -27,6 +27,7 @@ public class LoseState : DraftUtils.IState
         {
             SoundManager.Instance.PlayLose(_levelRunner.transform);
         }
+        VibrationManager.Vibrate(VibrationType.Warning);
         
         if (PopupManager.Instance != null)
         {
