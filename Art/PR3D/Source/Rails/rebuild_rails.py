@@ -19,7 +19,9 @@ ARROW=mat("PR3D_Rail_Arrow",(.16,.42,.48),.3,.28)
 RUBBER=mat("PR3D_Rail_Rubber",(.025,.03,.035),.1,.55)
 
 def cube(name, loc, scale, material, bevel=.06, rot=0):
-    bpy.ops.mesh.primitive_cube_add(location=loc, rotation=(0,0,rot))
+    # Rails lie in the X/Z gameplay plane; rotate around Y so a quarter turn
+    # does not stand the belt slabs on edge after FBX Y-up import.
+    bpy.ops.mesh.primitive_cube_add(location=loc, rotation=(0,rot,0))
     o=bpy.context.object; o.name=name; o.scale=scale; bpy.ops.object.transform_apply(location=False,rotation=False,scale=True)
     if bevel:
         b=o.modifiers.new("Edge bevel","BEVEL"); b.width=bevel; b.segments=3
@@ -49,8 +51,11 @@ def curve(path, side=1):
     for i in range(10):
         a=(i/9)*math.pi/2
         x=side*r*math.sin(a); z=side*r*(1-math.cos(a))
-        cube("Rail_Curve_Belt_%02d"%i,(x,.16,z),(.26,.10,.42),CHAR,.07,rot=side*a)
-        cube("Rail_Curve_Housing_%02d"%i,(x,.32,z+side*.5),(.26,.11,.08),STEEL,.04,rot=side*a)
+        # Keep the imported segments aligned to the gameplay plane; the parent
+        # prefab supplies the quarter-turn, and per-piece Y rotation created
+        # visible radial fins in the portrait camera.
+        cube("Rail_Curve_Belt_%02d"%i,(x,.16,z),(.42,.10,.26),CHAR,.07,rot=0)
+        cube("Rail_Curve_Housing_%02d"%i,(x,.32,z+side*.5),(.42,.11,.08),STEEL,.04,rot=0)
     cube("Curve_Arrow",(side*.9,.285,side*.35),(.18,.018,.04),ARROW,.02,rot=side*math.pi/4)
     export(path)
 
