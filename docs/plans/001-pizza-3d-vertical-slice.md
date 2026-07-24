@@ -123,3 +123,16 @@ worktree editor was on Standalone, where the project's `GOOGLE_ADMOB` define is
 not active. Switching the Unity MCP worktree instance to Android restored a
 clean compile without changing Ads or gameplay code. PR3D-010 through PR3D-012
 then completed with the evidence above.
+
+2026-07-24 visual refinement loop: the Level 301 preview was iterated against
+`docs/reference/pizza-factory-concept.png` using Unity Game View captures
+`Assets/_Projects/Art/PR3D/Evidence/PR3D_Final_Iteration_25.png` and the
+`PR3D_Final_Ratio_*` captures. The persisted visual changes are additive:
+dynamic gate glow facades on the production-line prefabs, four-item pizza
+readability windows that leave pooled gameplay data untouched, 3D container
+models for the 1×1/1×2/1×3/L/T/Ice families with runtime color wiring, and a
+larger oven/fire treatment. Level 301 runtime audit reported 7 lines, 23
+containers and 7 gate facades; after clearing the Console, Unity MCP reported
+zero errors. The editor Game View clamps `Screen.height` to 1550, so the
+portrait-ratio commands are evidence of camera stability only; device-build
+captures at 9:18 and 9:19.5 remain a rollout check.

@@ -9,7 +9,8 @@ namespace PizzaRush.PR3D
     /// </summary>
     public sealed class PR3DHideLegacyPizzaVisuals : MonoBehaviour
     {
-        private int _scanFrames;
+        private const int VisiblePizzaCountPerLine = 4;
+        private static int _lastGlobalScanFrame = -1;
 
         private void Awake()
         {
@@ -18,13 +19,18 @@ namespace PizzaRush.PR3D
 
         private void LateUpdate()
         {
-            // LevelFactory can instantiate the line visuals after this object
-            // awakens, so perform one deferred scan as well.
-            if (_scanFrames++ < 120) HideLegacy();
+            // Production lines are pooled and shift while the level is running.
+            // Keep the visual window in sync without changing any Production data.
+            HideLegacy();
         }
 
         private void HideLegacy()
         {
+            // This component is present on the scene root and production-line
+            // prefabs. Only the first instance in a frame performs the global scan.
+            if (_lastGlobalScanFrame == Time.frameCount) return;
+            _lastGlobalScanFrame = Time.frameCount;
+
             foreach (var child in GetComponentsInChildren<Transform>(true))
             {
                 if (child == transform) continue;
@@ -48,6 +54,25 @@ namespace PizzaRush.PR3D
                     renderer.transform.name == "belt1" || renderer.transform.name == "belt2" ||
                     renderer.transform.name == "belt2 (1)")
                     renderer.enabled = false;
+            }
+
+            // Level 301 intentionally owns several long queues. The original
+            // placeholders were visually clipped by their line housing, while the
+            // replacement mesh remained visible far beyond it and crossed the HUD.
+            // Limit only the replacement child to the readable segment nearest the
+            // board. Pooled Production objects and their indices remain untouched.
+            foreach (var production in FindObjectsByType<Production>(
+                         FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                var shouldShow = production.gameObject.activeInHierarchy &&
+                                 production.CurrentIndex >= 0 &&
+                                 production.CurrentIndex < VisiblePizzaCountPerLine;
+                foreach (var visualRenderer in production.GetComponentsInChildren<Renderer>(true))
+                {
+                    if (visualRenderer.transform.name != "PR3D_VisualPizza") continue;
+                    if (visualRenderer.enabled != shouldShow)
+                        visualRenderer.enabled = shouldShow;
+                }
             }
         }
     }

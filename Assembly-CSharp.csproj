@@ -447,6 +447,7 @@
     <None Include="Assets/_Projects/Resources/LevelData/0094.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0203.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0140.json" />
+    <None Include="Assets/_Projects/Art/PR3D/Containers/PR3D_ContainerDynamicBody.shader" />
     <None Include="Assets/_Projects/Resources/LevelData/0315.json" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets/_Projects/Resources/LevelData/0157.json" />
@@ -555,6 +556,7 @@
     <None Include="Assets/_Projects/Resources/LevelData/0189.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0197.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0072.json" />
+    <None Include="Assets/_Projects/Art/PR3D/Gates/PR3D_DynamicGateGlow.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />
     <None Include="Assets/_Projects/Resources/LevelData/0272.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0120.json" />
