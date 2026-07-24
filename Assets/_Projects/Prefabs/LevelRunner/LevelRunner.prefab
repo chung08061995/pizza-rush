@@ -195,6 +195,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PR3D_VisualEnvironment
       objectReference: {fileID: 0}
+    - target: {fileID: 6387346636996525163, guid: 9a123923cfe0c4e68bac43e67e011904, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387346636996525163, guid: 9a123923cfe0c4e68bac43e67e011904, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387346636996525163, guid: 9a123923cfe0c4e68bac43e67e011904, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387346636996525163, guid: 9a123923cfe0c4e68bac43e67e011904, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6442596425156587226, guid: 9a123923cfe0c4e68bac43e67e011904, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4

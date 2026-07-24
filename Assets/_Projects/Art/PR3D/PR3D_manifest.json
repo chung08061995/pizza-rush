@@ -1,0 +1,20 @@
+{
+  "slice": "Level301",
+  "reference": "docs/reference/pizza-factory-concept.png",
+  "units": "meters",
+  "axes": "Y-up, forward-Z",
+  "camera": "portrait",
+  "visualPrefabs": {
+    "environment": "Assets/_Projects/Art/PR3D/Prefabs/Environment/PR3D_VIS_Level301_Environment.prefab",
+    "board": "Assets/_Projects/Art/PR3D/Prefabs/Board/PR3D_VIS_Board_7x7.prefab",
+    "rails": "Assets/_Projects/Art/PR3D/Prefabs/Rails/",
+    "gates": "Assets/_Projects/Art/PR3D/Prefabs/Gates/",
+    "pizza": "Assets/_Projects/Art/PR3D/Prefabs/Pizza/"
+  },
+  "gameplayContract": "Level301 JSON, grid, colliders, drag behavior, production anchors, timer and serialized roots unchanged",
+  "validationEvidence": [
+    "Assets/_Projects/Art/PR3D/Evidence/PR3D_Goal_Final_Portrait.png",
+    "Assets/_Projects/Art/PR3D/Evidence/PR3D_Goal_Final_1242x2688.png",
+    "Assets/_Projects/Art/PR3D/Evidence/PR3D_Goal_Final_1440x2560.png"
+  ]
+}

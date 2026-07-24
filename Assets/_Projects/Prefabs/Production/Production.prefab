@@ -570,6 +570,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8868331629588744522, guid: 31e27b07ba2e4564e9d439ef416c22b9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5572017425960103819, guid: 72cb3f2fb1a0a4d019f1d53d9df9fc2b, type: 3}
+    - target: {fileID: 8868331629588744522, guid: 31e27b07ba2e4564e9d439ef416c22b9, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -601,6 +605,26 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 0.15162267
       objectReference: {fileID: 0}
+    - target: {fileID: 8868331629588744522, guid: 31e27b07ba2e4564e9d439ef416c22b9, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868331629588744522, guid: 31e27b07ba2e4564e9d439ef416c22b9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8666744675335769428, guid: 64734a9cdab2c486eb9e6b31de260016, type: 3}
+    - target: {fileID: 8868331629588744522, guid: 31e27b07ba2e4564e9d439ef416c22b9, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4153162254947419596, guid: 64734a9cdab2c486eb9e6b31de260016, type: 3}
+    - target: {fileID: 8868331629588744522, guid: 31e27b07ba2e4564e9d439ef416c22b9, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: -7663452584703135364, guid: 64734a9cdab2c486eb9e6b31de260016, type: 3}
+    - target: {fileID: 8868331629588744522, guid: 31e27b07ba2e4564e9d439ef416c22b9, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: -7736562590901944723, guid: 64734a9cdab2c486eb9e6b31de260016, type: 3}
     - target: {fileID: 8868331629588744522, guid: 31e27b07ba2e4564e9d439ef416c22b9, type: 3}
       propertyPath: 'm_BlendShapeWeights.Array.data[0]'
       value: 100
