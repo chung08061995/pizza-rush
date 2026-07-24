@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RendererMonoBehaviour
   m_renderers:
-  - {fileID: 8200158639329273170}
+  - {fileID: 0}
 --- !u!1 &3244752525090579916
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +433,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7435283803165754102}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1074,11 +1074,6 @@ PrefabInstance:
 --- !u!4 &7308236688478607788 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3783260467050984060, guid: 11d5e9918e8f742828ab5363c6990021, type: 3}
-  m_PrefabInstance: {fileID: 5903310732348664784}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &8200158639329273170 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2314873313504448130, guid: 11d5e9918e8f742828ab5363c6990021, type: 3}
   m_PrefabInstance: {fileID: 5903310732348664784}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6446827591210996700
