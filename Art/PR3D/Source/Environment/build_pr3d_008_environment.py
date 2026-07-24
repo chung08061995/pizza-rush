@@ -162,13 +162,43 @@ def arch_mesh(name, collection, parent, mats):
 
 def build_oven(collection, mats):
     r = root("PR3D_Environment_Oven_Root", collection, (-2.25, 3.1, 0.0))
-    cube("Visual_OvenPlinth", (0, 0, 0.34), (1.45, 0.70, 0.34), mats["stone"], collection, r, 0.08)
-    # Dome reads clearly in portrait while staying shallow behind gameplay.
-    sphere("Visual_OvenDome", (0, 0.10, 1.25), (1.38, 0.62, 1.22), mats["brick"], collection, r)
-    cube("Visual_OvenDomeTrim", (0, -0.50, 0.73), (1.46, 0.14, 0.12), mats["stone"], collection, r, 0.035)
+    cube("Visual_OvenPlinth", (0, 0, 0.34), (1.52, 0.70, 0.34), mats["stone"], collection, r, 0.08)
+    # Keep the inexpensive dome base, then layer a sparse brick pattern on the
+    # camera-facing side. The orange brick rhythm is the concept's strongest
+    # environment silhouette and must survive at phone scale.
+    sphere("Visual_OvenDome", (0, 0.10, 1.30), (1.43, 0.62, 1.28), mats["brick_dark"], collection, r)
+    brick_rows = (
+        (0.72, 2.30, 6),
+        (1.02, 2.55, 7),
+        (1.32, 2.45, 7),
+        (1.62, 2.12, 6),
+        (1.92, 1.62, 5),
+        (2.20, 0.92, 3),
+    )
+    for row, (z, width, count) in enumerate(brick_rows):
+        brick_w = width / count
+        offset = brick_w * 0.5 if row % 2 else 0.0
+        for col in range(count):
+            x = -width * 0.5 + brick_w * (col + 0.5) + offset
+            if abs(x) > width * 0.5:
+                continue
+            # Leave the fire opening unobstructed.
+            if z < 1.34 and abs(x) < 0.76:
+                continue
+            cube(
+                f"Visual_OvenBrick_{row:02}_{col:02}",
+                (x, -0.535, z),
+                (brick_w * 0.45, 0.055, 0.115),
+                mats["brick"] if (row + col) % 3 else mats["brick_light"],
+                collection,
+                r,
+                0.025,
+            )
+    cube("Visual_OvenDomeTrim", (0, -0.50, 0.73), (1.53, 0.14, 0.12), mats["stone"], collection, r, 0.035)
     arch_mesh("Visual_OvenArch", collection, r, mats)
     cube("Visual_OvenOpening", (0, -0.235, 0.78), (0.68, 0.22, 0.55), mats["dark"], collection, r, 0.14)
-    sphere("Visual_OvenFire", (0, -0.48, 0.55), (0.45, 0.10, 0.26), mats["fire"], collection, r)
+    sphere("Visual_OvenFire", (0, -0.49, 0.55), (0.50, 0.10, 0.30), mats["fire"], collection, r)
+    sphere("Visual_OvenFireCore", (0, -0.595, 0.55), (0.26, 0.055, 0.22), mats["fire_core"], collection, r)
     for x in (-0.26, 0.26):
         cyl(
             f"Visual_FireLog_{'L' if x < 0 else 'R'}",
@@ -182,7 +212,8 @@ def build_oven(collection, mats):
             rotation=(0, math.pi / 2, 0),
         )
     # Chimney is separable-looking but ships with the oven module.
-    cyl("Visual_OvenChimney", (0, 0.10, 2.64), 0.34, 1.15, mats["metal"], collection, r, 20, bevel=0.025)
+    cyl("Visual_OvenChimney", (0, 0.10, 2.70), 0.34, 1.15, mats["metal"], collection, r, 20, bevel=0.025)
+    cyl("Visual_OvenChimneyBand", (0, 0.10, 2.30), 0.40, 0.12, mats["copper"], collection, r, 20, bevel=0.02)
     return r
 
 
@@ -232,6 +263,18 @@ def build_counter(collection, mats):
     cube("Visual_CounterTop", (0, -0.02, 1.16), (2.02, 0.82, 0.11), mats["wood"], collection, r, 0.055)
     for x in (-1.63, -0.55, 0.55, 1.63):
         cube("Visual_CounterPanel", (x, -0.715, 0.57), (0.48, 0.035, 0.46), mats["wood"], collection, r, 0.035)
+    # Two pale preparation cloths echo the checked prep surfaces in the demo
+    # without requiring a texture atlas or extra shader.
+    for i, x in enumerate((-0.72, 0.72)):
+        cube(
+            f"Visual_CounterPrepCloth_{i}",
+            (x, -0.84, 1.285),
+            (0.56, 0.30, 0.025),
+            mats["cloth_blue"] if i == 0 else mats["cloth_red"],
+            collection,
+            r,
+            0.025,
+        )
     return r
 
 
@@ -240,6 +283,7 @@ def build_shelf(collection, mats):
     cube("Visual_ShelfBoard", (0, 0, 0.82), (1.32, 0.34, 0.10), mats["wood"], collection, r, 0.04)
     for x in (-1.05, 1.05):
         cube(f"Visual_ShelfBracket_{x:+.0f}", (x, 0.18, 0.42), (0.08, 0.10, 0.42), mats["metal"], collection, r, 0.025)
+    cube("Visual_ShelfBackRail", (0, 0.29, 1.10), (1.36, 0.05, 0.05), mats["wood_dark"], collection, r, 0.02)
     return r
 
 
@@ -324,8 +368,24 @@ def build_crate(collection, mats):
             cube(f"Visual_CrateSide_{z:.2f}_{x:+.2f}", (x, 0, z), (0.07, 0.55, 0.10), mats["wood"], collection, r, 0.025)
     for x in (-0.78, 0.0, 0.78):
         for y in (-0.35, 0.32):
-            color = mats["tomato"] if (x + y) < 0.3 else mats["pepper"]
+            color = (
+                mats["tomato"]
+                if x < -0.25
+                else mats["basil"]
+                if x < 0.4
+                else mats["pepper"]
+            )
             sphere(f"Visual_CrateIngredient_{x:+.2f}_{y:+.2f}", (x, y, 0.86), (0.28, 0.28, 0.25), color, collection, r)
+    for i, x in enumerate((-0.78, 0.0, 0.78)):
+        leaf(
+            f"Visual_CrateStem_{i}",
+            (x, -0.02, 1.11),
+            (0.15, 0.4, i * 1.7),
+            (0.16, 0.065, 0.045),
+            mats["basil"],
+            collection,
+            r,
+        )
     return r
 
 
@@ -337,6 +397,39 @@ def descendants(r):
         result.append(obj)
         stack.extend(obj.children)
     return result
+
+
+def batch_root_by_material(r):
+    """Collapse repeated prop pieces into one renderer per shared material.
+
+    The authored pieces remain procedural in this script, while exported FBXs
+    stay suitable for a portrait mobile scene (tiles/bricks are not individual
+    draw calls).
+    """
+    groups = {}
+    for obj in descendants(r):
+        if obj.type != "MESH" or not obj.data.materials:
+            continue
+        mat = obj.data.materials[0]
+        groups.setdefault(mat, []).append(obj)
+    for mat, objects in groups.items():
+        if len(objects) < 2:
+            continue
+        bpy.ops.object.select_all(action="DESELECT")
+        for obj in objects:
+            obj.select_set(True)
+        active = objects[0]
+        bpy.context.view_layer.objects.active = active
+        bpy.ops.object.join()
+        active.name = f"Visual_Batched_{mat.name.replace('PR3D_MAT_Env_', '')}"
+        # Joining one-material meshes can retain duplicate slots. Normalize
+        # them so Unity imports one submesh/material for the batch.
+        for poly in active.data.polygons:
+            poly.material_index = 0
+        active.data.materials.clear()
+        active.data.materials.append(mat)
+        active.parent = r
+        apply(active)
 
 
 def export_root(r, export_dir, runtime_dir):
@@ -443,12 +536,15 @@ def build():
     scene.collection.children.link(render_collection)
 
     mats = {
-        "brick": material("PR3D_MAT_Env_Brick", (0.62, 0.12, 0.045, 1), 0, 0.60),
+        "brick": material("PR3D_MAT_Env_Brick", (0.66, 0.13, 0.042, 1), 0, 0.54),
+        "brick_dark": material("PR3D_MAT_Env_BrickDark", (0.38, 0.055, 0.018, 1), 0, 0.68),
+        "brick_light": material("PR3D_MAT_Env_BrickLight", (0.86, 0.22, 0.065, 1), 0, 0.48),
         "stone": material("PR3D_MAT_Env_Stone", (0.25, 0.27, 0.30, 1), 0.2, 0.35),
         "metal": material("PR3D_MAT_Env_Metal", (0.22, 0.20, 0.20, 1), 0.75, 0.25),
         "copper": material("PR3D_MAT_Env_Copper", (0.55, 0.18, 0.06, 1), 0.75, 0.26),
         "dark": material("PR3D_MAT_Env_Dark", (0.018, 0.012, 0.010, 1), 0, 0.85),
         "fire": material("PR3D_MAT_Env_Fire", (1.0, 0.14, 0.01, 1), 0, 0.22, (1.0, 0.025, 0.001, 1)),
+        "fire_core": material("PR3D_MAT_Env_FireCore", (1.0, 0.62, 0.05, 1), 0, 0.12, (1.0, 0.22, 0.005, 1)),
         "wood": material("PR3D_MAT_Env_Wood", (0.38, 0.13, 0.035, 1), 0, 0.54),
         "wood_dark": material("PR3D_MAT_Env_WoodDark", (0.16, 0.045, 0.018, 1), 0, 0.66),
         "blue": material("PR3D_MAT_Env_BlueTile", (0.018, 0.11, 0.38, 1), 0.05, 0.22),
@@ -465,6 +561,8 @@ def build():
         "ceramic": material("PR3D_MAT_Env_Ceramic", (0.78, 0.52, 0.31, 1), 0, 0.28),
         "mushroom": material("PR3D_MAT_Env_Mushroom", (0.82, 0.70, 0.52, 1), 0, 0.58),
         "soil": material("PR3D_MAT_Env_Soil", (0.11, 0.025, 0.008, 1), 0, 0.95),
+        "cloth_blue": material("PR3D_MAT_Env_ClothBlue", (0.12, 0.34, 0.70, 1), 0, 0.82),
+        "cloth_red": material("PR3D_MAT_Env_ClothRed", (0.78, 0.12, 0.07, 1), 0, 0.82),
     }
     roots = [
         build_oven(kit, mats),
@@ -479,6 +577,8 @@ def build():
         build_utensils(kit, mats),
         build_crate(kit, mats),
     ]
+    for r in roots:
+        batch_root_by_material(r)
     for r in roots:
         export_root(r, export_dir, runtime_dir)
 

@@ -60,6 +60,36 @@ def add_box(vertices, faces, mat_ids, center, scale, material_index):
     mat_ids.extend([material_index] * 6)
 
 
+def add_rounded_rect_prism(vertices, faces, mat_ids, center, half_width, half_height,
+                           radius, z0, z1, material_index, corner_segments=4):
+    """Create the pizza's pill-shaped rear crust without a second mesh contract."""
+    cx, cy = center
+    outline = []
+    for corner_x, corner_y, angle0 in (
+        (cx + half_width - radius, cy + half_height - radius, 0.0),
+        (cx - half_width + radius, cy + half_height - radius, math.pi / 2),
+        (cx - half_width + radius, cy - half_height + radius, math.pi),
+        (cx + half_width - radius, cy - half_height + radius, 3 * math.pi / 2),
+    ):
+        for step in range(corner_segments + 1):
+            angle = angle0 + step * math.pi / (2 * corner_segments)
+            outline.append((
+                corner_x + radius * math.cos(angle),
+                corner_y + radius * math.sin(angle),
+            ))
+
+    start = len(vertices)
+    count = len(outline)
+    vertices.extend([(x, y, z0) for x, y in outline])
+    vertices.extend([(x, y, z1) for x, y in outline])
+    faces.append(tuple(start + i for i in reversed(range(count))))
+    faces.append(tuple(start + count + i for i in range(count)))
+    for i in range(count):
+        j = (i + 1) % count
+        faces.append((start + i, start + j, start + count + j, start + count + i))
+    mat_ids.extend([material_index] * (2 + count))
+
+
 def add_cylinder(vertices, faces, mat_ids, center, radius, depth, material_index, sides=12):
     cx, cy, cz = center
     start = len(vertices)
@@ -79,17 +109,37 @@ def add_cylinder(vertices, faces, mat_ids, center, radius, depth, material_index
 
 def build_shared_mesh():
     vertices, faces, mat_ids = [], [], []
-    add_tri_prism(vertices, faces, mat_ids, 0.00, 0.13, material_index=0)
-    add_tri_prism(vertices, faces, mat_ids, 0.13, 0.205, inset=0.055, material_index=1)
-    add_box(vertices, faces, mat_ids, (0.0, 0.59, 0.245), (0.72, 0.13, 0.13), 0)
-    for center, radius in [
-        ((-0.31, 0.22, 0.255), 0.13),
-        ((0.30, 0.20, 0.255), 0.13),
-        ((0.00, -0.22, 0.255), 0.12),
-    ]:
-        add_cylinder(vertices, faces, mat_ids, center, radius, 0.075, 2)
-    add_box(vertices, faces, mat_ids, (-0.12, 0.04, 0.285), (0.035, 0.22, 0.025), 3)
-    add_box(vertices, faces, mat_ids, (0.18, -0.04, 0.285), (0.035, 0.19, 0.025), 3)
+    # A chunky, rounded phone-readable silhouette modelled after the concept conveyor slices.
+    add_tri_prism(vertices, faces, mat_ids, 0.00, 0.15, material_index=0)
+    add_tri_prism(vertices, faces, mat_ids, 0.135, 0.225, inset=0.075, material_index=1)
+    add_rounded_rect_prism(
+        vertices, faces, mat_ids,
+        center=(0.0, 0.575),
+        half_width=0.73,
+        half_height=0.16,
+        radius=0.15,
+        z0=0.105,
+        z1=0.31,
+        material_index=0,
+    )
+
+    # Three large topping coins reproduce the simple motif language in the reference.
+    topping_centers = [
+        (-0.29, 0.17, 0.272),
+        (0.29, 0.17, 0.272),
+        (0.00, -0.24, 0.272),
+    ]
+    for center in topping_centers:
+        add_cylinder(vertices, faces, mat_ids, center, 0.145, 0.085, 2, sides=16)
+        # Raised centre catches light and keeps variants legible when the slice is tiny.
+        add_cylinder(
+            vertices, faces, mat_ids,
+            (center[0], center[1], center[2] + 0.055),
+            0.047,
+            0.035,
+            3,
+            sides=12,
+        )
 
     mesh = bpy.data.meshes.new("PR3D_PizzaSlice_SharedMesh")
     mesh.from_pydata(vertices, [], faces)
@@ -104,7 +154,24 @@ def build_shared_mesh():
         mesh.materials.append(mat)
     for poly, material_index in zip(mesh.polygons, mat_ids):
         poly.material_index = material_index
-        poly.use_smooth = False
+        poly.use_smooth = True
+
+    # Apply one bevel to all disconnected pieces so the exported contract remains one mesh.
+    temp = bpy.data.objects.new("PR3D_PizzaSlice_BevelSource", mesh)
+    bpy.context.collection.objects.link(temp)
+    bpy.context.view_layer.objects.active = temp
+    temp.select_set(True)
+    bevel = temp.modifiers.new("PR3D_PhoneReadable_RoundedEdges", "BEVEL")
+    bevel.width = 0.035
+    bevel.segments = 3
+    bevel.limit_method = "ANGLE"
+    bpy.ops.object.modifier_apply(modifier=bevel.name)
+    bpy.ops.object.mode_set(mode="EDIT")
+    bpy.ops.mesh.select_all(action="SELECT")
+    bpy.ops.uv.smart_project(angle_limit=math.radians(66.0), island_margin=0.025)
+    bpy.ops.object.mode_set(mode="OBJECT")
+    bpy.data.objects.remove(temp, do_unlink=True)
+    mesh.name = "PR3D_PizzaSlice_SharedMesh"
     return mesh
 
 
@@ -112,8 +179,10 @@ def look_at(obj, point):
     obj.rotation_euler = (Vector(point) - obj.location).to_track_quat("-Z", "Y").to_euler()
 
 
-bpy.ops.object.select_all(action="SELECT")
-bpy.ops.object.delete(use_global=False)
+# Remove hidden export helpers as well as visible objects so rerunning through Blender MCP
+# stays deterministic and preserves the imported mesh name/file-ID contract.
+for obj in list(bpy.data.objects):
+    bpy.data.objects.remove(obj, do_unlink=True)
 for datablocks in (bpy.data.meshes, bpy.data.curves, bpy.data.materials, bpy.data.cameras, bpy.data.lights):
     for block in list(datablocks):
         if block.users == 0:
@@ -154,7 +223,8 @@ shared_mesh = build_shared_mesh()
 bpy.ops.object.empty_add(type="PLAIN_AXES", location=(0, 0, 0))
 root = bpy.context.object
 root.name = "PR3D_PizzaVariants_Root"
-root["asset_contract"] = "One shared triangular mesh; ten object-linked material variants"
+root["asset_contract"] = "One rounded shared triangular mesh; ten object-linked material variants"
+root["concept_target"] = "Rounded colored cheese slice, visible rear crust, three topping motifs"
 root["unity_scale_m"] = 1.0
 
 variant_objects = []
@@ -169,9 +239,9 @@ for index, (name, _, _) in enumerate(variants):
     for slot in obj.material_slots:
         slot.link = "OBJECT"
     obj.material_slots[0].material = crust
-    obj.material_slots[1].material = cheese
-    obj.material_slots[2].material = bpy.data.materials[f"PR3D_MAT_{name}"]
-    obj.material_slots[3].material = bpy.data.materials[f"PR3D_MAT_{name}_Garnish"]
+    obj.material_slots[1].material = bpy.data.materials[f"PR3D_MAT_{name}"]
+    obj.material_slots[2].material = bpy.data.materials[f"PR3D_MAT_{name}_Garnish"]
+    obj.material_slots[3].material = cheese
     variant_objects.append(obj)
 
 # Zero-origin canonical object used by the single-slice export contract.
@@ -181,9 +251,9 @@ export_single.parent = root
 for slot in export_single.material_slots:
     slot.link = "OBJECT"
 export_single.material_slots[0].material = crust
-export_single.material_slots[1].material = cheese
-export_single.material_slots[2].material = bpy.data.materials["PR3D_MAT_Red_Tomato"]
-export_single.material_slots[3].material = bpy.data.materials["PR3D_MAT_Red_Tomato_Garnish"]
+export_single.material_slots[1].material = bpy.data.materials["PR3D_MAT_Red_Tomato"]
+export_single.material_slots[2].material = bpy.data.materials["PR3D_MAT_Red_Tomato_Garnish"]
+export_single.material_slots[3].material = cheese
 export_single.hide_render = True
 export_single.hide_set(True)
 

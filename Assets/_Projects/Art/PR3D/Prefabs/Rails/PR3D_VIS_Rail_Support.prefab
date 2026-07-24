@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2933090794570654997}
-  m_Mesh: {fileID: 4454721691989586850, guid: dfc6d24eb92a940c7a1c1a0be61c2704, type: 3}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &7960131495865380254
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -505667853557703252, guid: dfc6d24eb92a940c7a1c1a0be61c2704, type: 3}
+  - {fileID: 2100000, guid: 493e74ba0c8764517a9b977c27d241cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,7 +130,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4192977354769620586}
-  m_Mesh: {fileID: 3963208727303803023, guid: dfc6d24eb92a940c7a1c1a0be61c2704, type: 3}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &7020835554659770980
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5629628155264363537, guid: dfc6d24eb92a940c7a1c1a0be61c2704, type: 3}
+  - {fileID: 2100000, guid: 493e74ba0c8764517a9b977c27d241cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -220,7 +220,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4217934130056722375}
-  m_Mesh: {fileID: -8480383673655383042, guid: dfc6d24eb92a940c7a1c1a0be61c2704, type: 3}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &5437116042026023665
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -246,7 +246,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5629628155264363537, guid: dfc6d24eb92a940c7a1c1a0be61c2704, type: 3}
+  - {fileID: 2100000, guid: 493e74ba0c8764517a9b977c27d241cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
