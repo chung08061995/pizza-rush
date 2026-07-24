@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PR3D_MAT_Backdrop_Terracotta
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 4800000, guid: d6d5747ddca8492dbfc94ee4fa5bb26a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -83,6 +83,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _GroutWidth: 0.035
+    - _TileSize: 0.85
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
@@ -116,10 +118,13 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
+    - _AlternateColor: {r: 0.34, g: 0.08, b: 0.035, a: 1}
     - _BaseColor: {r: 0.38, g: 0.115, b: 0.045, a: 1}
-    - _Color: {r: 0.37999997, g: 0.114999975, b: 0.045, a: 1}
+    - _Color: {r: 0.37999994, g: 0.11499997, b: 0.044999972, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GroutColor: {r: 0.16, g: 0.035, b: 0.02, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _TileColor: {r: 0.42, g: 0.12, b: 0.055, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &3770054558760041357

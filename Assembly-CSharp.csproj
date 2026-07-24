@@ -171,6 +171,7 @@
     <Compile Include="Assets/_Projects/Scripts/Common/GameConstain.cs" />
     <Compile Include="Assets/_Projects/Scripts/LivesManager/HeartRecoveryController.cs" />
     <Compile Include="Assets/_Projects/Scripts/Container/ContainerFactory.cs" />
+    <Compile Include="Assets/_Projects/Art/PR3D/Runtime/PR3DHideLegacyPizzaVisuals.cs" />
     <Compile Include="Assets/_Projects/Scripts/Models/LevelUpRewarData/RewardData.cs" />
     <Compile Include="Assets/_Projects/Scripts/Models/Skill/ItemType.cs" />
     <Compile Include="Assets/GameObject/StraightLine.cs" />
@@ -401,6 +402,7 @@
     <None Include="Assets/_Projects/Resources/LevelData/0166.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0056.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0016.json" />
+    <None Include="Assets/_Projects/Art/PR3D/Environment/PR3D_TerracottaTileFloor.shader" />
     <None Include="Assets/GoogleMobileAds/link.xml" />
     <None Include="Assets/_Projects/Resources/LevelData/0067.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0277.json" />
@@ -564,6 +566,7 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
     <None Include="Assets/_Projects/Resources/LevelData/0231.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0130.json" />
+    <None Include="Assets/_Projects/Art/PR3D/Pizza/PR3D_DynamicFoodColor.shader" />
     <None Include="Assets/_Projects/Resources/LevelData/0145.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0051.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0012.json" />
@@ -1037,9 +1040,6 @@
     <Reference Include="Sirenix.OdinInspector.Attributes">
       <HintPath>/private/var/folders/lw/s6yxpryd1vq4t750jy5j2qdw0000gn/T/automagik-forge/worktrees/8f8c-pr3d-seq-001-ho/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
-    <Reference Include="System.IO.Hashing">
-      <HintPath>/private/var/folders/lw/s6yxpryd1vq4t750jy5j2qdw0000gn/T/automagik-forge/worktrees/8f8c-pr3d-seq-001-ho/Library/PackageCache/com.unity.collections@5b6ebd78ccc0/Unity.Collections.Tests/System.IO.Hashing/System.IO.Hashing.dll</HintPath>
-    </Reference>
     <Reference Include="Sirenix.Utilities">
       <HintPath>/private/var/folders/lw/s6yxpryd1vq4t750jy5j2qdw0000gn/T/automagik-forge/worktrees/8f8c-pr3d-seq-001-ho/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
     </Reference>
@@ -1069,9 +1069,6 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>/private/var/folders/lw/s6yxpryd1vq4t750jy5j2qdw0000gn/T/automagik-forge/worktrees/8f8c-pr3d-seq-001-ho/Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff/Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>/private/var/folders/lw/s6yxpryd1vq4t750jy5j2qdw0000gn/T/automagik-forge/worktrees/8f8c-pr3d-seq-001-ho/Library/PackageCache/com.unity.collections@5b6ebd78ccc0/Unity.Collections.Tests/System.Runtime.CompilerServices.Unsafe/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/6000.4.10f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

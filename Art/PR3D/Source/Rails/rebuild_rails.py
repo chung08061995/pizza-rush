@@ -32,6 +32,64 @@ def export(path):
     bpy.ops.object.select_all(action='SELECT')
     bpy.ops.export_scene.fbx(filepath=path, use_selection=True, apply_unit_scale=True, axis_forward='-Z', axis_up='Y', object_types={'MESH'})
 
+def annular_band(name, radius_inner, radius_outer, y0, y1, material, segments=24):
+    """Continuous quarter-ring in the X/Z gameplay plane."""
+    vertices = []
+    faces = []
+    for y in (y0, y1):
+        for i in range(segments + 1):
+            a = (i / segments) * math.pi / 2
+            for radius in (radius_inner, radius_outer):
+                vertices.append((
+                    radius * math.sin(a),
+                    y,
+                    1.7 - radius * math.cos(a),
+                ))
+
+    layer_stride = (segments + 1) * 2
+    for i in range(segments):
+        lower_inner = i * 2
+        lower_outer = lower_inner + 1
+        next_inner = lower_inner + 2
+        next_outer = lower_inner + 3
+        upper_inner = layer_stride + lower_inner
+        upper_outer = upper_inner + 1
+        upper_next_inner = upper_inner + 2
+        upper_next_outer = upper_inner + 3
+
+        faces.extend([
+            (lower_inner, next_inner, next_outer, lower_outer),
+            (upper_inner, upper_outer, upper_next_outer, upper_next_inner),
+            (lower_inner, upper_inner, upper_next_inner, next_inner),
+            (lower_outer, next_outer, upper_next_outer, upper_outer),
+        ])
+
+    faces.extend([
+        (0, 1, layer_stride + 1, layer_stride),
+        (
+            segments * 2,
+            layer_stride + segments * 2,
+            layer_stride + segments * 2 + 1,
+            segments * 2 + 1,
+        ),
+    ])
+
+    mesh = bpy.data.meshes.new(name + "_Mesh")
+    mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+    obj = bpy.data.objects.new(name, mesh)
+    bpy.context.collection.objects.link(obj)
+    obj.data.materials.append(material)
+
+    bevel = obj.modifiers.new("Continuous edge bevel", "BEVEL")
+    bevel.width = 0.045
+    bevel.segments = 3
+    bpy.context.view_layer.objects.active = obj
+    obj.select_set(True)
+    bpy.ops.object.modifier_apply(modifier=bevel.name)
+    obj.select_set(False)
+    return obj
+
 def straight(path):
     clear()
     cube("Rail_Straight_Belt",(0,.16,0),(2.64,.10,.42),CHAR,.08)
@@ -46,16 +104,18 @@ def straight(path):
 
 def curve(path, side=1):
     clear()
-    # quarter turn centered at origin; segments form smooth continuous belt
-    r=1.7
-    for i in range(10):
-        a=(i/9)*math.pi/2
-        x=side*r*math.sin(a); z=side*r*(1-math.cos(a))
-        # Keep the imported segments aligned to the gameplay plane; the parent
-        # prefab supplies the quarter-turn, and per-piece Y rotation created
-        # visible radial fins in the portrait camera.
-        cube("Rail_Curve_Belt_%02d"%i,(x,.16,z),(.42,.10,.26),CHAR,.07,rot=0)
-        cube("Rail_Curve_Housing_%02d"%i,(x,.32,z+side*.5),(.42,.11,.08),STEEL,.04,rot=0)
+    # One continuous belt and two continuous edge housings. Mirroring the
+    # exported object supplies the right-hand version without mesh seams.
+    belt = annular_band("Rail_Curve_Belt", 1.28, 2.12, .06, .26, CHAR)
+    inner = annular_band("Rail_Curve_InnerHousing", 1.16, 1.30, .04, .34, STEEL)
+    outer = annular_band("Rail_Curve_OuterHousing", 2.10, 2.24, .04, .34, STEEL)
+    if side < 0:
+        for obj in (belt, inner, outer):
+            obj.scale.x = -1
+            bpy.context.view_layer.objects.active = obj
+            obj.select_set(True)
+            bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+            obj.select_set(False)
     cube("Curve_Arrow",(side*.9,.285,side*.35),(.18,.018,.04),ARROW,.02,rot=side*math.pi/4)
     export(path)
 

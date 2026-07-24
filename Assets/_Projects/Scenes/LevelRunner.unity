@@ -305,6 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 512278534}
   - component: {fileID: 512278535}
+  - component: {fileID: 512278536}
   m_Layer: 0
   m_Name: LevelFactory
   m_TagString: Untagged
@@ -342,6 +343,18 @@ MonoBehaviour:
   levelRunnerReference:
     prefab: {fileID: 6659657002335854008, guid: 0b89b6efdba26294eabf1968acac2749, type: 3}
     instance: {fileID: 0}
+--- !u!114 &512278536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512278533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9b032741f57476794c0e839aaeeb02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PizzaRush.PR3D.PR3DHideLegacyPizzaVisuals
 --- !u!1 &919031276
 GameObject:
   m_ObjectHideFlags: 0
