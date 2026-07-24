@@ -487,6 +487,7 @@
     <None Include="Assets/_Projects/Resources/LevelData/0158.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0169.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0219.json" />
+    <None Include="Assets/_Projects/Art/PR3D/Pizza/PR3D_FixedFoodColor.shader" />
     <None Include="Assets/_Projects/Resources/LevelData/0075.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0290.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0030.json" />

@@ -123,20 +123,21 @@ def build_shared_mesh():
         material_index=0,
     )
 
-    # Three large topping coins reproduce the simple motif language in the reference.
+    # Three oversized topping coins stay readable after the slice is reduced to
+    # roughly 30 px in the portrait gameplay camera.
     topping_centers = [
         (-0.29, 0.17, 0.272),
         (0.29, 0.17, 0.272),
         (0.00, -0.24, 0.272),
     ]
     for center in topping_centers:
-        add_cylinder(vertices, faces, mat_ids, center, 0.145, 0.085, 2, sides=16)
+        add_cylinder(vertices, faces, mat_ids, center, 0.205, 0.095, 2, sides=16)
         # Raised centre catches light and keeps variants legible when the slice is tiny.
         add_cylinder(
             vertices, faces, mat_ids,
             (center[0], center[1], center[2] + 0.055),
-            0.047,
-            0.035,
+            0.073,
+            0.04,
             3,
             sides=12,
         )
