@@ -1,0 +1,120 @@
+{
+  "task": "PR3D-005",
+  "contract": {
+    "usage": "visual-only child; do not replace gameplay root or anchors",
+    "source_root": "PR3D_Gate_Root",
+    "source_pivot_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "source_entry_local_m": [
+      0.0,
+      0.25,
+      0.0
+    ],
+    "source_exit_local_m": [
+      0.0,
+      -0.25,
+      0.0
+    ],
+    "source_bounds_xyz_m": [
+      1.104,
+      0.316,
+      0.79
+    ],
+    "unity_forward": "+Z after the FBX root axis correction",
+    "unity_asset_root": "PR3D_Gate_Shared",
+    "unity_import_global_scale": 0.9057971,
+    "unity_import_root_euler_deg": [
+      270.0,
+      0.0,
+      0.0
+    ],
+    "unity_import_entry_local_m": [
+      0.0,
+      0.226,
+      0.0
+    ],
+    "unity_import_exit_local_m": [
+      0.0,
+      -0.226,
+      0.0
+    ],
+    "unity_import_bounds_xyz_m": [
+      1.0,
+      0.716,
+      0.286
+    ],
+    "production_line_root": {
+      "local_position_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "local_rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "local_scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "observed_production_place_offsets_m": [
+      0.52,
+      0.187,
+      -0.143
+    ]
+  },
+  "shared_mesh": {
+    "name": "PR3D_MESH_Gate_Shared",
+    "vertices": 1304,
+    "polygons": 1366,
+    "uv_layers": [
+      "UVMap"
+    ]
+  },
+  "variants": [
+    "Red",
+    "Green",
+    "Blue",
+    "White",
+    "Orange",
+    "Yellow",
+    "Brown",
+    "Cyan",
+    "DarkPurple",
+    "Pink"
+  ],
+  "materials": [
+    "Materials/PR3D_MAT_GateVariant_Red.mat",
+    "Materials/PR3D_MAT_GateVariant_Green.mat",
+    "Materials/PR3D_MAT_GateVariant_Blue.mat",
+    "Materials/PR3D_MAT_GateVariant_White.mat",
+    "Materials/PR3D_MAT_GateVariant_Orange.mat",
+    "Materials/PR3D_MAT_GateVariant_Yellow.mat",
+    "Materials/PR3D_MAT_GateVariant_Brown.mat",
+    "Materials/PR3D_MAT_GateVariant_Cyan.mat",
+    "Materials/PR3D_MAT_GateVariant_DarkPurple.mat",
+    "Materials/PR3D_MAT_GateVariant_Pink.mat"
+  ],
+  "exports": {
+    "fbx": {
+      "path": "Models/PR3D_Gate_Shared.fbx",
+      "sha256": "97dd512c74bfcdcc18cf955e06fc9e8e648c4d5e73f5ae48bb8b9b582f596a9f"
+    },
+    "glb_source_export": {
+      "path": "Art/PR3D/Exports/Gates/PR3D_Gate_Shared.glb",
+      "sha256": "a53229c995aa76cee64d468602d956c10a214073b70eaa517e5f62039cd92da8"
+    }
+  },
+  "evidence": "Evidence/PR3D_005_GateVariants.png",
+  "archive_reuse": {
+    "source_commit": "f303b8c",
+    "scope": "Gate family files only",
+    "revalidated": true
+  }
+}

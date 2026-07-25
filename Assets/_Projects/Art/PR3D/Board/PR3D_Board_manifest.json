@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "task_id": "PR3D-003",
+  "status": "verified",
+  "generated_on": "2026-07-26",
+  "archive_audit": {
+    "reviewed_commits": [
+      "c02bf25",
+      "d87eeef"
+    ],
+    "selected_contract": "d87eeef lightweight modular board and ceramic tile",
+    "selection_reason": "Verified Level 301 overlay evidence, stable origin pivots, one-meter pitch, no gameplay components, and substantially lower geometry than the 49-tile baked c02bf25 variant.",
+    "reuse_method": "Rebuilt deterministically through Blender MCP into family-owned paths; no branch merge or cherry-pick."
+  },
+  "coordinate_contract": {
+    "blender": "Metric, 1 Blender unit = 1 meter, native Z-up",
+    "unity_result": "Y-up, +Z-forward",
+    "fbx_axis_forward": "-Z",
+    "fbx_axis_up": "Y",
+    "apply_unit_scale": true,
+    "bake_space_transform": false
+  },
+  "level_301_contract": {
+    "level_index": 301,
+    "grid_cells": 49,
+    "grid_shape": [
+      7,
+      7
+    ],
+    "cell_pitch_m": 1.0,
+    "grid_origin_unity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "first_cell_center_unity": [
+      1.5,
+      0.0,
+      1.5
+    ],
+    "last_cell_center_unity": [
+      7.5,
+      0.0,
+      7.5
+    ],
+    "board_placement_unity": [
+      4.5,
+      0.0,
+      4.5
+    ],
+    "tile_local_center_range_xz": [
+      -3.0,
+      3.0
+    ]
+  },
+  "assets": [
+    {
+      "name": "PR3D_Board_7x7",
+      "role": "Additive tray and frame visual",
+      "unity_path": "Assets/_Projects/Art/PR3D/Board/Models/PR3D_Board_7x7.fbx",
+      "unity_sha256": "107787c9fa2e973b9b5028b1dd16d7a75386b1be3a03ffe042265b1893dbb3e4",
+      "glb_path": "Art/PR3D/Exports/Board/PR3D_Board_7x7.glb",
+      "glb_sha256": "17d2be8d494cf6ec70b481b30bfca2409471c0a2a6e566d1eae8bd67924774a4",
+      "blender_bounds_xyz_m": [
+        7.78,
+        7.78,
+        0.36
+      ],
+      "unity_bounds_xyz_m": [
+        7.78,
+        0.36,
+        7.78
+      ],
+      "triangles": 956,
+      "root_pivot": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "PR3D_Tile_Ceramic",
+      "role": "Reusable additive per-cell tile visual",
+      "unity_path": "Assets/_Projects/Art/PR3D/Board/Models/PR3D_Tile_Ceramic.fbx",
+      "unity_sha256": "edc0fe5484f65ce75bc9ec50b4c88ea4e8d6d976d5aec14a9174ac41f9bf37ae",
+      "glb_path": "Art/PR3D/Exports/Board/PR3D_Tile_Ceramic.glb",
+      "glb_sha256": "89025bd60ee30e635da927f43fb6e433f9c75611dda48482a948d5a98d380af7",
+      "blender_bounds_xyz_m": [
+        0.9,
+        0.9,
+        0.1175
+      ],
+      "unity_bounds_xyz_m": [
+        0.9,
+        0.1175,
+        0.9
+      ],
+      "triangles": 376,
+      "root_pivot": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "source": {
+    "blend_path": "Art/PR3D/Source/Board/PR3D_BoardKit.blend",
+    "blend_sha256": "aaf58f307bc77fa69fdf8aebfaf134e42126ccfbf373502e8b5ecd8290517bc6",
+    "script_path": "Art/PR3D/Source/Board/build_pr3d_003_board.py",
+    "script_sha256": "8c2d83326bfa8e67c6ddc5db23e3b446a5bad28adfa490667ba2e9179d655683"
+  },
+  "unity_mcp_evidence": {
+    "unity_version": "6000.4.10f1",
+    "project": "af84-pr3d-seq-001-ho",
+    "importer_global_scale": 1.0,
+    "use_file_scale": true,
+    "bake_axis_conversion": false,
+    "board_renderer_count": 2,
+    "tile_renderer_count": 2,
+    "collider_count": 0,
+    "mono_behaviour_count": 0,
+    "level_json_changed": false,
+    "task_specific_console_errors": 0,
+    "result": "pass"
+  },
+  "gameplay_contract_changes": []
+}
