@@ -30,12 +30,12 @@
       0.0
     ],
     "curve_right_exit_local_m": [
-      -1.89,
+      1.89,
       -1.89,
       0.0
     ],
     "curve_left_exit_local_m": [
-      1.89,
+      -1.89,
       -1.89,
       0.0
     ],
@@ -52,6 +52,31 @@
     "curve": "Right/Left variants share dimensions; rotate in 90-degree steps",
     "connector": "0.24m half-module bridge between modular pieces",
     "support": "instance at module joints or every 0.96m"
+  },
+  "unity_mcp_evidence": {
+    "unity_version": "6000.4.10f1",
+    "project": "af84-pr3d-seq-001-ho",
+    "all_importer_global_scale": 1.0,
+    "all_use_file_scale": true,
+    "all_bake_axis_conversion": false,
+    "straight_bounds_xyz_m": [
+      0.875,
+      0.215,
+      5.315
+    ],
+    "curve_left_bounds_xyz_m": [
+      2.377,
+      0.315,
+      2.377
+    ],
+    "curve_right_bounds_xyz_m": [
+      2.377,
+      0.315,
+      2.377
+    ],
+    "all_collider_count": 0,
+    "all_mono_behaviour_count": 0,
+    "result": "pass"
   },
   "gameplay_contract": "visual-only; no prefab, scene, collider, JSON, enum, or Place edits"
 }

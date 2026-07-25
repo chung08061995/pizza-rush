@@ -25,7 +25,9 @@
     ],
     "unity_forward": "+Z after the FBX root axis correction",
     "unity_asset_root": "PR3D_Gate_Shared",
-    "unity_import_global_scale": 0.9057971,
+    "unity_import_global_scale": 1.0,
+    "unity_use_file_scale": true,
+    "unity_bake_axis_conversion": false,
     "unity_import_root_euler_deg": [
       270.0,
       0.0,
@@ -33,19 +35,22 @@
     ],
     "unity_import_entry_local_m": [
       0.0,
-      0.226,
+      0.25,
       0.0
     ],
     "unity_import_exit_local_m": [
       0.0,
-      -0.226,
+      -0.25,
       0.0
     ],
     "unity_import_bounds_xyz_m": [
-      1.0,
-      0.716,
-      0.286
+      1.104,
+      0.79,
+      0.316
     ],
+    "unity_renderer_count": 1,
+    "unity_collider_count": 0,
+    "unity_mono_behaviour_count": 0,
     "production_line_root": {
       "local_position_m": [
         0.0,

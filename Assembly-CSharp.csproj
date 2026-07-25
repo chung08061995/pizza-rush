@@ -423,6 +423,7 @@
     <None Include="Assets/_Projects/Resources/LevelData/0097.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0118.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0176.json" />
+    <None Include="Assets/_Projects/Art/PR3D/Containers/PR3D_Containers_Contract.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0224.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0284.json" />
     <None Include="Assets/_Projects/Resources/LevelData/0260.json" />

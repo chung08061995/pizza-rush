@@ -1,0 +1,156 @@
+{
+  "task": "PR3D-006",
+  "units": "meters",
+  "mesh_asset": "PR3D_PizzaSlice_Shared.fbx",
+  "mesh_datablock": "PR3D_PizzaSlice_SharedMesh",
+  "mesh_count": 1,
+  "pivot": "grounded at local origin; slice points toward local -Y in Blender / +Z after Unity FBX conversion",
+  "material_slots": [
+    "crust",
+    "primary",
+    "accent",
+    "cheese"
+  ],
+  "variants": [
+    {
+      "index": 0,
+      "name": "Red_Tomato",
+      "primary_rgb": [
+        0.92,
+        0.035,
+        0.025
+      ],
+      "accent_rgb": [
+        1.0,
+        0.7,
+        0.08
+      ]
+    },
+    {
+      "index": 1,
+      "name": "Green_Basil",
+      "primary_rgb": [
+        0.03,
+        0.62,
+        0.1
+      ],
+      "accent_rgb": [
+        0.48,
+        0.95,
+        0.1
+      ]
+    },
+    {
+      "index": 2,
+      "name": "Blue_Cheese",
+      "primary_rgb": [
+        0.035,
+        0.28,
+        0.95
+      ],
+      "accent_rgb": [
+        0.18,
+        0.78,
+        1.0
+      ]
+    },
+    {
+      "index": 3,
+      "name": "White_Garlic",
+      "primary_rgb": [
+        0.95,
+        0.95,
+        0.88
+      ],
+      "accent_rgb": [
+        0.58,
+        0.62,
+        0.68
+      ]
+    },
+    {
+      "index": 4,
+      "name": "Orange_Pepper",
+      "primary_rgb": [
+        1.0,
+        0.27,
+        0.015
+      ],
+      "accent_rgb": [
+        1.0,
+        0.82,
+        0.04
+      ]
+    },
+    {
+      "index": 5,
+      "name": "Yellow_Corn",
+      "primary_rgb": [
+        1.0,
+        0.82,
+        0.015
+      ],
+      "accent_rgb": [
+        0.8,
+        0.25,
+        0.03
+      ]
+    },
+    {
+      "index": 6,
+      "name": "Brown_Mushroom",
+      "primary_rgb": [
+        0.35,
+        0.13,
+        0.045
+      ],
+      "accent_rgb": [
+        0.78,
+        0.48,
+        0.16
+      ]
+    },
+    {
+      "index": 7,
+      "name": "Cyan_Seafood",
+      "primary_rgb": [
+        0.0,
+        0.72,
+        0.82
+      ],
+      "accent_rgb": [
+        0.02,
+        0.18,
+        0.38
+      ]
+    },
+    {
+      "index": 8,
+      "name": "DarkPurple_Olive",
+      "primary_rgb": [
+        0.16,
+        0.025,
+        0.3
+      ],
+      "accent_rgb": [
+        0.7,
+        0.2,
+        0.94
+      ]
+    },
+    {
+      "index": 9,
+      "name": "Pink_Ham",
+      "primary_rgb": [
+        1.0,
+        0.2,
+        0.52
+      ],
+      "accent_rgb": [
+        0.55,
+        0.02,
+        0.18
+      ]
+    }
+  ]
+}

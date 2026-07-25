@@ -1,0 +1,48 @@
+{
+  "task": "PR3D-007",
+  "usage": "Additive visual children only; integrate under existing serialized gameplay roots in PR3D-010.",
+  "units": "meters",
+  "cellPitch": 1.0,
+  "pivot": "Local origin is the center of the first occupied cell.",
+  "assets": [
+    {
+      "file": "PR3D_Container_1x1.fbx",
+      "root": "PR3D_Container_1x1_Root",
+      "occupiedCells": [[0, 0]],
+      "bounds": [0.86, 0.86, 0.334]
+    },
+    {
+      "file": "PR3D_Container_1x2.fbx",
+      "root": "PR3D_Container_1x2_Root",
+      "occupiedCells": [[0, 0], [0, 1]],
+      "bounds": [0.86, 1.86, 0.334]
+    },
+    {
+      "file": "PR3D_Container_1x3.fbx",
+      "root": "PR3D_Container_1x3_Root",
+      "occupiedCells": [[0, 0], [0, 1], [0, 2]],
+      "bounds": [0.86, 2.86, 0.334]
+    },
+    {
+      "file": "PR3D_Container_T.fbx",
+      "root": "PR3D_Container_T_Root",
+      "occupiedCells": [[0, 0], [-1, 1], [0, 1], [1, 1]],
+      "bounds": [2.86, 1.86, 0.334]
+    },
+    {
+      "file": "PR3D_Container_Ice.fbx",
+      "root": "PR3D_Container_Ice_Root",
+      "occupiedCells": [[0, 0]],
+      "bounds": [0.92, 0.92, 0.58],
+      "note": "Repeat this visual per occupied cell when the existing ice view requires a multi-cell shape."
+    }
+  ],
+  "forbiddenIntegrationChanges": [
+    "scripts",
+    "enums",
+    "level JSON",
+    "colliders",
+    "serialized gameplay roots",
+    "drag behavior"
+  ]
+}
