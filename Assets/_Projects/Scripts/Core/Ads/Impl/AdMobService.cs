@@ -16,9 +16,10 @@ namespace DraftUtils.Ads
     /// 2. Set App ID trong Assets → Google Mobile Ads → Settings
     /// 3. Ad Unit IDs trong AdConfig
     /// </summary>
-#if UNITY_IOS
-    // Google Mobile Ads 11.2 assemblies in this project do not expose the
-    // public ad API to Unity's iOS player compilation. Keep TestFlight builds
+#if !GOOGLE_ADMOB || UNITY_IOS
+    // Platforms without GOOGLE_ADMOB must not compile the concrete SDK API.
+    // Google Mobile Ads 11.2 assemblies in this project also do not expose the
+    // public ad API to Unity's iOS player compilation. Keep those targets
     // functional with the safe stub until the SDK package is re-imported.
     public class AdMobService : StubAdsService
     {

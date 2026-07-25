@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-07-26
+
+- Re-audited the archived PR3D-002 commit instead of merging its branch, then
+  revalidated the meter-scale import probe with Blender MCP and Unity MCP on
+  Unity 6000.4.10f1.
+- Made unsupported Editor/player targets use the existing AdMob stub when
+  `GOOGLE_ADMOB` is absent; Android keeps the concrete Google Mobile Ads path.
+
 ## 2026-07-23
 
 - Added the active Google Play `no_ads` one-time product at USD 1.99.
