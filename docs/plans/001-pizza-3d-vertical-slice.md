@@ -24,7 +24,7 @@ Mỗi task phải ưu tiên gọi server **`unityMCP` tại `http://127.0.0.1:80
   Image: docs/reference/pizza-factory-concept.png
   Evidence: `docs/baseline/level-301-baseline.md`, `Assets/_Baseline/Level301_GameView.png`, `Assets/_Baseline/Level301_EndState.png`, `Assets/_Baseline/Level301_FullRun_Complete.mp4` (Unity Recorder, 1080x1920/30 FPS, continuous timer `01:22` to `Time Up`).
 
-- [x] [PR3D-002] Tạo Blender master scene
+- [ ] [PR3D-002] Tạo Blender master scene
   Thiết lập đơn vị mét, trục Y-up/forward-Z, camera portrait, collection, quy tắc đặt tên, preset export và concept `docs/reference/pizza-factory-concept.png`. Dùng Blender MCP để dựng scene; dùng Unity MCP để kiểm tra import thử trong Unity.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
@@ -32,6 +32,13 @@ Mỗi task phải ưu tiên gọi server **`unityMCP` tại `http://127.0.0.1:80
   `Art/PR3D/PR3D_manifest.json`, Blender MCP 1.28.1 và Unity MCP 3.4.4.
   Import probe đạt scale 1 m, pivot gốc, Y-up và +Z-forward; asset thử đã
   được xóa khỏi project Unity sau khi kiểm tra.
+  Re-audit 2026-07-26: chỉ cherry-pick commit PR3D-002 đã xác minh
+  `b6fd5aa`; Blender MCP hiện tại xác nhận lại meter units, portrait camera,
+  collection/naming/export contract và concept reference portable. Unity MCP
+  server v10.1.0 chạy tại `127.0.0.1:8080`, nhưng Editor bridge không thể đăng
+  ký instance vì project đang có năm lỗi compile sẵn có trong
+  `AdMobService.cs` (thiếu các type Google Mobile Ads). Giữ task chưa hoàn tất
+  cho tới khi import probe được xác minh lại trên worktree này.
 
 - [ ] [PR3D-003] Dựng board và bộ tile
   Dựng tray/frame 7×7 và visual tile theo concept nhưng giữ nguyên cell size, pivot và vị trí grid. Dùng Blender MCP để model và Unity MCP để đối chiếu Level 301 trong Unity.
