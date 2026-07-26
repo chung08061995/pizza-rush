@@ -58,3 +58,22 @@ Before promoting an FBX, import the asymmetric probe without target-size
 normalization. A passing Unity result has importer scale 1, a 1×1×1 meter cube
 centered at `(0, 0.5, 0)`, and the orange marker extending toward +Z. Do not
 enable Unity `Bake Axis Conversion` for this preset.
+
+## Level 301 visual integration
+
+The vertical slice uses additive visual prefabs under
+`Assets/_Projects/Art/PR3D/Prefabs/` plus derived static meshes under
+`Assets/_Projects/Art/PR3D/Derived/`. Gameplay prefab roots, colliders,
+MonoBehaviours, places, and serialized renderer lists stay intact.
+
+- Container visuals replace only the mesh/material on the existing referenced
+  renderer; the derived mesh compensates the legacy visual transform.
+- Pizza and gate visuals reuse the existing serialized production/line
+  renderers so runtime color assignment continues to work.
+- Board and environment are collider-free children of `LevelRunner`.
+- The environment backdrop is a collider-free quad with a procedural URP
+  material: warm terracotta below the factory wall split and blue tiles above.
+
+After any integration edit, compare the gameplay prefab MonoBehaviour/collider
+YAML blocks to HEAD, verify the Level 301 JSON hash, run
+`MyMenu > StartGame`, and inspect the runtime reference counts and Console.

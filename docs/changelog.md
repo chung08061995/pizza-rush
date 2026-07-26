@@ -1,5 +1,9 @@
 # Changelog
 
+- Integrated the PR3D visual prefab library into Level 301 without changing
+  gameplay MonoBehaviours, colliders, enum/JSON data, places, or serialized
+  renderer references. Added concept-iterated portrait board, rail/pizza/gate,
+  container, oven, blue-wall, and terracotta-floor visuals.
 - Completed the PR3D Level 301 source asset families and reproducible schema-3
   manifest. Blender MCP verifies metric units, applied mesh transforms and UVs;
   Unity MCP verifies 25 FBX imports at scale 1 with no gameplay components.

@@ -104,10 +104,17 @@ Mỗi task phải ưu tiên gọi server **`unityMCP` tại `http://127.0.0.1:80
   Unity import được như TextAsset. Không có lỗi PR3D; refresh vẫn lặp hai log
   lỗi package ngoài phạm vi `com.draft.unitydraftutils` thiếu `.meta`.
 
-- [ ] [PR3D-010] Tích hợp visual prefab vào Unity
+- [x] [PR3D-010] Tích hợp visual prefab vào Unity
   Chỉ thêm hoặc thay visual child/material; không đổi script, enum, JSON, collider hay serialized gameplay root. Dùng Unity MCP để thao tác prefab, apply thay đổi và kiểm tra reference trước khi lưu.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: tạo 44 visual prefab không Collider/MonoBehaviour và tích hợp board,
+  environment, container, pizza, gate/material vào các renderer đã được serialize.
+  Tám prefab gameplay giữ nguyên toàn bộ block MonoBehaviour/collider so với HEAD;
+  runtime Level 301 có 7 line không null place, 128 production không null skin và
+  hash JSON 0301 không đổi. Sáu vòng Game-view compare với concept đã chốt blue
+  tile wall, terracotta floor, oven/fire, board 7×7, rail pizza và gate portrait;
+  giữ ảnh đầu/cuối trong `Assets/_Projects/Art/PR3D/Evidence/`.
 
 - [ ] [PR3D-011] Validate Level 301
   Chơi hết level và kiểm tra drag, Ice, pizza transfer, hướng ray, gate, ba portrait ratio, console, frame time, memory, HUD, booster và vùng quảng cáo. Dùng Unity MCP để chạy test, chụp evidence và đọc profiler.

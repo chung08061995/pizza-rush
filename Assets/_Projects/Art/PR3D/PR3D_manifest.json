@@ -464,6 +464,26 @@
       ]
     }
   ],
+  "runtime_integration": {
+    "task": "PR3D-010",
+    "status": "verified",
+    "visual_prefab_count": 44,
+    "prefab_root": "Assets/_Projects/Art/PR3D/Prefabs",
+    "derived_mesh_root": "Assets/_Projects/Art/PR3D/Derived",
+    "strategy": "reuse existing serialized gameplay renderers; add collider-free board/environment children",
+    "concept_iteration_evidence": {
+      "before": "Assets/_Projects/Art/PR3D/Evidence/PR3D_Phase4_Iteration01.png",
+      "after": "Assets/_Projects/Art/PR3D/Evidence/PR3D_Phase4_FinalPortrait_GateRefined.png"
+    },
+    "gameplay_prefab_mono_behaviour_blocks_changed": 0,
+    "gameplay_prefab_collider_blocks_changed": 0,
+    "runtime_visual_colliders": 0,
+    "runtime_visual_mono_behaviours": 0,
+    "runtime_production_lines": 7,
+    "runtime_productions": 128,
+    "runtime_null_line_places": 0,
+    "runtime_null_production_skins": 0
+  },
   "validation": {
     "blender_mcp_scene_count": 6,
     "blender_mcp_units_metric": true,
