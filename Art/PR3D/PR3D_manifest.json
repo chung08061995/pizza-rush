@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "task": "PR3D-009",
   "status": "verified",
   "generated_on": "2026-07-26",
@@ -482,7 +482,75 @@
     "runtime_production_lines": 7,
     "runtime_productions": 128,
     "runtime_null_line_places": 0,
-    "runtime_null_production_skins": 0
+    "runtime_null_production_skins": 0,
+    "polish_pass": {
+      "task": "PR3D-SEQ-001",
+      "status": "verified",
+      "gate_geometry": {
+        "strategy": "rotate derived mesh vertices into the cross-rail frame without changing gameplay transforms or BoxCollider serialization",
+        "runtime_gate_count": 7,
+        "vertical_line_renderer_bounds_m": [
+          1.104,
+          0.49,
+          0.284
+        ],
+        "horizontal_line_renderer_bounds_m": [
+          0.284,
+          0.49,
+          1.104
+        ],
+        "derived_assets": [
+          {
+            "path": "Assets/_Projects/Art/PR3D/Derived/PR3D_Gate_ProductionLine_Belt_Runtime.asset",
+            "sha256": "110308d3780661bfea1d683f68879d2c4d615655e938fdc1a7ff263a76cdc23d",
+            "bytes": 219161
+          },
+          {
+            "path": "Assets/_Projects/Art/PR3D/Derived/PR3D_Gate_ProductionLine_Straing_Runtime.asset",
+            "sha256": "9c606ebe205efb60cb2becdc226f6b7c5adb94e7761bd77e25deda5db8ad42b7",
+            "bytes": 219164
+          }
+        ]
+      },
+      "pizza_readability": {
+        "derived_footprint_scale_xz": 0.78,
+        "strategy": "shrink the shared derived footprint and add low-cost stylized normal lighting; retain one shared mesh and runtime color variants",
+        "assets": [
+          {
+            "path": "Assets/_Projects/Art/PR3D/Derived/PR3D_Pizza_Runtime.asset",
+            "sha256": "f09df834cd751735ba72645c4c1af6c21d1f85685f4d5684a94a6736061c814b",
+            "bytes": 197473
+          },
+          {
+            "path": "Assets/_Projects/Art/PR3D/Pizza/PR3D_DynamicFoodColor.shader",
+            "sha256": "9a8c6383fd46ea24267089b66add22776c6095796e3a4869ed92f84a8d6d5256",
+            "bytes": 1904
+          },
+          {
+            "path": "Assets/_Projects/Art/PR3D/Pizza/PR3D_FixedFoodColor.shader",
+            "sha256": "33d55a3dd722813194eb77c088551ff9179ea0a2622c6e9d17a392725830491b",
+            "bytes": 1882
+          }
+        ]
+      },
+      "portrait_evidence": [
+        {
+          "path": "Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_1080x1920.png",
+          "sha256": "3fcd2c85f8717c25ad1174c732a04f0f517201b8f9b7b0bea29f97a6337f6f24",
+          "bytes": 595617
+        },
+        {
+          "path": "Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_1080x2340.png",
+          "sha256": "615d38c79b316eebd6a5f1bb2f30ebdfc6f403974136c7db23a56a47420dbbd8",
+          "bytes": 703078
+        },
+        {
+          "path": "Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_768x1024.png",
+          "sha256": "7daf77a5191ed1f814fdc21dffd3a608ffb54918144cfc2613eaeeb07e1eeb86",
+          "bytes": 256127
+        }
+      ]
+    }
   },
   "validation": {
     "blender_mcp_scene_count": 6,
@@ -494,11 +562,27 @@
     "unity_visual_mono_behaviours": 0,
     "unity_pr3d_console_errors_after_refresh": 0,
     "known_external_package_errors_after_refresh": {
-      "count": 2,
+      "count": 1,
       "package": "com.draft.unitydraftutils",
       "message": "MonoBehaviourLifecycleCallbacks.cs has no meta file in immutable package folder"
     },
     "level_301_json_sha256": "7115923d4205df433c54d12e59c64ba5726db82f394bdc0001a89e64c5482faa",
+    "level_301_runtime_replay": {
+      "result": "Passed",
+      "completed_actions": 108,
+      "drag_count": 108,
+      "remaining_production": 0,
+      "used_skill_or_booster": false,
+      "report": "CoffeeRunMigration/Reports/runtime-replay/0301.json"
+    },
+    "editor_profile_polish": {
+      "cpu_frame_time_ms": 15.873291,
+      "cpu_main_thread_frame_time_ms": 3.307832,
+      "gpu_frame_time_ms": 9.406625002156943,
+      "gfx_used_memory_bytes": 492913820,
+      "mesh_memory_bytes": 8041108,
+      "note": "Unity Editor sample; use a device build before rollout."
+    },
     "gameplay_contract_changes": []
   }
 }

@@ -1,5 +1,11 @@
 # Changelog
 
+- Polished the accepted Level 301 slice against the pizza-factory concept:
+  corrected seven gate meshes to cross their production rails, reduced the
+  shared pizza footprint for readable spacing, added stylized food shading,
+  captured three fresh portrait evidence frames, and re-passed the 108-drag
+  runtime replay without changing transforms, colliders, scripts, enums, or
+  level JSON.
 - Validated the complete PR3D Level 301 vertical slice with a deterministic
   108-drag runtime replay, Ice/T unlock, 148 production transfers, Win, three
   exact portrait resolutions, clean-editor profiling and Console review.

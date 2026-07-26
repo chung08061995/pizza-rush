@@ -132,6 +132,10 @@ def assets(directory: str) -> list[dict[str, object]]:
     return [record(path) for path in paths]
 
 
+def records(paths: tuple[str, ...]) -> list[dict[str, object]]:
+    return [record(REPO / path) for path in paths]
+
+
 def build() -> dict[str, object]:
     groups = []
     for definition in GROUPS:
@@ -143,7 +147,7 @@ def build() -> dict[str, object]:
         groups.append(group)
 
     return {
-        "schema_version": 3,
+        "schema_version": 4,
         "task": "PR3D-009",
         "status": "verified",
         "generated_on": "2026-07-26",
@@ -188,6 +192,40 @@ def build() -> dict[str, object]:
             "runtime_productions": 128,
             "runtime_null_line_places": 0,
             "runtime_null_production_skins": 0,
+            "polish_pass": {
+                "task": "PR3D-SEQ-001",
+                "status": "verified",
+                "gate_geometry": {
+                    "strategy": "rotate derived mesh vertices into the cross-rail frame without changing gameplay transforms or BoxCollider serialization",
+                    "runtime_gate_count": 7,
+                    "vertical_line_renderer_bounds_m": [1.104, 0.49, 0.284],
+                    "horizontal_line_renderer_bounds_m": [0.284, 0.49, 1.104],
+                    "derived_assets": records(
+                        (
+                            "Assets/_Projects/Art/PR3D/Derived/PR3D_Gate_ProductionLine_Belt_Runtime.asset",
+                            "Assets/_Projects/Art/PR3D/Derived/PR3D_Gate_ProductionLine_Straing_Runtime.asset",
+                        )
+                    ),
+                },
+                "pizza_readability": {
+                    "derived_footprint_scale_xz": 0.78,
+                    "strategy": "shrink the shared derived footprint and add low-cost stylized normal lighting; retain one shared mesh and runtime color variants",
+                    "assets": records(
+                        (
+                            "Assets/_Projects/Art/PR3D/Derived/PR3D_Pizza_Runtime.asset",
+                            "Assets/_Projects/Art/PR3D/Pizza/PR3D_DynamicFoodColor.shader",
+                            "Assets/_Projects/Art/PR3D/Pizza/PR3D_FixedFoodColor.shader",
+                        )
+                    ),
+                },
+                "portrait_evidence": records(
+                    (
+                        "Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_1080x1920.png",
+                        "Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_1080x2340.png",
+                        "Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_768x1024.png",
+                    )
+                ),
+            },
         },
         "validation": {
             "blender_mcp_scene_count": 6,
@@ -199,11 +237,27 @@ def build() -> dict[str, object]:
             "unity_visual_mono_behaviours": 0,
             "unity_pr3d_console_errors_after_refresh": 0,
             "known_external_package_errors_after_refresh": {
-                "count": 2,
+                "count": 1,
                 "package": "com.draft.unitydraftutils",
                 "message": "MonoBehaviourLifecycleCallbacks.cs has no meta file in immutable package folder",
             },
             "level_301_json_sha256": "7115923d4205df433c54d12e59c64ba5726db82f394bdc0001a89e64c5482faa",
+            "level_301_runtime_replay": {
+                "result": "Passed",
+                "completed_actions": 108,
+                "drag_count": 108,
+                "remaining_production": 0,
+                "used_skill_or_booster": False,
+                "report": "CoffeeRunMigration/Reports/runtime-replay/0301.json",
+            },
+            "editor_profile_polish": {
+                "cpu_frame_time_ms": 15.873291,
+                "cpu_main_thread_frame_time_ms": 3.307832,
+                "gpu_frame_time_ms": 9.406625002156943,
+                "gfx_used_memory_bytes": 492913820,
+                "mesh_memory_bytes": 8041108,
+                "note": "Unity Editor sample; use a device build before rollout.",
+            },
             "gameplay_contract_changes": [],
         },
     }

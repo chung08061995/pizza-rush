@@ -22,6 +22,8 @@ Reference points:
 - concept: `docs/reference/pizza-factory-concept.png`;
 - baseline: `Assets/_Baseline/Level301_GameView.png`;
 - final 9:16: `Assets/_Projects/Art/PR3D/Evidence/Phase5/PR3D_Level301_1080x1920.png`;
+- concept-polish 9:16:
+  `Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_1080x1920.png`;
 - validation details: `docs/reviews/pr3d-level301-validation.md`.
 
 ## Review findings
@@ -36,6 +38,10 @@ Accepted:
   every mesh;
 - full replay, Ice unlock, transfer and Win pass;
 - phone-scale color sequencing remains readable at all three portrait ratios;
+- gates cross the production lines instead of extending along them, with the
+  original line transforms and colliders preserved;
+- pizza markers retain the shared-mesh contract but have clearer spacing and
+  stronger low-poly surface separation;
 - performance and Console gates pass.
 
 Non-blocking polish opportunities:
@@ -45,8 +51,9 @@ Non-blocking polish opportunities:
 - the existing dark HUD/ad reservation obscures part of the upper factory
   composition;
 - 3:4 portrait fits safely but leaves less visual prominence for the board;
-- a later art pass could reduce the density of rail pizza markers and add more
-  material separation to container rims.
+- a later art pass could reduce the number of rail pizza markers and add more
+  material separation to container rims; the current pass only reduced marker
+  footprint so gameplay production counts remain untouched.
 
 These items should be reviewed against product priorities before expanding the
 art system. No rollout task or 319-level migration plan has been created.

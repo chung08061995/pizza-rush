@@ -15,8 +15,16 @@ Shader "PR3D/DynamicFoodColor"
             #pragma vertex vert
             #pragma fragment frag
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-            struct Attributes { float4 positionOS : POSITION; };
-            struct Varyings { float4 positionCS : SV_POSITION; };
+            struct Attributes
+            {
+                float4 positionOS : POSITION;
+                float3 normalOS : NORMAL;
+            };
+            struct Varyings
+            {
+                float4 positionCS : SV_POSITION;
+                half3 normalWS : TEXCOORD0;
+            };
             CBUFFER_START(UnityPerMaterial)
                 half4 _BaseColor;
             CBUFFER_END
@@ -24,9 +32,23 @@ Shader "PR3D/DynamicFoodColor"
             {
                 Varyings output;
                 output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
+                output.normalWS = TransformObjectToWorldNormal(input.normalOS);
                 return output;
             }
-            half4 frag(Varyings input) : SV_Target { return _BaseColor; }
+            half4 frag(Varyings input) : SV_Target
+            {
+                half3 normalWS = normalize(input.normalWS);
+                half upFacing = saturate(normalWS.y * 0.5h + 0.5h);
+                half keyLight = saturate(dot(
+                    normalWS,
+                    normalize(half3(-0.38h, 0.84h, -0.38h))));
+                half shade = 0.68h + upFacing * 0.32h + keyLight * 0.08h;
+                half3 pastel = lerp(
+                    _BaseColor.rgb,
+                    half3(1.0h, 1.0h, 1.0h),
+                    0.12h);
+                return half4(saturate(pastel * shade), _BaseColor.a);
+            }
             ENDHLSL
         }
     }

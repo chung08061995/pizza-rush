@@ -70,6 +70,13 @@ MonoBehaviours, places, and serialized renderer lists stay intact.
   renderer; the derived mesh compensates the legacy visual transform.
 - Pizza and gate visuals reuse the existing serialized production/line
   renderers so runtime color assignment continues to work.
+- If a legacy non-uniform renderer transform points a derived mesh along the
+  wrong axis, compensate in the derived mesh vertices/normals. Do not rotate or
+  rescale the gameplay Transform or collider. The Level 301 gate polish uses
+  this rule to place all seven gates across their rails.
+- Phone-scale pizza spacing is controlled in the single shared derived mesh;
+  do not duplicate pizza meshes per color. The accepted Level 301 footprint is
+  78% of the original derived X/Z footprint.
 - Board and environment are collider-free children of `LevelRunner`.
 - The environment backdrop is a collider-free quad with a procedural URP
   material: warm terracotta below the factory wall split and blue tiles above.
@@ -96,3 +103,7 @@ The Level 301 replay is reproducible with
 `CoffeeRunMigration/Reports/runtime-replay/0301.json`. Final validation and
 rollout review live in `docs/reviews/pr3d-level301-validation.md` and
 `docs/reviews/pr3d-vertical-slice-review.md`.
+
+The manifest is schema 4. In addition to source/export hashes it records the
+derived gate and pizza assets, stylized food shaders, portrait polish evidence,
+runtime replay result and the latest Editor profiling sample.

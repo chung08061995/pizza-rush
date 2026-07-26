@@ -27,11 +27,13 @@ Shader "PR3D/FixedFoodColor"
             struct Attributes
             {
                 float4 positionOS : POSITION;
+                float3 normalOS : NORMAL;
             };
 
             struct Varyings
             {
                 float4 positionCS : SV_POSITION;
+                half3 normalWS : TEXCOORD0;
             };
 
             CBUFFER_START(UnityPerMaterial)
@@ -42,12 +44,21 @@ Shader "PR3D/FixedFoodColor"
             {
                 Varyings output;
                 output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
+                output.normalWS = TransformObjectToWorldNormal(input.normalOS);
                 return output;
             }
 
             half4 frag(Varyings input) : SV_Target
             {
-                return _FixedFoodTint;
+                half3 normalWS = normalize(input.normalWS);
+                half upFacing = saturate(normalWS.y * 0.5h + 0.5h);
+                half keyLight = saturate(dot(
+                    normalWS,
+                    normalize(half3(-0.38h, 0.84h, -0.38h))));
+                half shade = 0.70h + upFacing * 0.30h + keyLight * 0.08h;
+                return half4(
+                    saturate(_FixedFoodTint.rgb * shade),
+                    _FixedFoodTint.a);
             }
             ENDHLSL
         }

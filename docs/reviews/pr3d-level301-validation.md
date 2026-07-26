@@ -13,6 +13,14 @@ malformed prefab override YAML introduced during PR3D-010. The repair only
 split `value:` and `objectReference:` back into Unity's canonical two-line
 format. The referenced GUIDs/file IDs did not change.
 
+- The follow-up concept polish rotates the two derived gate meshes into the
+  cross-rail frame without changing their transforms or BoxColliders. All seven
+  runtime gates now measure either `1.104 × 0.490 × 0.284 m` or the rotated
+  `0.284 × 0.490 × 1.104 m`, matching the direction of their production line.
+- The shared derived pizza footprint is 78% of its previous X/Z size. The two
+  food shaders now use a low-cost stylized normal ramp, preserving the single
+  shared mesh and runtime color assignment while improving spacing and depth
+  at phone scale.
 - Runtime replay: `Passed`, 108/108 drag actions, 27 feed actions, 148 total
   productions transferred, zero remaining production, Win reached, no skill or
   booster used.
@@ -39,6 +47,13 @@ The Game view used exact fixed resolutions, not Free Aspect:
 - `Assets/_Projects/Art/PR3D/Evidence/Phase5/PR3D_Level301_1080x2340.png`
 - `Assets/_Projects/Art/PR3D/Evidence/Phase5/PR3D_Level301_768x1024.png`
 
+The concept-polish comparison set was captured from a fresh play session after
+the shader import completed:
+
+- `Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_1080x1920.png`
+- `Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_1080x2340.png`
+- `Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_768x1024.png`
+
 The board, rails, gates, HUD, skill buttons and reserved ad region remain inside
 all three frames. The Home START and Select Booster PLAY flow was exercised.
 The editor stub had no live banner creative; the reserved region remained
@@ -61,10 +76,15 @@ The original PR3D-001 capture did not expose a valid GPU counter, so the
 same-session additive-root A/B is the comparable GPU gate. The clean full-art
 sample reported 7.815 ms GPU and 2.188 ms CPU main-thread time.
 
+The follow-up polish sample in the Unity Editor reported 15.873 ms total CPU
+frame time, 3.308 ms on the main thread and 9.407 ms GPU time. Gfx used memory
+was 492,913,820 bytes and mesh memory was 8,041,108 bytes. This remains an
+Editor-only sample; a device build is required before any rollout decision.
+
 ## Console
 
-No PR3D or gameplay errors were present after the clean run. Unity repeated the
-known immutable-package diagnostic:
+No PR3D or gameplay errors were present after the clean run. Unity repeated one
+instance of the known immutable-package diagnostic:
 
 `Packages/com.draft.unitydraftutils/Runtime/MonoBehaviour/MonoBehaviourLifecycleCallbacks.cs has no meta file`
 
