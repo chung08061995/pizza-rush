@@ -1,0 +1,132 @@
+{
+  "task": "PR3D-007",
+  "status": "blender-mcp-rebuilt; awaiting-coordinator-unity-mcp-batch-validation",
+  "source": "Art/PR3D/Source/Containers/PR3D_Containers_Master.blend",
+  "builder": "Art/PR3D/Source/Containers/build_pr3d_007_containers.py",
+  "sourceSha256": "7e1cd92170fe6288db71223e44d87de5703807337e2c55dd6a8bd8f1de2ae3c2",
+  "conceptReference": "docs/reference/pizza-factory-concept.png",
+  "visualDirection": {
+    "silhouette": "Rounded modular trays with a distinct inset and raised rim; every occupied cell remains readable at portrait mobile scale.",
+    "palette": "Tomato-red body and warm brass rim echo the concept oven, terracotta floor and warm rail hardware. Ice uses high-value cyan and frosted white for immediate state contrast.",
+    "comparisonResult": "The family follows the concept's rounded, warm, toy-like forms and saturated accent colors without copying gameplay gates or changing color-state ownership."
+  },
+  "contract": {
+    "usage": "Additive visual children only under existing serialized gameplay roots.",
+    "units": "meters",
+    "cellPitch": 1.0,
+    "pivot": "Local origin is the center of the first occupied cell.",
+    "unityImport": {
+      "globalScale": 1.0,
+      "useFileScale": true,
+      "bakeAxisConversion": false
+    },
+    "forbiddenChanges": [
+      "scripts",
+      "enums",
+      "level JSON",
+      "colliders",
+      "serialized gameplay roots",
+      "drag behavior",
+      "runtime shape normalization"
+    ]
+  },
+  "assets": [
+    {
+      "label": "1x1",
+      "unityFbx": "Assets/_Projects/Art/PR3D/Containers/PR3D_Container_1x1.fbx",
+      "exportFbx": "Art/PR3D/Exports/Containers/PR3D_Container_1x1.fbx",
+      "exportGlb": "Art/PR3D/Exports/Containers/PR3D_Container_1x1.glb",
+      "sha256": {
+        "unityFbx": "bf3c810267984028e7c1c68d1774a9b3a3887615f286dc9f99ea77f89d1b5d9f",
+        "exportFbx": "40be6b77bbb15776b9ba915727ecbe854b820e10058d7c8f40feec40d48dac4b",
+        "exportGlb": "b0a704ee5b900ed58c9dc1c7e2464eb540d6558a044142ad7efff80adc8eadc6"
+      },
+      "root": "PR3D_Container_1x1_Root",
+      "occupiedCells": [[0, 0]],
+      "boundsMeters": [0.86, 0.86, 0.334]
+    },
+    {
+      "label": "1x2",
+      "unityFbx": "Assets/_Projects/Art/PR3D/Containers/PR3D_Container_1x2.fbx",
+      "exportFbx": "Art/PR3D/Exports/Containers/PR3D_Container_1x2.fbx",
+      "exportGlb": "Art/PR3D/Exports/Containers/PR3D_Container_1x2.glb",
+      "sha256": {
+        "unityFbx": "71791bab5db2472c276b238f5672386572e0d8c06715d8fdd363cffffc5bd383",
+        "exportFbx": "28d65659d620b0c49fc2e7d54790d1a23352fb49ba296b75e745053843654911",
+        "exportGlb": "d470a9ce95fef3cb0e21372755e49ff049c6c91d147311455282cc7e06fb6fbe"
+      },
+      "root": "PR3D_Container_1x2_Root",
+      "occupiedCells": [[0, 0], [0, 1]],
+      "boundsMeters": [0.86, 1.86, 0.334]
+    },
+    {
+      "label": "1x3",
+      "unityFbx": "Assets/_Projects/Art/PR3D/Containers/PR3D_Container_1x3.fbx",
+      "exportFbx": "Art/PR3D/Exports/Containers/PR3D_Container_1x3.fbx",
+      "exportGlb": "Art/PR3D/Exports/Containers/PR3D_Container_1x3.glb",
+      "sha256": {
+        "unityFbx": "24595290090d0b9faab4be3b63f9652167db34e59477f82284b7848c94a53c4f",
+        "exportFbx": "886f02b6ad2c752a7d3616c23118879247f7f04dfb94df4a861df8accdd56833",
+        "exportGlb": "f59279a16ae0fc432ff83dfbedd89f4c764ff7606760f5a457f12139e1cd060b"
+      },
+      "root": "PR3D_Container_1x3_Root",
+      "occupiedCells": [[0, 0], [0, 1], [0, 2]],
+      "boundsMeters": [0.86, 2.86, 0.334]
+    },
+    {
+      "label": "T",
+      "unityFbx": "Assets/_Projects/Art/PR3D/Containers/PR3D_Container_T.fbx",
+      "exportFbx": "Art/PR3D/Exports/Containers/PR3D_Container_T.fbx",
+      "exportGlb": "Art/PR3D/Exports/Containers/PR3D_Container_T.glb",
+      "sha256": {
+        "unityFbx": "9a41c0d6d4c41ae663b1bf8bebd96d2691a931b229e16a2dd237b4e44cf7b43c",
+        "exportFbx": "c3af6204d59e72b64d48cb51c32f4d796c3482f9f5fc35468a3f429fc9dca937",
+        "exportGlb": "58918f5881618700c0428159cb03876810fe137846be82307aab5a6ba44b648c"
+      },
+      "root": "PR3D_Container_T_Root",
+      "occupiedCells": [[0, 0], [-1, 1], [0, 1], [1, 1]],
+      "boundsMeters": [2.86, 1.86, 0.334]
+    },
+    {
+      "label": "Ice",
+      "unityFbx": "Assets/_Projects/Art/PR3D/Containers/PR3D_Container_Ice.fbx",
+      "exportFbx": "Art/PR3D/Exports/Containers/PR3D_Container_Ice.fbx",
+      "exportGlb": "Art/PR3D/Exports/Containers/PR3D_Container_Ice.glb",
+      "sha256": {
+        "unityFbx": "4f72e988fcf55d8b567c8ebbbfda791339bebcf07f4687bd58fd4864bb89d9a9",
+        "exportFbx": "bee3fa10016c7e8f6d633a834dcdadadf13409fc2f9f39ec3564d5a81e86b888",
+        "exportGlb": "465f60ce907c9e5d1cba895517448fdaf2b240c33866102644e04d0a78167e1a"
+      },
+      "root": "PR3D_Container_Ice_Root",
+      "occupiedCells": [[0, 0]],
+      "boundsMeters": [0.92, 0.92, 0.58],
+      "integrationNote": "Repeat this visual per occupied cell through existing integration placement; do not normalize or rewrite the runtime shape."
+    }
+  ],
+  "readOnlyGameplayBaseline": {
+    "algorithm": "sha256",
+    "verifiedAgainst": "parent of the selective archive-restore commit fdaa9d6",
+    "files": {
+      "Assets/_Projects/Resources/LevelData/0301.json": "7115923d4205df433c54d12e59c64ba5726db82f394bdc0001a89e64c5482faa",
+      "Assets/_Projects/Prefabs/Containers/Container/Rectangle1x1Container.prefab": "225d1840fe61318821036a127ce2e808cdaf5677a3e22b0ed47feb80a53cbf58",
+      "Assets/_Projects/Prefabs/Containers/Container/Rectangle1x2Container.prefab": "b466508a087159a36701cd65ed75a4abbc81d11d1a8143a2f9a98b2e19553d71",
+      "Assets/_Projects/Prefabs/Containers/Container/Rectangle1x3Container.prefab": "56bf9205de71c74bfda899b288b62be74574927f2a2501d40307062aa57e9e79",
+      "Assets/_Projects/Prefabs/Containers/Container/TContainer.prefab": "0b8a34b58199eff297daeeb098b44a68861babaa5d1253c7204283a443b9f0f2",
+      "Assets/_Projects/Prefabs/Containers/IcePart.prefab": "d916b097bb80d853c56fc8930ea37a67cc5139bea4800f1701171605eab931bf"
+    },
+    "result": "Current hashes match the pre-PR3D-007 baseline exactly."
+  },
+  "validation": {
+    "blenderMcpRebuild": "passed at 2026-07-26T10:47:48+07:00; source, five FBX, five GLB and five Unity FBX outputs were rewritten in one builder run",
+    "savedSceneAudit": {
+      "unitSystem": "METRIC",
+      "scaleLength": 1.0,
+      "rootTransform": "identity for all five roots",
+      "meshScaleApplied": true,
+      "cellPitchAndBounds": "passed for 1x1, 1x2, 1x3, T and Ice"
+    },
+    "unityMcpBatchValidation": "delegated to coordinator after the shared Unity MCP restart",
+    "colliderCount": 0,
+    "monoBehaviourCount": 0
+  }
+}

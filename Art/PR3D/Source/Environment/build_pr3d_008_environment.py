@@ -9,6 +9,9 @@ from __future__ import annotations
 
 import math
 import os
+import hashlib
+import json
+import shutil
 from pathlib import Path
 
 import bpy
@@ -18,6 +21,52 @@ from mathutils import Vector
 TASK = "PR3D-008"
 FORWARD = "-Z"
 UP = "Y"
+FAMILY_CONTRACTS = {
+    "PR3D_Environment_Oven": {
+        "role": "hero brick pizza oven with emissive fire",
+        "placement": "upper-left perimeter, outside central board",
+    },
+    "PR3D_Environment_WallBlue": {
+        "role": "modular glossy-blue tiled wall",
+        "placement": "upper background behind oven/counters",
+    },
+    "PR3D_Environment_FloorTerracotta": {
+        "role": "modular terracotta floor",
+        "placement": "under gameplay and environment visuals",
+    },
+    "PR3D_Environment_Counter": {
+        "role": "warm wood preparation counter",
+        "placement": "upper/right perimeter, outside central board",
+    },
+    "PR3D_Environment_Shelf": {
+        "role": "warm wood wall shelf",
+        "placement": "upper-right wall",
+    },
+    "PR3D_Environment_PendantLight": {
+        "role": "warm pendant practical light",
+        "placement": "top perimeter, clear of HUD",
+    },
+    "PR3D_Environment_Jar": {
+        "role": "three reusable ingredient jars",
+        "placement": "shelf/counter dressing",
+    },
+    "PR3D_Environment_Bowl": {
+        "role": "reusable ceramic ingredient bowl",
+        "placement": "counter dressing",
+    },
+    "PR3D_Environment_Basil": {
+        "role": "reusable potted basil",
+        "placement": "counter/perimeter dressing",
+    },
+    "PR3D_Environment_Utensils": {
+        "role": "reusable hanging pizza utensils",
+        "placement": "wall/counter perimeter",
+    },
+    "PR3D_Environment_IngredientCrate": {
+        "role": "reusable ingredient crate",
+        "placement": "lower/right perimeter, outside central board",
+    },
+}
 
 
 def material(name, color, metallic=0.0, roughness=0.48, emission=None):
@@ -458,10 +507,85 @@ def export_root(r, export_dir, runtime_dir):
         bake_anim=False,
         path_mode="AUTO",
     )
-    for folder in (export_dir, runtime_dir):
-        bpy.ops.export_scene.fbx(filepath=str(folder / f"{filename}.fbx"), **kwargs)
+    # Export once and byte-mirror into Unity. Exporting the same selection twice
+    # can produce different FBX metadata/UID bytes even when geometry is equal,
+    # which makes provenance and revalidation unnecessarily ambiguous.
+    source_path = export_dir / f"{filename}.fbx"
+    runtime_path = runtime_dir / f"{filename}.fbx"
+    bpy.ops.export_scene.fbx(filepath=str(source_path), **kwargs)
+    shutil.copy2(source_path, runtime_path)
     r.location = old_location
     bpy.ops.object.select_all(action="DESELECT")
+    return source_path, runtime_path
+
+
+def sha256(path):
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def write_family_manifest(export_pairs, runtime_dir):
+    families = []
+    for source_path, runtime_path in export_pairs:
+        name = source_path.stem
+        contract = FAMILY_CONTRACTS[name]
+        families.append(
+            {
+                "family": name,
+                "root": f"{name}_Root",
+                "role": contract["role"],
+                "placement": contract["placement"],
+                "source_export": source_path.name,
+                "runtime_export": runtime_path.name,
+                "sha256": sha256(source_path),
+                "bytes": source_path.stat().st_size,
+                "mirror_verified": source_path.read_bytes() == runtime_path.read_bytes(),
+                "scale": 1.0,
+                "axis": "Unity Y-up, +Z-forward",
+                "pivot": "stable module contact/root pivot at origin",
+                "uv_required": True,
+                "applied_child_transforms": True,
+                "collider_count": 0,
+                "script_count": 0,
+            }
+        )
+    payload = {
+        "task": TASK,
+        "reference": "docs/reference/pizza-factory-concept.png",
+        "evidence": {
+            "portrait_preview": "Art/PR3D/Source/Environment/PR3D_008_EnvironmentKit.png",
+            "comparison_iterations": 2,
+            "final_read": (
+                "concept-aligned orange brick oven/fire, blue tile, warm wood, "
+                "terracotta and reusable ingredient dressing; central portrait "
+                "gameplay region remains visually unoccupied"
+            ),
+        },
+        "art_direction": [
+            "hero orange-brick oven and readable emissive fire",
+            "glossy blue tiled wall",
+            "warm wood counters and shelf",
+            "terracotta floor",
+            "jars, bowls, basil, utensils and ingredient crates",
+            "central portrait gameplay board and HUD safe area remain clear",
+        ],
+        "family_count": len(families),
+        "families": families,
+        "shared_constraints": {
+            "units": "metres",
+            "scale": 1.0,
+            "modular_instance_units": True,
+            "central_safe_area_metres": [7.0, 7.0],
+            "visual_only": True,
+            "gameplay_contract_changes": False,
+        },
+    }
+    manifest_path = runtime_dir / "PR3D_Environment_Families.json"
+    manifest_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    return manifest_path
 
 
 def look_at(obj, target):
@@ -475,10 +599,13 @@ def setup_render(scene, collection, preview_path):
     collection.objects.link(camera)
     # Near-front portrait view keeps both side families visible while showing
     # enough floor depth to judge safe-area placement.
-    camera.location = (0.0, -18.5, 12.8)
+    camera.location = (0.15, -18.5, 12.8)
     camera.data.type = "ORTHO"
-    camera.data.ortho_scale = 12.2
-    look_at(camera, (0, 1.0, 0.8))
+    camera.data.ortho_scale = 12.4
+    # Aim above the geometric centre so the environment reads as a dense
+    # kitchen header/perimeter, like the concept, while the portrait board/HUD
+    # safe zone remains visibly open below it.
+    look_at(camera, (0.15, 0.55, 1.85))
     scene.camera = camera
     for name, loc, energy, size, color in (
         ("Key", (-5, -7, 12), 1500, 6.0, (1.0, 0.68, 0.42)),
@@ -495,7 +622,7 @@ def setup_render(scene, collection, preview_path):
     scene.world = world
     world.use_nodes = True
     world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.018, 0.025, 0.055, 1)
-    world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.30
+    world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.46
     # Blender 5.x reports the Eevee engine identifier as BLENDER_EEVEE.
     scene.render.engine = "BLENDER_EEVEE"
     scene.render.resolution_x = 720
@@ -580,8 +707,8 @@ def build():
     ]
     for r in roots:
         batch_root_by_material(r)
-    for r in roots:
-        export_root(r, export_dir, runtime_dir)
+    export_pairs = [export_root(r, export_dir, runtime_dir) for r in roots]
+    manifest_path = write_family_manifest(export_pairs, runtime_dir)
 
     text = bpy.data.texts.new("PR3D_008_ENVIRONMENT_CONTRACT.md")
     text.write(
@@ -603,7 +730,7 @@ def build():
     bpy.ops.wm.save_as_mainfile(filepath=str(blend_path))
     print(
         f"{TASK}: roots={len(roots)} meshes={sum(1 for o in bpy.data.objects if o.type == 'MESH')} "
-        f"materials={len(mats)} blend={blend_path} preview={preview}"
+        f"materials={len(mats)} blend={blend_path} preview={preview} manifest={manifest_path}"
     )
 
 

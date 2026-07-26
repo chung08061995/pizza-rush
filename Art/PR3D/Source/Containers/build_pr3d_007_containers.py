@@ -7,6 +7,7 @@ pitch used by the existing Level 301 board.
 
 from pathlib import Path
 import math
+import os
 
 import bpy
 from mathutils import Vector
@@ -115,6 +116,25 @@ def build_shape(asset_name, cells, body_mat, rim_mat, inset_mat):
     collection = bpy.data.collections.new(f"ASSET_{asset_name}")
     bpy.context.scene.collection.children.link(collection)
     root = add_root(f"PR3D_Container_{asset_name}_Root", collection, cells)
+
+    # Low bridges visually bind multi-cell pieces into one draggable container
+    # while staying inside the existing occupied-cell footprint.
+    cell_set = set(cells)
+    bridge_index = 0
+    for x, y in cells:
+        for dx, dy in ((1, 0), (0, 1)):
+            if (x + dx, y + dy) not in cell_set:
+                continue
+            bridge = rounded_cube(
+                f"Visual_{asset_name}_Bridge_{bridge_index:02d}",
+                ((x + dx * 0.5) * CELL_PITCH, (y + dy * 0.5) * CELL_PITCH, 0.06),
+                (0.34 if dx else 0.54, 0.54 if dx else 0.34, 0.12),
+                body_mat,
+                0.055,
+                collection,
+            )
+            parent_keep_local(bridge, root)
+            bridge_index += 1
 
     for index, (x, y) in enumerate(cells):
         loc_x, loc_y = x * CELL_PITCH, y * CELL_PITCH
@@ -333,7 +353,8 @@ scene.render.film_transparent = False
 SOURCE_DIR.mkdir(parents=True, exist_ok=True)
 PREVIEW.parent.mkdir(parents=True, exist_ok=True)
 bpy.ops.wm.save_as_mainfile(filepath=str(BLEND))
-bpy.ops.render.render(write_still=True)
+if os.environ.get("PR3D_SKIP_RENDER") != "1":
+    bpy.ops.render.render(write_still=True)
 
 print(
     {

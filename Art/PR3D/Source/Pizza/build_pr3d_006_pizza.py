@@ -27,7 +27,10 @@ def material(name, color, metallic=0.0, roughness=0.45):
 
 
 def add_tri_prism(vertices, faces, mat_ids, z0, z1, inset=0.0, material_index=0):
-    p = [(-0.72 + inset, 0.62 - inset), (0.72 - inset, 0.62 - inset), (0.0, -0.88 + inset)]
+    # Keep the canonical slice inside one 1 m gameplay cell at object scale 1.
+    # The back edge is intentionally broad and the point slightly truncated by
+    # beveling so the silhouette survives the portrait gameplay camera.
+    p = [(-0.42 + inset, 0.36 - inset), (0.42 - inset, 0.36 - inset), (0.0, -0.50 + inset)]
     start = len(vertices)
     vertices.extend([(x, y, z0) for x, y in p] + [(x, y, z1) for x, y in p])
     faces.extend([
@@ -111,34 +114,34 @@ def add_cylinder(vertices, faces, mat_ids, center, radius, depth, material_index
 def build_shared_mesh():
     vertices, faces, mat_ids = [], [], []
     # A chunky, rounded phone-readable silhouette modelled after the concept conveyor slices.
-    add_tri_prism(vertices, faces, mat_ids, 0.00, 0.15, material_index=0)
-    add_tri_prism(vertices, faces, mat_ids, 0.135, 0.225, inset=0.075, material_index=1)
+    add_tri_prism(vertices, faces, mat_ids, 0.00, 0.10, material_index=0)
+    add_tri_prism(vertices, faces, mat_ids, 0.090, 0.150, inset=0.045, material_index=1)
     add_rounded_rect_prism(
         vertices, faces, mat_ids,
-        center=(0.0, 0.575),
-        half_width=0.73,
-        half_height=0.16,
-        radius=0.15,
-        z0=0.105,
-        z1=0.31,
+        center=(0.0, 0.325),
+        half_width=0.43,
+        half_height=0.105,
+        radius=0.095,
+        z0=0.070,
+        z1=0.205,
         material_index=0,
     )
 
     # Three oversized topping coins stay readable after the slice is reduced to
     # roughly 30 px in the portrait gameplay camera.
     topping_centers = [
-        (-0.29, 0.17, 0.272),
-        (0.29, 0.17, 0.272),
-        (0.00, -0.24, 0.272),
+        (-0.17, 0.095, 0.180),
+        (0.17, 0.095, 0.180),
+        (0.00, -0.175, 0.180),
     ]
     for center in topping_centers:
-        add_cylinder(vertices, faces, mat_ids, center, 0.205, 0.095, 2, sides=16)
+        add_cylinder(vertices, faces, mat_ids, center, 0.115, 0.060, 2, sides=16)
         # Raised centre catches light and keeps variants legible when the slice is tiny.
         add_cylinder(
             vertices, faces, mat_ids,
-            (center[0], center[1], center[2] + 0.055),
-            0.073,
-            0.04,
+            (center[0], center[1], center[2] + 0.036),
+            0.043,
+            0.028,
             3,
             sides=12,
         )
@@ -164,7 +167,7 @@ def build_shared_mesh():
     bpy.context.view_layer.objects.active = temp
     temp.select_set(True)
     bevel = temp.modifiers.new("PR3D_PhoneReadable_RoundedEdges", "BEVEL")
-    bevel.width = 0.035
+    bevel.width = 0.022
     bevel.segments = 3
     bevel.limit_method = "ANGLE"
     bpy.ops.object.modifier_apply(modifier=bevel.name)
@@ -201,7 +204,9 @@ scene.render.image_settings.file_format = "PNG"
 scene.render.film_transparent = False
 scene.world.color = (0.018, 0.025, 0.045)
 
-crust = material("PR3D_MAT_Crust", (0.76, 0.30, 0.08), roughness=0.58)
+# A deeper baked-orange crust holds its contrast under the bright portrait key
+# and matches the toasted borders in the supplied pizza-factory concept.
+crust = material("PR3D_MAT_Crust", (0.46, 0.12, 0.025), roughness=0.56)
 cheese = material("PR3D_MAT_Cheese", (1.0, 0.58, 0.07), roughness=0.38)
 
 variants = [
@@ -230,7 +235,7 @@ root["concept_target"] = "Rounded colored cheese slice, visible rear crust, thre
 root["unity_scale_m"] = 1.0
 
 variant_objects = []
-spacing_x, spacing_y = 1.85, 2.15
+spacing_x, spacing_y = 1.08, 1.25
 for index, (name, _, _) in enumerate(variants):
     obj = bpy.data.objects.new(f"PR3D_Pizza_{index + 1:02d}_{name}", shared_mesh)
     bpy.context.collection.objects.link(obj)
@@ -262,7 +267,7 @@ export_single.hide_set(True)
 # Rounded display plinths make the ten variants legible in the portrait evidence render.
 plinth_mat = material("PR3D_MAT_PreviewPlinth", (0.055, 0.075, 0.12), roughness=0.68)
 for obj in variant_objects:
-    bpy.ops.mesh.primitive_cube_add(location=(obj.location.x, obj.location.y, -0.15), scale=(0.91, 0.92, 0.08))
+    bpy.ops.mesh.primitive_cube_add(location=(obj.location.x, obj.location.y, -0.10), scale=(0.52, 0.54, 0.055))
     plinth = bpy.context.object
     plinth.name = f"PREVIEW_{obj.name}_Plinth"
     plinth.data.materials.append(plinth_mat)
@@ -275,7 +280,7 @@ bpy.ops.object.camera_add(location=(0.0, -1.8, 14.7))
 camera = bpy.context.object
 camera.name = "PR3D_Pizza_PortraitCamera"
 camera.data.type = "ORTHO"
-camera.data.ortho_scale = 11.8
+camera.data.ortho_scale = 7.05
 look_at(camera, (0.0, 0.0, 0.0))
 scene.camera = camera
 
@@ -337,10 +342,33 @@ export_single.hide_set(True)
 variant_contract = {
     "task": "PR3D-006",
     "units": "meters",
+    "concept_reference": "docs/reference/pizza-factory-concept.png",
+    "source_asset": "Art/PR3D/Source/Pizza/PR3D_006_PizzaVariants.blend",
     "mesh_asset": "PR3D_PizzaSlice_Shared.fbx",
+    "glb_asset": "PR3D_PizzaSlice_Shared.glb",
     "mesh_datablock": shared_mesh.name,
     "mesh_count": 1,
+    "geometry": {
+        "vertices": len(shared_mesh.vertices),
+        "polygons": len(shared_mesh.polygons),
+        "footprint_m": [0.86, 0.923],
+        "height_m": 0.23,
+        "cell_pitch_m": 1.0,
+        "silhouette": "rounded triangular slice, chunky toasted rear crust, three oversized topping coins",
+    },
     "pivot": "grounded at local origin; slice points toward local -Y in Blender / +Z after Unity FBX conversion",
+    "transform_contract": {
+        "location": [0.0, 0.0, 0.0],
+        "rotation_degrees": [0.0, 0.0, 0.0],
+        "scale": [1.0, 1.0, 1.0],
+    },
+    "unity_contract": {
+        "visual_only": True,
+        "colliders": 0,
+        "scripts": 0,
+        "mesh_reuse": "all ten variants must reference the canonical shared mesh",
+    },
+    "preview": "Evidence/PR3D_006_PizzaVariants.png",
     "material_slots": ["crust", "primary", "accent", "cheese"],
     "variants": [
         {
@@ -348,6 +376,12 @@ variant_contract = {
             "name": name,
             "primary_rgb": list(primary),
             "accent_rgb": list(accent),
+            "material_recipe": [
+                "PR3D_MAT_Crust",
+                f"PR3D_MAT_{name}",
+                f"PR3D_MAT_{name}_Garnish",
+                "PR3D_MAT_Cheese",
+            ],
         }
         for index, (name, primary, accent) in enumerate(variants)
     ],

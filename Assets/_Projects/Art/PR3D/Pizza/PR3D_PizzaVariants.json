@@ -1,10 +1,48 @@
 {
   "task": "PR3D-006",
   "units": "meters",
+  "concept_reference": "docs/reference/pizza-factory-concept.png",
+  "source_asset": "Art/PR3D/Source/Pizza/PR3D_006_PizzaVariants.blend",
   "mesh_asset": "PR3D_PizzaSlice_Shared.fbx",
+  "glb_asset": "PR3D_PizzaSlice_Shared.glb",
   "mesh_datablock": "PR3D_PizzaSlice_SharedMesh",
   "mesh_count": 1,
+  "geometry": {
+    "vertices": 1040,
+    "polygons": 958,
+    "footprint_m": [
+      0.86,
+      0.923
+    ],
+    "height_m": 0.23,
+    "cell_pitch_m": 1.0,
+    "silhouette": "rounded triangular slice, chunky toasted rear crust, three oversized topping coins"
+  },
   "pivot": "grounded at local origin; slice points toward local -Y in Blender / +Z after Unity FBX conversion",
+  "transform_contract": {
+    "location": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "rotation_degrees": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "unity_contract": {
+    "visual_only": true,
+    "colliders": 0,
+    "scripts": 0,
+    "mesh_reuse": "all ten variants must reference the canonical shared mesh"
+  },
+  "preview": "Evidence/PR3D_006_PizzaVariants.png",
   "material_slots": [
     "crust",
     "primary",
@@ -24,6 +62,12 @@
         1.0,
         0.7,
         0.08
+      ],
+      "material_recipe": [
+        "PR3D_MAT_Crust",
+        "PR3D_MAT_Red_Tomato",
+        "PR3D_MAT_Red_Tomato_Garnish",
+        "PR3D_MAT_Cheese"
       ]
     },
     {
@@ -38,6 +82,12 @@
         0.48,
         0.95,
         0.1
+      ],
+      "material_recipe": [
+        "PR3D_MAT_Crust",
+        "PR3D_MAT_Green_Basil",
+        "PR3D_MAT_Green_Basil_Garnish",
+        "PR3D_MAT_Cheese"
       ]
     },
     {
@@ -52,6 +102,12 @@
         0.18,
         0.78,
         1.0
+      ],
+      "material_recipe": [
+        "PR3D_MAT_Crust",
+        "PR3D_MAT_Blue_Cheese",
+        "PR3D_MAT_Blue_Cheese_Garnish",
+        "PR3D_MAT_Cheese"
       ]
     },
     {
@@ -66,6 +122,12 @@
         0.58,
         0.62,
         0.68
+      ],
+      "material_recipe": [
+        "PR3D_MAT_Crust",
+        "PR3D_MAT_White_Garlic",
+        "PR3D_MAT_White_Garlic_Garnish",
+        "PR3D_MAT_Cheese"
       ]
     },
     {
@@ -80,6 +142,12 @@
         1.0,
         0.82,
         0.04
+      ],
+      "material_recipe": [
+        "PR3D_MAT_Crust",
+        "PR3D_MAT_Orange_Pepper",
+        "PR3D_MAT_Orange_Pepper_Garnish",
+        "PR3D_MAT_Cheese"
       ]
     },
     {
@@ -94,6 +162,12 @@
         0.8,
         0.25,
         0.03
+      ],
+      "material_recipe": [
+        "PR3D_MAT_Crust",
+        "PR3D_MAT_Yellow_Corn",
+        "PR3D_MAT_Yellow_Corn_Garnish",
+        "PR3D_MAT_Cheese"
       ]
     },
     {
@@ -108,6 +182,12 @@
         0.78,
         0.48,
         0.16
+      ],
+      "material_recipe": [
+        "PR3D_MAT_Crust",
+        "PR3D_MAT_Brown_Mushroom",
+        "PR3D_MAT_Brown_Mushroom_Garnish",
+        "PR3D_MAT_Cheese"
       ]
     },
     {
@@ -122,6 +202,12 @@
         0.02,
         0.18,
         0.38
+      ],
+      "material_recipe": [
+        "PR3D_MAT_Crust",
+        "PR3D_MAT_Cyan_Seafood",
+        "PR3D_MAT_Cyan_Seafood_Garnish",
+        "PR3D_MAT_Cheese"
       ]
     },
     {
@@ -136,6 +222,12 @@
         0.7,
         0.2,
         0.94
+      ],
+      "material_recipe": [
+        "PR3D_MAT_Crust",
+        "PR3D_MAT_DarkPurple_Olive",
+        "PR3D_MAT_DarkPurple_Olive_Garnish",
+        "PR3D_MAT_Cheese"
       ]
     },
     {
@@ -150,6 +242,12 @@
         0.55,
         0.02,
         0.18
+      ],
+      "material_recipe": [
+        "PR3D_MAT_Crust",
+        "PR3D_MAT_Pink_Ham",
+        "PR3D_MAT_Pink_Ham_Garnish",
+        "PR3D_MAT_Cheese"
       ]
     }
   ]
