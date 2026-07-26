@@ -1,5 +1,6 @@
 {
   "task": "PR3D-004",
+  "status": "verified",
   "units": "metres",
   "blender_axis": "Z-up",
   "unity_axis": "Y-up, +Z-forward",
@@ -53,30 +54,23 @@
     "connector": "0.24m half-module bridge between modular pieces",
     "support": "instance at module joints or every 0.96m"
   },
-  "unity_mcp_evidence": {
-    "unity_version": "6000.4.10f1",
-    "project": "af84-pr3d-seq-001-ho",
-    "all_importer_global_scale": 1.0,
-    "all_use_file_scale": true,
-    "all_bake_axis_conversion": false,
-    "straight_bounds_xyz_m": [
-      0.875,
-      0.215,
-      5.315
-    ],
-    "curve_left_bounds_xyz_m": [
-      2.377,
-      0.315,
-      2.377
-    ],
-    "curve_right_bounds_xyz_m": [
-      2.377,
-      0.315,
-      2.377
-    ],
-    "all_collider_count": 0,
-    "all_mono_behaviour_count": 0,
-    "result": "pass"
+  "evidence": {
+    "concept_reference": "docs/reference/pizza-factory-concept.png",
+    "preview": "Evidence/PR3D_004_RailKit.png",
+    "comparison_result": "Dark charcoal deck, steel edge rails and small warm directional arrows now match the concept hierarchy without overpowering pizza or gate colors."
+  },
+  "unity_mcp_validation": {
+    "result": "pass",
+    "importer": {
+      "global_scale": 1.0,
+      "use_file_scale": true,
+      "bake_axis_conversion": false
+    },
+    "asset_count": 5,
+    "collider_count": 0,
+    "mono_behaviour_count": 0,
+    "anchors_verified": true,
+    "pr3d_console_errors": 0
   },
   "gameplay_contract": "visual-only; no prefab, scene, collider, JSON, enum, or Place edits"
 }

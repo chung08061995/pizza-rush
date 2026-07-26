@@ -1,5 +1,6 @@
 {
   "task": "PR3D-008",
+  "status": "verified",
   "reference": "docs/reference/pizza-factory-concept.png",
   "evidence": {
     "portrait_preview": "Art/PR3D/Source/Environment/PR3D_008_EnvironmentKit.png",
@@ -225,5 +226,16 @@
     ],
     "visual_only": true,
     "gameplay_contract_changes": false
+  },
+  "unity_mcp_validation": {
+    "result": "pass",
+    "asset_count": 11,
+    "global_scale": 1.0,
+    "use_file_scale": true,
+    "bake_axis_conversion": false,
+    "collider_count": 0,
+    "mono_behaviour_count": 0,
+    "safe_area": "Families are perimeter-only; final portrait composition is deferred to PR3D-010.",
+    "pr3d_console_errors": 0
   }
 }

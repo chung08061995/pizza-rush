@@ -42,40 +42,67 @@ Mỗi task phải ưu tiên gọi server **`unityMCP` tại `http://127.0.0.1:80
   dùng `StubAdsService` khi không có define `GOOGLE_ADMOB`, nên project compile
   mà không thay đổi đường chạy AdMob trên Android.
 
-- [ ] [PR3D-003] Dựng board và bộ tile
+- [x] [PR3D-003] Dựng board và bộ tile
   Dựng tray/frame 7×7 và visual tile theo concept nhưng giữ nguyên cell size, pivot và vị trí grid. Dùng Blender MCP để model và Unity MCP để đối chiếu Level 301 trong Unity.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: board 7×7 `7.78×0.36×7.78 m`, tile `0.9×0.1175×0.9 m`;
+  Unity MCP xác nhận scale 1, pivot/grid pitch 1 m, 49 cell Level 301 và không
+  có Collider/MonoBehaviour trong visual.
 
-- [ ] [PR3D-004] Dựng bộ ray procedural
+- [x] [PR3D-004] Dựng bộ ray procedural
   Dựng ray thẳng, ray cong 90° có thể mirror/rotate, support, mũi tên và connector board khớp production place hiện tại. Dùng Blender MCP để tạo kit và Unity MCP để kiểm tra anchor, hướng ray và khoảng cách.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: năm module thẳng/cong trái/phải/connector/support được Blender MCP
+  rebuild; Unity MCP xác nhận anchor cong `±1.89,-1.89`, module spacing 0.48 m,
+  scale 1 và visual-only. Sau đối chiếu concept, mũi tên đã thu nhỏ và bỏ
+  emission để pizza/gate tiếp tục là điểm nhấn màu.
 
-- [ ] [PR3D-005] Dựng hệ thống cổng màu
+- [x] [PR3D-005] Dựng hệ thống cổng màu
   Dựng một gate mesh với mười variant material/emission dùng chung, không đổi entry/exit transform. Dùng Blender MCP để tạo mesh/material và Unity MCP để kiểm tra màu, emission và vị trí cổng.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: một shared gate mesh, mười URP Lit emission material; Unity MCP xác
+  nhận entry/exit `±0.25 m`, bounds `1.104×0.79×0.316 m`, scale 1 và không có
+  component gameplay.
 
-- [ ] [PR3D-006] Dựng pizza và variant topping
+- [x] [PR3D-006] Dựng pizza và variant topping
   Dựng một mesh pizza tam giác với mười variant topping/màu dễ phân biệt ở kích thước điện thoại bằng material, không nhân bản mesh. Dùng Blender MCP để tạo asset và Unity MCP để kiểm tra readability trong Game view.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: một shared mesh `0.86×0.23×0.923 m`, mười material/topping recipe
+  dễ phân biệt; Unity MCP xác nhận một renderer/mesh, bốn material slot,
+  scale 1 và visual-only.
 
-- [ ] [PR3D-007] Thay visual container Level 301
+- [x] [PR3D-007] Thay visual container Level 301
   Thay visual cho shape 1×1, 1×2, 1×3, T và Ice nhưng giữ nguyên root, collider, place và component reference. Dùng Unity MCP để kiểm tra prefab/runtime; không sửa enum, JSON, drag hoặc collider.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: visual 1×1, 1×2, 1×3, T và Ice giữ pitch 1 m/pivot cell đầu tiên;
+  Unity MCP xác nhận bounds, scale 1, không component gameplay. Hash JSON 0301
+  và năm prefab gameplay trùng baseline; chưa sửa prefab ở phase này.
 
-- [ ] [PR3D-008] Dựng environment bếp pizza
+- [x] [PR3D-008] Dựng environment bếp pizza
   Tạo lò và các family wall/floor/counter, shelf, đèn, jar/bowl, basil, dụng cụ và crate nguyên liệu có thể instance. Dùng Blender MCP cho model/procedural asset, Unity MCP để kiểm tra ánh sáng, camera portrait và safe area.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: 11 family/43 mesh gồm oven, wall/floor/counter, shelf, pendant,
+  jar/bowl/basil/utensils/crate; Unity MCP xác nhận import scale 1, không
+  Collider/MonoBehaviour. Bố cục portrait cuối và polish ánh sáng thực hiện
+  tuần tự ở PR3D-010 sau khi tối ưu/export.
 
-- [ ] [PR3D-009] Tối ưu và export asset
+- [x] [PR3D-009] Tối ưu và export asset
   Apply transform, cleanup topology, UV/atlas, LOD, shared material, export FBX/GLB và tạo `PR3D_manifest.json`. Dùng Blender MCP để export; dùng Unity MCP kiểm tra import, scale, pivot và material.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: Blender MCP audit sáu source scene xác nhận metric 1 m, toàn bộ
+  mesh transform đã apply và có UV; tổng family source dưới 100k triangle nên
+  dùng LOD0-only cho slice, chưa tạo LOD giả không mang lợi ích. 32 FBX/GLB
+  export và 26 Unity model/archive asset được hash trong manifest schema 3;
+  Unity MCP xác nhận 25 FBX import scale 1, pivot/material hợp lệ và manifest
+  Unity import được như TextAsset. Không có lỗi PR3D; refresh vẫn lặp hai log
+  lỗi package ngoài phạm vi `com.draft.unitydraftutils` thiếu `.meta`.
 
 - [ ] [PR3D-010] Tích hợp visual prefab vào Unity
   Chỉ thêm hoặc thay visual child/material; không đổi script, enum, JSON, collider hay serialized gameplay root. Dùng Unity MCP để thao tác prefab, apply thay đổi và kiểm tra reference trước khi lưu.

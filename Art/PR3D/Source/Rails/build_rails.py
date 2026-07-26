@@ -89,14 +89,16 @@ def cylinder(name, location, radius, depth, material, collection, parent=None):
 
 def arrow_mesh(name, center, angle, material, collection, parent):
     # Local arrow points towards -Y, which imports as Unity +Z.
+    # Keep the marker subordinate to the pizza silhouette, matching the small
+    # directional chevrons in the concept instead of reading as cargo itself.
     verts = [
-        (-0.13, 0.20, 0.0),
-        (0.13, 0.20, 0.0),
-        (0.13, -0.02, 0.0),
-        (0.24, -0.02, 0.0),
-        (0.0, -0.30, 0.0),
-        (-0.24, -0.02, 0.0),
-        (-0.13, -0.02, 0.0),
+        (-0.075, 0.11, 0.0),
+        (0.075, 0.11, 0.0),
+        (0.075, -0.01, 0.0),
+        (0.135, -0.01, 0.0),
+        (0.0, -0.165, 0.0),
+        (-0.135, -0.01, 0.0),
+        (-0.075, -0.01, 0.0),
     ]
     mesh = bpy.data.meshes.new(name + "_Mesh")
     mesh.from_pydata(verts, [], [tuple(range(7))])
@@ -107,9 +109,9 @@ def arrow_mesh(name, center, angle, material, collection, parent):
     obj.rotation_euler.z = angle
     obj.parent = parent
     solid = obj.modifiers.new("ArrowThickness", "SOLIDIFY")
-    solid.thickness = 0.025
+    solid.thickness = 0.018
     bevel = obj.modifiers.new("ArrowSoftening", "BEVEL")
-    bevel.width = 0.018
+    bevel.width = 0.01
     bevel.segments = 2
     bpy.context.view_layer.objects.active = obj
     obj.select_set(True)
@@ -449,10 +451,9 @@ def build(repo_root):
         "accent": mat("PR3D_MAT_RailAccent", (0.95, 0.34, 0.06, 1), 0.15, 0.3),
         "arrow": mat(
             "PR3D_MAT_RailArrow",
-            (1.0, 0.65, 0.06, 1),
-            0.0,
-            0.28,
-            (1.0, 0.22, 0.01, 1),
+            (0.78, 0.58, 0.38, 1),
+            0.05,
+            0.38,
         ),
     }
 
@@ -538,8 +539,10 @@ def build(repo_root):
             "straight_entry_local_m": [0.0, 0.0, 0.0],
             "straight_exit_local_m": [0.0, -STRAIGHT_LENGTH, 0.0],
             "curve_entry_local_m": [0.0, 0.0, 0.0],
-            "curve_right_exit_local_m": [-CURVE_RADIUS, -CURVE_RADIUS, 0.0],
-            "curve_left_exit_local_m": [CURVE_RADIUS, -CURVE_RADIUS, 0.0],
+            # FBX conversion reflects Blender X for these roots; values below
+            # are the verified Unity-local anchor positions.
+            "curve_right_exit_local_m": [CURVE_RADIUS, -CURVE_RADIUS, 0.0],
+            "curve_left_exit_local_m": [-CURVE_RADIUS, -CURVE_RADIUS, 0.0],
             "connector_length_m": MODULE / 2,
         },
         "variants": list(names.values()),

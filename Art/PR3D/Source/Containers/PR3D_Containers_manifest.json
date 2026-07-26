@@ -1,6 +1,6 @@
 {
   "task": "PR3D-007",
-  "status": "blender-mcp-rebuilt; awaiting-coordinator-unity-mcp-batch-validation",
+  "status": "verified",
   "source": "Art/PR3D/Source/Containers/PR3D_Containers_Master.blend",
   "builder": "Art/PR3D/Source/Containers/build_pr3d_007_containers.py",
   "sourceSha256": "7e1cd92170fe6288db71223e44d87de5703807337e2c55dd6a8bd8f1de2ae3c2",
@@ -125,7 +125,15 @@
       "meshScaleApplied": true,
       "cellPitchAndBounds": "passed for 1x1, 1x2, 1x3, T and Ice"
     },
-    "unityMcpBatchValidation": "delegated to coordinator after the shared Unity MCP restart",
+    "unityMcpBatchValidation": {
+      "result": "pass",
+      "assetCount": 5,
+      "globalScale": 1.0,
+      "useFileScale": true,
+      "bakeAxisConversion": false,
+      "boundsAndCellPitch": "pass",
+      "pr3dConsoleErrors": 0
+    },
     "colliderCount": 0,
     "monoBehaviourCount": 0
   }

@@ -1,5 +1,6 @@
 {
   "task": "PR3D-005",
+  "status": "verified",
   "contract": {
     "usage": "visual-only child; do not replace gameplay root or anchors",
     "source_root": "PR3D_Gate_Root",
@@ -117,6 +118,17 @@
     }
   },
   "evidence": "Evidence/PR3D_005_GateVariants.png",
+  "unity_mcp_validation": {
+    "result": "pass",
+    "global_scale": 1.0,
+    "use_file_scale": true,
+    "bake_axis_conversion": false,
+    "variant_count": 10,
+    "emission_keyword": "_EMISSION",
+    "collider_count": 0,
+    "mono_behaviour_count": 0,
+    "pr3d_console_errors": 0
+  },
   "archive_reuse": {
     "source_commit": "f303b8c",
     "scope": "Gate family files only",

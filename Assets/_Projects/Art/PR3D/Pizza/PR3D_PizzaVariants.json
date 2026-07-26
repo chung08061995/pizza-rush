@@ -1,5 +1,6 @@
 {
   "task": "PR3D-006",
+  "status": "verified",
   "units": "meters",
   "concept_reference": "docs/reference/pizza-factory-concept.png",
   "source_asset": "Art/PR3D/Source/Pizza/PR3D_006_PizzaVariants.blend",
@@ -40,7 +41,22 @@
     "visual_only": true,
     "colliders": 0,
     "scripts": 0,
-    "mesh_reuse": "all ten variants must reference the canonical shared mesh"
+    "mesh_reuse": "all ten variants must reference the canonical shared mesh",
+    "mcp_validation": {
+      "result": "pass",
+      "global_scale": 1.0,
+      "use_file_scale": true,
+      "bake_axis_conversion": false,
+      "bounds_xyz_m": [
+        0.86,
+        0.23,
+        0.923254
+      ],
+      "renderer_count": 1,
+      "mesh_count": 1,
+      "material_slot_count": 4,
+      "pr3d_console_errors": 0
+    }
   },
   "preview": "Evidence/PR3D_006_PizzaVariants.png",
   "material_slots": [

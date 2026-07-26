@@ -1,5 +1,9 @@
 # Changelog
 
+- Completed the PR3D Level 301 source asset families and reproducible schema-3
+  manifest. Blender MCP verifies metric units, applied mesh transforms and UVs;
+  Unity MCP verifies 25 FBX imports at scale 1 with no gameplay components.
+
 ## 2026-07-26
 
 - Re-audited the archived PR3D-002 commit instead of merging its branch, then

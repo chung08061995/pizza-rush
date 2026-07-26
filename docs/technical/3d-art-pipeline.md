@@ -37,9 +37,22 @@ Gameplay families: board tray, tile surface, straight rail, curved rail, connect
 - Visible gameplay geometry target is ≤300k triangles; core asset target 2k–10k triangles; oven ≤20k.
 - Compare GPU frame time and memory to Level 301 baseline; allow no more than +20% frame time or +30% memory.
 
+For the Level 301 slice, the procedural models use shared solid-color material
+parameters and no bitmap texture dependencies, so an empty atlas would add
+overhead without reducing texture state. Blender MCP audited every render mesh
+for applied rotation/scale and at least one UV layer. The six authored families
+total under 100k triangles including preview variants; runtime modules therefore
+ship as LOD0-only for this review and must be reconsidered after a real rollout
+composition is profiled.
+
 ## Export and rollback
 
 Export FBX for Unity integration and GLB for review/archive when useful. Record scale, pivot, materials, textures, triangle count, and target prefab in `PR3D_manifest.json`. Keep prototype assets in a versioned art folder; rollback disables/removes the additive visual child or restores the prefab variant without changing gameplay files.
+
+Run `python3 Art/PR3D/build_manifest.py` after any source/export change. It
+writes identical, hashed manifests to the source art root and Unity art root.
+Unity-side model validation must still use MCP; the manifest generator does not
+replace import, pivot, component, Console, or Game-view checks.
 
 Before promoting an FBX, import the asymmetric probe without target-size
 normalization. A passing Unity result has importer scale 1, a 1×1×1 meter cube
