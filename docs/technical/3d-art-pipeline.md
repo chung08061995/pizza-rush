@@ -80,6 +80,10 @@ MonoBehaviours, places, and serialized renderer lists stay intact.
 - Board and environment are collider-free children of `LevelRunner`.
 - The environment backdrop is a collider-free quad with a procedural URP
   material: warm terracotta below the factory wall split and blue tiles above.
+- The accepted Level 301 backdrop palette keeps the floor between
+  `(0.36, 0.115, 0.038)` and `(0.55, 0.22, 0.065)`, and the wall between
+  `(0.015, 0.06, 0.16)` and `(0.025, 0.15, 0.34)`. Retain the deeper,
+  desaturated relationship so the board remains the portrait focal point.
 
 After any integration edit, compare the gameplay prefab MonoBehaviour/collider
 YAML blocks to HEAD, verify the Level 301 JSON hash, run

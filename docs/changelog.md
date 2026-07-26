@@ -1,5 +1,9 @@
 # Changelog
 
+- Tuned the Level 301 procedural kitchen palette against the concept, replacing
+  the saturated wall/floor colors with deeper navy and muted terracotta. The
+  refreshed three-ratio evidence and 108-drag replay pass preserve the
+  collider-free backdrop and every gameplay contract.
 - Polished the accepted Level 301 slice against the pizza-factory concept:
   corrected seven gate meshes to cross their production rails, reduced the
   shared pizza footprint for readable spacing, added stylized food shading,

@@ -2,11 +2,11 @@ Shader "PR3D/TerracottaBackdrop"
 {
     Properties
     {
-        _TileColorA ("Tile Color A", Color) = (0.48, 0.12, 0.045, 1)
-        _TileColorB ("Tile Color B", Color) = (0.62, 0.20, 0.07, 1)
-        _GroutColor ("Grout Color", Color) = (0.12, 0.045, 0.035, 1)
-        _WallTileA ("Wall Tile A", Color) = (0.025, 0.11, 0.34, 1)
-        _WallTileB ("Wall Tile B", Color) = (0.035, 0.22, 0.58, 1)
+        _TileColorA ("Tile Color A", Color) = (0.36, 0.115, 0.038, 1)
+        _TileColorB ("Tile Color B", Color) = (0.55, 0.22, 0.065, 1)
+        _GroutColor ("Grout Color", Color) = (0.11, 0.035, 0.022, 1)
+        _WallTileA ("Wall Tile A", Color) = (0.015, 0.06, 0.16, 1)
+        _WallTileB ("Wall Tile B", Color) = (0.025, 0.15, 0.34, 1)
         _WallStartZ ("Wall Start Z", Float) = 9.35
         _TileSize ("Tile Size", Float) = 0.65
         _TileAspectZ ("Tile Z Aspect", Float) = 1.65

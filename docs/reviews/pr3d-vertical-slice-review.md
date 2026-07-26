@@ -42,6 +42,8 @@ Accepted:
   original line transforms and colliders preserved;
 - pizza markers retain the shared-mesh contract but have clearer spacing and
   stronger low-poly surface separation;
+- the deeper navy/terracotta backdrop better matches the concept and gives the
+  board and runtime colors stronger focal priority at all three ratios;
 - performance and Console gates pass.
 
 Non-blocking polish opportunities:

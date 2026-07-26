@@ -30,10 +30,10 @@ Material:
     - _TileSize: 0.65
     - _WallStartZ: 9.35
     m_Colors:
-    - _GroutColor: {r: 0.22, g: 0.075, b: 0.035, a: 1}
-    - _TileColorA: {r: 0.52, g: 0.18, b: 0.055, a: 1}
-    - _TileColorB: {r: 0.7, g: 0.32, b: 0.1, a: 1}
-    - _WallTileA: {r: 0.018, g: 0.09, b: 0.3, a: 1}
-    - _WallTileB: {r: 0.025, g: 0.23, b: 0.62, a: 1}
+    - _GroutColor: {r: 0.11, g: 0.035, b: 0.022, a: 1}
+    - _TileColorA: {r: 0.36, g: 0.115, b: 0.038, a: 1}
+    - _TileColorB: {r: 0.55, g: 0.22, b: 0.065, a: 1}
+    - _WallTileA: {r: 0.015, g: 0.06, b: 0.16, a: 1}
+    - _WallTileB: {r: 0.025, g: 0.15, b: 0.34, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

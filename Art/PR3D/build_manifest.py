@@ -218,6 +218,20 @@ def build() -> dict[str, object]:
                         )
                     ),
                 },
+                "environment_palette": {
+                    "strategy": "deepen and desaturate the procedural wall/floor palette so the board and gameplay colors remain the portrait focal point",
+                    "floor_tile_a": [0.36, 0.115, 0.038, 1.0],
+                    "floor_tile_b": [0.55, 0.22, 0.065, 1.0],
+                    "floor_grout": [0.11, 0.035, 0.022, 1.0],
+                    "wall_tile_a": [0.015, 0.06, 0.16, 1.0],
+                    "wall_tile_b": [0.025, 0.15, 0.34, 1.0],
+                    "assets": records(
+                        (
+                            "Assets/_Projects/Art/PR3D/Environment/PR3D_TerracottaBackdrop.shader",
+                            "Assets/_Projects/Art/PR3D/Materials/PR3D_MAT_TerracottaBackdrop.mat",
+                        )
+                    ),
+                },
                 "portrait_evidence": records(
                     (
                         "Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_1080x1920.png",
@@ -251,11 +265,12 @@ def build() -> dict[str, object]:
                 "report": "CoffeeRunMigration/Reports/runtime-replay/0301.json",
             },
             "editor_profile_polish": {
-                "cpu_frame_time_ms": 15.873291,
-                "cpu_main_thread_frame_time_ms": 3.307832,
-                "gpu_frame_time_ms": 9.406625002156943,
-                "gfx_used_memory_bytes": 492913820,
+                "cpu_frame_time_ms": 14.128792,
+                "cpu_main_thread_frame_time_ms": 2.552374,
+                "gpu_frame_time_ms": 8.772499997576233,
+                "gfx_used_memory_bytes": 492903356,
                 "mesh_memory_bytes": 8041108,
+                "total_used_memory_bytes": 2670224497,
                 "note": "Unity Editor sample; use a device build before rollout.",
             },
             "gameplay_contract_changes": [],

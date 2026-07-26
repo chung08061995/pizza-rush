@@ -21,6 +21,10 @@ format. The referenced GUIDs/file IDs did not change.
   food shaders now use a low-cost stylized normal ramp, preserving the single
   shared mesh and runtime color assignment while improving spacing and depth
   at phone scale.
+- The procedural kitchen backdrop now uses a deeper navy wall and muted
+  terracotta floor. This is a material/shader palette-only change: the backdrop
+  still has zero Colliders and zero MonoBehaviours, and its mesh/transform are
+  unchanged.
 - Runtime replay: `Passed`, 108/108 drag actions, 27 feed actions, 148 total
   productions transferred, zero remaining production, Win reached, no skill or
   booster used.
@@ -76,9 +80,9 @@ The original PR3D-001 capture did not expose a valid GPU counter, so the
 same-session additive-root A/B is the comparable GPU gate. The clean full-art
 sample reported 7.815 ms GPU and 2.188 ms CPU main-thread time.
 
-The follow-up polish sample in the Unity Editor reported 15.873 ms total CPU
-frame time, 3.308 ms on the main thread and 9.407 ms GPU time. Gfx used memory
-was 492,913,820 bytes and mesh memory was 8,041,108 bytes. This remains an
+The latest follow-up sample in the Unity Editor reported 14.129 ms total CPU
+frame time, 2.552 ms on the main thread and 8.772 ms GPU time. Gfx used memory
+was 492,903,356 bytes and mesh memory was 8,041,108 bytes. This remains an
 Editor-only sample; a device build is required before any rollout decision.
 
 ## Console

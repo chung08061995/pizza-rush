@@ -533,21 +533,66 @@
           }
         ]
       },
+      "environment_palette": {
+        "strategy": "deepen and desaturate the procedural wall/floor palette so the board and gameplay colors remain the portrait focal point",
+        "floor_tile_a": [
+          0.36,
+          0.115,
+          0.038,
+          1.0
+        ],
+        "floor_tile_b": [
+          0.55,
+          0.22,
+          0.065,
+          1.0
+        ],
+        "floor_grout": [
+          0.11,
+          0.035,
+          0.022,
+          1.0
+        ],
+        "wall_tile_a": [
+          0.015,
+          0.06,
+          0.16,
+          1.0
+        ],
+        "wall_tile_b": [
+          0.025,
+          0.15,
+          0.34,
+          1.0
+        ],
+        "assets": [
+          {
+            "path": "Assets/_Projects/Art/PR3D/Environment/PR3D_TerracottaBackdrop.shader",
+            "sha256": "47e85ad5b88c89146637b60ecaeedc0142a95a033358152f39a84e0c06e68879",
+            "bytes": 3348
+          },
+          {
+            "path": "Assets/_Projects/Art/PR3D/Materials/PR3D_MAT_TerracottaBackdrop.mat",
+            "sha256": "89654a5ad5d8fea1817598d5da7b97a392e21458f5ea892d52224d25e7845cad",
+            "bytes": 1130
+          }
+        ]
+      },
       "portrait_evidence": [
         {
           "path": "Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_1080x1920.png",
-          "sha256": "3fcd2c85f8717c25ad1174c732a04f0f517201b8f9b7b0bea29f97a6337f6f24",
-          "bytes": 595617
+          "sha256": "24bfbe92795b913f27cf4f5ba078957a142f8f556e8a4bd89bf5568cc43726e5",
+          "bytes": 592640
         },
         {
           "path": "Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_1080x2340.png",
-          "sha256": "615d38c79b316eebd6a5f1bb2f30ebdfc6f403974136c7db23a56a47420dbbd8",
-          "bytes": 703078
+          "sha256": "352006f16f9749f8dc9fba38bc77304efad778859a2bfede5c273d089d3b818c",
+          "bytes": 699748
         },
         {
           "path": "Assets/_Projects/Art/PR3D/Evidence/Polish/PR3D_Level301_Polish_768x1024.png",
-          "sha256": "7daf77a5191ed1f814fdc21dffd3a608ffb54918144cfc2613eaeeb07e1eeb86",
-          "bytes": 256127
+          "sha256": "8c42a7aa636b60031c9c013d01d23cf3d34355e847a1dd995773f4d9fc410c2a",
+          "bytes": 253642
         }
       ]
     }
@@ -576,11 +621,12 @@
       "report": "CoffeeRunMigration/Reports/runtime-replay/0301.json"
     },
     "editor_profile_polish": {
-      "cpu_frame_time_ms": 15.873291,
-      "cpu_main_thread_frame_time_ms": 3.307832,
-      "gpu_frame_time_ms": 9.406625002156943,
-      "gfx_used_memory_bytes": 492913820,
+      "cpu_frame_time_ms": 14.128792,
+      "cpu_main_thread_frame_time_ms": 2.552374,
+      "gpu_frame_time_ms": 8.772499997576233,
+      "gfx_used_memory_bytes": 492903356,
       "mesh_memory_bytes": 8041108,
+      "total_used_memory_bytes": 2670224497,
       "note": "Unity Editor sample; use a device build before rollout."
     },
     "gameplay_contract_changes": []
