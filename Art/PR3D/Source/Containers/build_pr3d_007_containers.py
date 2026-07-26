@@ -24,9 +24,8 @@ CELL_PITCH = 1.0
 CELL_FOOTPRINT = 0.86
 BASE_HEIGHT = 0.22
 TOPPING_OFFSET = 0.18
-TOPPING_RADIUS = 0.09
-TOPPING_RIM_MAJOR_RADIUS = 0.105
-TOPPING_RIM_MINOR_RADIUS = 0.022
+TOPPING_CHEESE_RADIUS = 0.095
+TOPPING_TOMATO_RADIUS = 0.052
 
 SHAPES = {
     "1x1": [(0, 0)],
@@ -105,7 +104,7 @@ def torus(name, location, major_radius, minor_radius, mat, collection):
 
 def cylinder(name, location, radius, depth, mat, collection):
     bpy.ops.mesh.primitive_cylinder_add(
-        vertices=20,
+        vertices=12,
         radius=radius,
         depth=depth,
         location=location,
@@ -113,11 +112,6 @@ def cylinder(name, location, radius, depth, mat, collection):
     obj = bpy.context.object
     obj.name = name
     obj.data.materials.append(mat)
-    bevel = obj.modifiers.new("Soft_Edges", "BEVEL")
-    bevel.width = 0.012
-    bevel.segments = 2
-    bpy.context.view_layer.objects.active = obj
-    bpy.ops.object.modifier_apply(modifier=bevel.name)
     for owner in tuple(obj.users_collection):
         owner.objects.unlink(obj)
     collection.objects.link(obj)
@@ -176,39 +170,39 @@ def build_shape(asset_name, cells, body_mat, rim_mat, inset_mat):
         )
         parent_keep_local(base, root)
 
-        # Four compact topping wells preserve the familiar four-dot gameplay
-        # language while leaving most of the dynamic container color visible.
-        # The previous single 0.73 m ring filled almost the whole cell and
-        # turned a populated board into a wall of brown discs.
+        # Four compact cheese-and-tomato studs preserve the familiar four-dot
+        # gameplay language while leaving most of the dynamic container color
+        # visible. Solid low-poly pucks read as toppings at phone size; the
+        # previous torus rings read as repeated washers and cost too many verts.
         topping_index = 0
         for offset_x in (-TOPPING_OFFSET, TOPPING_OFFSET):
             for offset_y in (-TOPPING_OFFSET, TOPPING_OFFSET):
-                topping = cylinder(
-                    f"Visual_{asset_name}_Topping_{index:02d}_{topping_index:02d}",
+                cheese = cylinder(
+                    f"Visual_{asset_name}_Cheese_{index:02d}_{topping_index:02d}",
                     (
                         loc_x + offset_x,
                         loc_y + offset_y,
-                        BASE_HEIGHT + 0.04,
+                        BASE_HEIGHT + 0.022,
                     ),
-                    TOPPING_RADIUS,
-                    0.05,
-                    inset_mat,
-                    collection,
-                )
-                topping_rim = torus(
-                    f"Visual_{asset_name}_ToppingRim_{index:02d}_{topping_index:02d}",
-                    (
-                        loc_x + offset_x,
-                        loc_y + offset_y,
-                        BASE_HEIGHT + 0.07,
-                    ),
-                    TOPPING_RIM_MAJOR_RADIUS,
-                    TOPPING_RIM_MINOR_RADIUS,
+                    TOPPING_CHEESE_RADIUS,
+                    0.035,
                     rim_mat,
                     collection,
                 )
-                parent_keep_local(topping, root)
-                parent_keep_local(topping_rim, root)
+                tomato = cylinder(
+                    f"Visual_{asset_name}_Tomato_{index:02d}_{topping_index:02d}",
+                    (
+                        loc_x + offset_x,
+                        loc_y + offset_y,
+                        BASE_HEIGHT + 0.047,
+                    ),
+                    TOPPING_TOMATO_RADIUS,
+                    0.025,
+                    inset_mat,
+                    collection,
+                )
+                parent_keep_local(cheese, root)
+                parent_keep_local(tomato, root)
                 topping_index += 1
     return collection, root
 
