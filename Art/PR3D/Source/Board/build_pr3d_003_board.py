@@ -132,6 +132,31 @@ def parent_keep_transform(child, parent):
     child.matrix_world = matrix
 
 
+def duplicate_at(source, name, location, collection):
+    """Duplicate evaluated tile geometry without rebuilding bevel modifiers."""
+    obj = source.copy()
+    obj.data = source.data.copy()
+    obj.name = name
+    obj.location = location
+    obj.parent = None
+    collection.objects.link(obj)
+    return obj
+
+
+def join_meshes(objects, name):
+    """Collapse repeated tiles into one renderer-friendly mesh per material."""
+    bpy.ops.object.select_all(action="DESELECT")
+    for obj in objects:
+        obj.select_set(True)
+    bpy.context.view_layer.objects.active = objects[0]
+    bpy.ops.object.join()
+    joined = bpy.context.object
+    joined.name = name
+    joined.data.name = f"{name}_Mesh"
+    joined.select_set(False)
+    return joined
+
+
 def hierarchy(root):
     return [root, *root.children_recursive]
 
@@ -227,10 +252,10 @@ def main():
     collection = bpy.data.collections.new("Board")
     scene.collection.children.link(collection)
 
-    frame_blue = material(f"{PREFIX}MAT_FrameBlue", (0.025, 0.19, 0.48, 1.0), 0.22, 0.25)
-    tray_blue = material(f"{PREFIX}MAT_TrayBlue", (0.018, 0.095, 0.24, 1.0), 0.10, 0.34)
-    ceramic = material(f"{PREFIX}MAT_CeramicCream", (1.0, 0.69, 0.43, 1.0), 0.0, 0.38)
-    highlight = material(f"{PREFIX}MAT_CeramicHighlight", (1.0, 0.82, 0.62, 1.0), 0.0, 0.30)
+    frame_blue = material(f"{PREFIX}MAT_FrameBlue", (0.025, 0.12, 0.42, 1.0), 0.28, 0.22)
+    tray_blue = material(f"{PREFIX}MAT_TrayBlue", (0.012, 0.045, 0.16, 1.0), 0.14, 0.32)
+    ceramic = material(f"{PREFIX}MAT_CeramicCream", (0.88, 0.68, 0.52, 1.0), 0.0, 0.46)
+    highlight = material(f"{PREFIX}MAT_CeramicHighlight", (1.0, 0.86, 0.72, 1.0), 0.0, 0.34)
 
     board = bpy.data.objects.new("PR3D_Board_7x7", None)
     tile = bpy.data.objects.new("PR3D_Tile_Ceramic", None)
@@ -240,7 +265,7 @@ def main():
         f"{PREFIX}Visual_TrayBase", (7.20, 7.20, 0.14), (0.0, 0.0, -0.09), 0.18, tray_blue, collection
     )
     frame = rounded_frame(
-        f"{PREFIX}Visual_Frame", 7.78, 7.10, -0.10, 0.20, frame_blue, collection
+        f"{PREFIX}Visual_Frame", 7.78, 7.10, -0.10, 0.40, frame_blue, collection
     )
     tile_base = rounded_box(
         f"{PREFIX}Visual_TileBase", (0.90, 0.90, 0.10), (0.0, 0.0, 0.05), 0.085, ceramic, collection
@@ -254,6 +279,42 @@ def main():
         parent_keep_transform(obj, board)
     for obj in (tile_base, tile_inset):
         parent_keep_transform(obj, tile)
+
+    # The archived board only exported its tray/frame and left the lavender
+    # legacy floor visible. Build the actual 7x7 ivory ceramic surface inside
+    # the additive board visual. Two joined meshes keep renderer/material cost
+    # bounded while preserving the exact 1 m gameplay pitch and cell centres.
+    board_tile_bases = []
+    board_tile_highlights = []
+    for row in range(GRID_SIZE):
+        for column in range(GRID_SIZE):
+            x = column - (GRID_SIZE - 1) / 2.0
+            y = row - (GRID_SIZE - 1) / 2.0
+            index = row * GRID_SIZE + column
+            board_tile_bases.append(
+                duplicate_at(
+                    tile_base,
+                    f"{PREFIX}BoardTileBase_{index:02d}",
+                    (x, y, 0.245),
+                    collection,
+                )
+            )
+            board_tile_highlights.append(
+                duplicate_at(
+                    tile_inset,
+                    f"{PREFIX}BoardTileHighlight_{index:02d}",
+                    (x, y, 0.2975),
+                    collection,
+                )
+            )
+    board_tiles = join_meshes(board_tile_bases, f"{PREFIX}Visual_CeramicTiles")
+    board_highlights = join_meshes(
+        board_tile_highlights, f"{PREFIX}Visual_CeramicHighlights"
+    )
+    smart_uv(board_tiles)
+    smart_uv(board_highlights)
+    parent_keep_transform(board_tiles, board)
+    parent_keep_transform(board_highlights, board)
 
     board["pr3d_task"] = TASK
     board["grid_size"] = GRID_SIZE
