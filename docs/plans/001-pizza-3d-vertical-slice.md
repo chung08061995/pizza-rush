@@ -1,8 +1,9 @@
 # 001 — Pizza 3D vertical slice
 
-Status: Ready
+Status: Complete
 Issue: Forge Plan Sync / Pizza Rush 3D reskin
-Branch/worktree: TBD — use a dedicated art branch before prefab promotion.
+Branch/worktree: `af/af84-pr3d-seq-001-ho` — one coordinated worktree and
+branch for the complete hybrid task.
 
 ## Objective
 
@@ -116,24 +117,32 @@ Mỗi task phải ưu tiên gọi server **`unityMCP` tại `http://127.0.0.1:80
   tile wall, terracotta floor, oven/fire, board 7×7, rail pizza và gate portrait;
   giữ ảnh đầu/cuối trong `Assets/_Projects/Art/PR3D/Evidence/`.
 
-- [ ] [PR3D-011] Validate Level 301
+- [x] [PR3D-011] Validate Level 301
   Chơi hết level và kiểm tra drag, Ice, pizza transfer, hướng ray, gate, ba portrait ratio, console, frame time, memory, HUD, booster và vùng quảng cáo. Dùng Unity MCP để chạy test, chụp evidence và đọc profiler.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Evidence: runtime replay `108/108` drag, `148` production, Ice/T unlock và
+  Win đạt; ba Game View exact-resolution nằm trong
+  `Assets/_Projects/Art/PR3D/Evidence/Phase5/`. Clean-editor memory tăng 11.6%;
+  GPU additive-root A/B tăng 3.5%. Chi tiết:
+  `docs/reviews/pr3d-level301-validation.md`.
 
-- [ ] [PR3D-012] Review vertical slice và quyết định rollout
+- [x] [PR3D-012] Review vertical slice và quyết định rollout
   So sánh evidence trước/sau, liệt kê lỗi cần sửa và chỉ tạo plan riêng cho 319 level còn lại sau khi được duyệt. Dùng Unity MCP để mở evidence/runtime và Blender MCP để review asset source.
   Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
+  Decision: Level 301 sẵn sàng cho stakeholder review; HOLD rollout 319 level
+  cho tới khi được duyệt. Không tạo rollout plan. Review:
+  `docs/reviews/pr3d-vertical-slice-review.md`.
 
 ## Acceptance criteria
 
-- [ ] Level 301 still has 49 grid cells, 23 containers, 7 production lines, four shapes, Ice, and ten colors.
-- [ ] Existing drag, production transfer, timer, win/lose, booster, and popup behavior is unchanged.
-- [ ] Rails are continuous and gates align with current board/line anchors.
-- [ ] Pizza color/topping changes are readable at phone scale without obscuring the puzzle.
-- [ ] No more than +20% GPU frame time or +30% memory versus baseline on the same device.
-- [ ] No critical Unity Console errors and no visual overflow at three portrait ratios.
+- [x] Level 301 still has 49 grid cells, 23 containers, 7 production lines, four shapes, Ice, and ten colors.
+- [x] Existing drag, production transfer, timer, win/lose, booster, and popup behavior is unchanged.
+- [x] Rails are continuous and gates align with current board/line anchors.
+- [x] Pizza color/topping changes are readable at phone scale without obscuring the puzzle.
+- [x] No more than +20% GPU frame time or +30% memory versus baseline on the same device.
+- [x] No critical Unity Console errors and no visual overflow at three portrait ratios.
 
 ## Verification
 

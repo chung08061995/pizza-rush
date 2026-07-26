@@ -1,5 +1,12 @@
 # Changelog
 
+- Validated the complete PR3D Level 301 vertical slice with a deterministic
+  108-drag runtime replay, Ice/T unlock, 148 production transfers, Win, three
+  exact portrait resolutions, clean-editor profiling and Console review.
+- Repaired malformed Unity prefab override YAML that had serialized PR3D
+  mesh/material object references as null after an editor restart. The repair
+  preserves every gameplay MonoBehaviour, collider, place and Level 301 JSON
+  contract.
 - Integrated the PR3D visual prefab library into Level 301 without changing
   gameplay MonoBehaviours, colliders, enum/JSON data, places, or serialized
   renderer references. Added concept-iterated portrait board, rail/pizza/gate,

@@ -77,3 +77,22 @@ MonoBehaviours, places, and serialized renderer lists stay intact.
 After any integration edit, compare the gameplay prefab MonoBehaviour/collider
 YAML blocks to HEAD, verify the Level 301 JSON hash, run
 `MyMenu > StartGame`, and inspect the runtime reference counts and Console.
+
+Prefab override object references must use Unity's canonical two-line YAML:
+
+```yaml
+propertyPath: m_Mesh
+value:
+objectReference: {fileID: 4300000, guid: ..., type: 2}
+```
+
+Never concatenate `value:` and `objectReference:` on one line. Unity accepts the
+file but resolves the override as null after reimport/restart. PR3D validation
+must therefore include a clean-editor restart and non-zero renderer-bounds
+audit, not only an in-session screenshot.
+
+The Level 301 replay is reproducible with
+`CoffeeRunMigration/Solutions/0301.json`; the most recent result is written to
+`CoffeeRunMigration/Reports/runtime-replay/0301.json`. Final validation and
+rollout review live in `docs/reviews/pr3d-level301-validation.md` and
+`docs/reviews/pr3d-vertical-slice-review.md`.
