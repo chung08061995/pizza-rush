@@ -23,7 +23,10 @@ BLEND = SOURCE_DIR / "PR3D_Containers_Master.blend"
 CELL_PITCH = 1.0
 CELL_FOOTPRINT = 0.86
 BASE_HEIGHT = 0.22
-RIM_HEIGHT = 0.12
+TOPPING_OFFSET = 0.18
+TOPPING_RADIUS = 0.09
+TOPPING_RIM_MAJOR_RADIUS = 0.105
+TOPPING_RIM_MINOR_RADIUS = 0.022
 
 SHAPES = {
     "1x1": [(0, 0)],
@@ -34,12 +37,16 @@ SHAPES = {
 
 
 def reset_scene():
-    bpy.ops.object.select_all(action="SELECT")
-    bpy.ops.object.delete(use_global=False)
-    for datablocks in (bpy.data.collections, bpy.data.materials, bpy.data.cameras, bpy.data.lights):
+    # Operator selection skips objects inside hidden collections after the
+    # source file has been saved once. Remove datablocks directly so repeated
+    # MCP rebuilds remain deterministic and roots never gain a ".001" suffix.
+    for obj in list(bpy.data.objects):
+        bpy.data.objects.remove(obj, do_unlink=True)
+    for collection in list(bpy.data.collections):
+        bpy.data.collections.remove(collection)
+    for datablocks in (bpy.data.materials, bpy.data.cameras, bpy.data.lights):
         for datablock in list(datablocks):
-            if datablock.users == 0:
-                datablocks.remove(datablock)
+            bpy.data.batch_remove((datablock,))
 
 
 def material(name, color, metallic=0.0, roughness=0.45, transmission=0.0, alpha=1.0):
@@ -96,6 +103,27 @@ def torus(name, location, major_radius, minor_radius, mat, collection):
     return obj
 
 
+def cylinder(name, location, radius, depth, mat, collection):
+    bpy.ops.mesh.primitive_cylinder_add(
+        vertices=20,
+        radius=radius,
+        depth=depth,
+        location=location,
+    )
+    obj = bpy.context.object
+    obj.name = name
+    obj.data.materials.append(mat)
+    bevel = obj.modifiers.new("Soft_Edges", "BEVEL")
+    bevel.width = 0.012
+    bevel.segments = 2
+    bpy.context.view_layer.objects.active = obj
+    bpy.ops.object.modifier_apply(modifier=bevel.name)
+    for owner in tuple(obj.users_collection):
+        owner.objects.unlink(obj)
+    collection.objects.link(obj)
+    return obj
+
+
 def add_root(name, collection, contract):
     root = bpy.data.objects.new(name, None)
     root.empty_display_type = "PLAIN_AXES"
@@ -146,24 +174,42 @@ def build_shape(asset_name, cells, body_mat, rim_mat, inset_mat):
             0.11,
             collection,
         )
-        inset = rounded_cube(
-            f"Visual_{asset_name}_Inset_{index:02d}",
-            (loc_x, loc_y, BASE_HEIGHT + 0.035),
-            (0.62, 0.62, 0.055),
-            inset_mat,
-            0.12,
-            collection,
-        )
-        rim = torus(
-            f"Visual_{asset_name}_Rim_{index:02d}",
-            (loc_x, loc_y, BASE_HEIGHT + 0.075),
-            0.365,
-            0.045,
-            rim_mat,
-            collection,
-        )
-        for obj in (base, inset, rim):
-            parent_keep_local(obj, root)
+        parent_keep_local(base, root)
+
+        # Four compact topping wells preserve the familiar four-dot gameplay
+        # language while leaving most of the dynamic container color visible.
+        # The previous single 0.73 m ring filled almost the whole cell and
+        # turned a populated board into a wall of brown discs.
+        topping_index = 0
+        for offset_x in (-TOPPING_OFFSET, TOPPING_OFFSET):
+            for offset_y in (-TOPPING_OFFSET, TOPPING_OFFSET):
+                topping = cylinder(
+                    f"Visual_{asset_name}_Topping_{index:02d}_{topping_index:02d}",
+                    (
+                        loc_x + offset_x,
+                        loc_y + offset_y,
+                        BASE_HEIGHT + 0.04,
+                    ),
+                    TOPPING_RADIUS,
+                    0.05,
+                    inset_mat,
+                    collection,
+                )
+                topping_rim = torus(
+                    f"Visual_{asset_name}_ToppingRim_{index:02d}_{topping_index:02d}",
+                    (
+                        loc_x + offset_x,
+                        loc_y + offset_y,
+                        BASE_HEIGHT + 0.07,
+                    ),
+                    TOPPING_RIM_MAJOR_RADIUS,
+                    TOPPING_RIM_MINOR_RADIUS,
+                    rim_mat,
+                    collection,
+                )
+                parent_keep_local(topping, root)
+                parent_keep_local(topping_rim, root)
+                topping_index += 1
     return collection, root
 
 
