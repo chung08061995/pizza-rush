@@ -84,14 +84,14 @@ namespace DraftUtils.Ads
         public static bool IsRewardedReady()
         {
             var service = GetService();
-            return service != null && !service.AdsDisabled && service.IsRewardedReady;
+            return service != null && service.IsRewardedReady;
         }
 
         /// <summary>Load rewarded trước.</summary>
         public static void LoadRewarded()
         {
             var service = GetService();
-            if (service == null || service.AdsDisabled) return;
+            if (service == null) return;
             service.LoadRewarded();
         }
 
@@ -103,7 +103,7 @@ namespace DraftUtils.Ads
         public static void ShowRewarded(string placement = "default", Action<bool> onResult = null)
         {
             var service = GetService();
-            if (service == null || service.AdsDisabled)
+            if (service == null)
             {
                 if (service == null)
                     Debug.LogWarning("[Ads] IAdsService chưa đăng ký.");

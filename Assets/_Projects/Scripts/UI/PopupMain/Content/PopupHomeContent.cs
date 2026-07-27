@@ -37,10 +37,10 @@ public class PopupHomeContent : DraftUtils.DraftMonoBehaviour
             DraftUtils.Ads.AdsManager.Instance.OnNoAdsEntitlementChanged += RefreshNoAdsVisibility;
         }
         RefreshNoAdsVisibility();
-        starterButton.onClick.AddListener(ClickStarterIapButton);
+        starterButton.gameObject.SetActive(false);
         dailyButton.onClick.AddListener(ClickDailyButton);
 
-        addGoldButton.RegisterClickEvents();
+        addGoldButton.Disable();
 
 
         heartRecoveryView.SetData(DataManager.Instance.heartRecoveryState.Value);
@@ -96,11 +96,6 @@ public class PopupHomeContent : DraftUtils.DraftMonoBehaviour
     private void ClickDailyButton()
     {
         PopupManager.Instance.GetPopupDailyChallenge();
-    }
-
-    private void ClickStarterIapButton()
-    {
-        PopupManager.Instance.GetPopupStarterDetail();
     }
 
     private void ClickNoAdsButton()

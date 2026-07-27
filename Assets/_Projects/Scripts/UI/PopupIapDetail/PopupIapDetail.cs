@@ -1,6 +1,8 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using DraftUtils.IAP;
 
 public class PopupIapDetail : DraftUtils.DraftMonoBehaviour
 {
@@ -16,12 +18,14 @@ public class PopupIapDetail : DraftUtils.DraftMonoBehaviour
     {
         popup.closeButton.OnClickAction = popup.HideWithAnimation;
         buyButton.onClick.AddListener(ClickBuyButton);
+        if (IAPManager.Instance != null) IAPManager.Instance.OnInitialized += OnIapInitialized;
     }
 
     public void SetData(MultipleIAPData data)
     {
         _data = data;
         SetMultipleIAPDataView();
+        RefreshAvailability();
 
     }
     private void SetMultipleIAPDataView()
@@ -40,7 +44,8 @@ public class PopupIapDetail : DraftUtils.DraftMonoBehaviour
             ? _data.itemType.ToString()
             : _data.productId;
 
-        DraftUtils.IAP.IAPManager.Instance.Purchase(productId, result =>
+        buyButton.interactable = false;
+        IAPManager.Instance.Purchase(productId, result =>
         {
             if (!result.IsSuccess)
             {
@@ -48,6 +53,7 @@ public class PopupIapDetail : DraftUtils.DraftMonoBehaviour
                     GameAnalytics.IapPurchaseFail,
                     productId,
                     result.FailureReason.ToString());
+                RefreshAvailability();
                 return;
             }
 
@@ -61,5 +67,25 @@ public class PopupIapDetail : DraftUtils.DraftMonoBehaviour
 
             PopupManager.Instance.ShowPopupMultipleIapReward(_data);
         });
+    }
+
+    private void OnIapInitialized(bool success) => RefreshAvailability();
+
+    private void RefreshAvailability()
+    {
+        if (buyButton == null || _data == null) return;
+        var manager = IAPManager.Instance;
+        string productId = GameConstain.IAPProductId.NoAds;
+        bool available = manager != null && manager.Service != null && manager.Service.IsInitialized &&
+                         manager.Service.GetProductInfo(productId) != null && !manager.IsOwned(productId);
+        buyButton.interactable = available;
+        var label = buyButton.GetComponentInChildren<TMP_Text>(true);
+        if (label != null && !available)
+            label.SetText(manager != null && manager.IsOwned(productId) ? "Owned" : "Store unavailable");
+    }
+
+    private void OnDestroy()
+    {
+        if (IAPManager.Instance != null) IAPManager.Instance.OnInitialized -= OnIapInitialized;
     }
 }

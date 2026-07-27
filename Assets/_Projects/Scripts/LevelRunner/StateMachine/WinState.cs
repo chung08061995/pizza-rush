@@ -43,7 +43,11 @@ public class WinState : DraftUtils.IState
             DataManager.Instance.Reward(new() { new RewardData { itemType = ItemType.Gold, amount = goldReward } });
         }
 
-        PopupManager.Instance.ShowPopupWin(goldReward);
+        void ShowResult() => PopupManager.Instance.ShowPopupWin(goldReward);
+        if (DraftUtils.Ads.AdsManager.Instance != null)
+            DraftUtils.Ads.AdsManager.Instance.ShowLevelEndInterstitial(true, ShowResult);
+        else
+            ShowResult();
         if (SoundManager.Instance != null)
         {
             SoundManager.Instance.PlayWin(_levelRunner.transform);

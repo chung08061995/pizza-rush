@@ -1,5 +1,7 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
+using Firebase.Analytics;
 using UnityEngine;
 
 public class RuntimeStorage : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<RuntimeStorage>
@@ -72,6 +74,10 @@ public class RuntimeStorage : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour
 
 public static class GameAnalytics
 {
+    private const int MaxQueuedEvents = 64;
+    private static readonly Queue<PendingEvent> PendingEvents = new();
+    private static bool _subscribed;
+
     public const string AppStart = "app_start";
     public const string LevelStart = "level_start";
     public const string LevelWin = "level_win";
@@ -86,25 +92,38 @@ public static class GameAnalytics
 
     public static void Log(string eventName)
     {
-        Debug.Log($"[Analytics] {eventName}");
+        Log(eventName, null);
     }
 
     public static void Log(string eventName, Dictionary<string, object> parameters)
     {
-        if (parameters == null || parameters.Count == 0)
+        eventName = SanitizeName(eventName);
+        parameters ??= new Dictionary<string, object>();
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log(parameters.Count == 0
+            ? $"[Analytics] {eventName}"
+            : $"[Analytics] {eventName}: {string.Join(", ", FormatParameters(parameters))}");
+#endif
+
+        EnsureFirebaseSubscription();
+        if (!FirebaseBootstrap.IsReady)
         {
-            Log(eventName);
+            QueueEvent(eventName, parameters);
+            FirebaseBootstrap.Initialize();
             return;
         }
 
-        Debug.Log($"[Analytics] {eventName}: {string.Join(", ", FormatParameters(parameters))}");
+        TryLogNow(eventName, parameters);
     }
 
     public static void LogLevelEvent(string eventName)
     {
+        int level = DataManager.Instance != null ? DataManager.Instance.Level.Value : 0;
+        FirebaseBootstrap.SetCurrentLevel(level);
         Log(eventName, new Dictionary<string, object>
         {
-            { "level", DataManager.Instance != null ? DataManager.Instance.Level.Value : 0 },
+            { "level", level },
         });
     }
 
@@ -138,6 +157,129 @@ public static class GameAnalytics
         foreach (var pair in parameters)
         {
             yield return $"{pair.Key}={pair.Value}";
+        }
+    }
+
+    private static void EnsureFirebaseSubscription()
+    {
+        if (_subscribed)
+        {
+            return;
+        }
+
+        _subscribed = true;
+        FirebaseBootstrap.InitializationCompleted += OnFirebaseInitializationCompleted;
+    }
+
+    private static void OnFirebaseInitializationCompleted(bool success, string error)
+    {
+        if (!success)
+        {
+            return;
+        }
+
+        while (PendingEvents.Count > 0)
+        {
+            var pending = PendingEvents.Dequeue();
+            TryLogNow(pending.Name, pending.Parameters);
+        }
+    }
+
+    private static void QueueEvent(string eventName, Dictionary<string, object> parameters)
+    {
+        if (PendingEvents.Count >= MaxQueuedEvents)
+        {
+            PendingEvents.Dequeue();
+        }
+
+        PendingEvents.Enqueue(new PendingEvent(
+            eventName,
+            new Dictionary<string, object>(parameters)));
+    }
+
+    private static void TryLogNow(string eventName, Dictionary<string, object> parameters)
+    {
+        try
+        {
+            var firebaseParameters = new List<Parameter>(parameters.Count);
+            foreach (var pair in parameters)
+            {
+                string name = SanitizeName(pair.Key);
+                switch (pair.Value)
+                {
+                    case null:
+                        firebaseParameters.Add(new Parameter(name, string.Empty));
+                        break;
+                    case bool boolValue:
+                        firebaseParameters.Add(new Parameter(name, boolValue ? 1L : 0L));
+                        break;
+                    case byte byteValue:
+                        firebaseParameters.Add(new Parameter(name, (long)byteValue));
+                        break;
+                    case short shortValue:
+                        firebaseParameters.Add(new Parameter(name, (long)shortValue));
+                        break;
+                    case int intValue:
+                        firebaseParameters.Add(new Parameter(name, (long)intValue));
+                        break;
+                    case long longValue:
+                        firebaseParameters.Add(new Parameter(name, longValue));
+                        break;
+                    case float floatValue:
+                        firebaseParameters.Add(new Parameter(name, (double)floatValue));
+                        break;
+                    case double doubleValue:
+                        firebaseParameters.Add(new Parameter(name, doubleValue));
+                        break;
+                    default:
+                        firebaseParameters.Add(new Parameter(name, pair.Value.ToString()));
+                        break;
+                }
+            }
+
+            FirebaseAnalytics.LogEvent(eventName, firebaseParameters.ToArray());
+        }
+        catch (Exception exception)
+        {
+            Debug.LogWarning($"[Analytics] Failed to log '{eventName}': {exception.GetBaseException().Message}");
+        }
+    }
+
+    private static string SanitizeName(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return "unnamed_event";
+        }
+
+        value = value.Trim().ToLowerInvariant();
+        var chars = value.ToCharArray();
+        for (int index = 0; index < chars.Length; index++)
+        {
+            if (!char.IsLetterOrDigit(chars[index]) && chars[index] != '_')
+            {
+                chars[index] = '_';
+            }
+        }
+
+        string sanitized = new string(chars);
+        if (!char.IsLetter(sanitized[0]))
+        {
+            sanitized = "e_" + sanitized;
+        }
+
+        return sanitized.Length <= 40 ? sanitized : sanitized.Substring(0, 40);
+    }
+
+    private readonly struct PendingEvent
+    {
+        public readonly string Name;
+        public readonly Dictionary<string, object> Parameters;
+
+        public PendingEvent(string name, Dictionary<string, object> parameters)
+        {
+            Name = name;
+            Parameters = parameters;
         }
     }
 }

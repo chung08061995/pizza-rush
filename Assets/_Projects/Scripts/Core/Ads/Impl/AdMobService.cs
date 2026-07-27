@@ -1,7 +1,8 @@
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-#if GOOGLE_ADMOB && !UNITY_IOS
+#if GOOGLE_ADMOB
 using GoogleMobileAds.Api;
 #endif
 
@@ -16,19 +17,12 @@ namespace DraftUtils.Ads
     /// 2. Set App ID trong Assets → Google Mobile Ads → Settings
     /// 3. Ad Unit IDs trong AdConfig
     /// </summary>
-#if UNITY_IOS
-    // Google Mobile Ads 11.2 assemblies in this project do not expose the
-    // public ad API to Unity's iOS player compilation. Keep TestFlight builds
-    // functional with the safe stub until the SDK package is re-imported.
-    public class AdMobService : StubAdsService
-    {
-        public AdMobService(AdConfigSO config)
-        {
-        }
-    }
-#else
+#if GOOGLE_ADMOB
     public class AdMobService : IAdsService
     {
+        private const string TestBannerId = "ca-app-pub-3940256099942544/6300978111";
+        private const string TestInterstitialId = "ca-app-pub-3940256099942544/1033173712";
+        private const string TestRewardedId = "ca-app-pub-3940256099942544/5224354917";
         private readonly DraftUtils.FormattedLogger _logger = new(DraftUtils.FormattedLogger.CreateFormatForType(typeof(AdMobService)));
         private readonly AdConfigSO _config;
 
@@ -39,6 +33,8 @@ namespace DraftUtils.Ads
         private Action _interstitialClosedCallback;
         private Action<bool> _rewardedCallback;
         private bool _rewardGranted;
+        private string _interstitialPlacement = "default";
+        private string _rewardedPlacement = "default";
 
         public bool IsInitialized { get; private set; }
         public bool AdsDisabled { get; set; }
@@ -63,16 +59,18 @@ namespace DraftUtils.Ads
                 return;
             }
 
-            _logger.Log("Initializing AdMob...");
-            MobileAds.Initialize(status =>
+            _logger.Log("Initializing AdMob; requesting UMP consent...");
+            AdPrivacyController.RequestConsent(canRequest =>
             {
-                IsInitialized = true;
-                _logger.Log("AdMob initialized!");
-                onComplete?.Invoke(true);
-
-                // Auto-load
-                LoadInterstitial();
-                LoadRewarded();
+                if (!canRequest) { _logger.Log("Ads unavailable until privacy consent is granted."); onComplete?.Invoke(false); return; }
+                MobileAds.RaiseAdEventsOnUnityMainThread = true;
+                MobileAds.Initialize(status =>
+                {
+                    IsInitialized = status != null;
+                    _logger.Log(IsInitialized ? "AdMob initialized!" : "AdMob initialization failed.");
+                    onComplete?.Invoke(IsInitialized);
+                    if (IsInitialized) { LoadInterstitial(); LoadRewarded(); }
+                });
             });
         }
 
@@ -80,7 +78,7 @@ namespace DraftUtils.Ads
 
         public void ShowBanner(AdBannerPosition position = AdBannerPosition.Bottom)
         {
-            if (AdsDisabled) return;
+            if (AdsDisabled || !AdPrivacyController.CanRequestAds) return;
 
             DestroyBanner();
 
@@ -88,7 +86,9 @@ namespace DraftUtils.Ads
                 ? AdPosition.Top
                 : AdPosition.Bottom;
 
-            _bannerView = new BannerView(_config.platformConfig.bannerId, AdSize.Banner, adMobPos);
+            var id = _config.TestMode ? TestBannerId : _config.platformConfig.bannerId;
+            _bannerView = new BannerView(id, AdSize.Banner, adMobPos);
+            _bannerView.OnAdPaid += value => LogPaid("banner", "gameplay", value);
 
             var request = new AdRequest();
             _bannerView.LoadAd(request);
@@ -120,7 +120,8 @@ namespace DraftUtils.Ads
             }
 
             var request = new AdRequest();
-            InterstitialAd.Load(_config.platformConfig.interstitialId, request, (ad, error) =>
+            var id = _config.TestMode ? TestInterstitialId : _config.platformConfig.interstitialId;
+            InterstitialAd.Load(id, request, (ad, error) =>
             {
                 if (error != null)
                 {
@@ -142,7 +143,7 @@ namespace DraftUtils.Ads
 
         public void ShowInterstitial(string placement = "default", Action onClosed = null)
         {
-            if (AdsDisabled) { onClosed?.Invoke(); return; }
+            if (AdsDisabled || !AdPrivacyController.CanRequestAds) { onClosed?.Invoke(); return; }
 
             if (!IsInterstitialReady)
             {
@@ -153,6 +154,7 @@ namespace DraftUtils.Ads
             }
 
             _interstitialClosedCallback = onClosed;
+            _interstitialPlacement = placement;
             _interstitialAd.Show();
             OnAdShown?.Invoke(new AdEventInfo(AdType.Interstitial, placement, "AdMob"));
         }
@@ -163,9 +165,10 @@ namespace DraftUtils.Ads
             {
                 _interstitialClosedCallback?.Invoke();
                 _interstitialClosedCallback = null;
-                OnAdClosed?.Invoke(new AdEventInfo(AdType.Interstitial, "", "AdMob"));
+                OnAdClosed?.Invoke(new AdEventInfo(AdType.Interstitial, _interstitialPlacement, "AdMob"));
                 LoadInterstitial(); // Auto-reload
             };
+            ad.OnAdPaid += value => LogPaid("interstitial", _interstitialPlacement, value);
 
             ad.OnAdFullScreenContentFailed += (error) =>
             {
@@ -192,7 +195,8 @@ namespace DraftUtils.Ads
             }
 
             var request = new AdRequest();
-            RewardedAd.Load(_config.platformConfig.rewardedId, request, (ad, error) =>
+            var id = _config.TestMode ? TestRewardedId : _config.platformConfig.rewardedId;
+            RewardedAd.Load(id, request, (ad, error) =>
             {
                 if (error != null)
                 {
@@ -214,12 +218,6 @@ namespace DraftUtils.Ads
 
         public void ShowRewarded(string placement = "default", Action<bool> onResult = null)
         {
-            if (AdsDisabled)
-            {
-                onResult?.Invoke(false);
-                return;
-            }
-
             if (!IsRewardedReady)
             {
                 _logger.Log("Rewarded not ready.");
@@ -229,6 +227,7 @@ namespace DraftUtils.Ads
             }
 
             _rewardedCallback = onResult;
+            _rewardedPlacement = placement;
             _rewardGranted = false;
 
             _rewardedAd.Show(reward =>
@@ -250,7 +249,7 @@ namespace DraftUtils.Ads
             {
                 _rewardedCallback?.Invoke(_rewardGranted);
                 _rewardedCallback = null;
-                OnAdClosed?.Invoke(new AdEventInfo(AdType.Rewarded, "", "AdMob"));
+                OnAdClosed?.Invoke(new AdEventInfo(AdType.Rewarded, _rewardedPlacement, "AdMob"));
                 LoadRewarded(); // Auto-reload
             };
 
@@ -266,7 +265,22 @@ namespace DraftUtils.Ads
                 });
                 LoadRewarded();
             };
+            ad.OnAdPaid += value => LogPaid("rewarded", _rewardedPlacement, value);
         }
+
+        private static void LogPaid(string adType, string placement, AdValue value)
+        {
+            GameAnalytics.Log("ad_paid", new Dictionary<string, object>
+            {
+                { "ad_type", adType }, { "placement", placement ?? string.Empty },
+                { "currency", value.CurrencyCode ?? string.Empty }, { "value", value.Value / 1000000d },
+            });
+        }
+    }
+#else
+    public class AdMobService : StubAdsService
+    {
+        public AdMobService(AdConfigSO config) { }
     }
 #endif
 }

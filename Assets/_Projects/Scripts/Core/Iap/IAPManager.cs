@@ -49,6 +49,7 @@ namespace DraftUtils.IAP
 
         /// <summary>Event khi purchase hoàn tất.</summary>
         public event Action<IAPPurchaseResult> OnPurchaseCompleted;
+        private bool _purchaseInProgress;
 
         protected override void OnAwake()
         {
@@ -122,10 +123,18 @@ namespace DraftUtils.IAP
         /// <param name="onResult">Callback kết quả (optional, cũng fire event OnPurchaseCompleted)</param>
         public void Purchase(string productId, Action<IAPPurchaseResult> onResult = null)
         {
+            if (_purchaseInProgress || Service == null || !Service.IsInitialized)
+            {
+                Debug.LogWarning($"[IAPManager] Purchase ignored; store unavailable or another purchase is active: {productId}");
+                return;
+            }
+
+            _purchaseInProgress = true;
             Service.PurchaseProduct(productId, result =>
             {
-                onResult?.Invoke(result);
+                _purchaseInProgress = false;
                 OnPurchaseCompleted?.Invoke(result);
+                onResult?.Invoke(result);
             });
         }
 

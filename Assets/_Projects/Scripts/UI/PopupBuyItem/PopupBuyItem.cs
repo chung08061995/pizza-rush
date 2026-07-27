@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PopupBuyItem : DraftUtils.DraftMonoBehaviour
 {
@@ -28,6 +29,7 @@ public class PopupBuyItem : DraftUtils.DraftMonoBehaviour
         _data = data;
         itemView.SetData(data);
         itemView.SetRemaningTextActive();
+        RefreshBuyAvailability();
     }
 
     private void ClickBuy()
@@ -44,8 +46,7 @@ public class PopupBuyItem : DraftUtils.DraftMonoBehaviour
             }
             else
             {
-                // Not enough gold, maybe open shop?
-                PopupManager.Instance.GetPopupShop();
+                ShowNotEnoughGold();
             }
         }
     }
@@ -67,5 +68,31 @@ public class PopupBuyItem : DraftUtils.DraftMonoBehaviour
     private void ClickClose()
     {
         popup.HideWithAnimation();
+    }
+
+    private void RefreshBuyAvailability()
+    {
+        if (!DataManager.Instance.costItems.TryGetValue(_data, out var cost))
+        {
+            buyButton.interactable = false;
+            return;
+        }
+
+        bool canBuy = DataManager.Instance.remainningItems[ItemType.Gold].Value >= cost;
+        buyButton.interactable = canBuy;
+        if (!canBuy)
+        {
+            ShowNotEnoughGold();
+        }
+    }
+
+    private void ShowNotEnoughGold()
+    {
+        buyButton.interactable = false;
+        var label = buyButton.GetComponentInChildren<TMP_Text>(true);
+        if (label != null)
+        {
+            label.SetText("Not enough Gold");
+        }
     }
 }

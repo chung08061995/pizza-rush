@@ -16,18 +16,8 @@ public class CoffeeRunIAPProductProvider : MonoBehaviour, IIAPProductProvider
         var iapData = DataManager.Instance.iapData;
         var products = new List<IAPProductInfo>();
 
-        foreach (var iap in iapData.singleIaps)
-        {
-            var id = GetProductId(iap.productId, iap.itemType);
-            products.Add(new IAPProductInfo(id, IAPProductType.Consumable, iap.itemType.ToString()));
-        }
-
-        AddMultipleProduct(products, iapData.noAds, IAPProductType.NonConsumable, "No Ads");
-        AddMultipleProduct(products, iapData.noAdsBundle, IAPProductType.NonConsumable, "No Ads Bundle");
-        AddMultipleProduct(products, iapData.smallBundle, IAPProductType.Consumable, "Small Bundle");
-        AddMultipleProduct(products, iapData.mediumBundle, IAPProductType.Consumable, "Medium Bundle");
-        AddMultipleProduct(products, iapData.largeBundle, IAPProductType.Consumable, "Large Bundle");
-        AddMultipleProduct(products, iapData.starter, IAPProductType.Consumable, "Starter Bundle");
+        // Release catalog intentionally contains only the non-consumable No Ads product.
+        products.Add(new IAPProductInfo(GameConstain.IAPProductId.NoAds, IAPProductType.NonConsumable, "No Ads"));
 
         return products.ToArray();
     }

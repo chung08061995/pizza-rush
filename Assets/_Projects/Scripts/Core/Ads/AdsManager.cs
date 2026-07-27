@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using DraftUtils.IAP;
 
@@ -42,10 +43,17 @@ namespace DraftUtils.Ads
         public bool HasNoAds => PlayerPrefs.GetInt(GameConstain.PlayerPrefsKey.NoAdsOwned, 0) == 1;
         public bool AdsDisabled => _service != null && _service.AdsDisabled;
         private DraftUtils.UnityMainThread _unityMainThread;
+        private int _winInterstitialCounter;
+        private int _loseInterstitialCounter;
+        private float _lastInterstitialTime = float.NegativeInfinity;
 
         protected override void OnAwake()
         {
             _service = CreateService();
+            _service.OnAdShown += info => LogAdEvent("ad_show", info);
+            _service.OnAdClosed += info => LogAdEvent("ad_close", info);
+            _service.OnAdFailed += info => LogAdEvent("ad_fail", info);
+            _service.OnRewardEarned += info => LogAdEvent("ad_reward", info);
 
             if (HasNoAds)
             {
@@ -118,7 +126,7 @@ namespace DraftUtils.Ads
         [Button]
         public void ShowBanner(AdBannerPosition position)
         {
-            if (_service.AdsDisabled) return;
+            if (_service == null || _service.AdsDisabled || !MonetizationConfig.CanShowBanner(DataManager.Instance != null ? DataManager.Instance.Level.Value : 1)) return;
             _service.ShowBanner(position);
         }
 
@@ -134,7 +142,7 @@ namespace DraftUtils.Ads
         [Button]
         public void ShowInterstitial(string placement = "default", Action onClosed = null)
         {
-            if (_service.AdsDisabled)
+            if (_service == null || _service.AdsDisabled)
             {
                 onClosed?.Invoke();
                 return;
@@ -152,23 +160,52 @@ namespace DraftUtils.Ads
         [Button]
         public void ShowRewarded(string placement = "default", Action<bool> onResult = null)
         {
-            if (_service.AdsDisabled)
+            if (_service == null || !MonetizationConfig.RewardedEnabled)
             {
                 onResult?.Invoke(false);
                 return;
             }
-
             _service.ShowRewarded(placement, onResult);
+        }
+
+        public void ShowLevelEndInterstitial(bool won, Action onComplete)
+        {
+            int level = DataManager.Instance != null ? DataManager.Instance.Level.Value - (won ? 1 : 0) : 1;
+            int counter = won ? ++_winInterstitialCounter : ++_loseInterstitialCounter;
+            int interval = won ? MonetizationConfig.InterstitialWinInterval : MonetizationConfig.InterstitialLoseInterval;
+            bool cooldownPassed = Time.realtimeSinceStartup - _lastInterstitialTime >= MonetizationConfig.InterstitialCooldownSeconds;
+            if (!MonetizationConfig.CanShowInterstitial(level) || counter % interval != 0 || !cooldownPassed)
+            {
+                onComplete?.Invoke();
+                return;
+            }
+
+            _lastInterstitialTime = Time.realtimeSinceStartup;
+            ShowInterstitial(won ? "level_win" : "level_lose", onComplete);
+        }
+
+        public void ShowPrivacyOptions() => AdPrivacyController.ShowPrivacyOptions();
+
+        private static void LogAdEvent(string eventName, AdEventInfo info)
+        {
+            if (info == null) return;
+            GameAnalytics.Log(eventName, new Dictionary<string, object>
+            {
+                { "ad_type", info.AdType.ToString() }, { "placement", info.Placement ?? string.Empty },
+                { "network", info.AdNetwork ?? string.Empty }, { "error", info.ErrorMessage ?? string.Empty },
+                { "value", info.Revenue }, { "currency", info.RevenueCurrency ?? string.Empty },
+            });
         }
 
         /// <summary>
         /// Tắt ads (vd: sau khi mua Remove Ads).
-        /// Banner bị xoá; interstitial và rewarded không được phép hiện.
+        /// Banner/interstitial bị tắt; rewarded vẫn hoạt động khi người chơi chủ động chọn.
         /// </summary>
 
         [Button]
         public void DisableAds()
         {
+            if (_service == null) return;
             _service.AdsDisabled = true;
             _service.HideBanner();
             _service.DestroyBanner();
@@ -197,8 +234,6 @@ namespace DraftUtils.Ads
             {
                 return new AdMobService(_config);
             }
-
-            return new StubAdsService();
 
             switch (_config.SdkType)
             {

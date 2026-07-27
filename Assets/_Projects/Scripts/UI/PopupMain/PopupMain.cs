@@ -35,7 +35,10 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         // startText.Bind(DataManager.Instance.star);
         // goldText.Bind(DataManager.Instance.gold);
 
-        shopButton.Button.OnClickAction = ClickShop;
+        if (shopButton != null)
+        {
+            shopButton.gameObject.SetActive(false);
+        }
         rankingButton.Button.OnClickAction = ClickRanking;
         homeButton.Button.OnClickAction = ClickHome;
         screenShotButton.Button.OnClickAction = ClickScreenShort;
@@ -59,12 +62,10 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         vibrateButton.ApplyImmediate(_vibrate.Value);
         ConfigureQuickButtonHover();
 
-        // goldMoreButton.RegisterClickEvents();
-        // goldMoreButton.OnClickAction = ClickShop;
+        goldMoreButton.Disable();
 
 
         tabSlideAnimator.RegisterTabs(
-            typeof(PopupShopContent),
             typeof(PopupRankingContent),
             typeof(PopupHomeContent),
             typeof(PopupLevelUpContent)
@@ -116,7 +117,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
     {
         List<HomeNavigationButton> btns = new()
             {
-                shopButton, rankingButton, homeButton, screenShotButton
+                rankingButton, homeButton, screenShotButton
             };
 
         btns.Remove(selectedButton);
@@ -135,7 +136,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         DoMoveDisableButtonBackground(homeButton.transform);
         PlayButtonPress(homeButton.transform);
         var popup = PopupManager.Instance.homeContentsController.ShowPopupHomeContent(contentRoot);
-        popup.AddGoldButton.OnClickAction = ClickShop;
+        popup.AddGoldButton.Disable();
         tabSlideAnimator.SwitchTo(popup);
     }
 
@@ -154,14 +155,6 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         SetMainButtonsVisible(false);
     }
 
-    private void ClickShop()
-    {
-        SelectHomeNavigationButton(shopButton);
-        DoMoveDisableButtonBackground(shopButton.transform);
-        PlayButtonPress(shopButton.transform);
-        var popup = PopupManager.Instance.homeContentsController.ShowPopupShopContent(contentRoot);
-        tabSlideAnimator.SwitchTo(popup);
-    }
     private void ClickScreenShort()
     {
         SelectHomeNavigationButton(screenShotButton);

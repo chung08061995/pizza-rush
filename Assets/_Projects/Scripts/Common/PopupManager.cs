@@ -23,10 +23,8 @@ public class PopupManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<P
     [SerializeField] private DraftUtils.ComponentReference<PopupSelectBooter> popupSelectBooterReference = new();
     [SerializeField] private DraftUtils.ComponentReference<PopupCheatLevel> popupCheatLevelReference;
     [SerializeField] private DraftUtils.ComponentReference<PopupIapDetail> popupNoAdsDetailReference = new();
-    [SerializeField] private DraftUtils.ComponentReference<PopupIapDetail> popupStarterDetailReference = new();
     [SerializeField] private DraftUtils.ComponentReference<PopupDailyChallenge> popupDailyChallengeReference = new();
     [SerializeField] private DraftUtils.ComponentReference<PopupMoreLives> popupMoreLivesReference = new();
-    [SerializeField] private DraftUtils.ComponentReference<PopupShopContent> popupShopContentReference = new();
     [SerializeField] private DraftUtils.ComponentReference<PopupBuyItem> popupBuyItemReference = new();
     [SerializeField] private DraftUtils.ComponentReference<PopupConfirmReplay> popupConfirmReplayReference = new();
     [SerializeField] private DraftUtils.ComponentReference<PopupUsingBooter> popupUsingBooterReference = new();
@@ -194,15 +192,6 @@ public class PopupManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<P
     }
 
     [Button]
-    public PopupIapDetail GetPopupStarterDetail()
-    {
-        var popup = _popupFactory.DestroyCurrentAndCreate(popupStarterDetailReference, panel1);
-        popup.popup.ShowWithAnimation();
-        popup.SetData(DataManager.Instance.iapData.starter);
-        return popup;
-    }
-
-    [Button]
     public PopupDailyChallenge GetPopupDailyChallenge()
     {
         var popup = _popupFactory.DestroyCurrentAndCreate(popupDailyChallengeReference, panel1);
@@ -217,6 +206,7 @@ public class PopupManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<P
         var popup = _popupFactory.DestroyCurrentAndCreate(popupMoreLivesReference, panel1);
         popup.popup.ShowWithAnimation();
         popup.SetData();
+        RefreshBuyButton();
         popup.BuyButton.OnClickAction = ClickBuy;
         popup.WatchAdsButton.OnClickAction = ClickWatchAds;
 
@@ -242,8 +232,25 @@ public class PopupManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<P
                 }
                 else
                 {
-                    GetPopupShop();
+                    popup.BuyButton.SetText("Not enough Gold");
+                    popup.BuyButton.SetInteractable(false);
                 }
+            }
+        }
+
+        void RefreshBuyButton()
+        {
+            if (!DataManager.Instance.costItems.TryGetValue(ItemType.Booter_LifeTime, out var cost))
+            {
+                popup.BuyButton.SetInteractable(false);
+                return;
+            }
+
+            bool canBuy = DataManager.Instance.gold.Value >= cost;
+            popup.BuyButton.SetInteractable(canBuy);
+            if (!canBuy)
+            {
+                popup.BuyButton.SetText("Not enough Gold");
             }
         }
         void ClickWatchAds()
@@ -279,13 +286,6 @@ public class PopupManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<P
     [Button]
     public void TestShowPopupMoreLives() => ShowPopupMoreLives(null, null);
 
-    [Button]
-    public PopupShopContent GetPopupShop()
-    {
-        var popup = _popupFactory.DestroyCurrentAndCreate(popupShopContentReference, panel1);
-        popup.popup.ShowWithAnimation();
-        return popup;
-    }
     [Button]
     public PopupBuyItem GetPopupBuyItem()
     {

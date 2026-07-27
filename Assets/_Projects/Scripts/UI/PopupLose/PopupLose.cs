@@ -83,7 +83,8 @@ public class PopupLose : DraftUtils.DraftMonoBehaviour
             }
             else
             {
-                PopupManager.Instance.GetPopupShop();
+                descriptbonusTimeText.text = "Not enough Gold";
+                playOnButton.interactable = false;
             }
         }
     }
@@ -95,6 +96,7 @@ public class PopupLose : DraftUtils.DraftMonoBehaviour
         SetDescriptionBonusTimeText(bonusTime);
         SetGoldView();
         SetPlayOnItemView();
+        RefreshPlayOnAvailability();
     }
 
     private void SetBonusTimeText(int bonusTime)
@@ -118,6 +120,22 @@ public class PopupLose : DraftUtils.DraftMonoBehaviour
         if (playOnItemView != null)
         {
             playOnItemView.SetData(ItemType.Booter_PlayOn);
+        }
+    }
+
+    private void RefreshPlayOnAvailability()
+    {
+        if (!DataManager.Instance.costItems.TryGetValue(ItemType.Booter_PlayOn, out var cost))
+        {
+            playOnButton.interactable = false;
+            return;
+        }
+
+        bool canBuy = DataManager.Instance.gold.Value >= cost;
+        playOnButton.interactable = canBuy;
+        if (!canBuy)
+        {
+            descriptbonusTimeText.text = "Not enough Gold";
         }
     }
 }

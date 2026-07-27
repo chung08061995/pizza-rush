@@ -41,7 +41,11 @@ public class LoseState : DraftUtils.IState
 
         if (PopupManager.Instance != null)
         {
-            PopupManager.Instance.GetPopupLose();
+            void ShowResult() => PopupManager.Instance.GetPopupLose();
+            if (DraftUtils.Ads.AdsManager.Instance != null)
+                DraftUtils.Ads.AdsManager.Instance.ShowLevelEndInterstitial(false, ShowResult);
+            else
+                ShowResult();
         }
     }
 

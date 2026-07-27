@@ -16,6 +16,7 @@ namespace DraftUtils.IAP
     public class UnityIAPService : IIAPService
     {
         private const string TAG = "[IAP]";
+        private const string ProcessedOrdersKey = "iap_processed_transaction_ids";
 
         private StoreController _storeController;
         private readonly Dictionary<string, IAPProductInfo> _productInfoMap = new();
@@ -43,6 +44,7 @@ namespace DraftUtils.IAP
             }
 
             _initCallback = onComplete;
+            LoadProcessedOrders();
             _productInfoMap.Clear();
             _productsFetched = false;
             _purchasesFetched = false;
@@ -260,6 +262,7 @@ namespace DraftUtils.IAP
             if (!string.IsNullOrEmpty(orderKey))
             {
                 _processedOrders.Add(orderKey);
+                SaveProcessedOrders();
             }
 
             _purchaseCallback?.Invoke(IAPPurchaseResult.Success(
@@ -390,6 +393,20 @@ namespace DraftUtils.IAP
                 IAPProductType.Subscription => ProductType.Subscription,
                 _ => ProductType.Consumable
             };
+        }
+
+        private void LoadProcessedOrders()
+        {
+            _processedOrders.Clear();
+            var stored = PlayerPrefs.GetString(ProcessedOrdersKey, string.Empty);
+            foreach (var transactionId in stored.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries))
+                _processedOrders.Add(transactionId);
+        }
+
+        private void SaveProcessedOrders()
+        {
+            PlayerPrefs.SetString(ProcessedOrdersKey, string.Join("\n", _processedOrders));
+            PlayerPrefs.Save();
         }
 
         private static IAPFailureReason MapFailureReason(PurchaseFailureReason reason)

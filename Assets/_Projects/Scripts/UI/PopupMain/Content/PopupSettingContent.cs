@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DraftUtils.Ads;
+using DraftUtils.IAP;
 
 public class PopupSettingContent : DraftUtils.DraftMonoBehaviour
 {
@@ -68,6 +70,22 @@ public class PopupSettingContent : DraftUtils.DraftMonoBehaviour
     private void RefreshVibrateButton()
     {
         vibrateButton.ApplyWithAnimation(_vibrate.Value);
+    }
+
+    // Public UI entry points for Settings buttons on both platforms.
+    public void RestorePurchases()
+    {
+        if (IAPManager.Instance == null) return;
+        IAPManager.Instance.Restore(success =>
+        {
+            if (success && AdsManager.Instance != null && IAPManager.Instance.IsOwned(GameConstain.IAPProductId.NoAds))
+                AdsManager.Instance.DisableAds();
+        });
+    }
+
+    public void ShowPrivacyOptions()
+    {
+        if (AdsManager.Instance != null) AdsManager.Instance.ShowPrivacyOptions();
     }
 
     private void OnDestroy()
