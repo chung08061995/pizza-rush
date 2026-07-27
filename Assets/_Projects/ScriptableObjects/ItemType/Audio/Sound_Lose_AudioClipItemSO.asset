@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Sound_Lose_AudioClipItemSO
   m_EditorClassIdentifier: 
   Key: 7002
-  Value: {fileID: 8300000, guid: 07f038930bf12cc40a73da26abf8140b, type: 3}
+  Value: {fileID: 8300000, guid: eef8abaef8f64eca80e04e56c28cb517, type: 3}
