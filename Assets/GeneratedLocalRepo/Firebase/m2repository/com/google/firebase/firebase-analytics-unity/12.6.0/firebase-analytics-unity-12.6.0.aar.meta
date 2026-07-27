@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: b81d99a12d03431f97f28580fe0ad562
+guid: d55187e6feac743e683466ba98d513bf
+labels:
+- gpsr
 PluginImporter:
   externalObjects: {}
   serializedVersion: 3
@@ -11,18 +13,16 @@ PluginImporter:
   isExplicitlyReferenced: 0
   validateReferences: 1
   platformData:
-  - first:
-      Any:
-    second:
+    Android:
       enabled: 0
       settings: {}
-  - first:
-      Android:
-    second:
+    Any:
+      enabled: 0
+      settings: {}
+    Editor:
       enabled: 0
       settings:
-        CPU: AnyCPU
-  userData:
-  assetBundleName:
-  assetBundleVariant:
-
+        DefaultValueInitialized: true
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
