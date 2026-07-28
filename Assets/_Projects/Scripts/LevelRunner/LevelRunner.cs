@@ -5,10 +5,12 @@ using Sirenix.OdinInspector;
 using DG.Tweening;
 using System.Collections;
 using System;
+using UnityEngine.Rendering;
 
 public class LevelRunner : DraftUtils.DraftMonoBehaviour
 {
     [SerializeField] private LevelObjectSpawner levelObjectSpawner;
+    [SerializeField] private GameplayVisualConfigSO gameplayVisualConfig;
 
     private DraftUtils.TimeCountdown _timer = new();
 
@@ -27,6 +29,7 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
     [ShowInInspector] [ReadOnly] private DraftUtils.TimeCountdown _freezeTimer = new();
     public DraftUtils.TimeCountdown FreezeTimer => _freezeTimer;
     private bool _isFreezeTime = false;
+    private float _lastVisualAspect = -1f;
     public bool IsFreezeTime => _isFreezeTime;
 
     public void StartFreezeTime(float duration)
@@ -134,6 +137,8 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         {
             _timer.Update(Time.deltaTime);
         }
+
+        RefreshVisualsWhenAspectChanges();
     }
 
     public void AddTime(float extraSeconds)
@@ -172,64 +177,149 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         _timer.AddOnFinishedListener(EndGame);
         _timer.StartCountdown();
 
-        CenterCameraOnLevel(levelData);
+        ApplyGameplayVisuals(levelData);
     }
 
-    private void CenterCameraOnLevel(LevelData levelData)
+    private void ApplyGameplayVisuals(LevelData levelData)
     {
         if (levelData == null || levelData.gridPositions == null || levelData.gridPositions.Count == 0)
         {
             return;
         }
 
-        float minX = float.MaxValue, maxX = float.MinValue;
-        float minZ = float.MaxValue, maxZ = float.MinValue;
-        
-        foreach (var pos in levelData.gridPositions)
+        if (gameplayVisualConfig == null)
         {
-            Vector3 worldPos = levelObjectSpawner.Grid.CellToWorld(pos.ToVector2Int());
-            if (worldPos.x < minX) minX = worldPos.x;
-            if (worldPos.x > maxX) maxX = worldPos.x;
-            if (worldPos.z < minZ) minZ = worldPos.z;
-            if (worldPos.z > maxZ) maxZ = worldPos.z;
+            gameplayVisualConfig = Resources.Load<GameplayVisualConfigSO>(
+                "Gameplay/GameplayVisualConfig");
         }
 
-        Vector3 centerWorldPos = new Vector3((minX + maxX) / 2f, 0f, (minZ + maxZ) / 2f);
+        Camera mainCamera = Camera.main;
+        DisableNonAuthoritativeCameras(mainCamera);
+        Light mainLight = FindObjectsByType<Light>(
+                FindObjectsInactive.Exclude,
+                FindObjectsSortMode.None)
+            .FirstOrDefault(light => light.type == LightType.Directional);
+        Volume globalVolume = FindObjectsByType<Volume>(
+                FindObjectsInactive.Exclude,
+                FindObjectsSortMode.None)
+            .FirstOrDefault(volume => volume.isGlobal);
 
-        Camera mainCam = Camera.main;
-        if (mainCam != null)
+        if (gameplayVisualConfig == null)
         {
-            // Set camera size based on grid width
-            int minGridX = int.MaxValue;
-            int maxGridX = int.MinValue;
-            foreach (var pos in levelData.gridPositions)
-            {
-                if (pos.x < minGridX) minGridX = pos.x;
-                if (pos.x > maxGridX) maxGridX = pos.x;
-            }
-            int gridWidth = (maxGridX - minGridX) + 1;
+            Debug.LogError("GameplayVisualConfig could not be loaded from Resources/Gameplay.");
+            return;
+        }
 
-            if (DataManager.Instance != null && DataManager.Instance.cameraSize != null)
+        gameplayVisualConfig.ApplyRenderRig(mainCamera, mainLight, globalVolume);
+        Bounds visualBounds = CalculateVisualBounds(levelData, out float cellSize);
+        gameplayVisualConfig.FrameCamera(mainCamera, visualBounds, cellSize);
+        _lastVisualAspect = mainCamera != null ? mainCamera.aspect : -1f;
+    }
+
+    private void RefreshVisualsWhenAspectChanges()
+    {
+        if (_levelData == null || Camera.main == null)
+        {
+            return;
+        }
+
+        if (Mathf.Abs(Camera.main.aspect - _lastVisualAspect) > 0.001f)
+        {
+            ApplyGameplayVisuals(_levelData);
+        }
+    }
+
+    private Bounds CalculateVisualBounds(LevelData levelData, out float cellSize)
+    {
+        Vector3 firstCell = levelObjectSpawner.Grid.CellToWorld(
+            levelData.gridPositions[0].ToVector2Int());
+        Vector3 adjacentX = levelObjectSpawner.Grid.CellToWorld(
+            levelData.gridPositions[0].ToVector2Int() + Vector2Int.right);
+        Vector3 adjacentZ = levelObjectSpawner.Grid.CellToWorld(
+            levelData.gridPositions[0].ToVector2Int() + Vector2Int.up);
+        float cellSizeX = Mathf.Max(0.01f, Vector3.Distance(firstCell, adjacentX));
+        float cellSizeZ = Mathf.Max(0.01f, Vector3.Distance(firstCell, adjacentZ));
+        cellSize = Mathf.Max(cellSizeX, cellSizeZ);
+
+        Bounds gridBounds = new(firstCell, new Vector3(cellSizeX, 0f, cellSizeZ));
+        foreach (SerializableVector2Int position in levelData.gridPositions)
+        {
+            Vector3 worldPosition = levelObjectSpawner.Grid.CellToWorld(position.ToVector2Int());
+            gridBounds.Encapsulate(worldPosition - new Vector3(cellSizeX * 0.5f, 0f, cellSizeZ * 0.5f));
+            gridBounds.Encapsulate(worldPosition + new Vector3(cellSizeX * 0.5f, 0f, cellSizeZ * 0.5f));
+        }
+
+        Bounds bounds = gridBounds;
+        float entranceDistance = gameplayVisualConfig.ProductionLineEntranceCells * cellSize;
+        foreach (ProductionLine line in levelObjectSpawner.ProductionLinePooler.ActiveItems)
+        {
+            if (line == null)
             {
-                int targetSize = gridWidth + 2; // default fallback formula
-                if (DataManager.Instance.cameraSize.TryGetValue(gridWidth, out int sizeFromDict))
+                continue;
+            }
+
+            TryEncapsulateProductionEntrance(
+                ref bounds,
+                gridBounds,
+                line.transform.position,
+                entranceDistance,
+                cellSizeX,
+                cellSizeZ);
+            if (line.Places == null)
+            {
+                continue;
+            }
+
+            foreach (Place place in line.Places)
+            {
+                if (place != null)
                 {
-                    targetSize = sizeFromDict;
+                    TryEncapsulateProductionEntrance(
+                        ref bounds,
+                        gridBounds,
+                        place.transform.position,
+                        entranceDistance,
+                        cellSizeX,
+                        cellSizeZ);
                 }
-                mainCam.orthographicSize = targetSize;
             }
+        }
 
-            Ray ray = mainCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-            Plane plane = new Plane(Vector3.up, Vector3.zero);
-            if (plane.Raycast(ray, out float enter))
+        return bounds;
+    }
+
+    private static void EncapsulateCell(ref Bounds bounds, Vector3 position, float sizeX, float sizeZ)
+    {
+        bounds.Encapsulate(position - new Vector3(sizeX * 0.5f, 0f, sizeZ * 0.5f));
+        bounds.Encapsulate(position + new Vector3(sizeX * 0.5f, 0f, sizeZ * 0.5f));
+    }
+
+    private static void TryEncapsulateProductionEntrance(
+        ref Bounds bounds,
+        Bounds gridBounds,
+        Vector3 position,
+        float maximumDistance,
+        float sizeX,
+        float sizeZ)
+    {
+        Vector3 groundPosition = new(position.x, gridBounds.center.y, position.z);
+        if (gridBounds.SqrDistance(groundPosition) > maximumDistance * maximumDistance)
+        {
+            return;
+        }
+
+        EncapsulateCell(ref bounds, groundPosition, sizeX, sizeZ);
+    }
+
+    private static void DisableNonAuthoritativeCameras(Camera authoritativeCamera)
+    {
+        foreach (Camera camera in FindObjectsByType<Camera>(
+                     FindObjectsInactive.Exclude,
+                     FindObjectsSortMode.None))
+        {
+            if (camera != authoritativeCamera)
             {
-                Vector3 currentLookAt = ray.GetPoint(enter);
-                Vector3 offset = centerWorldPos - currentLookAt;
-                mainCam.transform.position += new Vector3(offset.x, 0f, offset.z);
-            }
-            else
-            {
-                mainCam.transform.position = new Vector3(centerWorldPos.x, mainCam.transform.position.y, centerWorldPos.z - 10f);
+                camera.gameObject.SetActive(false);
             }
         }
     }

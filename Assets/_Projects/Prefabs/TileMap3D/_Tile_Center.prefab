@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 5099955745856208969, guid: 829d8280f12ee9447b4ce7083da1c738, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5de4d9ff137563f4eadf344607151263, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ceefcacb4c1f492c80234d3ef603eda, type: 2}
     - target: {fileID: 6236784434749061926, guid: 829d8280f12ee9447b4ce7083da1c738, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.33
@@ -116,7 +116,7 @@ PrefabInstance:
     - target: {fileID: 5099955745856208969, guid: 829d8280f12ee9447b4ce7083da1c738, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5de4d9ff137563f4eadf344607151263, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ceefcacb4c1f492c80234d3ef603eda, type: 2}
     - target: {fileID: 6236784434749061926, guid: 829d8280f12ee9447b4ce7083da1c738, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.33
@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 5099955745856208969, guid: 829d8280f12ee9447b4ce7083da1c738, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5de4d9ff137563f4eadf344607151263, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ceefcacb4c1f492c80234d3ef603eda, type: 2}
     - target: {fileID: 6236784434749061926, guid: 829d8280f12ee9447b4ce7083da1c738, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.33
@@ -256,7 +256,7 @@ PrefabInstance:
     - target: {fileID: 5099955745856208969, guid: 829d8280f12ee9447b4ce7083da1c738, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5de4d9ff137563f4eadf344607151263, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ceefcacb4c1f492c80234d3ef603eda, type: 2}
     - target: {fileID: 6236784434749061926, guid: 829d8280f12ee9447b4ce7083da1c738, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.33

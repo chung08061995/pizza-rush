@@ -6401,7 +6401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7153678661575552812
 Transform:
   m_ObjectHideFlags: 0
@@ -11515,6 +11515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelRunner
   levelObjectSpawner: {fileID: 8105388065661456454}
+  gameplayVisualConfig: {fileID: 0}
 --- !u!1 &2183979867623583555
 GameObject:
   m_ObjectHideFlags: 0
@@ -13262,7 +13263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4120782646059594974
 Transform:
   m_ObjectHideFlags: 0

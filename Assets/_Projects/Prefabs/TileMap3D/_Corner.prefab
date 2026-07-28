@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 3110735595167370263, guid: b461a7ee33b985c44af81c662bb571e4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5de4d9ff137563f4eadf344607151263, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ceefcacb4c1f492c80234d3ef603eda, type: 2}
     - target: {fileID: 3470993260312456642, guid: b461a7ee33b985c44af81c662bb571e4, type: 3}
       propertyPath: m_Name
       value: border_corner (2)
@@ -112,7 +112,7 @@ PrefabInstance:
     - target: {fileID: 3110735595167370263, guid: b461a7ee33b985c44af81c662bb571e4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5de4d9ff137563f4eadf344607151263, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ceefcacb4c1f492c80234d3ef603eda, type: 2}
     - target: {fileID: 3470993260312456642, guid: b461a7ee33b985c44af81c662bb571e4, type: 3}
       propertyPath: m_Name
       value: border_corner (1)
@@ -178,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 3110735595167370263, guid: b461a7ee33b985c44af81c662bb571e4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5de4d9ff137563f4eadf344607151263, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ceefcacb4c1f492c80234d3ef603eda, type: 2}
     - target: {fileID: 3470993260312456642, guid: b461a7ee33b985c44af81c662bb571e4, type: 3}
       propertyPath: m_Name
       value: border_corner (3)
@@ -244,7 +244,7 @@ PrefabInstance:
     - target: {fileID: 3110735595167370263, guid: b461a7ee33b985c44af81c662bb571e4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5de4d9ff137563f4eadf344607151263, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ceefcacb4c1f492c80234d3ef603eda, type: 2}
     - target: {fileID: 3470993260312456642, guid: b461a7ee33b985c44af81c662bb571e4, type: 3}
       propertyPath: m_Name
       value: border_corner (4)

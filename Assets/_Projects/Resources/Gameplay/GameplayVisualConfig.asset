@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde0fa3da743d4c3195868489309098f, type: 3}
+  m_Name: GameplayVisualConfig
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayVisualConfigSO
+  cameraPitch: 65
+  framingPaddingCells: 0.75
+  productionLineEntranceCells: 1.5
+  safeLeft: 0.03
+  safeRight: 0.03
+  safeTop: 0.13
+  safeBottom: 0.18
+  minimumOrthographicSize: 5
+  maximumOrthographicSize: 18
+  mainLightColor: {r: 1, g: 0.8784314, b: 0.72156864, a: 1}
+  mainLightIntensity: 1.15
+  mainLightRotation: {x: 55, y: -30, z: 0}
+  hardShadowStrength: 0.45
+  ambientSky: {r: 0.14117648, g: 0.2901961, b: 0.47058824, a: 1}
+  ambientEquator: {r: 0.5019608, g: 0.41960785, b: 0.4392157, a: 1}
+  ambientGround: {r: 0.14117648, g: 0.105882354, b: 0.09411765, a: 1}
+  ambientIntensity: 0.7
+  cameraAndFloor: {r: 0.13333334, g: 0.20784314, b: 0.35686275, a: 1}
+  boardTile: {r: 0.94509804, g: 0.84705883, b: 0.72156864, a: 1}
+  boardBorder: {r: 0.20784314, g: 0.32941177, b: 0.52156866, a: 1}
+  conveyorRoad: {r: 0.20392157, g: 0.1882353, b: 0.22352941, a: 1}
+  conveyorBorder: {r: 0.41960785, g: 0.32941177, b: 0.2784314, a: 1}
+  gameplayVolumeProfile: {fileID: 11400000, guid: 39fe1c42ceca04e95af4cf35ac3d9c18, type: 2}
+  floorMaterial: {fileID: 2100000, guid: 90e1551f3f4fcfb4c946265de75aba86, type: 2}
+  boardTileMaterials:
+  - {fileID: 2100000, guid: fc8a308aa1839fe4fb2f4ab9266d7164, type: 2}
+  - {fileID: 2100000, guid: f50b4cefa35c37a49acc5bef83b05135, type: 2}
+  boardBorderMaterials:
+  - {fileID: 2100000, guid: 182c194bfbd51734ea5fdb1c87480413, type: 2}
+  - {fileID: 2100000, guid: 1ceefcacb4c1f492c80234d3ef603eda, type: 2}
+  conveyorRoadMaterial: {fileID: 2100000, guid: e8c607e1a1202c440a2964f7437c8d5d, type: 2}
+  conveyorBorderMaterial: {fileID: 2100000, guid: d886298c48afda04f98e1c6041bf5dc7, type: 2}
