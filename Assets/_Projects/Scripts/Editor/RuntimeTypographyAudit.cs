@@ -183,20 +183,29 @@ internal static class RuntimeTypographyAudit
     {
         result.TextCount++;
         bool changed = false;
+        bool buttonLabel = IsButtonLabel(text);
         TMP_FontAsset replacementFont = GetSdfReplacement(text.font);
         bool usesBitmapFont = replacementFont != null;
         bool outlinedRole = IsOutlinedRole(text);
 
         if (applyFix)
         {
-            if (usesBitmapFont)
+            TMP_FontAsset bitmapButtonFont = buttonLabel ? GetBitmapReplacement(text.font) : null;
+            if (bitmapButtonFont != null)
+            {
+                text.font = bitmapButtonFont;
+                text.fontSharedMaterial = bitmapButtonFont.material;
+                changed = true;
+            }
+            else if (!buttonLabel && usesBitmapFont)
             {
                 text.font = replacementFont;
                 changed = true;
             }
 
             TMP_FontAsset targetFont = replacementFont != null ? replacementFont : text.font;
-            if (targetFont != null &&
+            if (!buttonLabel &&
+                targetFont != null &&
                 IsSupportedRuntimeFont(targetFont) &&
                 (usesBitmapFont || NeedsCleanMaterial(text.fontSharedMaterial, outlinedRole)))
             {
@@ -238,10 +247,18 @@ internal static class RuntimeTypographyAudit
     private static void ValidateText(TMP_Text text, string assetPath, AuditResult result)
     {
         string objectPath = GetObjectPath(text.transform);
+        bool buttonLabel = IsButtonLabel(text);
         TMP_FontAsset replacement = GetSdfReplacement(text.font);
-        if (replacement != null)
+        if (replacement != null && !buttonLabel)
         {
             result.Errors.Add($"{assetPath} :: {objectPath} uses Bitmap font '{text.font.name}'.");
+        }
+
+        if (buttonLabel && GetBitmapReplacement(text.font) != null)
+        {
+            result.Errors.Add(
+                $"{assetPath} :: {objectPath} button label uses SDF override '{text.font.name}' " +
+                "instead of its known-good Bitmap font.");
         }
 
         if ((text.fontStyle & (FontStyles.Underline | FontStyles.Strikethrough)) != 0)
@@ -272,7 +289,7 @@ internal static class RuntimeTypographyAudit
                 $"{assetPath} :: {objectPath} outline is {material.GetFloat(ShaderUtilities.ID_OutlineWidth):0.###}.");
         }
 
-        if (IsSupportedRuntimeFont(text.font))
+        if (!buttonLabel && IsSupportedRuntimeFont(text.font))
         {
             float expectedOutline = IsOutlinedRole(text) ? MaximumOutlineWidth : 0f;
             float actualOutline = GetFloat(material, ShaderUtilities.ID_OutlineWidth);
@@ -305,6 +322,22 @@ internal static class RuntimeTypographyAudit
         {
             MontserratBitmapGuid => LoadFont(MontserratSdfGuid),
             LilitaBitmapGuid => LoadFont(LilitaSdfGuid),
+            _ => null
+        };
+    }
+
+    private static TMP_FontAsset GetBitmapReplacement(TMP_FontAsset font)
+    {
+        if (font == null)
+        {
+            return null;
+        }
+
+        string guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(font));
+        return guid switch
+        {
+            MontserratSdfGuid => LoadFont(MontserratBitmapGuid),
+            LilitaSdfGuid => LoadFont(LilitaBitmapGuid),
             _ => null
         };
     }
@@ -434,6 +467,11 @@ internal static class RuntimeTypographyAudit
             return true;
         }
 
+        return IsButtonLabel(text);
+    }
+
+    private static bool IsButtonLabel(TMP_Text text)
+    {
         Transform current = text.transform;
         while (current != null)
         {
