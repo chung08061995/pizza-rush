@@ -36,37 +36,46 @@ public sealed class FirebaseBootstrap : MonoBehaviour
         }
 
         IsInitializing = true;
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
+
+        try
+        {
+            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
+            {
+                IsInitializing = false;
+
+                if (task.IsCanceled || task.IsFaulted)
+                {
+                    Complete(false, task.Exception?.GetBaseException().Message ?? "Firebase dependency check failed.");
+                    return;
+                }
+
+                if (task.Result != DependencyStatus.Available)
+                {
+                    Complete(false, $"Firebase dependencies are unavailable: {task.Result}");
+                    return;
+                }
+
+                try
+                {
+                    _ = FirebaseApp.DefaultInstance;
+                    FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
+                    Crashlytics.ReportUncaughtExceptionsAsFatal = true;
+                    Crashlytics.SetCustomKey("app_version", Application.version);
+                    Crashlytics.SetCustomKey("platform", Application.platform.ToString());
+                    FirebaseRemoteConfigLoader.Initialize();
+                    Complete(true, string.Empty);
+                }
+                catch (Exception exception)
+                {
+                    Complete(false, exception.GetBaseException().Message);
+                }
+            });
+        }
+        catch (Exception exception)
         {
             IsInitializing = false;
-
-            if (task.IsCanceled || task.IsFaulted)
-            {
-                Complete(false, task.Exception?.GetBaseException().Message ?? "Firebase dependency check failed.");
-                return;
-            }
-
-            if (task.Result != DependencyStatus.Available)
-            {
-                Complete(false, $"Firebase dependencies are unavailable: {task.Result}");
-                return;
-            }
-
-            try
-            {
-                _ = FirebaseApp.DefaultInstance;
-                FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
-                Crashlytics.ReportUncaughtExceptionsAsFatal = true;
-                Crashlytics.SetCustomKey("app_version", Application.version);
-                Crashlytics.SetCustomKey("platform", Application.platform.ToString());
-                FirebaseRemoteConfigLoader.Initialize();
-                Complete(true, string.Empty);
-            }
-            catch (Exception exception)
-            {
-                Complete(false, exception.GetBaseException().Message);
-            }
-        });
+            Complete(false, exception.GetBaseException().Message);
+        }
     }
 
     public static void RecordNonFatal(Exception exception)
