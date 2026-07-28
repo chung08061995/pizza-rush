@@ -52,34 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d635651e9cc9bb0478486e586f0aea12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopupSettingContent
+  backButton: {fileID: 0}
   popup: {fileID: 7674889040761834529}
-  quitButton:
-    value:
-      isPresent: 1
-      values:
-      - button: {fileID: 6205334314793748765}
-        label:
-          value:
-            isPresent: 0
-            values: []
-  privacyButton:
-    value:
-      isPresent: 0
-      values: []
-  restorePurchaseButton:
-    value:
-      isPresent: 0
-      values: []
-  contactUsButton:
-    value:
-      isPresent: 0
-      values: []
-  giftCodeButton:
-    value:
-      isPresent: 0
-      values: []
   musicButton: {fileID: 4500356417307398225}
-  sfxButton: {fileID: 429463937738626789}
   vibrateButton: {fileID: 8075561189955708526}
 --- !u!114 &7674889040761834529
 MonoBehaviour:
@@ -576,7 +551,7 @@ MonoBehaviour:
   m_text: Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
-  m_sharedMaterial: {fileID: 8542388411281414431, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 651ba370bc6184fe88588c6b626b5455, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1206,6 +1181,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Restor Purchase
       objectReference: {fileID: 0}
+    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 651ba370bc6184fe88588c6b626b5455, type: 2}
     - target: {fileID: 5520481809693269465, guid: 304408455e2422c43ae23438912642b4, type: 3}
       propertyPath: m_Transition
       value: 3
@@ -1625,6 +1604,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 651ba370bc6184fe88588c6b626b5455, type: 2}
     - target: {fileID: 5520481809693269465, guid: 304408455e2422c43ae23438912642b4, type: 3}
       propertyPath: m_Transition
       value: 3
@@ -1669,17 +1652,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 553401684395103442, guid: 304408455e2422c43ae23438912642b4, type: 3}
   m_PrefabInstance: {fileID: 1909937852848215236}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6205334314793748765 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5520481809693269465, guid: 304408455e2422c43ae23438912642b4, type: 3}
-  m_PrefabInstance: {fileID: 1909937852848215236}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868932245909112249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &5478620498135901216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1776,6 +1748,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Contact Us
       objectReference: {fileID: 0}
+    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 651ba370bc6184fe88588c6b626b5455, type: 2}
     - target: {fileID: 5520481809693269465, guid: 304408455e2422c43ae23438912642b4, type: 3}
       propertyPath: m_Transition
       value: 3
@@ -2355,17 +2331,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7891094070216060637, guid: 5994d2924b1f80f45a00ebcf88cfb350, type: 3}
   m_PrefabInstance: {fileID: 7847355753081836476}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &429463937738626789 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7571302317812598105, guid: 5994d2924b1f80f45a00ebcf88cfb350, type: 3}
-  m_PrefabInstance: {fileID: 7847355753081836476}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8879544328481208020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be755a230db7ee4468180c1f5027db03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8879544328481208020 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1719551521885742440, guid: 5994d2924b1f80f45a00ebcf88cfb350, type: 3}
@@ -2489,6 +2454,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Gift Code
       objectReference: {fileID: 0}
+    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 651ba370bc6184fe88588c6b626b5455, type: 2}
     - target: {fileID: 5520481809693269465, guid: 304408455e2422c43ae23438912642b4, type: 3}
       propertyPath: m_Transition
       value: 3

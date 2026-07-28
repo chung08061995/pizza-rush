@@ -11432,6 +11432,7 @@ MonoBehaviour:
   verticalDirectionObject:
     isPresent: 1
     value: {fileID: 4470139621162164856}
+  surfaceOffset: 0.03
 --- !u!1 &2120844456142557741
 GameObject:
   m_ObjectHideFlags: 0
@@ -35759,6 +35760,7 @@ MonoBehaviour:
     prefab: {fileID: 154109338899246696, guid: 448aa3a7a4f4e114c82ddc336bda7593, type: 3}
     inactiveItems: []
     activeItems: []
+  coverFactory: {fileID: 0}
 --- !u!1 &7262847898141763211
 GameObject:
   m_ObjectHideFlags: 0
@@ -36259,7 +36261,7 @@ MonoBehaviour:
   m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 5a5ed42432e3da845af041fab9ef0a6e, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c40141106ae47414c8ed6633c97bc78d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -39105,18 +39107,20 @@ MonoBehaviour:
   shapeType: 102
   containerView: {fileID: 941839442381898660}
   places:
-  - {fileID: 1476533364686612202}
-  - {fileID: 641981728823777301}
-  - {fileID: 185447171051890528}
-  - {fileID: 6363888060947332660}
-  - {fileID: 4680313349815572175}
-  - {fileID: 2134046881753106852}
-  - {fileID: 6357522825752647051}
-  - {fileID: 6982584959796364765}
-  - {fileID: 8877472249569257705}
-  - {fileID: 8496010393036332656}
-  - {fileID: 5061436776472063473}
-  - {fileID: 3986216745972882447}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  splitObject: {fileID: 0}
+  destroyObject: {fileID: 0}
 --- !u!1 &7845523526574027626
 GameObject:
   m_ObjectHideFlags: 0
@@ -41110,7 +41114,7 @@ MonoBehaviour:
   m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 5a5ed42432e3da845af041fab9ef0a6e, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c40141106ae47414c8ed6633c97bc78d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -41821,6 +41825,7 @@ MonoBehaviour:
   verticalDirectionObject:
     isPresent: 1
     value: {fileID: 8405928782996485544}
+  surfaceOffset: 0.03
 --- !u!1 &8331656668391347124
 GameObject:
   m_ObjectHideFlags: 0
@@ -45419,18 +45424,20 @@ MonoBehaviour:
   shapeType: 102
   containerView: {fileID: 8867203542151770204}
   places:
-  - {fileID: 6970458902871004997}
-  - {fileID: 4881444990265834084}
-  - {fileID: 5426757280948164535}
-  - {fileID: 4283471851267894637}
-  - {fileID: 6202853066932557324}
-  - {fileID: 9215571267595537479}
-  - {fileID: 5287602712106925947}
-  - {fileID: 5053886848121496594}
-  - {fileID: 5156841609808756631}
-  - {fileID: 4087940944303745698}
-  - {fileID: 7475803478459928990}
-  - {fileID: 5181125786063372126}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  splitObject: {fileID: 0}
+  destroyObject: {fileID: 0}
 --- !u!1 &9026620561125326573
 GameObject:
   m_ObjectHideFlags: 0

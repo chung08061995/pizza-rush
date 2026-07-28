@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 0
@@ -2466,7 +2466,7 @@ PrefabInstance:
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 6d34f79b35307284caf8c63c43f2131d, type: 2}
+      objectReference: {fileID: 2100000, guid: 756371e18ef0d488aafa831a2ee3cdf0, type: 2}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -2842,7 +2842,7 @@ PrefabInstance:
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 6d34f79b35307284caf8c63c43f2131d, type: 2}
+      objectReference: {fileID: 2100000, guid: 756371e18ef0d488aafa831a2ee3cdf0, type: 2}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -2975,7 +2975,7 @@ PrefabInstance:
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 6d34f79b35307284caf8c63c43f2131d, type: 2}
+      objectReference: {fileID: 2100000, guid: 756371e18ef0d488aafa831a2ee3cdf0, type: 2}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -3093,6 +3093,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3307577576933712161, guid: 2d41842cb25eeaa48a1552064aedf330, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 756371e18ef0d488aafa831a2ee3cdf0, type: 2}
     - target: {fileID: 3307577576933712161, guid: 2d41842cb25eeaa48a1552064aedf330, type: 3}
       propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
