@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef08b1852e8665a4eb150b38cb12b2fd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.UIElementMoveFromAnchorPositionAnimation
   delay: 0.3
   tweenData:
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef08b1852e8665a4eb150b38cb12b2fd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.UIElementMoveFromAnchorPositionAnimation
   delay: 0.3
   tweenData:
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef08b1852e8665a4eb150b38cb12b2fd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.UIElementMoveFromAnchorPositionAnimation
   delay: 0
   tweenData:
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d07dae08ad1f1e4d823ada81c22b849, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RebuildLayouts
   rectToRebuilds:
   - {fileID: 5319254489161172827}
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef08b1852e8665a4eb150b38cb12b2fd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.UIElementMoveFromAnchorPositionAnimation
   delay: 0
   tweenData:
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef08b1852e8665a4eb150b38cb12b2fd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.UIElementMoveFromAnchorPositionAnimation
   delay: 0.2
   tweenData:
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef08b1852e8665a4eb150b38cb12b2fd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.UIElementMoveFromAnchorPositionAnimation
   delay: 0.1
   tweenData:
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
   model: {fileID: 6016814169703863735}
   elements:
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef08b1852e8665a4eb150b38cb12b2fd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.UIElementMoveFromAnchorPositionAnimation
   delay: 0.2
   tweenData:
@@ -591,7 +591,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef08b1852e8665a4eb150b38cb12b2fd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.UIElementMoveFromAnchorPositionAnimation
   delay: 0.1
   tweenData:
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7f9f72e0b396094a9991acde403df17, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopupSkillGameplay
   popup: {fileID: 4820328870147182668}
   freezeTimeSkillItem: {fileID: 658700649911170270}
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61352a0cbdd85c742a847cd860342b07, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.Popup
   root: {fileID: 5045649451290954004}
   closeButton:
@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
   m_Padding:
     m_Left: 0
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
   model: {fileID: 5462589492381005061}
   elements:
@@ -893,18 +893,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_ActiveFontFeatures.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5605501236911176288, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
       propertyPath: m_Name
       value: 1_FreezeTime_SkillRemainingDataView
@@ -923,7 +911,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32a6e466bcd8e3f488d6e629776a3011, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FreezeSkillRemainingButton
 --- !u!224 &937352569882063217 stripped
 RectTransform:
@@ -1027,18 +1015,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_ActiveFontFeatures.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5605501236911176288, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
       propertyPath: m_Name
       value: 4_AddTile_SkillRemainingDataView
@@ -1064,7 +1040,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: facf6d3daf5bc1742bf526fe3a76f7aa, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillRemainingDataView
 --- !u!224 &3518400097315935798 stripped
 RectTransform:
@@ -1098,7 +1074,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -1195,18 +1171,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_ActiveFontFeatures.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5605501236911176288, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
       propertyPath: m_Name
       value: 3_DestroyContainer_SkillRemainingDataView
@@ -1245,7 +1209,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -1269,7 +1233,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: facf6d3daf5bc1742bf526fe3a76f7aa, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillRemainingDataView
 --- !u!1001 &7437376110878983341
 PrefabInstance:
@@ -1363,18 +1327,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
-      propertyPath: m_ActiveFontFeatures.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5605501236911176288, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
       propertyPath: m_Name
       value: 2_SplitContainer_SkillRemainingDataView
@@ -1413,7 +1365,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -1427,7 +1379,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: facf6d3daf5bc1742bf526fe3a76f7aa, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillRemainingDataView
 --- !u!224 &8160865718064459533 stripped
 RectTransform:

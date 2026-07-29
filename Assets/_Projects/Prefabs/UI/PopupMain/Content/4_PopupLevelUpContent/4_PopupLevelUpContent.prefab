@@ -992,10 +992,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3307577576933712161, guid: 2d41842cb25eeaa48a1552064aedf330, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 756371e18ef0d488aafa831a2ee3cdf0, type: 2}
     - target: {fileID: 4431286767409303921, guid: 2d41842cb25eeaa48a1552064aedf330, type: 3}
       propertyPath: unlockObject.value.isPresent
       value: 1
@@ -1358,10 +1354,6 @@ PrefabInstance:
     - target: {fileID: 2502914952986137889, guid: b41404b9dd701bf4784de19d48bb6556, type: 3}
       propertyPath: m_text
       value: Level Up
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502914952986137889, guid: b41404b9dd701bf4784de19d48bb6556, type: 3}
-      propertyPath: m_ActiveFontFeatures.Array.size
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3024849462999300009, guid: b41404b9dd701bf4784de19d48bb6556, type: 3}
       propertyPath: m_Pivot.x

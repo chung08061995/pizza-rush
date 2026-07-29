@@ -31,7 +31,47 @@ public class PopupGameplay : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<
         levelText.text = string.Format(GameConstain.StringFormats.LevelDisplayFormat, DataManager.Instance.level.Value);
         goldView.RemaningText.ValueToDisplayTextFunc = x => DraftUtils.Utils.Common.FormatNumber((int)x);
         goldView.SetData(ItemType.Gold);
+        ApplyHudTypography();
     }
+
+    private void ApplyHudTypography()
+    {
+        if (levelText == null ||
+            levelText.font == null ||
+            levelText.fontSharedMaterial == null)
+        {
+            return;
+        }
+
+        ApplyTypography(timeText, levelText.font, levelText.fontSharedMaterial);
+        ApplyTypography(goldView.RemaningText, levelText.font, levelText.fontSharedMaterial);
+    }
+
+    private static void ApplyTypography(
+        DraftUtils.OptionalTMPTextGroup textGroup,
+        TMP_FontAsset font,
+        Material material)
+    {
+        if (textGroup?.value == null ||
+            !textGroup.value.isPresent ||
+            textGroup.value.values == null)
+        {
+            return;
+        }
+
+        foreach (var textItem in textGroup.value.values)
+        {
+            if (textItem?.Text == null)
+            {
+                continue;
+            }
+
+            textItem.Text.font = font;
+            textItem.Text.fontSharedMaterial = material;
+            textItem.Text.fontStyle &= ~(FontStyles.Underline | FontStyles.Strikethrough);
+        }
+    }
+
     private void SetTimeText(float time)
     {
         var formattedTime = DraftUtils.Utils.TimeFormatter.SecondsToFormattedString(
@@ -62,6 +102,7 @@ public class PopupGameplay : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<
         var tmp = floatingText.AddComponent<TextMeshProUGUI>();
         tmp.text = $"+{CoffeeTimeBonusSeconds:0}s";
         tmp.font = targetText.font;
+        tmp.fontSharedMaterial = targetText.fontSharedMaterial;
         tmp.fontSize = targetText.fontSize + 8f;
         tmp.color = new Color(1f, 0.85f, 0.2f, 1f);
         tmp.alignment = TextAlignmentOptions.Center;

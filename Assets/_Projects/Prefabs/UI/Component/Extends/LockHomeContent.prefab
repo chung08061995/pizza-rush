@@ -386,14 +386,10 @@ PrefabInstance:
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 756371e18ef0d488aafa831a2ee3cdf0, type: 2}
+      objectReference: {fileID: 2100000, guid: 6d34f79b35307284caf8c63c43f2131d, type: 2}
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
-      propertyPath: m_ActiveFontFeatures.Array.size
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7996416528567781593, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_Name

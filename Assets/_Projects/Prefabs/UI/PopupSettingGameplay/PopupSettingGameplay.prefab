@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d635651e9cc9bb0478486e586f0aea12, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopupSettingContent
   backButton: {fileID: 0}
   popup: {fileID: 7674889040761834529}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61352a0cbdd85c742a847cd860342b07, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.Popup
   root: {fileID: 170130770670736406}
   closeButton:
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
   m_Padding:
     m_Left: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_text: Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 651ba370bc6184fe88588c6b626b5455, type: 2}
+  m_sharedMaterial: {fileID: 8542388411281414431, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures:
+  m_ActiveFontFeatures: 
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -753,7 +753,7 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
   m_Padding:
     m_Left: 0
@@ -899,7 +899,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1181,14 +1181,6 @@ PrefabInstance:
       propertyPath: m_text
       value: Restor Purchase
       objectReference: {fileID: 0}
-    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 5520481809693269465, guid: 304408455e2422c43ae23438912642b4, type: 3}
       propertyPath: m_Transition
       value: 3
@@ -1228,7 +1220,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -1247,7 +1239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3193649616061158398, guid: 5994d2924b1f80f45a00ebcf88cfb350, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 21300000, guid: 92712a34727c32c45a3868c0f27bdc7e, type: 3}
     - target: {fileID: 7177633019362812989, guid: 5994d2924b1f80f45a00ebcf88cfb350, type: 3}
       propertyPath: m_Transition
@@ -1363,7 +1355,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -1377,8 +1369,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be755a230db7ee4468180c1f5027db03, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8395360022742765034 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7891094070216060637, guid: 5994d2924b1f80f45a00ebcf88cfb350, type: 3}
@@ -1450,27 +1442,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3635581389530677889, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 3159622089191791294}
     - target: {fileID: 5351034572394635156, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 1187839794328145367}
     - target: {fileID: 5821322088729943694, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 3159622089191791294}
     - target: {fileID: 6281534172153291769, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 8256618188720116982}
     - target: {fileID: 7375479152595887786, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 8256618188720116982}
     - target: {fileID: 7820094274018859529, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 1187839794328145367}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1486,7 +1478,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
 --- !u!4 &3562609767424985668 stripped
 Transform:
@@ -1502,7 +1494,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
 --- !u!1001 &1909937852848215236
 PrefabInstance:
@@ -1598,7 +1590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1394587257224939653, guid: 304408455e2422c43ae23438912642b4, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 21300000, guid: b261ccfb8be1c4ae59946b268c822d0c, type: 3}
     - target: {fileID: 1625349892016476541, guid: 304408455e2422c43ae23438912642b4, type: 3}
       propertyPath: m_Name
@@ -1608,14 +1600,6 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit
       objectReference: {fileID: 0}
-    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 5520481809693269465, guid: 304408455e2422c43ae23438912642b4, type: 3}
       propertyPath: m_Transition
       value: 3
@@ -1650,7 +1634,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -1756,14 +1740,6 @@ PrefabInstance:
       propertyPath: m_text
       value: Contact Us
       objectReference: {fileID: 0}
-    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 5520481809693269465, guid: 304408455e2422c43ae23438912642b4, type: 3}
       propertyPath: m_Transition
       value: 3
@@ -1803,7 +1779,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -1926,8 +1902,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be755a230db7ee4468180c1f5027db03, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4664537313403301984 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1719551521885742440, guid: 5994d2924b1f80f45a00ebcf88cfb350, type: 3}
@@ -1950,7 +1926,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -2066,7 +2042,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &7828541188879583824
 PrefabInstance:
@@ -2190,7 +2166,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!114 &3159622089191791294 stripped
 MonoBehaviour:
@@ -2201,7 +2177,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &6631957680586125134 stripped
 GameObject:
@@ -2225,7 +2201,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -2244,7 +2220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3193649616061158398, guid: 5994d2924b1f80f45a00ebcf88cfb350, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 21300000, guid: f817b4c1fd2b6bf4288435fe7264427d, type: 3}
     - target: {fileID: 7177633019362812989, guid: 5994d2924b1f80f45a00ebcf88cfb350, type: 3}
       propertyPath: m_Transition
@@ -2365,7 +2341,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -2466,14 +2442,6 @@ PrefabInstance:
       propertyPath: m_text
       value: Gift Code
       objectReference: {fileID: 0}
-    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 2040662255003518282, guid: 304408455e2422c43ae23438912642b4, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 5520481809693269465, guid: 304408455e2422c43ae23438912642b4, type: 3}
       propertyPath: m_Transition
       value: 3
@@ -2513,7 +2481,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0

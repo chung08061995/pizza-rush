@@ -181,7 +181,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         {
             foreach (var font in Resources.FindObjectsOfTypeAll<TMP_FontAsset>())
             {
-                if (font.name == "Montserrat-Black SDF")
+                if (font.name == "Montserrat-Black NewUI Bitmap")
                 {
                     cleanUiFont = font;
                     break;
@@ -197,14 +197,9 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
 
         foreach (var text in content.GetComponentsInChildren<TMP_Text>(true))
         {
-            if (text.font == null || text.font.atlasRenderMode.ToString().Contains("BITMAP"))
-            {
-                text.font = cleanUiFont;
-                text.fontSharedMaterial = cleanUiFont.material;
-            }
-
+            text.font = cleanUiFont;
+            text.fontSharedMaterial = cleanUiFont.material;
             text.fontStyle &= ~(FontStyles.Underline | FontStyles.Strikethrough);
-            text.enableVertexGradient = false;
         }
     }
 

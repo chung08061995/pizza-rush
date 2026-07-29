@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7ca6dbb87f062747889d293738b6bba, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   popup: {fileID: 4839467985692280649}
   multipleIAPDataView: {fileID: 6979543879728391977}
   buyButton: {fileID: 909138760723940108}
@@ -64,8 +64,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61352a0cbdd85c742a847cd860342b07, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   root: {fileID: 2693381086184376490}
   closeButton:
     value:
@@ -206,8 +206,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 0
     m_Right: 0
@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8ba8122a67ba7743a7b26824adbaa77, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   itemView: {fileID: 7108315037760442420}
   priceText:
     value:
@@ -325,8 +325,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c2bdb897a091c149a700288030c9a41, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   root: {fileID: 0}
   icon:
     value:
@@ -425,8 +425,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -499,27 +499,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3635581389530677889, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 3601822316826310077}
     - target: {fileID: 5351034572394635156, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 5499660674759289148}
     - target: {fileID: 5821322088729943694, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 3601822316826310077}
     - target: {fileID: 6281534172153291769, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 8310328733599913295}
     - target: {fileID: 7375479152595887786, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 8310328733599913295}
     - target: {fileID: 7820094274018859529, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 5499660674759289148}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
 --- !u!114 &7099491541703567653 stripped
 MonoBehaviour:
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
 --- !u!1001 &5264027994945349318
 PrefabInstance:
@@ -685,14 +685,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_Rectangle_Green_Text
       objectReference: {fileID: 0}
-    - target: {fileID: 7682106870928111946, guid: a85b6f77b0462154c883430ec529a3db, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 7682106870928111946, guid: a85b6f77b0462154c883430ec529a3db, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 8017932059086997506, guid: a85b6f77b0462154c883430ec529a3db, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9
@@ -719,8 +711,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2563048384800497548 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7682106870928111946, guid: a85b6f77b0462154c883430ec529a3db, type: 3}
@@ -730,7 +722,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &5816078125530467469 stripped
 RectTransform:
@@ -864,11 +856,11 @@ PrefabInstance:
     - target: {fileID: 4122397429433273613, guid: 35a0971bbad7f234194f2a4ad8a89c64, type: 3}
       propertyPath: m_fontAsset
       value:
-      objectReference: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
+      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 4122397429433273613, guid: 35a0971bbad7f234194f2a4ad8a89c64, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: 2100000, guid: 651ba370bc6184fe88588c6b626b5455, type: 2}
+      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 4122397429433273613, guid: 35a0971bbad7f234194f2a4ad8a89c64, type: 3}
       propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
@@ -1001,7 +993,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &864269646727530404 stripped
 RectTransform:
@@ -1017,7 +1009,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &4216204863253933287 stripped
 MonoBehaviour:
@@ -1028,7 +1020,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!114 &5463547072598348405 stripped
 MonoBehaviour:
@@ -1039,7 +1031,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &5499660674759289148 stripped
 RectTransform:

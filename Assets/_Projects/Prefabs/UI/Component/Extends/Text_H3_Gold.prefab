@@ -127,14 +127,6 @@ PrefabInstance:
       propertyPath: m_margin.x
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
-    - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 651ba370bc6184fe88588c6b626b5455, type: 2}
     - target: {fileID: 6339874844190392976, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_Name
       value: Text_H3

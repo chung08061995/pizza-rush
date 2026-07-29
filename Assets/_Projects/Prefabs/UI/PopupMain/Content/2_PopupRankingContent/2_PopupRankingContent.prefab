@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c2bdb897a091c149a700288030c9a41, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   root: {fileID: 0}
   icon:
     value:
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -258,9 +258,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d88a9134f2077aa43886ab1bff299f70, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  cellIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellIdentifier: 
   top1Icon:
     value:
       isPresent: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -387,9 +387,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d88a9134f2077aa43886ab1bff299f70, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  cellIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellIdentifier: 
   top1Icon:
     value:
       isPresent: 0
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -594,8 +594,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -624,8 +624,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -841,8 +841,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c1b74f910281224a8cae6d8e4fc1f43, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   scrollDirection: 0
   spacing: 10
   padding:
@@ -871,8 +871,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Content: {fileID: 2776281000301544115}
   m_Horizontal: 0
   m_Vertical: 1
@@ -901,8 +901,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
   m_RaycastTarget: 1
@@ -931,8 +931,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
 --- !u!1 &4386836002434945632
 GameObject:
@@ -989,7 +989,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1055,8 +1055,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c2bdb897a091c149a700288030c9a41, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   root: {fileID: 0}
   icon:
     value:
@@ -1155,8 +1155,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -1234,7 +1234,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
@@ -1345,8 +1345,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 0
@@ -1578,8 +1578,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -1653,8 +1653,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -1732,7 +1732,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1762,7 +1762,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
   m_Padding:
     m_Left: 0
@@ -1838,7 +1838,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1868,9 +1868,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d88a9134f2077aa43886ab1bff299f70, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  cellIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellIdentifier: 
   top1Icon:
     value:
       isPresent: 0
@@ -1953,8 +1953,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c2bdb897a091c149a700288030c9a41, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   root: {fileID: 0}
   icon:
     value:
@@ -2053,8 +2053,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -2164,7 +2164,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2239,7 +2239,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2318,7 +2318,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.07450981, g: 0.20000002, b: 0.43921572, a: 1}
@@ -2348,7 +2348,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97d2d2878fc294c47a8e656682b37307, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopupRankingContent
   backButton: {fileID: 3802015889961296004}
   weeklyButton: {fileID: 7715689808413697836}
@@ -2457,7 +2457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_text
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_overflowMode
@@ -2465,8 +2465,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: 2100000, guid: 756371e18ef0d488aafa831a2ee3cdf0, type: 2}
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d34f79b35307284caf8c63c43f2131d, type: 2}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -2494,7 +2494,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &1165835982151737196
 PrefabInstance:
@@ -2612,7 +2612,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201027230516344562, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 21300000, guid: 1025812f9cb426443a57bdbfb22f3833, type: 3}
     - target: {fileID: 2228664027630484624, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_Name
@@ -2624,27 +2624,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2518718816155607350, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_sharedMaterial
-      value:
+      value: 
       objectReference: {fileID: 8542388411281414431, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
     - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_text
       value: World
       objectReference: {fileID: 0}
     - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4904883516027300892, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 21300000, guid: daa00a8429ab3ce40b4e1913f3d648b0, type: 3}
     - target: {fileID: 9193109050026538223, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_Pivot.x
@@ -2740,7 +2732,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7522b39d0b259c94d8149a417bfed1cd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraftUtils.ButtonSwapObject
 --- !u!224 &6343047730314818440 stripped
 RectTransform:
@@ -2841,7 +2833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_text
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_overflowMode
@@ -2849,8 +2841,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: 2100000, guid: 756371e18ef0d488aafa831a2ee3cdf0, type: 2}
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d34f79b35307284caf8c63c43f2131d, type: 2}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -2878,7 +2870,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &5279717471894902059
 PrefabInstance:
@@ -2974,7 +2966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_text
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_overflowMode
@@ -2982,8 +2974,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: 2100000, guid: 756371e18ef0d488aafa831a2ee3cdf0, type: 2}
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d34f79b35307284caf8c63c43f2131d, type: 2}
     - target: {fileID: 7321035698124976873, guid: e7dbcb3571b6b6d4b8913284fae17f4e, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -3006,7 +2998,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &8474610969972014010 stripped
 RectTransform:
@@ -3102,10 +3094,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3307577576933712161, guid: 2d41842cb25eeaa48a1552064aedf330, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: 2100000, guid: 756371e18ef0d488aafa831a2ee3cdf0, type: 2}
-    - target: {fileID: 3307577576933712161, guid: 2d41842cb25eeaa48a1552064aedf330, type: 3}
       propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -3119,7 +3107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4431286767409303921, guid: 2d41842cb25eeaa48a1552064aedf330, type: 3}
       propertyPath: 'unlockObject.value.values.Array.data[0]'
-      value:
+      value: 
       objectReference: {fileID: 6260759609570284546}
     - target: {fileID: 7515617765426176697, guid: 2d41842cb25eeaa48a1552064aedf330, type: 3}
       propertyPath: m_Name
@@ -3144,8 +3132,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd853e1baa194b04c835940f49ccad8d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6841025154991914084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3281,7 +3269,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d88a9134f2077aa43886ab1bff299f70, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RankingItem
 --- !u!1001 &6842182729513109379
 PrefabInstance:
@@ -3297,20 +3285,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2518718816155607350, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_sharedMaterial
-      value:
+      value: 
       objectReference: {fileID: 8542388411281414431, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
     - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_text
       value: Weekly
       objectReference: {fileID: 0}
-    - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
@@ -3418,7 +3398,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7522b39d0b259c94d8149a417bfed1cd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraftUtils.ButtonSwapObject
 --- !u!1001 &8506795119429806410
 PrefabInstance:
@@ -3430,7 +3410,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1201027230516344562, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 21300000, guid: 5496def97f2c9194b81a23f8370b0158, type: 3}
     - target: {fileID: 2228664027630484624, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_Name
@@ -3442,27 +3422,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2518718816155607350, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_sharedMaterial
-      value:
+      value: 
       objectReference: {fileID: 8542388411281414431, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
     - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_text
       value: Country
       objectReference: {fileID: 0}
     - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 4651357879581628765, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4904883516027300892, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_Sprite
-      value:
+      value: 
       objectReference: {fileID: 21300000, guid: 4e07f08a0d397a94caecaa3565f4e44b, type: 3}
     - target: {fileID: 9193109050026538223, guid: dca06091edf6d3f40b1a1e6c59ccac4d, type: 3}
       propertyPath: m_Pivot.x
@@ -3563,5 +3535,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7522b39d0b259c94d8149a417bfed1cd, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraftUtils.ButtonSwapObject

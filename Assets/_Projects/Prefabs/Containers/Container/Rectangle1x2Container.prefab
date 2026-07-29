@@ -1055,10 +1055,6 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6097978254014950166, guid: ce9ff9e7a1acf254e94d908d59990697, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c40141106ae47414c8ed6633c97bc78d, type: 2}
     - target: {fileID: 6807163609397993633, guid: ce9ff9e7a1acf254e94d908d59990697, type: 3}
       propertyPath: m_Name
       value: ContainerBombViewCanvas

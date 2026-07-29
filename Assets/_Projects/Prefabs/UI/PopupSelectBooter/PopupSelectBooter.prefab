@@ -85,8 +85,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cef02e75395cef345881c4140ddd7291, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   popup: {fileID: 449686882402782353}
   coffeeItemView: {fileID: 8979611562826257693}
   magicItemView: {fileID: 6584851013679242401}
@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61352a0cbdd85c742a847cd860342b07, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   root: {fileID: 4073208892023226650}
   closeButton:
     value:
@@ -150,16 +150,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4122397429433273613, guid: 35a0971bbad7f234194f2a4ad8a89c64, type: 3}
       propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 4122397429433273613, guid: 35a0971bbad7f234194f2a4ad8a89c64, type: 3}
       propertyPath: m_fontSizeBase
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4122397429433273613, guid: 35a0971bbad7f234194f2a4ad8a89c64, type: 3}
       propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: 2100000, guid: 651ba370bc6184fe88588c6b626b5455, type: 2}
+      value: 
+      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 4122397429433273613, guid: 35a0971bbad7f234194f2a4ad8a89c64, type: 3}
       propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &5648706311714964074 stripped
 MonoBehaviour:
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!114 &8346073799063738683 stripped
 MonoBehaviour:
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &9158152444874172713 stripped
 RectTransform:
@@ -315,14 +315,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3999994930633751027}
     m_Modifications:
-    - target: {fileID: 1986045218359401380, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 1986045218359401380, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 1986045218359401380, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
       propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
@@ -430,8 +422,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b05f9a3514930c7439c728bde40b0e79, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2963682837300318855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,14 +432,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3999994930633751027}
     m_Modifications:
-    - target: {fileID: 1986045218359401380, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 1986045218359401380, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 1986045218359401380, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
       propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
@@ -550,8 +534,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b05f9a3514930c7439c728bde40b0e79, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7129108670418889102 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5462500515324410633, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
@@ -683,8 +667,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 0
     m_Right: 0
@@ -753,27 +737,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3635581389530677889, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 4979562654969420592}
     - target: {fileID: 5351034572394635156, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 4086017981026863025}
     - target: {fileID: 5821322088729943694, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 4979562654969420592}
     - target: {fileID: 6281534172153291769, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 554783323494333378}
     - target: {fileID: 7375479152595887786, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 554783323494333378}
     - target: {fileID: 7820094274018859529, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value:
+      value: 
       objectReference: {fileID: 4086017981026863025}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -789,7 +773,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
 --- !u!4 &5366920825038130921 stripped
 Transform:
@@ -805,7 +789,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
 --- !u!1001 &9126580462382972890
 PrefabInstance:
@@ -911,14 +895,6 @@ PrefabInstance:
       propertyPath: m_text
       value: PLAY
       objectReference: {fileID: 0}
-    - target: {fileID: 7682106870928111946, guid: a85b6f77b0462154c883430ec529a3db, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
-    - target: {fileID: 7682106870928111946, guid: a85b6f77b0462154c883430ec529a3db, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
     - target: {fileID: 8017932059086997506, guid: a85b6f77b0462154c883430ec529a3db, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -949,8 +925,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7427395919804323217 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1854156690853997131, guid: a85b6f77b0462154c883430ec529a3db, type: 3}
