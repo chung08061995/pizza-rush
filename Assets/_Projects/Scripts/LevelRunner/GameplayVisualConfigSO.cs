@@ -67,7 +67,7 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
             directionalLight.type = LightType.Directional;
             directionalLight.color = mainLightColor;
             directionalLight.intensity = mainLightIntensity;
-            directionalLight.shadows = LightShadows.Hard;
+            directionalLight.shadows = LightShadows.Soft;
             directionalLight.shadowStrength = hardShadowStrength;
             directionalLight.transform.rotation = Quaternion.Euler(mainLightRotation);
             RenderSettings.sun = directionalLight;
