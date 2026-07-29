@@ -21,28 +21,31 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
     [SerializeField, Min(0.1f)] private float maximumOrthographicSize = 18f;
 
     [Header("Directional light")]
-    [SerializeField] private Color mainLightColor = Rgb(0xFF, 0xE0, 0xB8);
-    [SerializeField, Min(0f)] private float mainLightIntensity = 1.15f;
-    [SerializeField] private Vector3 mainLightRotation = new(55f, -30f, 0f);
-    [SerializeField, Range(0f, 1f)] private float hardShadowStrength = 0.45f;
+    [SerializeField] private Color mainLightColor = Color.white;
+    [SerializeField, Min(0f)] private float mainLightIntensity = 1f;
+    [SerializeField] private Vector3 mainLightRotation = new(50f, -30f, 0f);
+    [SerializeField, Range(0f, 1f)] private float hardShadowStrength = 1f;
 
     [Header("Ambient gradient")]
-    [SerializeField] private Color ambientSky = Rgb(0x24, 0x4A, 0x78);
-    [SerializeField] private Color ambientEquator = Rgb(0x80, 0x6B, 0x70);
-    [SerializeField] private Color ambientGround = Rgb(0x24, 0x1B, 0x18);
-    [SerializeField, Range(0f, 2f)] private float ambientIntensity = 0.70f;
+    [SerializeField] private Color ambientSky = Rgb(0x1C, 0x4B, 0xCF);
+    [SerializeField] private Color ambientEquator = Rgb(0xA7, 0x89, 0xA8);
+    [SerializeField] private Color ambientGround = new(0.047f, 0.043f, 0.035f, 1f);
+    [SerializeField, Range(0f, 2f)] private float ambientIntensity = 1f;
 
     [Header("Environment palette")]
-    [SerializeField] private Color cameraAndFloor = Rgb(0x22, 0x35, 0x5B);
-    [SerializeField] private Color boardTile = Rgb(0xF1, 0xD8, 0xB8);
-    [SerializeField] private Color boardBorder = Rgb(0x35, 0x54, 0x85);
-    [SerializeField] private Color conveyorRoad = Rgb(0x34, 0x30, 0x39);
-    [SerializeField] private Color conveyorBorder = Rgb(0x6B, 0x54, 0x47);
+    [SerializeField] private Color cameraBackground = Rgb(0x31, 0x4D, 0x79);
+    [SerializeField] private Color floor = new(0.66760784f, 0.7199137f, 0.74509805f, 1f);
+    [SerializeField] private Color boardTile = new(0.88699996f, 0.88699996f, 0.88699996f, 1f);
+    [SerializeField] private Color boardGround = new(0.752f, 0.752f, 0.752f, 1f);
+    [SerializeField] private Color boardBorder = new(0.402948f, 0.4534339f, 0.546f, 1f);
+    [SerializeField] private Color conveyorRoad = new(0.7294118f, 0.7294118f, 0.8235295f, 1f);
+    [SerializeField] private Color conveyorBorder = new(0.007843138f, 0.8313726f, 0.86666673f, 1f);
 
     [Header("Authoritative assets")]
     [SerializeField] private VolumeProfile gameplayVolumeProfile;
     [SerializeField] private Material floorMaterial;
     [SerializeField] private Material[] boardTileMaterials;
+    [SerializeField] private Material[] boardGroundMaterials;
     [SerializeField] private Material[] boardBorderMaterials;
     [SerializeField] private Material conveyorRoadMaterial;
     [SerializeField] private Material conveyorBorderMaterial;
@@ -55,7 +58,7 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
         if (gameplayCamera != null)
         {
             gameplayCamera.orthographic = true;
-            gameplayCamera.backgroundColor = cameraAndFloor;
+            gameplayCamera.backgroundColor = cameraBackground;
             gameplayCamera.transform.rotation = Quaternion.Euler(cameraPitch, 0f, 0f);
         }
 
@@ -168,8 +171,9 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
 
     private void ApplyPalette()
     {
-        SetMaterialColor(floorMaterial, cameraAndFloor);
+        SetMaterialColor(floorMaterial, floor);
         SetMaterialColors(boardTileMaterials, boardTile);
+        SetMaterialColors(boardGroundMaterials, boardGround);
         SetMaterialColors(boardBorderMaterials, boardBorder);
         SetMaterialColor(conveyorRoadMaterial, conveyorRoad);
         SetMaterialColor(conveyorBorderMaterial, conveyorBorder);

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Gray_ColorSO
   m_EditorClassIdentifier: Assembly-CSharp::ColorSO
   Key: 1400
-  Value: {r: 0.33333334, g: 0.38039216, b: 0.4392157, a: 1}
+  Value: {r: 0.42, g: 0.48, b: 0.55, a: 1}
