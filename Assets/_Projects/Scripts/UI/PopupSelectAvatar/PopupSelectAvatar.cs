@@ -21,6 +21,7 @@ public class PopupSelectAvatar : DraftUtils.DraftMonoBehaviour
         popup.closeButton.RegisterClickEvents();
         popup.closeButton.OnClickAction = popup.HideWithAnimation;
 
+        nameChangeInput.characterLimit = DataManager.PlayerNameMaxLength;
         nameChangeInput.onValueChanged.AddListener(OnNameChanged);
 
         editButton.onClick.AddListener(ClicEditButton);
@@ -34,6 +35,7 @@ public class PopupSelectAvatar : DraftUtils.DraftMonoBehaviour
         _currentAvatarType = DataManager.Instance.currentAvatar.Value;
         SetNameChangeInput();
         SetNameText();
+        UpdateNameValidation(_playerName.Value);
         GenerateItem();
     }
 
@@ -73,13 +75,15 @@ public class PopupSelectAvatar : DraftUtils.DraftMonoBehaviour
 
     private void ClickConfirmButton()
     {
-        _playerName.SetValue(nameText.text);
-        _playerName.Save();
-        _playerName.Notify();
+        var normalizedName = DataManager.NormalizePlayerName(nameChangeInput.text);
+        if (!DataManager.IsValidPlayerName(normalizedName))
+        {
+            return;
+        }
 
-        DataManager.Instance.currentAvatar.SetValue(_currentAvatarType);
-        DataManager.Instance.currentAvatar.Save();
-        DataManager.Instance.currentAvatar.Notify();
+        _playerName.SetValueAndSaveNotify(normalizedName);
+        DataManager.Instance.hasCustomizedProfile.SetValueAndSave(true);
+        DataManager.Instance.currentAvatar.SetValueAndSaveNotify(_currentAvatarType);
         popup.HideWithAnimation();
     }
 
@@ -91,5 +95,11 @@ public class PopupSelectAvatar : DraftUtils.DraftMonoBehaviour
     private void OnNameChanged(string value)
     {
         nameText.text = value;
+        UpdateNameValidation(value);
+    }
+
+    private void UpdateNameValidation(string value)
+    {
+        confirmButton.interactable = DataManager.IsValidPlayerName(value);
     }
 }

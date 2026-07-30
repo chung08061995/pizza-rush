@@ -17,6 +17,7 @@ public class GameConstain
         public const string Star = "Star";
         public const string Gold = "Gold";
         public const string PlayerName = "PlayerName";
+        public const string HasCustomizedProfile = "HasCustomizedProfile";
         public const string CurrentAvatar = "CurrentAvatar";
         public const string MusicVolume = "MusicVolume";
         public const string SfxVolume = "SfxVolume";

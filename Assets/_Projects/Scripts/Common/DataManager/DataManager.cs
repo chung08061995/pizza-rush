@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class DataManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<DataManager>
 {
+    private const string LegacyDefaultPlayerName = "Dao Van Nguyen";
+    public const int PlayerNameMinLength = 2;
+    public const int PlayerNameMaxLength = 16;
+
     [SerializeField] public SpriteItemsSO iconItemsSO;
     [SerializeField] private ParametterGameConfigSO parametterGameConfigSO;
     [SerializeField] public LevelUpRewardsSO levelUpData;
@@ -25,6 +29,7 @@ public class DataManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<Da
     public DailyChallengeManager dailyChallengeManager = new();
 
     [ShowInInspector][ReadOnly] public DraftUtils.PersistentValue<string> playerName = new();
+    [ShowInInspector][ReadOnly] public DraftUtils.PersistentValue<bool> hasCustomizedProfile = new();
     [ShowInInspector][ReadOnly] public DraftUtils.PersistentValue<ItemType> currentAvatar = new();
     [ShowInInspector][ReadOnly] public DraftUtils.PersistentValue<int> level = new();
     public DraftUtils.PersistentValue<int> gold => remainningItems[ItemType.Gold];
@@ -193,11 +198,7 @@ public class DataManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<Da
         );
 
 
-        SettingPersistentValue(
-            persistentValue: playerName,
-            defaultValue: "Dao Van Nguyen",
-            playerPrefsKey: GameConstain.PlayerPrefsKey.PlayerName
-        );
+        InitializePlayerProfile();
 
         SettingPersistentValue(
             persistentValue: currentAvatar,
@@ -250,6 +251,51 @@ public class DataManager : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<Da
         persistentValue.SetDefaultValue(defaultValue);
         persistentValue.Storage.SetKey(playerPrefsKey);
         persistentValue.Load();
+    }
+
+    private void InitializePlayerProfile()
+    {
+        SettingPersistentValue(
+            persistentValue: hasCustomizedProfile,
+            defaultValue: false,
+            playerPrefsKey: GameConstain.PlayerPrefsKey.HasCustomizedProfile
+        );
+
+        var generatedPlayerName = GenerateDefaultPlayerName();
+        SettingPersistentValue(
+            persistentValue: playerName,
+            defaultValue: generatedPlayerName,
+            playerPrefsKey: GameConstain.PlayerPrefsKey.PlayerName
+        );
+
+        var shouldCreatePlayerName = !playerName.Storage.HasValue;
+        var shouldMigrateLegacyName =
+            !hasCustomizedProfile.Value &&
+            string.Equals(playerName.Value, LegacyDefaultPlayerName, StringComparison.Ordinal);
+
+        if (shouldCreatePlayerName || shouldMigrateLegacyName)
+        {
+            playerName.SetValueAndSave(generatedPlayerName);
+        }
+    }
+
+    private static string GenerateDefaultPlayerName()
+    {
+        var randomBytes = Guid.NewGuid().ToByteArray();
+        var suffix = BitConverter.ToUInt32(randomBytes, 0) % 9000 + 1000;
+        return $"Player {suffix}";
+    }
+
+    public static string NormalizePlayerName(string value)
+    {
+        return value?.Trim() ?? string.Empty;
+    }
+
+    public static bool IsValidPlayerName(string value)
+    {
+        var normalizedName = NormalizePlayerName(value);
+        return normalizedName.Length >= PlayerNameMinLength &&
+               normalizedName.Length <= PlayerNameMaxLength;
     }
 
     public void Reward(List<RewardData> rewards)
