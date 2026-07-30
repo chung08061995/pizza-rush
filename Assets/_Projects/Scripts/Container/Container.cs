@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,14 @@ using UnityEngine;
 
 public class Container : DraftUtils.DraftMonoBehaviour
 {
+    private static readonly Vector3 DestroyObjectImpactLocalPoint =
+        new Vector3(0f, 0f, 73f);
+    private static readonly Vector3 DestroyObjectStartLocalOffset =
+        new Vector3(-0.39f, 0.3f, -0.0435f);
+    private static readonly Vector3 DestroyObjectStartLocalEulerOffset =
+        new Vector3(3.210121f, 26.663952f, 63.656345f);
+    private const float DestroyObjectDisplayLift = 0.36f;
+
     [SerializeField] private Transform shapeRoot;
     [SerializeField] private ContainerMaterialView containerMaterialView;
     [SerializeField] private ContainerShapeType shapeType;
@@ -15,6 +24,17 @@ public class Container : DraftUtils.DraftMonoBehaviour
     [SerializeField] private Transform splitObject;
     [SerializeField] private Transform destroyObject;
 
+    private Tween splitObjectTween;
+    private Tween destroyObjectTween;
+    private Vector3 splitObjectRestLocalPosition;
+    private Vector3 splitObjectRestLocalEulerAngles;
+    private Quaternion splitObjectBaseLocalRotation;
+    private Vector3 splitStrokeLocalDirection = Vector3.right;
+    private Vector3 destroyObjectBaseLocalPosition;
+    private Vector3 destroyObjectRestLocalPosition;
+    private Quaternion destroyObjectBaseLocalRotation;
+    private Quaternion destroyObjectRestLocalRotation;
+    private bool skillObjectTransformsCached;
 
     public List<ContainerPlace> Places => places.FindAll(p => p != null).SelectMany(p => p.Places).ToList();
     public List<ContainerPlaces> ContainerPlacesList => places;
@@ -39,6 +59,7 @@ public class Container : DraftUtils.DraftMonoBehaviour
     private void Awake()
     {
         GetAllPlaces();
+        CacheSkillObjectTransforms();
     }
     public void SetData(ContainerSaveData data)
     {
@@ -47,6 +68,9 @@ public class Container : DraftUtils.DraftMonoBehaviour
         currentColorLayerIndex = 0;
         EnsureRuntimeColors();
         SetShapeRootTransform(shapeRoot, _data.rotationType, _data.flipX);
+        ConfigureSplitObjectOrientation();
+        ConfigureDestroyObjectOrientation();
+        ConfigureDestroyObjectPosition();
         containerView.SetData(data.containerData);
         containerMaterialView.SetData(
             _data.containerData.containerMaterialType,
@@ -61,29 +85,258 @@ public class Container : DraftUtils.DraftMonoBehaviour
 
         if (splitObject != null)
         {
+            ResetSplitObjectTransform();
             splitObject.gameObject.SetActive(false);
         }
 
         if (destroyObject != null)
         {
+            ResetDestroyObjectTransform();
             destroyObject.gameObject.SetActive(false);
         }
     }
 
     public void ShowSplitObject(bool show)
     {
-        if (splitObject != null)
+        if (splitObject == null)
         {
-            splitObject.gameObject.SetActive(show);
+            return;
         }
+
+        CacheSkillObjectTransforms();
+        splitObjectTween?.Kill();
+        splitObjectTween = null;
+
+        if (!show)
+        {
+            ResetSplitObjectTransform();
+            splitObject.gameObject.SetActive(false);
+            return;
+        }
+
+        splitObject.gameObject.SetActive(true);
+        var displayLiftLocalOffset = splitObject.parent != null
+            ? splitObject.parent.InverseTransformVector(Vector3.up * 0.18f)
+            : Vector3.up * 0.18f;
+        var displayLocalPosition = splitObjectRestLocalPosition + displayLiftLocalOffset;
+        splitObject.localPosition =
+            displayLocalPosition + Vector3.up * 0.35f - splitStrokeLocalDirection * 0.34f;
+        splitObject.localEulerAngles = splitObjectRestLocalEulerAngles;
+
+        splitObjectTween = DOTween.Sequence()
+            .Append(splitObject
+                .DOLocalMove(displayLocalPosition - splitStrokeLocalDirection * 0.34f, 0.1f)
+                .SetEase(Ease.OutQuad))
+            .Append(splitObject
+                .DOLocalMove(displayLocalPosition + splitStrokeLocalDirection * 0.34f, 0.06f)
+                .SetEase(Ease.InOutQuad)
+                .SetLoops(6, LoopType.Yoyo));
     }
 
     public void ShowDestroyObject(bool show)
     {
+        if (destroyObject == null)
+        {
+            return;
+        }
+
+        CacheSkillObjectTransforms();
+        destroyObjectTween?.Kill();
+        destroyObjectTween = null;
+
+        if (!show)
+        {
+            ResetDestroyObjectTransform();
+            destroyObject.gameObject.SetActive(false);
+            return;
+        }
+
+        destroyObject.gameObject.SetActive(true);
+        var parentRotation = destroyObject.parent != null
+            ? destroyObject.parent.rotation
+            : Quaternion.identity;
+        var impactWorldRotation = parentRotation * destroyObjectRestLocalRotation;
+        var camera = Camera.main;
+        var swingAxis = camera != null ? camera.transform.forward : Vector3.forward;
+        var reboundWorldRotation =
+            Quaternion.AngleAxis(4f, swingAxis) * impactWorldRotation;
+        var inverseParentRotation = Quaternion.Inverse(parentRotation);
+        var startLocalRotation =
+            destroyObjectRestLocalRotation
+            * Quaternion.Euler(DestroyObjectStartLocalEulerOffset);
+        var reboundLocalRotation = inverseParentRotation * reboundWorldRotation;
+
+        destroyObject.localPosition =
+            destroyObjectRestLocalPosition + DestroyObjectStartLocalOffset;
+        destroyObject.localRotation = startLocalRotation;
+        destroyObjectTween = DOTween.Sequence()
+            .Append(destroyObject
+                .DOLocalMove(destroyObjectRestLocalPosition, 0.22f)
+                .SetEase(Ease.InQuad))
+            .Join(destroyObject
+                .DOLocalRotateQuaternion(destroyObjectRestLocalRotation, 0.22f)
+                .SetEase(Ease.InQuad))
+            .Append(destroyObject
+                .DOLocalRotateQuaternion(reboundLocalRotation, 0.08f)
+                .SetEase(Ease.OutQuad))
+            .Append(destroyObject
+                .DOLocalRotateQuaternion(destroyObjectRestLocalRotation, 0.08f)
+                .SetEase(Ease.InQuad));
+    }
+
+    private void CacheSkillObjectTransforms()
+    {
+        if (skillObjectTransformsCached)
+        {
+            return;
+        }
+
+        if (splitObject != null)
+        {
+            splitObjectRestLocalPosition = splitObject.localPosition;
+            splitObjectBaseLocalRotation = splitObject.localRotation;
+            splitObjectRestLocalEulerAngles = splitObject.localEulerAngles;
+        }
+
         if (destroyObject != null)
         {
-            destroyObject.gameObject.SetActive(show);
+            destroyObjectBaseLocalPosition = destroyObject.localPosition;
+            destroyObjectRestLocalPosition = destroyObject.localPosition;
+            destroyObjectBaseLocalRotation = destroyObject.localRotation;
+            destroyObjectRestLocalRotation = destroyObjectBaseLocalRotation;
         }
+
+        skillObjectTransformsCached = true;
+    }
+
+    private void ConfigureSplitObjectOrientation()
+    {
+        if (splitObject == null || _data == null)
+        {
+            return;
+        }
+
+        CacheSkillObjectTransforms();
+        var partPositions = ContainerSaveDataExtensions.GetPartPositions(_data);
+        if (partPositions.Count == 0)
+        {
+            return;
+        }
+
+        var width = partPositions.Max(position => position.x) - partPositions.Min(position => position.x);
+        var depth = partPositions.Max(position => position.y) - partPositions.Min(position => position.y);
+        var isVertical = depth > width;
+
+        var worldStrokeDirection = isVertical ? Vector3.forward : Vector3.right;
+        splitStrokeLocalDirection = splitObject.parent != null
+            ? splitObject.parent.InverseTransformDirection(worldStrokeDirection).normalized
+            : worldStrokeDirection;
+
+        var camera = Camera.main;
+        if (camera != null)
+        {
+            splitObject.rotation =
+                camera.transform.rotation
+                * Quaternion.AngleAxis(45f, Vector3.forward);
+        }
+        else
+        {
+            splitObject.localRotation =
+                splitObjectBaseLocalRotation
+                * Quaternion.AngleAxis(45f, Vector3.forward);
+        }
+
+        splitObjectRestLocalEulerAngles = splitObject.localEulerAngles;
+    }
+
+    private void ConfigureDestroyObjectPosition()
+    {
+        if (destroyObject == null || _data == null)
+        {
+            return;
+        }
+
+        CacheSkillObjectTransforms();
+        destroyObject.localPosition = destroyObjectBaseLocalPosition;
+        var partPositions = ContainerSaveDataExtensions.GetPartPositions(_data);
+        if (partPositions.Count == 0)
+        {
+            destroyObjectRestLocalPosition = destroyObjectBaseLocalPosition;
+            return;
+        }
+
+        var centerX =
+            (partPositions.Min(position => position.x)
+             + partPositions.Max(position => position.x)) * 0.5f;
+        var centerZ =
+            (partPositions.Min(position => position.y)
+             + partPositions.Max(position => position.y)) * 0.5f;
+        var targetWorldPosition =
+            transform.TransformPoint(new Vector3(centerX, 0f, centerZ));
+        var currentImpactWorldPosition =
+            destroyObject.TransformPoint(DestroyObjectImpactLocalPoint);
+        targetWorldPosition.y =
+            currentImpactWorldPosition.y + DestroyObjectDisplayLift;
+        destroyObject.position += targetWorldPosition - currentImpactWorldPosition;
+        destroyObjectRestLocalPosition = destroyObject.localPosition;
+    }
+
+    private void ConfigureDestroyObjectOrientation()
+    {
+        if (destroyObject == null)
+        {
+            return;
+        }
+
+        CacheSkillObjectTransforms();
+        destroyObject.localRotation = destroyObjectBaseLocalRotation;
+
+        var camera = Camera.main;
+        if (camera != null)
+        {
+            var screenAlignedRotation = Quaternion.LookRotation(
+                camera.transform.up,
+                -camera.transform.forward);
+            destroyObject.rotation =
+                Quaternion.AngleAxis(90f, camera.transform.forward)
+                * screenAlignedRotation;
+        }
+
+        destroyObjectRestLocalRotation = destroyObject.localRotation;
+    }
+
+    private void ResetSplitObjectTransform()
+    {
+        splitObjectTween?.Kill();
+        splitObjectTween = null;
+
+        if (splitObject == null)
+        {
+            return;
+        }
+
+        splitObject.localPosition = splitObjectRestLocalPosition;
+        splitObject.localEulerAngles = splitObjectRestLocalEulerAngles;
+    }
+
+    private void ResetDestroyObjectTransform()
+    {
+        destroyObjectTween?.Kill();
+        destroyObjectTween = null;
+
+        if (destroyObject == null)
+        {
+            return;
+        }
+
+        destroyObject.localPosition = destroyObjectRestLocalPosition;
+        destroyObject.localRotation = destroyObjectRestLocalRotation;
+    }
+
+    private void OnDisable()
+    {
+        splitObjectTween?.Kill();
+        destroyObjectTween?.Kill();
     }
     private void SetShapeRootTransform(Transform shapeRoot, RotationType rotationType, bool flipX)
     {
