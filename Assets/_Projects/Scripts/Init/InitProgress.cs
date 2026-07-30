@@ -5,9 +5,5 @@ public class InitProgress : DraftUtils.DraftMonoBehaviour
         GameAnalytics.Log(GameAnalytics.AppStart);
         float loadingDuration = DataManager.Instance.ParametterGameConfigSO.InitDelay;
         PopupManager.Instance.GetPopupLoading(loadingDuration, SceneControllerExtensions.LoadMain);
-
-#if UNITY_EDITOR
-        PopupManager.Instance.GetPopupCheatLevel();
-#endif
     }
 }

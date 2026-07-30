@@ -135,7 +135,14 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         }
         else
         {
+#if UNITY_EDITOR
+            if (!EditorDebugSettings.InfiniteTime)
+            {
+                _timer.Update(Time.deltaTime);
+            }
+#else
             _timer.Update(Time.deltaTime);
+#endif
         }
 
         RefreshVisualsWhenAspectChanges();
@@ -177,8 +184,30 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         _timer.AddOnFinishedListener(EndGame);
         _timer.StartCountdown();
 
+#if UNITY_EDITOR
+        RefreshEditorInfiniteTime();
+#endif
         ApplyGameplayVisuals(levelData);
     }
+
+#if UNITY_EDITOR
+    public void RefreshEditorInfiniteTime()
+    {
+        if (_timer == null)
+        {
+            return;
+        }
+
+        if (EditorDebugSettings.InfiniteTime)
+        {
+            _timer.Pause();
+        }
+        else
+        {
+            _timer.Resume();
+        }
+    }
+#endif
 
     private void ApplyGameplayVisuals(LevelData levelData)
     {
