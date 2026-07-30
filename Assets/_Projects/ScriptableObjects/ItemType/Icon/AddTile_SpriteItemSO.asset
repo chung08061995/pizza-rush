@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AddTile_SpriteItemSO
   m_EditorClassIdentifier: Assembly-CSharp::SpriteItemSO
   Key: 4
-  Value: {fileID: 21300000, guid: 16261dc5e5881c041ba619f4fc3049d3, type: 3}
+  Value: {fileID: 21300000, guid: 941f0d23b9c7e44889509a0655f4ae25, type: 3}

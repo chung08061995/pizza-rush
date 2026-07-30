@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SplitContainer_SpriteItemSO
   m_EditorClassIdentifier: Assembly-CSharp::SpriteItemSO
   Key: 2
-  Value: {fileID: 21300000, guid: 74e9374584a84d44b835920bc0a299a9, type: 3}
+  Value: {fileID: 21300000, guid: f322dd9ce388747feb9b3a28d3c89cd4, type: 3}

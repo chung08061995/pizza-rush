@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DestroyContainer_SpriteItemSO
   m_EditorClassIdentifier: Assembly-CSharp::SpriteItemSO
   Key: 3
-  Value: {fileID: 21300000, guid: 346ed8f776059fc45aec84feda7f715e, type: 3}
+  Value: {fileID: 21300000, guid: a77111c66e76f4567bb49b6e8749651e, type: 3}

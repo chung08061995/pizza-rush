@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Booter_Magic_SpriteItemSO
   m_EditorClassIdentifier: Assembly-CSharp::SpriteItemSO
   Key: 6000
-  Value: {fileID: 21300000, guid: 847016d3a038f17478d26b70d75d6347, type: 3}
+  Value: {fileID: 21300000, guid: caeb177beabf24bb18cbbcb4f6fd1232, type: 3}
