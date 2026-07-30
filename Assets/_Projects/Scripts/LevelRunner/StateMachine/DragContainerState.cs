@@ -112,13 +112,10 @@ public class DragContainerState : DraftUtils.IState
         // Phát hiện bắt đầu kéo: nhấn chuột trái
         if (Input.GetMouseButtonDown(0))
         {
-            Container containerUnderMouse = null;
-            bool found = DraftUtils.Utils.Physic3DUtils.TryGetComponentUnderMouse(
-                mouseScreenPosition: Input.mousePosition,
-                camera: Camera.main,
-                getComponentFunc: hit => hit.collider.GetComponentInParent<Container>(),
-                out containerUnderMouse
-            );
+            bool found = TryGetContainerUnderScreenPoint(
+                Input.mousePosition,
+                Camera.main,
+                out Container containerUnderMouse);
 
             if (found && containerUnderMouse != null && ContainerDataUtils.CanMoving(containerUnderMouse.Data.containerData))
             {
@@ -143,6 +140,46 @@ public class DragContainerState : DraftUtils.IState
             EndDrag(progressDragContainerData, _levelRunner);
         }
     }
+
+    /// <summary>
+    /// Finds the nearest container under a screen point without depending on
+    /// which overlapping gameplay collider Physics.Raycast returns first.
+    /// Tile colliders are rebuilt by the Add Tile skill and can otherwise
+    /// cover container colliders on some devices.
+    /// </summary>
+    private static bool TryGetContainerUnderScreenPoint(
+        Vector3 screenPosition,
+        Camera camera,
+        out Container container)
+    {
+        container = null;
+        if (camera == null)
+        {
+            return false;
+        }
+
+        var ray = camera.ScreenPointToRay(screenPosition);
+        var hits = Physics.RaycastAll(
+            ray,
+            camera.farClipPlane,
+            Physics.DefaultRaycastLayers,
+            QueryTriggerInteraction.Ignore);
+
+        foreach (var hit in hits.OrderBy(hit => hit.distance))
+        {
+            var candidate = hit.collider.GetComponentInParent<Container>();
+            if (candidate == null)
+            {
+                continue;
+            }
+
+            container = candidate;
+            return true;
+        }
+
+        return false;
+    }
+
     /// <summary>
     /// Xử lý di chuyển container mượt mà theo chuột trong khi kéo.
     /// 
