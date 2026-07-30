@@ -893,9 +893,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5605501236911176288, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
       propertyPath: m_Name
       value: 1_FreezeTime_SkillRemainingDataView
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978532042320601380, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625857118896517307, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1015,13 +1027,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5605501236911176288, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
       propertyPath: m_Name
       value: 4_AddTile_SkillRemainingDataView
       objectReference: {fileID: 0}
+    - target: {fileID: 5978532042320601380, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6991550703578927325, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
       propertyPath: m_Transition
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625857118896517307, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1171,13 +1195,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5605501236911176288, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
       propertyPath: m_Name
       value: 3_DestroyContainer_SkillRemainingDataView
       objectReference: {fileID: 0}
+    - target: {fileID: 5978532042320601380, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6991550703578927325, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
       propertyPath: m_Transition
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625857118896517307, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1327,13 +1363,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3581179967492393515, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5605501236911176288, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
       propertyPath: m_Name
       value: 2_SplitContainer_SkillRemainingDataView
       objectReference: {fileID: 0}
+    - target: {fileID: 5978532042320601380, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6991550703578927325, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
       propertyPath: m_Transition
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625857118896517307, guid: 9d6f556337a88ba4fbf921c1857daec2, type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

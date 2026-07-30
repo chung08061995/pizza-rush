@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
   m_Padding:
     m_Left: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b192fc58b3b59614a9927132af482afa, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::PopupProfile
   popup: {fileID: 3947149798428053759}
   avatarDataListenerView: {fileID: 3980871432301807288}
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61352a0cbdd85c742a847cd860342b07, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.Popup
   root: {fileID: 4634082290605847862}
   closeButton:
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -730,6 +730,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4286650631
       objectReference: {fileID: 0}
+    - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7996416528567781593, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_Name
       value: Text_H5
@@ -756,7 +760,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &7493666961350330913 stripped
 GameObject:
@@ -773,8 +777,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae3c42e1cb27b4a428401a19e9f570ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   nameText:
     value:
       isPresent: 1
@@ -898,7 +902,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -912,7 +916,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &7891571521744773232 stripped
 RectTransform:
@@ -928,7 +932,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &1714253605889806303
 PrefabInstance:
@@ -953,11 +957,11 @@ PrefabInstance:
     - target: {fileID: 2502914952986137889, guid: b41404b9dd701bf4784de19d48bb6556, type: 3}
       propertyPath: m_fontAsset
       value:
-      objectReference: {fileID: 11400000, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: 11400000, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 2502914952986137889, guid: b41404b9dd701bf4784de19d48bb6556, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -7562813079600532679, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: -2935595075134199920, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 3024849462999300009, guid: b41404b9dd701bf4784de19d48bb6556, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1057,7 +1061,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &2088263749101873121
 PrefabInstance:
@@ -1074,11 +1078,11 @@ PrefabInstance:
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_fontAsset
       value:
-      objectReference: {fileID: 11400000, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: 11400000, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -7562813079600532679, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: -2935595075134199920, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -1191,7 +1195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2589489687482242090, guid: f80b0b4df45faf144855b22c5aa8f8d3, type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: d504d7f88f03f424ba80fce3aab2c38e, type: 3}
     - target: {fileID: 3111400953868488871, guid: f80b0b4df45faf144855b22c5aa8f8d3, type: 3}
       propertyPath: m_Pivot.x
@@ -1310,7 +1314,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &5008921897601436811 stripped
 MonoBehaviour:
@@ -1321,7 +1325,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &8040609385658856441 stripped
 GameObject:
@@ -1345,7 +1349,7 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -1360,7 +1364,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1be6efdf0d18d74390cad325a1a5048, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::AvatarDataListenerView
   itemView: {fileID: 7058773771377539606}
 --- !u!114 &7058773771377539606
@@ -1373,8 +1377,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c2bdb897a091c149a700288030c9a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   root: {fileID: 0}
   icon:
     value:
@@ -1433,11 +1437,11 @@ PrefabInstance:
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_fontAsset
       value:
-      objectReference: {fileID: 11400000, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: 11400000, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -7562813079600532679, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: -2935595075134199920, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -1554,8 +1558,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c039fea5071f9344b90182fba103f2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   textView:
     value:
       isPresent: 1
@@ -1574,7 +1578,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &4454343704891251728
 PrefabInstance:
@@ -1687,7 +1691,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &5821352059068235521
 PrefabInstance:
@@ -1704,14 +1708,18 @@ PrefabInstance:
     - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_fontAsset
       value:
-      objectReference: {fileID: 11400000, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: 11400000, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -7562813079600532679, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: -2935595075134199920, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5432613577239590783, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_Name
@@ -1817,8 +1825,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 381471900956867628, guid: 239d94f495483864a9e38ada39a7ebed, type: 3}
       propertyPath: m_Sprite
-      value: 
+      value:
       objectReference: {fileID: 21300000, guid: e0a9ca996626e2340904aaffe7856eb3, type: 3}
+    - target: {fileID: 670015184515390062, guid: 239d94f495483864a9e38ada39a7ebed, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 797860297944092602, guid: 239d94f495483864a9e38ada39a7ebed, type: 3}
       propertyPath: m_Name
       value: AchievementsGroup (1)
@@ -1831,6 +1843,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value:
       objectReference: {fileID: -7562813079600532679, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+    - target: {fileID: 1129770458943825863, guid: 239d94f495483864a9e38ada39a7ebed, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1173124855328285982, guid: 239d94f495483864a9e38ada39a7ebed, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1939,7 +1955,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 602101833981014036, guid: 6b20ef444a39d9d49969a17bc7b3598c, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 5639743743479056188}
     - target: {fileID: 1543705480586569490, guid: 6b20ef444a39d9d49969a17bc7b3598c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1983,7 +1999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2123275726422667285, guid: 6b20ef444a39d9d49969a17bc7b3598c, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 4377850953685805687}
     - target: {fileID: 2901852627455163370, guid: 6b20ef444a39d9d49969a17bc7b3598c, type: 3}
       propertyPath: m_Name
@@ -1991,19 +2007,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5243884981152294576, guid: 6b20ef444a39d9d49969a17bc7b3598c, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 226397343971549093}
     - target: {fileID: 7841182856438650090, guid: 6b20ef444a39d9d49969a17bc7b3598c, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 226397343971549093}
     - target: {fileID: 8500637369793455882, guid: 6b20ef444a39d9d49969a17bc7b3598c, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 4377850953685805687}
     - target: {fileID: 8926298103810969195, guid: 6b20ef444a39d9d49969a17bc7b3598c, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 5639743743479056188}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2019,7 +2035,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
 --- !u!114 &7610991608879848669 stripped
 MonoBehaviour:
@@ -2030,7 +2046,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
 --- !u!4 &8342719674835754740 stripped
 Transform:
@@ -2052,11 +2068,11 @@ PrefabInstance:
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_fontAsset
       value:
-      objectReference: {fileID: 11400000, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: 11400000, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -7562813079600532679, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: -2935595075134199920, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 6339874844190392976, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_Name
       value: Text_H3
@@ -2159,6 +2175,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5786780939530442590}
     m_Modifications:
+    - target: {fileID: 670015184515390062, guid: 239d94f495483864a9e38ada39a7ebed, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 797860297944092602, guid: 239d94f495483864a9e38ada39a7ebed, type: 3}
       propertyPath: m_Name
       value: AchievementsGroup
@@ -2171,6 +2191,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value:
       objectReference: {fileID: -7562813079600532679, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+    - target: {fileID: 1129770458943825863, guid: 239d94f495483864a9e38ada39a7ebed, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1173124855328285982, guid: 239d94f495483864a9e38ada39a7ebed, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

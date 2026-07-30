@@ -319,9 +319,17 @@ PrefabInstance:
       propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2325427176029304246, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4764080337828724382, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
       propertyPath: m_Name
       value: SelectBooterItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105824263927391454, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5462500515324410633, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
       propertyPath: m_Pivot.x
@@ -436,9 +444,17 @@ PrefabInstance:
       propertyPath: m_ActiveFontFeatures.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2325427176029304246, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4764080337828724382, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
       propertyPath: m_Name
       value: SelectBooterItem (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105824263927391454, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5462500515324410633, guid: f1287a3b340c1c24c951a8a2059f17d7, type: 3}
       propertyPath: m_Pivot.x
