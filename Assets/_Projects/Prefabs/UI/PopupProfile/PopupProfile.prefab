@@ -961,7 +961,7 @@ PrefabInstance:
     - target: {fileID: 2502914952986137889, guid: b41404b9dd701bf4784de19d48bb6556, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -2935595075134199920, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
+      objectReference: {fileID: 2100000, guid: e2e31449f43c45518c2f323ce5020ae7, type: 2}
     - target: {fileID: 3024849462999300009, guid: b41404b9dd701bf4784de19d48bb6556, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1082,7 +1082,7 @@ PrefabInstance:
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -2935595075134199920, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
+      objectReference: {fileID: 2100000, guid: e2e31449f43c45518c2f323ce5020ae7, type: 2}
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -1441,7 +1441,7 @@ PrefabInstance:
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -2935595075134199920, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
+      objectReference: {fileID: 2100000, guid: e2e31449f43c45518c2f323ce5020ae7, type: 2}
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -1712,7 +1712,7 @@ PrefabInstance:
     - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -2935595075134199920, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
+      objectReference: {fileID: 2100000, guid: e2e31449f43c45518c2f323ce5020ae7, type: 2}
     - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -2072,7 +2072,7 @@ PrefabInstance:
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -2935595075134199920, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
+      objectReference: {fileID: 2100000, guid: e2e31449f43c45518c2f323ce5020ae7, type: 2}
     - target: {fileID: 6339874844190392976, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_Name
       value: Text_H3
