@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +16,12 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
     [SerializeField] private DraftUtils.AnimatedToggleController musicButton;
     [SerializeField] private DraftUtils.AnimatedToggleController vibrateButton;
     [SerializeField] private TMP_FontAsset cleanUiFont;
+    [SerializeField] private Material cleanUiMaterial;
+    [SerializeField] private Sprite quickButtonBackground;
+    [SerializeField] private float quickButtonSize = 132f;
+    [SerializeField] private float quickButtonSpacing = 16f;
+    [SerializeField] private float quickButtonRightMargin = 24f;
+    [SerializeField] private float quickButtonTopOffset = 210f;
     // [SerializeField] private DraftUtils.PersistentValueTextBinder<int> startText;
     // [SerializeField] private DraftUtils.PersistentValueTextBinder<int> goldText;
     [SerializeField] private DraftUtils.OptionalButtonGroup goldMoreButton;
@@ -60,6 +64,8 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
 
         musicButton.ApplyImmediate(_musicVolume.Value);
         vibrateButton.ApplyImmediate(_vibrate.Value);
+        ConfigureQuickButtonVisuals();
+        LayoutQuickButtons();
         ConfigureQuickButtonHover();
 
         goldMoreButton.Disable();
@@ -110,6 +116,97 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
 
         animator.runtimeAnimatorController = hoverController;
         button.transition = Selectable.Transition.Animation;
+    }
+
+    private void ConfigureQuickButtonVisuals()
+    {
+        ApplyQuickButtonBackground(rankingButton);
+        ApplyQuickButtonBackground(noAdsButton);
+        ApplyQuickButtonBackground(musicButton);
+        ApplyQuickButtonBackground(vibrateButton);
+    }
+
+    private void ApplyQuickButtonBackground(Component button)
+    {
+        if (button == null)
+        {
+            return;
+        }
+
+        var image = button.GetComponent<Image>();
+        if (image == null)
+        {
+            return;
+        }
+
+        if (quickButtonBackground != null)
+        {
+            image.sprite = quickButtonBackground;
+        }
+
+        image.color = Color.white;
+        image.preserveAspect = true;
+    }
+
+    private void LayoutQuickButtons()
+    {
+        if (noAdsButton == null || rankingButton == null || musicButton == null || vibrateButton == null)
+        {
+            return;
+        }
+
+        var root = noAdsButton.transform.parent as RectTransform;
+        if (root == null || Screen.width <= 0 || Screen.height <= 0)
+        {
+            return;
+        }
+
+        var safeArea = Screen.safeArea;
+        var safeTopRight = new Vector2(
+            safeArea.xMax / Screen.width,
+            safeArea.yMax / Screen.height);
+
+        root.anchorMin = safeTopRight;
+        root.anchorMax = safeTopRight;
+        root.pivot = Vector2.one;
+        root.anchoredPosition = new Vector2(-quickButtonRightMargin, -quickButtonTopOffset);
+
+        var buttons = new Component[]
+        {
+            rankingButton,
+            noAdsButton,
+            musicButton,
+            vibrateButton
+        };
+
+        int visibleIndex = 0;
+        foreach (var button in buttons)
+        {
+            if (button == null || !button.gameObject.activeSelf)
+            {
+                continue;
+            }
+
+            var rect = button.transform as RectTransform;
+            if (rect == null)
+            {
+                continue;
+            }
+
+            rect.anchorMin = Vector2.one;
+            rect.anchorMax = Vector2.one;
+            rect.pivot = Vector2.one;
+            rect.sizeDelta = Vector2.one * quickButtonSize;
+            rect.anchoredPosition = new Vector2(
+                0f,
+                -visibleIndex * (quickButtonSize + quickButtonSpacing));
+            visibleIndex++;
+        }
+
+        float height = Mathf.Max(
+            quickButtonSize,
+            visibleIndex * quickButtonSize + Mathf.Max(0, visibleIndex - 1) * quickButtonSpacing);
+        root.sizeDelta = new Vector2(quickButtonSize, height);
     }
 
 
@@ -163,16 +260,22 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         var popup = PopupManager.Instance.homeContentsController.ShowPopupLevelUpContent(contentRoot);
         tabSlideAnimator.SwitchTo(popup);
     }
+
     private void SetMainButtonsVisible(bool isVisible)
     {
         bool hasNoAds = DraftUtils.Ads.AdsManager.Instance != null &&
                         DraftUtils.Ads.AdsManager.Instance.HasNoAds;
-        noAdsButton.transform.parent.gameObject.SetActive(isVisible && !hasNoAds);
+        rankingButton.gameObject.SetActive(isVisible);
+        musicButton.gameObject.SetActive(isVisible);
+        vibrateButton.gameObject.SetActive(isVisible);
+        noAdsButton.gameObject.SetActive(isVisible && !hasNoAds);
+        LayoutQuickButtons();
     }
 
     private void RefreshNoAdsVisibility()
     {
-        noAdsButton.transform.parent.gameObject.SetActive(false);
+        noAdsButton.gameObject.SetActive(false);
+        LayoutQuickButtons();
     }
 
     public void ApplyCleanTextRendering(Component content)
@@ -198,7 +301,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         foreach (var text in content.GetComponentsInChildren<TMP_Text>(true))
         {
             text.font = cleanUiFont;
-            text.fontSharedMaterial = cleanUiFont.material;
+            text.fontSharedMaterial = cleanUiMaterial != null ? cleanUiMaterial : cleanUiFont.material;
             text.fontStyle &= ~(FontStyles.Underline | FontStyles.Strikethrough);
         }
     }
@@ -247,6 +350,14 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
 
         _musicVolume.Notifier.RemoveListener(RefreshMusicButton);
         _vibrate.Notifier.RemoveListener(RefreshVibrateButton);
+    }
+
+    private void OnRectTransformDimensionsChange()
+    {
+        if (Application.isPlaying && isActiveAndEnabled)
+        {
+            LayoutQuickButtons();
+        }
     }
 
     private void DoMoveDisableButtonBackground(Transform activeButton)

@@ -1010,6 +1010,12 @@ MonoBehaviour:
   musicButton: {fileID: 6040005196098127432}
   vibrateButton: {fileID: 7190994008887811344}
   cleanUiFont: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
+  cleanUiMaterial: {fileID: 2100000, guid: a3a4bdab80fc4ca880ee2efb777d898f, type: 2}
+  quickButtonBackground: {fileID: 21300000, guid: b1e66261f436540949aa046f9d0e08e5, type: 3}
+  quickButtonSize: 132
+  quickButtonSpacing: 16
+  quickButtonRightMargin: 24
+  quickButtonTopOffset: 210
   goldMoreButton:
     value:
       isPresent: 0
@@ -1114,16 +1120,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.22, g: 0.92, b: 0.18, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b261ccfb8be1c4ae59946b268c822d0c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1e66261f436540949aa046f9d0e08e5, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1526,7 +1532,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: f817b4c1fd2b6bf4288435fe7264427d, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2334,16 +2340,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.22, g: 0.92, b: 0.18, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b261ccfb8be1c4ae59946b268c822d0c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1e66261f436540949aa046f9d0e08e5, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
