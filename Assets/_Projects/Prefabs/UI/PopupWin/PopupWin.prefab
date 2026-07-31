@@ -55,7 +55,7 @@ MonoBehaviour:
   levelText: {fileID: 1591545060426850347}
   rewardText: {fileID: 4238661026844505049}
   nextButton: {fileID: 8447311171476206715}
-  x2RewardButton: {fileID: 8447311171476206715}
+  x2RewardButton: {fileID: 8271366639982101604}
 --- !u!114 &370751233634227204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1612,6 +1612,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8063744805787679901, guid: 8eec46c8c4168ea438e5e011ee1c639d, type: 3}
   m_PrefabInstance: {fileID: 8706193556912332851}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8271366639982101604 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 728264597805179991, guid: 8eec46c8c4168ea438e5e011ee1c639d, type: 3}
+  m_PrefabInstance: {fileID: 8706193556912332851}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!224 &8555476131943208857 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1038560059782805418, guid: 8eec46c8c4168ea438e5e011ee1c639d, type: 3}

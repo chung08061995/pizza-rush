@@ -3,6 +3,9 @@ using UnityEngine;
 
 public static class MonetizationConfig
 {
+    public const int MinimumInterstitialStartLevel = 5;
+    public const float MinimumInterstitialCooldownSeconds = 90f;
+
     public const string InterstitialEnabledKey = "ads_inter_enabled";
     public const string InterstitialStartLevelKey = "ads_inter_start_level";
     public const string InterstitialWinIntervalKey = "ads_inter_win_interval";
@@ -13,10 +16,10 @@ public static class MonetizationConfig
     public const string RewardedEnabledKey = "ads_rewarded_enabled";
 
     public static bool InterstitialEnabled { get; private set; } = true;
-    public static int InterstitialStartLevel { get; private set; } = 5;
+    public static int InterstitialStartLevel { get; private set; } = MinimumInterstitialStartLevel;
     public static int InterstitialWinInterval { get; private set; } = 1;
     public static int InterstitialLoseInterval { get; private set; } = 1;
-    public static float InterstitialCooldownSeconds { get; private set; } = 20f;
+    public static float InterstitialCooldownSeconds { get; private set; } = MinimumInterstitialCooldownSeconds;
     public static bool BannerEnabled { get; private set; } = true;
     public static int BannerStartLevel { get; private set; } = 10;
     public static bool RewardedEnabled { get; private set; } = true;
@@ -34,10 +37,10 @@ public static class MonetizationConfig
         bool rewardedEnabled)
     {
         InterstitialEnabled = interstitialEnabled;
-        InterstitialStartLevel = Mathf.Max(1, interstitialStartLevel);
+        InterstitialStartLevel = Mathf.Max(MinimumInterstitialStartLevel, interstitialStartLevel);
         InterstitialWinInterval = Mathf.Max(1, interstitialWinInterval);
         InterstitialLoseInterval = Mathf.Max(1, interstitialLoseInterval);
-        InterstitialCooldownSeconds = Mathf.Max(0f, interstitialCooldownSeconds);
+        InterstitialCooldownSeconds = Mathf.Max(MinimumInterstitialCooldownSeconds, interstitialCooldownSeconds);
         BannerEnabled = bannerEnabled;
         BannerStartLevel = Mathf.Max(1, bannerStartLevel);
         RewardedEnabled = rewardedEnabled;

@@ -45,12 +45,12 @@ namespace DraftUtils.Ads
         private DraftUtils.UnityMainThread _unityMainThread;
         private int _winInterstitialCounter;
         private int _loseInterstitialCounter;
-        private float _lastInterstitialTime = float.NegativeInfinity;
+        private float _lastInterstitialTime;
 
         protected override void OnAwake()
         {
             _service = CreateService();
-            _service.OnAdShown += info => LogAdEvent("ad_show", info);
+            _service.OnAdShown += HandleAdShown;
             _service.OnAdClosed += info => LogAdEvent("ad_close", info);
             _service.OnAdFailed += info => LogAdEvent("ad_fail", info);
             _service.OnRewardEarned += info => LogAdEvent("ad_reward", info);
@@ -120,6 +120,16 @@ namespace DraftUtils.Ads
             OnAdsInitialized?.Invoke(success);
         }
 
+        private void HandleAdShown(AdEventInfo info)
+        {
+            if (info != null && info.AdType == AdType.Interstitial)
+            {
+                _lastInterstitialTime = Time.realtimeSinceStartup;
+            }
+
+            LogAdEvent("ad_show", info);
+        }
+
         // ─── PUBLIC API ───
 
         /// <summary>Hiện banner.</summary>
@@ -180,7 +190,6 @@ namespace DraftUtils.Ads
                 return;
             }
 
-            _lastInterstitialTime = Time.realtimeSinceStartup;
             ShowInterstitial(won ? "level_win" : "level_lose", onComplete);
         }
 
