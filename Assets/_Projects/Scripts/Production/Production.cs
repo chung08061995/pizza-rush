@@ -9,6 +9,7 @@ public class Production : DraftUtils.DraftMonoBehaviour
 {
     [SerializeField] private DraftUtils.RendererMonoBehaviour rendererMono;
     [SerializeField] private List<SkinnedMeshRenderer> skins = new();
+    [SerializeField] private Renderer colorMarker;
     public List<SkinnedMeshRenderer> Skins => skins;
 
     public ColorType ColorType { get; set; }
@@ -43,6 +44,8 @@ public class Production : DraftUtils.DraftMonoBehaviour
     }
     public void SetSkinColor(Color color)
     {
+        SetRendererColor(colorMarker, color);
+
         foreach (var skin in skins)
         {
             if (skin == null) continue;
@@ -50,14 +53,29 @@ public class Production : DraftUtils.DraftMonoBehaviour
             // Dùng materials (instance) để không ảnh hưởng tới shared material của các object khác
             foreach (var mat in skin.materials)
             {
-                if (mat == null) continue;
-
-                // Tùy shader mà tên property khác nhau, phổ biến nhất là "_Color" hoặc "_BaseColor" (URP/HDRP)
-                if (mat.HasProperty("_Color"))
-                    mat.color = color;
-                else if (mat.HasProperty("_BaseColor"))
-                    mat.SetColor("_BaseColor", color);
+                SetMaterialColor(mat, color);
             }
         }
+    }
+
+    private static void SetRendererColor(Renderer targetRenderer, Color color)
+    {
+        if (targetRenderer == null) return;
+
+        foreach (var material in targetRenderer.materials)
+        {
+            SetMaterialColor(material, color);
+        }
+    }
+
+    private static void SetMaterialColor(Material material, Color color)
+    {
+        if (material == null) return;
+
+        // Tùy shader mà tên property khác nhau, phổ biến nhất là "_Color" hoặc "_BaseColor" (URP/HDRP)
+        if (material.HasProperty("_BaseColor"))
+            material.SetColor("_BaseColor", color);
+        else if (material.HasProperty("_Color"))
+            material.color = color;
     }
 }

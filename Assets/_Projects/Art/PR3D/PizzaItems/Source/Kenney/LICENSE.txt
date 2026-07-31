@@ -1,0 +1,7 @@
+Kenney Food Kit
+Creator: Kenney (https://www.kenney.nl/)
+License: Creative Commons Zero v1.0 Universal (CC0 1.0)
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+
+Commercial use, modification, and redistribution are permitted. Attribution is optional.
+Checked: 2026-08-01
