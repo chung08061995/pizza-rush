@@ -56,8 +56,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -277,8 +277,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61352a0cbdd85c742a847cd860342b07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   root: {fileID: 2912906879848765596}
   closeButton:
     value:
@@ -310,8 +310,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90e8368a5ee6bac47b16f501dbcd04bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   popup: {fileID: 3922600687553328995}
   itemView: {fileID: 6889249747755637571}
   watchAdsButton: {fileID: 8416140473454220631}
@@ -408,8 +408,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -584,8 +584,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c2bdb897a091c149a700288030c9a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   root: {fileID: 0}
   icon:
     value:
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &7311670733823002568 stripped
 RectTransform:
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &170264922929386960
 PrefabInstance:
@@ -1099,27 +1099,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3635581389530677889, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 5095927132052349060}
     - target: {fileID: 5351034572394635156, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 2725373559521308241}
     - target: {fileID: 5821322088729943694, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 5095927132052349060}
     - target: {fileID: 6281534172153291769, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 2537623802085942732}
     - target: {fileID: 7375479152595887786, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 2537623802085942732}
     - target: {fileID: 7820094274018859529, guid: 96f6afcdceb40e340b0d044237b13ad5, type: 3}
       propertyPath: model
-      value: 
+      value:
       objectReference: {fileID: 2725373559521308241}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
 --- !u!4 &2494027944817963273 stripped
 Transform:
@@ -1151,7 +1151,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7346ca9e31df4ce4989212161838f5db, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.AnimationPopup
 --- !u!1001 &1258400965923278843
 PrefabInstance:
@@ -1425,8 +1425,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!224 &2296271876256178110 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1038560059782805418, guid: 8eec46c8c4168ea438e5e011ee1c639d, type: 3}
@@ -1450,17 +1450,17 @@ PrefabInstance:
       value: Free(+1)
       objectReference: {fileID: 0}
     - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
-    - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -7562813079600532679, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
-    - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_margin.x
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
+      propertyPath: m_fontAsset
+      value:
+      objectReference: {fileID: 11400000, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
+    - target: {fileID: 5123932684310755933, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
+      propertyPath: m_sharedMaterial
+      value:
+      objectReference: {fileID: 2100000, guid: 27618a09ada114460b3ca2e0213a6409, type: 2}
     - target: {fileID: 6339874844190392976, guid: ac03f1fdbd2a0cd4989de3820069b99a, type: 3}
       propertyPath: m_Name
       value: Text_H3
@@ -1576,8 +1576,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_HorizontalFit: 2
   m_VerticalFit: 0
 --- !u!1001 &3577949791683963909
@@ -1682,7 +1682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
+      value:
       objectReference: {fileID: 8542388411281414431, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -1691,6 +1691,10 @@ PrefabInstance:
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7996416528567781593, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_Name
@@ -1715,7 +1719,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &4507367833974375603
 PrefabInstance:
@@ -1836,11 +1840,11 @@ PrefabInstance:
     - target: {fileID: 4765555551436932475, guid: 3143de64e38404041885c2d358ea6b6d, type: 3}
       propertyPath: m_fontAsset
       value:
-      objectReference: {fileID: 11400000, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: 11400000, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 4765555551436932475, guid: 3143de64e38404041885c2d358ea6b6d, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -7562813079600532679, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: 2100000, guid: 27618a09ada114460b3ca2e0213a6409, type: 2}
     - target: {fileID: 6403174232192058492, guid: 3143de64e38404041885c2d358ea6b6d, type: 3}
       propertyPath: m_Name
       value: Text_H3_Gold
@@ -1943,7 +1947,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &3404496208959060054 stripped
 RectTransform:
@@ -2044,11 +2048,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7996416528567781593, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_Name
@@ -2068,7 +2076,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &6334087812041379914 stripped
 RectTransform:
@@ -2163,18 +2171,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5736603782553894320, guid: 3457e6c1c2b173442b9fbe976bee6ffc, type: 3}
+      propertyPath: m_fontAsset
+      value:
+      objectReference: {fileID: 11400000, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
+    - target: {fileID: 5736603782553894320, guid: 3457e6c1c2b173442b9fbe976bee6ffc, type: 3}
+      propertyPath: m_sharedMaterial
+      value:
+      objectReference: {fileID: 2100000, guid: 27618a09ada114460b3ca2e0213a6409, type: 2}
     - target: {fileID: 5819290158223308177, guid: 3457e6c1c2b173442b9fbe976bee6ffc, type: 3}
       propertyPath: m_Name
       value: TitlePopup
       objectReference: {fileID: 0}
-    - target: {fileID: 5736603782553894320, guid: 3457e6c1c2b173442b9fbe976bee6ffc, type: 3}
-      propertyPath: m_fontAsset
-      value:
-      objectReference: {fileID: 11400000, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
-    - target: {fileID: 5736603782553894320, guid: 3457e6c1c2b173442b9fbe976bee6ffc, type: 3}
-      propertyPath: m_sharedMaterial
-      value:
-      objectReference: {fileID: -7562813079600532679, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
     - target: {fileID: 8404984239236955406, guid: 3457e6c1c2b173442b9fbe976bee6ffc, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2198,7 +2206,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &5604332908786923998 stripped
 MonoBehaviour:
@@ -2209,7 +2217,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &8831589819306868546
 PrefabInstance:
@@ -2377,8 +2385,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!224 &8428953965755812072 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1038560059782805418, guid: f332019dd1a4a5d408af93171c6f3fc9, type: 3}

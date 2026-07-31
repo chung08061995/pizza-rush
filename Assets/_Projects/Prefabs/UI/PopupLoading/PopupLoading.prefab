@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2779c605f63971247ac8894b9ab569cc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.ImageFilledSlider
   fillImage:
     value:
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e639986a502e436478575ef35c16f0b4, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::PopupInitProgress
   popup: {fileID: 5271753071535338227}
   progressSlider: {fileID: 5679002197137509720}
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61352a0cbdd85c742a847cd860342b07, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.Popup
   root: {fileID: 1492011700994861138}
   closeButton:
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -528,12 +528,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
+      value:
+      objectReference: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
     - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -6823968293359233931, guid: 9f9709f69473d46fba947a0840e8a2f2, type: 2}
+      value:
+      objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
     - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2

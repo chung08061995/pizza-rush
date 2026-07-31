@@ -284,7 +284,7 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
         {
             foreach (var font in Resources.FindObjectsOfTypeAll<TMP_FontAsset>())
             {
-                if (font.name == "Montserrat-Black NewUI Bitmap")
+                if (font.name == "Montserrat-Black SDF")
                 {
                     cleanUiFont = font;
                     break;
@@ -298,10 +298,16 @@ public class PopupMain : DraftUtils.DraftMonoBehaviour
             return;
         }
 
+        Material material = cleanUiMaterial;
+        if (material == null || material.mainTexture != cleanUiFont.atlasTexture)
+        {
+            material = cleanUiFont.material;
+        }
+
         foreach (var text in content.GetComponentsInChildren<TMP_Text>(true))
         {
             text.font = cleanUiFont;
-            text.fontSharedMaterial = cleanUiMaterial != null ? cleanUiMaterial : cleanUiFont.material;
+            text.fontSharedMaterial = material;
             text.fontStyle &= ~(FontStyles.Underline | FontStyles.Strikethrough);
         }
     }

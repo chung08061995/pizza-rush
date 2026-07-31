@@ -921,7 +921,7 @@ PrefabInstance:
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_fontAsset
       value:
-      objectReference: {fileID: 11400000, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: 11400000, guid: 190bffe64bf5a6745ac2964dbf271a5c, type: 2}
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_fontColor.b
       value: 1
@@ -937,7 +937,7 @@ PrefabInstance:
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_sharedMaterial
       value:
-      objectReference: {fileID: -7562813079600532679, guid: 0d83287e96eb4456f8c5a7451f964f30, type: 2}
+      objectReference: {fileID: 2100000, guid: 27618a09ada114460b3ca2e0213a6409, type: 2}
     - target: {fileID: 6400761792055931288, guid: ec5825532357d7f429050962f9835a45, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
@@ -1101,20 +1101,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4600917965753856264, guid: 865a44c4039da3345bc5680c5cb805d2, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 4600917965753856264, guid: 865a44c4039da3345bc5680c5cb805d2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 4600917965753856264, guid: 865a44c4039da3345bc5680c5cb805d2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 4600917965753856264, guid: 865a44c4039da3345bc5680c5cb805d2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600917965753856264, guid: 865a44c4039da3345bc5680c5cb805d2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600917965753856264, guid: 865a44c4039da3345bc5680c5cb805d2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 4600917965753856264, guid: 865a44c4039da3345bc5680c5cb805d2, type: 3}
       propertyPath: m_SizeDelta.x

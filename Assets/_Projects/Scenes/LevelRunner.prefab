@@ -201,8 +201,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 2143294262047582950}
   pizza: {fileID: 3179993406118411731}
 --- !u!1 &54854710547414363
@@ -823,8 +823,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 3820623850059662679}
   pizza: {fileID: 5101688246821648630}
 --- !u!1 &187976923409585841
@@ -1085,7 +1085,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &273323107453033210
 GameObject:
@@ -1285,7 +1285,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &320869139457143387
 GameObject:
@@ -2724,7 +2724,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &656979908238736117
 GameObject:
@@ -2769,7 +2769,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8cdc52ff4b8d9742bd7b58241d7e9d5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::ProductionLine
   root: {fileID: 3522439248355464538}
   productionPooler:
@@ -2851,7 +2851,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.2688679, g: 1, b: 0.37208658, a: 1}
@@ -3160,7 +3160,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63bea03e94a30f74493f847016112147, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RendererMonoBehaviour
   m_renderers:
   - {fileID: 4602327401709945569}
@@ -3626,7 +3626,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &748043674397396596
 GameObject:
@@ -3903,7 +3903,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37e3c69eee990884b8d4da4929d89f5e, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::ContainerBoombDataView
   amountText:
     value:
@@ -3958,7 +3958,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &794223879051314334
 GameObject:
@@ -4125,7 +4125,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &815604414496292234
 GameObject:
@@ -4373,7 +4373,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &840329806044972764
 GameObject:
@@ -4449,8 +4449,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 6290714913891672499}
   pizza: {fileID: 4001833355269376112}
 --- !u!1 &858696160304381160
@@ -4885,7 +4885,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edaba7b2f84bed64d878a27a5f898cd0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Production
   rendererMono: {fileID: 3600704457248590286}
   skins:
@@ -5025,7 +5025,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edaba7b2f84bed64d878a27a5f898cd0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Production
   rendererMono: {fileID: 1865668758766838094}
   skins:
@@ -5345,7 +5345,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &961633438688995444
 GameObject:
@@ -5390,7 +5390,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &986134242111454275
 GameObject:
@@ -6492,7 +6492,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
@@ -7735,7 +7735,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63bea03e94a30f74493f847016112147, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RendererMonoBehaviour
   m_renderers:
   - {fileID: 8840482338153168202}
@@ -7974,8 +7974,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 2830651424701838320}
   pizza: {fileID: 2643927181727478253}
 --- !u!1 &1490205032953086602
@@ -8164,7 +8164,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &1513733227840517849
 GameObject:
@@ -8626,7 +8626,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &1656829758794377692
 GameObject:
@@ -8850,7 +8850,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 448abbdddd42f164ab0b28f15afe132a, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::ContainerView
   borderRenderer:
     isPresent: 1
@@ -8997,7 +8997,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &1712756588193284253
 GameObject:
@@ -9674,7 +9674,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &1831702521159687296
 GameObject:
@@ -9948,7 +9948,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10859,7 +10859,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &1992907094446093156
 GameObject:
@@ -10903,8 +10903,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 3386507758112441519}
   pizza: {fileID: 8820916896718570085}
 --- !u!1 &2005016517448597209
@@ -11235,7 +11235,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.2688679, g: 1, b: 0.37208658, a: 1}
@@ -11424,7 +11424,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ff8ae873ff7d644397c689255c37a34, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::ContainerMovementView
   horizontalDirectionObject:
     isPresent: 1
@@ -11512,7 +11512,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a90c5deed035f0e4ea14ab851d3fd557, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::LevelRunner
   levelObjectSpawner: {fileID: 8105388065661456454}
   gameplayVisualConfig: {fileID: 0}
@@ -11908,7 +11908,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &2293803171740835918
 GameObject:
@@ -12324,7 +12324,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &2427717712146948755
 GameObject:
@@ -12528,8 +12528,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 4349280062425236826}
   pizza: {fileID: 2352489635526077933}
 --- !u!1 &2461784737649973147
@@ -12971,8 +12971,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 4508303865635238243}
   pizza: {fileID: 213598703319704148}
 --- !u!1 &2535252932826840687
@@ -13340,7 +13340,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
@@ -13786,7 +13786,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &2638775953732119194
 GameObject:
@@ -13986,8 +13986,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 5555784033363949321}
   pizza: {fileID: 3658118621816126878}
 --- !u!1 &2701882515670471262
@@ -14103,7 +14103,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63bea03e94a30f74493f847016112147, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RendererMonoBehaviour
   m_renderers:
   - {fileID: 2717069345634754409}
@@ -14356,7 +14356,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -15273,7 +15273,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edaba7b2f84bed64d878a27a5f898cd0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Production
   rendererMono: {fileID: 1949867750544556267}
   skins:
@@ -15539,7 +15539,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &2913364784737743661
 GameObject:
@@ -16122,7 +16122,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &3091447033759965061
 GameObject:
@@ -16167,7 +16167,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &3102219170181507057
 GameObject:
@@ -16278,7 +16278,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &3114489658583126557
 GameObject:
@@ -17563,8 +17563,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 8923620497353386791}
   pizza: {fileID: 8298356598325534107}
 --- !u!1 &3345384096120843909
@@ -17861,7 +17861,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 448abbdddd42f164ab0b28f15afe132a, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::ContainerView
   borderRenderer:
     isPresent: 1
@@ -18204,8 +18204,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 3873235545175936068}
   pizza: {fileID: 5161145756223619306}
 --- !u!1 &3493989924546154906
@@ -18250,7 +18250,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63bea03e94a30f74493f847016112147, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RendererMonoBehaviour
   m_renderers:
   - {fileID: 1557598517024005201}
@@ -18365,7 +18365,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &3583441011581805615
 GameObject:
@@ -18443,7 +18443,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
@@ -18466,7 +18466,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
@@ -18685,7 +18685,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.2688679, g: 1, b: 0.37208658, a: 1}
@@ -18837,7 +18837,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78f904397a9ff584cac7fb437d416d8e, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::ContainerMaterialView
   colorObject: {fileID: 7088620922551836427}
   noAsignObject: {fileID: 6268608198989470578}
@@ -19274,7 +19274,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &3814248614417950310
 GameObject:
@@ -19319,7 +19319,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &3829938227418703478
 GameObject:
@@ -19363,8 +19363,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 8581053767011329267}
   pizza: {fileID: 6979439075700348256}
 --- !u!1 &3845935683006356134
@@ -19712,7 +19712,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8cdc52ff4b8d9742bd7b58241d7e9d5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::ProductionLine
   root: {fileID: 7965831980761214610}
   productionPooler:
@@ -19782,7 +19782,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &3977036097614180697
 GameObject:
@@ -20047,8 +20047,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 8319811875755629590}
   pizza: {fileID: 1835092383856283760}
 --- !u!1 &4053799058697610733
@@ -20366,7 +20366,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &4104209842469398104
 GameObject:
@@ -20423,7 +20423,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.2688679, g: 1, b: 0.37208658, a: 1}
@@ -20562,7 +20562,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edaba7b2f84bed64d878a27a5f898cd0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Production
   rendererMono: {fileID: 4546946313185848108}
   skins:
@@ -20772,7 +20772,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &4213028474232058719
 GameObject:
@@ -21032,7 +21032,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c2d2828b4b6ac44692951bf5da1a2c2, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMap3D
   topLeftCornerPrefab: {fileID: 2437143598809088262, guid: e632b782791c8e348ba7583dab3f7a71, type: 3}
   topCenterPrefab: {fileID: 1678971557611517598, guid: 641bc4fcb4239d14aab497f5f3498d52, type: 3}
@@ -21117,7 +21117,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &4252338779719741852
 GameObject:
@@ -21777,7 +21777,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -22385,7 +22385,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &4470139621162164856
 GameObject:
@@ -22966,7 +22966,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &4574771478318426848
 GameObject:
@@ -23473,7 +23473,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63bea03e94a30f74493f847016112147, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RendererMonoBehaviour
   m_renderers:
   - {fileID: 2093127524424162699}
@@ -23765,7 +23765,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &4670207802405162801
 GameObject:
@@ -24568,8 +24568,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 7206519388541443962}
   pizza: {fileID: 9156614485948430435}
 --- !u!1 &4805283901683839857
@@ -25586,7 +25586,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
@@ -25609,7 +25609,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
@@ -25884,7 +25884,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &5224791580374155688
 GameObject:
@@ -26019,7 +26019,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &5227994333237430491
 GameObject:
@@ -26130,7 +26130,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &5242822298355839625
 GameObject:
@@ -26377,7 +26377,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &5296063689125216057
 GameObject:
@@ -27060,7 +27060,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &5401794923350080541
 GameObject:
@@ -27195,7 +27195,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &5425213314058082281
 GameObject:
@@ -28080,8 +28080,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 2897592374934946419}
   pizza: {fileID: 2535768507820302414}
 --- !u!1 &5576541324252127982
@@ -28216,7 +28216,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &5589660508464352757
 GameObject:
@@ -28353,7 +28353,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &5605668126689011053
 GameObject:
@@ -28399,7 +28399,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edaba7b2f84bed64d878a27a5f898cd0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Production
   rendererMono: {fileID: 8532395924950646840}
   skins:
@@ -28711,7 +28711,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &5651831241913195657
 GameObject:
@@ -29119,7 +29119,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &5716038703434361660
 GameObject:
@@ -29742,7 +29742,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &5890337587481048122
 GameObject:
@@ -30002,7 +30002,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &5946353434095681491
 GameObject:
@@ -30149,7 +30149,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.2688679, g: 1, b: 0.37208658, a: 1}
@@ -30424,7 +30424,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &6060193458475634747
 GameObject:
@@ -30468,8 +30468,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 5262566125727960477}
   pizza: {fileID: 8181567855235721340}
 --- !u!1 &6085722218507367595
@@ -30605,7 +30605,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &6130401067922592949
 GameObject:
@@ -30682,8 +30682,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 8446664111390521695}
   pizza: {fileID: 8025186755845290723}
 --- !u!1 &6150035666910335982
@@ -30840,8 +30840,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 2319778541931343723}
   pizza: {fileID: 3887848240731637193}
 --- !u!1 &6210716202694121780
@@ -30977,7 +30977,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &6258137505978352253
 GameObject:
@@ -31531,7 +31531,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edaba7b2f84bed64d878a27a5f898cd0, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Production
   rendererMono: {fileID: 2671307544334833902}
   skins:
@@ -31592,7 +31592,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.2688679, g: 1, b: 0.37208658, a: 1}
@@ -31834,7 +31834,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &6386768276612053139
 GameObject:
@@ -32102,7 +32102,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -32233,7 +32233,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &6571437971356039004
 GameObject:
@@ -32485,7 +32485,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37e3c69eee990884b8d4da4929d89f5e, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::ContainerBoombDataView
   amountText:
     value:
@@ -32929,7 +32929,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &6698719303178423231
 GameObject:
@@ -33255,7 +33255,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &6763625480566199623
 GameObject:
@@ -34422,8 +34422,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 1646205485642862795}
   pizza: {fileID: 5234607967699031823}
 --- !u!1 &6990051548414168035
@@ -35029,7 +35029,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &7056145006468561132
 GameObject:
@@ -35503,7 +35503,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &7207166175131035398
 GameObject:
@@ -35547,7 +35547,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63bea03e94a30f74493f847016112147, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RendererMonoBehaviour
   m_renderers:
   - {fileID: 1580870034344799795}
@@ -35594,7 +35594,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &7217688664751314887
 GameObject:
@@ -35731,7 +35731,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e648ba3bd9711834eba36a2b5ab9db0c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::LevelObjectSpawner
   tileMap3D: {fileID: 6383232529454084112}
   containerPooler:
@@ -35804,7 +35804,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78f904397a9ff584cac7fb437d416d8e, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::ContainerMaterialView
   colorObject: {fileID: 5196822190990646331}
   noAsignObject: {fileID: 7143945252182563797}
@@ -36192,7 +36192,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &7337192923252970676
 GameObject:
@@ -36249,7 +36249,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -36262,7 +36262,7 @@ MonoBehaviour:
   m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 5a5ed42432e3da845af041fab9ef0a6e, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -36937,7 +36937,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &7388050819284790767
 GameObject:
@@ -37913,7 +37913,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.2688679, g: 1, b: 0.37208658, a: 1}
@@ -38156,7 +38156,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &7595289896621325825
 GameObject:
@@ -38201,7 +38201,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &7620651853147798384
 GameObject:
@@ -38774,7 +38774,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &7740473786059523839
 GameObject:
@@ -38975,7 +38975,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf6f54515be96854ba8ca862dfdb8b20, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::LevelFactory
   levelRunnerReference:
     prefab: {fileID: 6659657002335854008, guid: 0b89b6efdba26294eabf1968acac2749, type: 3}
@@ -39035,7 +39035,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.2688679, g: 1, b: 0.37208658, a: 1}
@@ -39101,7 +39101,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e37e3d9348e8224082e06f7099e2472, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Container
   shapeRoot: {fileID: 1938910146448100005}
   containerMaterialView: {fileID: 6561921391977635754}
@@ -39766,7 +39766,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &7966281711623132825
 GameObject:
@@ -39842,8 +39842,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 4365994604192645012}
   pizza: {fileID: 651774225865246861}
 --- !u!1 &7969870809244540130
@@ -40047,7 +40047,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &8053060699864084853
 GameObject:
@@ -40126,7 +40126,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63bea03e94a30f74493f847016112147, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RendererMonoBehaviour
   m_renderers:
   - {fileID: 1185913318043457120}
@@ -40263,8 +40263,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4af2895d1119fe2459bbc04b369d9cb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   audioSource: {fileID: 7271493765445771668}
 --- !u!82 &7271493765445771668
 AudioSource:
@@ -40952,7 +40952,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &8142567374134350678
 GameObject:
@@ -41102,7 +41102,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -41115,7 +41115,7 @@ MonoBehaviour:
   m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 382c958a303ca654c8890bc7358214c9, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 5a5ed42432e3da845af041fab9ef0a6e, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -41462,7 +41462,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &8237367917396889767
 GameObject:
@@ -41631,7 +41631,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63bea03e94a30f74493f847016112147, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RendererMonoBehaviour
   m_renderers:
   - {fileID: 3786434246772290018}
@@ -41677,7 +41677,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &8319849257372547405
 GameObject:
@@ -41818,7 +41818,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ff8ae873ff7d644397c689255c37a34, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::ContainerMovementView
   horizontalDirectionObject:
     isPresent: 1
@@ -41969,7 +41969,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &8396461516425328643
 GameObject:
@@ -42713,7 +42713,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
@@ -42736,7 +42736,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
@@ -42785,8 +42785,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 7072966620433286479}
   pizza: {fileID: 8409197390687997390}
 --- !u!1 &8542979864591237318
@@ -42957,7 +42957,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &8594766276788454789
 GameObject:
@@ -43094,8 +43094,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 1518802374715694278}
   pizza: {fileID: 1362716791103514729}
 --- !u!1 &8615768362533578545
@@ -43140,7 +43140,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &8635773624545166745
 GameObject:
@@ -43184,7 +43184,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63bea03e94a30f74493f847016112147, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RendererMonoBehaviour
   m_renderers:
   - {fileID: 9048925335336937130}
@@ -43369,8 +43369,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 8080568870967853395}
   pizza: {fileID: 7707719686654909617}
 --- !u!1 &8684763341916229838
@@ -43598,8 +43598,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 7135949135158716170}
   pizza: {fileID: 1821250748619272321}
 --- !u!1 &8695533270009311630
@@ -44070,8 +44070,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13f6d955883a523439498e2e55b032d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   pin: {fileID: 8119046877737671972}
   pizza: {fileID: 4938499098426378630}
 --- !u!1 &8768525595577976276
@@ -44150,7 +44150,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4ea6dde6ba02c34e8b90fd82943bd44, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.TileMapItem
 --- !u!1 &8800414457473553071
 GameObject:
@@ -44570,7 +44570,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c09d0aa2361b9814e8ee03c71d92f43c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Place
 --- !u!1 &8854373068605700554
 GameObject:
@@ -45333,7 +45333,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63bea03e94a30f74493f847016112147, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: DraftUtils::DraftUtils.RendererMonoBehaviour
   m_renderers:
   - {fileID: 826020386350630354}
@@ -45418,7 +45418,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e37e3d9348e8224082e06f7099e2472, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Container
   shapeRoot: {fileID: 526161822288133899}
   containerMaterialView: {fileID: 1398695990171223191}
@@ -45894,7 +45894,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
@@ -45917,7 +45917,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0

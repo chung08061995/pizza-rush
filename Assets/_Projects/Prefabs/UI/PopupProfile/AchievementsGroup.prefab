@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -139,8 +139,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: a3a4bdab80fc4ca880ee2efb777d898f, type: 2}
+      value:
+      objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
     - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278337152
@@ -148,6 +148,10 @@ PrefabInstance:
     - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092436119272280575, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5432613577239590783, guid: fe9fc296d7682314593694ce9506da3f, type: 3}
       propertyPath: m_Name
@@ -462,8 +466,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7321035698124976873, guid: f1b71578a893fe24dbf700b223065cce, type: 3}
       propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: a3a4bdab80fc4ca880ee2efb777d898f, type: 2}
+      value:
+      objectReference: {fileID: 2100000, guid: c7a64798a712d4b998ad2b086f355eb2, type: 2}
     - target: {fileID: 7321035698124976873, guid: f1b71578a893fe24dbf700b223065cce, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4279519100
@@ -471,6 +475,10 @@ PrefabInstance:
     - target: {fileID: 7321035698124976873, guid: f1b71578a893fe24dbf700b223065cce, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321035698124976873, guid: f1b71578a893fe24dbf700b223065cce, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
