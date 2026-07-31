@@ -21,15 +21,15 @@ MonoBehaviour:
   safeBottom: 0.18
   minimumOrthographicSize: 5
   maximumOrthographicSize: 18
-  mainLightColor: {r: 1, g: 1, b: 1, a: 1}
-  mainLightIntensity: 1
+  mainLightColor: {r: 1, g: 0.78, b: 0.54, a: 1}
+  mainLightIntensity: 1.15
   mainLightRotation: {x: 50, y: -30, z: 0}
   hardShadowStrength: 1
-  ambientSky: {r: 0.10980392, g: 0.29411766, b: 0.8117647, a: 1}
-  ambientEquator: {r: 0.654902, g: 0.5372549, b: 0.65882355, a: 1}
-  ambientGround: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  ambientIntensity: 1
-  cameraBackground: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 1}
+  ambientSky: {r: 0.16, g: 0.25, b: 0.34, a: 1}
+  ambientEquator: {r: 0.54, g: 0.31, b: 0.2, a: 1}
+  ambientGround: {r: 0.12, g: 0.045, b: 0.022, a: 1}
+  ambientIntensity: 1.1
+  cameraBackground: {r: 0.075, g: 0.12, b: 0.16, a: 1}
   floor: {r: 0.66760784, g: 0.7199137, b: 0.74509805, a: 1}
   boardTile: {r: 0.88699996, g: 0.88699996, b: 0.88699996, a: 1}
   boardGround: {r: 0.752, g: 0.752, b: 0.752, a: 1}

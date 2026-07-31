@@ -1,0 +1,9 @@
+KayKit: Restaurant Bits
+Creator: Kay Lousberg
+License: Creative Commons Zero v1.0 Universal (CC0 1.0)
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Source: https://kaylousberg.itch.io/restaurant-bits
+Checked: 2026-07-31
+
+The creator's asset page identifies this pack as CC0. Attribution is not
+required, but source and license information are retained for provenance.
