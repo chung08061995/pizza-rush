@@ -11,8 +11,9 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
 
     [Header("Camera framing")]
     [SerializeField, Range(45f, 80f)] private float cameraPitch = 65f;
-    [SerializeField, Min(0f)] private float framingPaddingCells = 0.75f;
-    [SerializeField, Min(0f)] private float productionLineEntranceCells = 1.5f;
+    [SerializeField, Min(0f)] private float framingPaddingCells = 0f;
+    [SerializeField, Min(0f)] private float powerupReserveCells = 1f;
+    [SerializeField, Min(0f)] private float productionLineEntranceCells = 0.55f;
     [SerializeField, Range(0f, 0.25f)] private float safeLeft = 0.03f;
     [SerializeField, Range(0f, 0.25f)] private float safeRight = 0.03f;
     [SerializeField, Range(0f, 0.35f)] private float safeTop = 0.13f;
@@ -51,6 +52,7 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
     [SerializeField] private Material conveyorBorderMaterial;
 
     internal float FramingPaddingCells => framingPaddingCells;
+    internal float PowerupReserveCells => powerupReserveCells;
     internal float ProductionLineEntranceCells => productionLineEntranceCells;
 
     internal void ApplyRenderRig(Camera gameplayCamera, Light directionalLight, Volume globalVolume)

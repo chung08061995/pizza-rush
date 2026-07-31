@@ -279,6 +279,11 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         }
 
         Bounds bounds = gridBounds;
+        float powerupReserve = Mathf.Max(0f, gameplayVisualConfig.PowerupReserveCells);
+        bounds.Expand(new Vector3(
+            cellSizeX * powerupReserve * 2f,
+            0f,
+            cellSizeZ * powerupReserve * 2f));
         float entranceDistance = gameplayVisualConfig.ProductionLineEntranceCells * cellSize;
         foreach (ProductionLine line in levelObjectSpawner.ProductionLinePooler.ActiveItems)
         {
