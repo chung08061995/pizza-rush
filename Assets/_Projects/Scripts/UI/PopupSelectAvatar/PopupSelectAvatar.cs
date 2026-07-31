@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -90,6 +91,23 @@ public class PopupSelectAvatar : DraftUtils.DraftMonoBehaviour
     private void ClicEditButton()
     {
         DraftUtils.Utils.TMPInputFieldUtils.Focus(nameChangeInput);
+        StartCoroutine(FocusNameInputNextFrame());
+    }
+
+    private IEnumerator FocusNameInputNextFrame()
+    {
+        // Let the popup show animation finish before selecting the field;
+        // otherwise the animation can clear EventSystem focus on mobile.
+        yield return new WaitForSecondsRealtime(0.35f);
+        var eventSystem = UnityEngine.EventSystems.EventSystem.current;
+        if (eventSystem != null)
+        {
+            nameChangeInput.OnPointerClick(new UnityEngine.EventSystems.PointerEventData(eventSystem));
+        }
+        else
+        {
+            DraftUtils.Utils.TMPInputFieldUtils.Focus(nameChangeInput);
+        }
     }
 
     private void OnNameChanged(string value)
