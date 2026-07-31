@@ -38,6 +38,7 @@ public class PopupHomeContent : DraftUtils.DraftMonoBehaviour
         }
         RefreshNoAdsVisibility();
         starterButton.gameObject.SetActive(false);
+        dailyButton.gameObject.SetActive(false);
         dailyButton.onClick.AddListener(ClickDailyButton);
 
         addGoldButton.Disable();
