@@ -8,6 +8,20 @@ using UnityEngine;
 /// </summary>
 public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
 {
+    private struct RailPiece
+    {
+        public Vector3 start;
+        public Vector3 end;
+        public ColorType colorType;
+
+        public RailPiece(Vector3 start, Vector3 end, ColorType colorType)
+        {
+            this.start = start;
+            this.end = end;
+            this.colorType = colorType;
+        }
+    }
+
     private const string VisualRootName = "__PizzaProductionLineTheme";
     private static readonly Dictionary<ColorType, Material> RailMaterials = new();
     private ProductionLine productionLine;
@@ -54,39 +68,62 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
 
     private void CreateRailRuns(IReadOnlyList<Production> productions)
     {
-        var start = 0;
-        while (start < productions.Count)
+        if (productions.Count == 1)
         {
-            var end = start;
-            while (end + 1 < productions.Count && productions[end + 1].ColorType == productions[start].ColorType)
+            var center = productions[0].transform.position;
+            var direction = GetAxisDirection(transform.forward);
+            CreateRailSegment(center - direction * 0.25f, center + direction * 0.25f,
+                productions[0].ColorType);
+            return;
+        }
+
+        var pieces = new List<RailPiece>();
+        var firstPosition = productions[0].transform.position;
+        var secondPosition = productions[1].transform.position;
+        var firstDirection = GetAxisDirection(secondPosition - firstPosition);
+        var firstSpacing = Vector3.Distance(firstPosition, secondPosition);
+        pieces.Add(new RailPiece(
+            firstPosition - firstDirection * firstSpacing * 0.5f,
+            firstPosition,
+            productions[0].ColorType));
+
+        for (var index = 0; index < productions.Count - 1; index++)
+        {
+            var currentPosition = productions[index].transform.position;
+            var nextPosition = productions[index + 1].transform.position;
+            var midpoint = Vector3.Lerp(currentPosition, nextPosition, 0.5f);
+            pieces.Add(new RailPiece(currentPosition, midpoint, productions[index].ColorType));
+            pieces.Add(new RailPiece(midpoint, nextPosition, productions[index + 1].ColorType));
+        }
+
+        var lastIndex = productions.Count - 1;
+        var previousPosition = productions[lastIndex - 1].transform.position;
+        var lastPosition = productions[lastIndex].transform.position;
+        var lastDirection = GetAxisDirection(lastPosition - previousPosition);
+        var lastSpacing = Vector3.Distance(previousPosition, lastPosition);
+        pieces.Add(new RailPiece(
+            lastPosition,
+            lastPosition + lastDirection * lastSpacing * 0.5f,
+            productions[lastIndex].ColorType));
+
+        var currentPiece = pieces[0];
+        for (var index = 1; index < pieces.Count; index++)
+        {
+            var nextPiece = pieces[index];
+            if (CanMerge(currentPiece, nextPiece))
             {
-                end++;
+                currentPiece.end = nextPiece.end;
+                continue;
             }
 
-            var firstPosition = productions[start].transform.position;
-            var lastPosition = productions[end].transform.position;
-            var direction = GetLineDirection(productions, start, end);
-            var spacing = GetSpacing(productions, start, end);
-            var runStart = start > 0
-                ? Vector3.Lerp(productions[start - 1].transform.position, firstPosition, 0.5f)
-                : firstPosition - direction * spacing * 0.5f;
-            var runEnd = end + 1 < productions.Count
-                ? Vector3.Lerp(lastPosition, productions[end + 1].transform.position, 0.5f)
-                : lastPosition + direction * spacing * 0.5f;
-
-            CreateRailSegment(runStart, runEnd, productions[start].ColorType);
-            start = end + 1;
+            CreateRailSegment(currentPiece.start, currentPiece.end, currentPiece.colorType);
+            currentPiece = nextPiece;
         }
+        CreateRailSegment(currentPiece.start, currentPiece.end, currentPiece.colorType);
     }
 
-    private static Vector3 GetLineDirection(IReadOnlyList<Production> productions, int start, int end)
+    private static Vector3 GetAxisDirection(Vector3 delta)
     {
-        Vector3 delta;
-        if (end > start) delta = productions[end].transform.position - productions[start].transform.position;
-        else if (start + 1 < productions.Count) delta = productions[start + 1].transform.position - productions[start].transform.position;
-        else if (start > 0) delta = productions[start].transform.position - productions[start - 1].transform.position;
-        else delta = Vector3.forward;
-
         delta.y = 0f;
         if (delta.sqrMagnitude < 0.0001f) return Vector3.forward;
         return Mathf.Abs(delta.x) > Mathf.Abs(delta.z)
@@ -94,12 +131,24 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
             : new Vector3(0f, 0f, Mathf.Sign(delta.z));
     }
 
-    private static float GetSpacing(IReadOnlyList<Production> productions, int start, int end)
+    private static bool CanMerge(RailPiece current, RailPiece next)
     {
-        if (end > start) return Vector3.Distance(productions[start].transform.position, productions[start + 1].transform.position);
-        if (start + 1 < productions.Count) return Vector3.Distance(productions[start].transform.position, productions[start + 1].transform.position);
-        if (start > 0) return Vector3.Distance(productions[start - 1].transform.position, productions[start].transform.position);
-        return 0.5f;
+        if (current.colorType != next.colorType || Vector3.Distance(current.end, next.start) > 0.03f)
+        {
+            return false;
+        }
+
+        var currentDirection = GetAxisDirection(current.end - current.start);
+        var nextDirection = GetAxisDirection(next.end - next.start);
+        if (Vector3.Dot(currentDirection, nextDirection) < 0.99f)
+        {
+            return false;
+        }
+
+        var alongX = Mathf.Abs(currentDirection.x) > 0.5f;
+        return alongX
+            ? Mathf.Abs(current.start.z - next.start.z) < 0.03f
+            : Mathf.Abs(current.start.x - next.start.x) < 0.03f;
     }
 
     private void CreateRailSegment(Vector3 start, Vector3 end, ColorType colorType)
