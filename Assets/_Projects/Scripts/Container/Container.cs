@@ -75,6 +75,14 @@ public class Container : DraftUtils.DraftMonoBehaviour
         containerMaterialView.SetData(
             _data.containerData.containerMaterialType,
             ContainerShapeTypeExtensions.GetPartPositions(_data.containerData.containerShapeType));
+        var pizzaThemeVisual = shapeRoot.GetComponent<PizzaContainerThemeVisual>();
+        if (pizzaThemeVisual == null)
+        {
+            pizzaThemeVisual = shapeRoot.gameObject.AddComponent<PizzaContainerThemeVisual>();
+        }
+        pizzaThemeVisual.Apply(
+            _data.containerData,
+            ContainerShapeTypeExtensions.GetPartPositions(_data.containerData.containerShapeType));
         foreach (var place in Places)
         {
             if (place != null)
@@ -448,6 +456,9 @@ public class Container : DraftUtils.DraftMonoBehaviour
         _data.containerData.containerColorData.colorType =
             _data.containerData.containerColorData.colors[currentColorLayerIndex];
         containerView.SetData(_data.containerData);
+        shapeRoot.GetComponent<PizzaContainerThemeVisual>()?.Apply(
+            _data.containerData,
+            ContainerShapeTypeExtensions.GetPartPositions(_data.containerData.containerShapeType));
         return true;
     }
 

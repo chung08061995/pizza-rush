@@ -17,6 +17,7 @@ public class ProductionLine : DraftUtils.DraftMonoBehaviour
 
     [ShowInInspector] private ProductionLineRuntimeData _data;
     public ProductionLineRuntimeData Data => _data;
+    private PizzaProductionLineThemeVisual pizzaThemeVisual;
 
     [Button]
     private void Rotate90()
@@ -80,6 +81,7 @@ public class ProductionLine : DraftUtils.DraftMonoBehaviour
             productionGo.CurrentIndex = i;
             productionGo.transform.position = DraftUtils.Utils.CameraInput.GetSpawnPositionByIndex<Place>(i, places, place => place.transform.position);
         }
+        EnsurePizzaThemeVisual().RequestRefresh();
     }
 
     public void SetupProductionTransform(Production production, int index)
@@ -104,6 +106,7 @@ public class ProductionLine : DraftUtils.DraftMonoBehaviour
             int extraIndex = index - places.Count + 1;
             production.transform.localPosition = lastPlace.transform.localPosition + spacing * extraIndex;
         }
+        EnsurePizzaThemeVisual().RequestRefresh();
     }
 
     public void AnimateProductionToShift(Production production, int index, float duration)
@@ -116,7 +119,8 @@ public class ProductionLine : DraftUtils.DraftMonoBehaviour
         if (index < places.Count)
         {
             production.transform.SetParent(places[index].transform, true);
-            production.transform.DOLocalMove(Vector3.zero, duration).SetEase(DG.Tweening.Ease.Linear);
+            production.transform.DOLocalMove(Vector3.zero, duration).SetEase(DG.Tweening.Ease.Linear)
+                .OnComplete(() => EnsurePizzaThemeVisual().RequestRefresh());
         }
         else
         {
@@ -130,7 +134,8 @@ public class ProductionLine : DraftUtils.DraftMonoBehaviour
 
             int extraIndex = index - places.Count + 1;
             var targetLocalPos = lastPlace.transform.localPosition + spacing * extraIndex;
-            production.transform.DOLocalMove(targetLocalPos, duration).SetEase(DG.Tweening.Ease.Linear);
+            production.transform.DOLocalMove(targetLocalPos, duration).SetEase(DG.Tweening.Ease.Linear)
+                .OnComplete(() => EnsurePizzaThemeVisual().RequestRefresh());
         }
     }
 
@@ -157,6 +162,7 @@ public class ProductionLine : DraftUtils.DraftMonoBehaviour
             // If there are no active productions, reset to default material
             //rendererMono.ResetMaterial();
         }
+        EnsurePizzaThemeVisual().RequestRefresh();
     }
     public List<Production> GetAllProductionInLineSampleColorAsContainer(ColorType colorType, ProductionLine productionLine)
     {
@@ -188,6 +194,7 @@ public class ProductionLine : DraftUtils.DraftMonoBehaviour
             productionGo.CurrentIndex = indexInData;
             productionGo.transform.position = DraftUtils.Utils.CameraInput.GetSpawnPositionByIndex<Place>(indexInData, places, place => place.transform.position);
         }
+        EnsurePizzaThemeVisual().RequestRefresh();
     }
 
     internal void SetColor(Color color)
@@ -196,5 +203,19 @@ public class ProductionLine : DraftUtils.DraftMonoBehaviour
         {
             renderer.material.color = color;
         }
+    }
+
+    private PizzaProductionLineThemeVisual EnsurePizzaThemeVisual()
+    {
+        if (pizzaThemeVisual == null)
+        {
+            pizzaThemeVisual = GetComponent<PizzaProductionLineThemeVisual>();
+            if (pizzaThemeVisual == null)
+            {
+                pizzaThemeVisual = gameObject.AddComponent<PizzaProductionLineThemeVisual>();
+            }
+            pizzaThemeVisual.Initialize(this);
+        }
+        return pizzaThemeVisual;
     }
 }
