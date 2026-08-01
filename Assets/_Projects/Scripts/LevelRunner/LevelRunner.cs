@@ -283,66 +283,9 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         bounds.Expand(new Vector3(
             cellSizeX * powerupReserve * 2f,
             0f,
-            cellSizeZ * powerupReserve * 2f));
-        float entranceDistance = gameplayVisualConfig.ProductionLineEntranceCells * cellSize;
-        foreach (ProductionLine line in levelObjectSpawner.ProductionLinePooler.ActiveItems)
-        {
-            if (line == null)
-            {
-                continue;
-            }
-
-            TryEncapsulateProductionEntrance(
-                ref bounds,
-                gridBounds,
-                line.transform.position,
-                entranceDistance,
-                cellSizeX,
-                cellSizeZ);
-            if (line.Places == null)
-            {
-                continue;
-            }
-
-            foreach (Place place in line.Places)
-            {
-                if (place != null)
-                {
-                    TryEncapsulateProductionEntrance(
-                        ref bounds,
-                        gridBounds,
-                        place.transform.position,
-                        entranceDistance,
-                        cellSizeX,
-                        cellSizeZ);
-                }
-            }
-        }
+            0f));
 
         return bounds;
-    }
-
-    private static void EncapsulateCell(ref Bounds bounds, Vector3 position, float sizeX, float sizeZ)
-    {
-        bounds.Encapsulate(position - new Vector3(sizeX * 0.5f, 0f, sizeZ * 0.5f));
-        bounds.Encapsulate(position + new Vector3(sizeX * 0.5f, 0f, sizeZ * 0.5f));
-    }
-
-    private static void TryEncapsulateProductionEntrance(
-        ref Bounds bounds,
-        Bounds gridBounds,
-        Vector3 position,
-        float maximumDistance,
-        float sizeX,
-        float sizeZ)
-    {
-        Vector3 groundPosition = new(position.x, gridBounds.center.y, position.z);
-        if (gridBounds.SqrDistance(groundPosition) > maximumDistance * maximumDistance)
-        {
-            return;
-        }
-
-        EncapsulateCell(ref bounds, groundPosition, sizeX, sizeZ);
     }
 
     private static void DisableNonAuthoritativeCameras(Camera authoritativeCamera)

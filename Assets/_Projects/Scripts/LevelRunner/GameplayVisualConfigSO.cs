@@ -10,15 +10,17 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
     private const string LegacyColorProperty = "_Color";
 
     [Header("Camera framing")]
-    [SerializeField, Range(45f, 80f)] private float cameraPitch = 65f;
+    [SerializeField, Range(45f, 80f)] private float cameraPitch = 80f;
+    [SerializeField] private Vector3 cameraPosition = new(4.5f, 25f, 0f);
+    [SerializeField, Min(0.1f)] private float fixedOrthographicSize = 8.563546f;
+    [SerializeField] private bool lockCameraTransform;
     [SerializeField, Min(0f)] private float framingPaddingCells = 0f;
     [SerializeField, Min(0f)] private float powerupReserveCells = 1f;
-    [SerializeField, Min(0f)] private float productionLineEntranceCells = 0.55f;
-    [SerializeField, Range(0f, 0.25f)] private float safeLeft = 0.03f;
-    [SerializeField, Range(0f, 0.25f)] private float safeRight = 0.03f;
+    [SerializeField, Range(0f, 0.25f)] private float safeLeft;
+    [SerializeField, Range(0f, 0.25f)] private float safeRight;
     [SerializeField, Range(0f, 0.35f)] private float safeTop = 0.13f;
     [SerializeField, Range(0f, 0.35f)] private float safeBottom = 0.18f;
-    [SerializeField, Min(0.1f)] private float minimumOrthographicSize = 5f;
+    [SerializeField, Min(0.1f)] private float minimumOrthographicSize = 0.1f;
     [SerializeField, Min(0.1f)] private float maximumOrthographicSize = 18f;
 
     [Header("Directional light")]
@@ -37,8 +39,8 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
     [SerializeField] private Color cameraBackground = Rgb(0x31, 0x4D, 0x79);
     [SerializeField] private Color floor = new(0.66760784f, 0.7199137f, 0.74509805f, 1f);
     [SerializeField] private Color boardTile = new(0.88699996f, 0.88699996f, 0.88699996f, 1f);
-    [SerializeField] private Color boardGround = new(0.752f, 0.752f, 0.752f, 1f);
-    [SerializeField] private Color boardBorder = new(0.402948f, 0.4534339f, 0.546f, 1f);
+    [SerializeField] private Color boardGround = new(0.88699996f, 0.88699996f, 0.88699996f, 1f);
+    [SerializeField] private Color boardBorder = new(0.88699996f, 0.88699996f, 0.88699996f, 1f);
     [SerializeField] private Color conveyorRoad = new(0.7294118f, 0.7294118f, 0.8235295f, 1f);
     [SerializeField] private Color conveyorBorder = new(0.007843138f, 0.8313726f, 0.86666673f, 1f);
 
@@ -53,7 +55,6 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
 
     internal float FramingPaddingCells => framingPaddingCells;
     internal float PowerupReserveCells => powerupReserveCells;
-    internal float ProductionLineEntranceCells => productionLineEntranceCells;
 
     internal void ApplyRenderRig(Camera gameplayCamera, Light directionalLight, Volume globalVolume)
     {
@@ -62,6 +63,11 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
             gameplayCamera.orthographic = true;
             gameplayCamera.backgroundColor = cameraBackground;
             gameplayCamera.transform.rotation = Quaternion.Euler(cameraPitch, 0f, 0f);
+            gameplayCamera.transform.position = cameraPosition;
+            if (lockCameraTransform)
+            {
+                gameplayCamera.orthographicSize = fixedOrthographicSize;
+            }
         }
 
         if (directionalLight != null)
@@ -99,6 +105,12 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
 
         gameplayCamera.orthographic = true;
         gameplayCamera.transform.rotation = Quaternion.Euler(cameraPitch, 0f, 0f);
+        gameplayCamera.transform.position = cameraPosition;
+        if (lockCameraTransform)
+        {
+            gameplayCamera.orthographicSize = fixedOrthographicSize;
+            return;
+        }
 
         float padding = Mathf.Max(0f, framingPaddingCells * Mathf.Max(0.01f, cellSize));
         worldBounds.Expand(new Vector3(padding * 2f, 0f, padding * 2f));

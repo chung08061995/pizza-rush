@@ -14,7 +14,6 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
     private static readonly Color KraftLidColor = new(0.88f, 0.72f, 0.43f);
     private static readonly Dictionary<ColorType, Material> SignalMaterials = new();
     private static readonly Dictionary<ColorType, Material> LidMaterials = new();
-    private static Material baseMaterial;
 
     private Transform visualRoot;
 
@@ -46,9 +45,7 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
             var connectedUp = occupied.Contains(cell + Vector2Int.up);
             var center = new Vector3(cell.x, 0f, cell.y);
 
-            CreateConnectedCellCube("BoxBase", center, 0.215f - SurfaceDrop, 0.10f, 0.45f,
-                connectedLeft, connectedRight, connectedDown, connectedUp, GetBaseMaterial());
-            CreateConnectedCellCube("KraftLid", center, 0.285f - SurfaceDrop, 0.075f, 0.42f,
+            CreateConnectedCellCube("KraftLid", center, 0.285f - SurfaceDrop, 0.075f, 0.42f, 0.42f, 0f, 0f,
                 connectedLeft, connectedRight, connectedDown, connectedUp, GetLidMaterial(signalType));
 
             CreateCube("VerticalStripe", center + Vector3.up * (0.350f - SurfaceDrop),
@@ -65,17 +62,30 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         Vector3 cellCenter,
         float localY,
         float height,
-        float exposedHalfExtent,
+        float exposedHalfExtentX,
+        float exposedHalfExtentZ,
+        float fixedXScale,
+        float fixedZScale,
         bool connectedLeft,
         bool connectedRight,
         bool connectedDown,
         bool connectedUp,
         Material material)
     {
-        var minX = connectedLeft ? -0.5f - JoinOverlap : -exposedHalfExtent;
-        var maxX = connectedRight ? 0.5f + JoinOverlap : exposedHalfExtent;
-        var minZ = connectedDown ? -0.5f - JoinOverlap : -exposedHalfExtent;
-        var maxZ = connectedUp ? 0.5f + JoinOverlap : exposedHalfExtent;
+        var minX = connectedLeft ? -0.5f - JoinOverlap : -exposedHalfExtentX;
+        var maxX = connectedRight ? 0.5f + JoinOverlap : exposedHalfExtentX;
+        var minZ = connectedDown ? -0.5f - JoinOverlap : -exposedHalfExtentZ;
+        var maxZ = connectedUp ? 0.5f + JoinOverlap : exposedHalfExtentZ;
+        if (fixedXScale > 0f)
+        {
+            minX = -fixedXScale * 0.5f;
+            maxX = fixedXScale * 0.5f;
+        }
+        if (fixedZScale > 0f)
+        {
+            minZ = -fixedZScale * 0.5f;
+            maxZ = fixedZScale * 0.5f;
+        }
         var offset = new Vector3((minX + maxX) * 0.5f, localY, (minZ + maxZ) * 0.5f);
         var scale = new Vector3(maxX - minX, height, maxZ - minZ);
 
@@ -132,11 +142,13 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         var collider = cube.GetComponent<Collider>();
         if (Application.isPlaying) Destroy(collider);
         else DestroyImmediate(collider);
-        cube.GetComponent<Renderer>().sharedMaterial = material;
+        var renderer = cube.GetComponent<Renderer>();
+        renderer.sharedMaterial = material;
+        if (objectName == "KraftLid" || objectName == "BoxBase")
+        {
+            renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        }
     }
-
-    private static Material GetBaseMaterial() =>
-        baseMaterial != null ? baseMaterial : baseMaterial = CreateMaterial("Pizza Box Base", new Color(0.63f, 0.35f, 0.14f));
 
     private static Material GetLidMaterial(ColorType colorType)
     {

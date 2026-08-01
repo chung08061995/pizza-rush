@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde0fa3da743d4c3195868489309098f, type: 3}
   m_Name: GameplayVisualConfig
   m_EditorClassIdentifier: Assembly-CSharp::GameplayVisualConfigSO
-  cameraPitch: 65
+  cameraPitch: 80
+  cameraPosition: {x: 4.5, y: 25, z: 0}
+  fixedOrthographicSize: 8.563546
+  lockCameraTransform: 0
   framingPaddingCells: 0
   powerupReserveCells: 1
-  productionLineEntranceCells: 0.55
-  safeLeft: 0.03
-  safeRight: 0.03
+  safeLeft: 0
+  safeRight: 0
   safeTop: 0.13
   safeBottom: 0.18
-  minimumOrthographicSize: 5
+  minimumOrthographicSize: 0.1
   maximumOrthographicSize: 18
   mainLightColor: {r: 1, g: 0.941, b: 0.871, a: 1}
   mainLightIntensity: 1.05
@@ -33,8 +35,8 @@ MonoBehaviour:
   cameraBackground: {r: 0.075, g: 0.12, b: 0.16, a: 1}
   floor: {r: 0.66760784, g: 0.7199137, b: 0.74509805, a: 1}
   boardTile: {r: 0.88699996, g: 0.88699996, b: 0.88699996, a: 1}
-  boardGround: {r: 0.752, g: 0.752, b: 0.752, a: 1}
-  boardBorder: {r: 0.402948, g: 0.4534339, b: 0.546, a: 1}
+  boardGround: {r: 0.88699996, g: 0.88699996, b: 0.88699996, a: 1}
+  boardBorder: {r: 0.88699996, g: 0.88699996, b: 0.88699996, a: 1}
   conveyorRoad: {r: 0.7294118, g: 0.7294118, b: 0.8235295, a: 1}
   conveyorBorder: {r: 0.007843138, g: 0.8313726, b: 0.86666673, a: 1}
   gameplayVolumeProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
