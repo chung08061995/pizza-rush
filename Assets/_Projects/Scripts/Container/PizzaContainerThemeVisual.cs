@@ -10,9 +10,11 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
     private const float SurfaceDrop = 0.155f;
     private const float PerimeterHeight = 0.12f;
     private const float PerimeterThickness = 0.06f;
+    private const float LidTintStrength = 0.55f;
+    private static readonly Color KraftLidColor = new(0.88f, 0.72f, 0.43f);
     private static readonly Dictionary<ColorType, Material> SignalMaterials = new();
+    private static readonly Dictionary<ColorType, Material> LidMaterials = new();
     private static Material baseMaterial;
-    private static Material lidMaterial;
 
     private Transform visualRoot;
 
@@ -46,7 +48,7 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
                 GetBaseMaterial());
             CreateCube("KraftLid", center + Vector3.up * (0.285f - SurfaceDrop),
                 new Vector3(connectedX ? 1.02f : 0.84f, 0.075f, connectedZ ? 1.02f : 0.84f),
-                GetLidMaterial());
+                GetLidMaterial(signalType));
 
             CreateCube("VerticalStripe", center + Vector3.up * (0.350f - SurfaceDrop),
                 new Vector3(0.09f, 0.016f, 0.50f), signalMaterial);
@@ -146,8 +148,19 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
     private static Material GetBaseMaterial() =>
         baseMaterial != null ? baseMaterial : baseMaterial = CreateMaterial("Pizza Box Base", new Color(0.63f, 0.35f, 0.14f));
 
-    private static Material GetLidMaterial() =>
-        lidMaterial != null ? lidMaterial : lidMaterial = CreateMaterial("Pizza Box Kraft Lid", new Color(0.88f, 0.72f, 0.43f));
+    private static Material GetLidMaterial(ColorType colorType)
+    {
+        if (LidMaterials.TryGetValue(colorType, out var material) && material != null) return material;
+
+        if (!DataManager.Instance.ProductionLineColorsSO.TryGetValue(colorType, out var signalColor))
+        {
+            signalColor = KraftLidColor;
+        }
+        var tintedLidColor = Color.Lerp(KraftLidColor, signalColor, LidTintStrength);
+        material = CreateMaterial($"Pizza Box Tinted Lid {colorType}", tintedLidColor);
+        LidMaterials[colorType] = material;
+        return material;
+    }
 
     private static Material GetSignalMaterial(ColorType colorType)
     {
