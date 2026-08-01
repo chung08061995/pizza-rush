@@ -8,8 +8,8 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
 {
     private const string VisualRootName = "__PizzaContainerTheme";
     private const float SurfaceDrop = 0.155f;
-    private const float PerimeterHeight = 0.12f;
-    private const float PerimeterThickness = 0.06f;
+    // Slightly overlap only internal joins so rasterization cannot expose hairline seams.
+    private const float JoinOverlap = 0.006f;
     private const float LidTintStrength = 0.55f;
     private static readonly Color KraftLidColor = new(0.88f, 0.72f, 0.43f);
     private static readonly Dictionary<ColorType, Material> SignalMaterials = new();
@@ -33,22 +33,23 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         visualRoot.SetParent(transform, false);
         visualRoot.gameObject.layer = gameObject.layer;
 
+        EnsureProductionColors();
         var occupied = new HashSet<Vector2Int>(occupiedCells);
         var signalType = data.isStone ? ColorType.Gray : data.containerColorData.colorType;
         var signalMaterial = GetSignalMaterial(signalType);
 
         foreach (var cell in occupiedCells)
         {
-            var connectedX = occupied.Contains(cell + Vector2Int.left) || occupied.Contains(cell + Vector2Int.right);
-            var connectedZ = occupied.Contains(cell + Vector2Int.up) || occupied.Contains(cell + Vector2Int.down);
+            var connectedLeft = occupied.Contains(cell + Vector2Int.left);
+            var connectedRight = occupied.Contains(cell + Vector2Int.right);
+            var connectedDown = occupied.Contains(cell + Vector2Int.down);
+            var connectedUp = occupied.Contains(cell + Vector2Int.up);
             var center = new Vector3(cell.x, 0f, cell.y);
 
-            CreateCube("BoxBase", center + Vector3.up * (0.215f - SurfaceDrop),
-                new Vector3(connectedX ? 1.02f : 0.90f, 0.10f, connectedZ ? 1.02f : 0.90f),
-                GetBaseMaterial());
-            CreateCube("KraftLid", center + Vector3.up * (0.285f - SurfaceDrop),
-                new Vector3(connectedX ? 1.02f : 0.84f, 0.075f, connectedZ ? 1.02f : 0.84f),
-                GetLidMaterial(signalType));
+            CreateConnectedCellCube("BoxBase", center, 0.215f - SurfaceDrop, 0.10f, 0.45f,
+                connectedLeft, connectedRight, connectedDown, connectedUp, GetBaseMaterial());
+            CreateConnectedCellCube("KraftLid", center, 0.285f - SurfaceDrop, 0.075f, 0.42f,
+                connectedLeft, connectedRight, connectedDown, connectedUp, GetLidMaterial(signalType));
 
             CreateCube("VerticalStripe", center + Vector3.up * (0.350f - SurfaceDrop),
                 new Vector3(0.09f, 0.016f, 0.50f), signalMaterial);
@@ -56,51 +57,29 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
                 new Vector3(0.50f, 0.016f, 0.09f), signalMaterial);
             CreateCube("StripeCenter", center + Vector3.up * (0.370f - SurfaceDrop),
                 new Vector3(0.09f, 0.008f, 0.09f), signalMaterial);
-
-            CreateItemPerimeter(cell, center, occupied, connectedX, connectedZ);
         }
     }
 
-    private void CreateItemPerimeter(
-        Vector2Int cell,
-        Vector3 center,
-        HashSet<Vector2Int> occupied,
-        bool connectedX,
-        bool connectedZ)
+    private void CreateConnectedCellCube(
+        string objectName,
+        Vector3 cellCenter,
+        float localY,
+        float height,
+        float exposedHalfExtent,
+        bool connectedLeft,
+        bool connectedRight,
+        bool connectedDown,
+        bool connectedUp,
+        Material material)
     {
-        var perimeterY = 0.145f;
-        var xEdgeOffset = connectedX ? 0.48f : 0.45f;
-        var zEdgeOffset = connectedZ ? 0.48f : 0.45f;
-        var horizontalLength = connectedX ? 1.02f : 0.90f;
-        var verticalLength = connectedZ ? 1.02f : 0.90f;
-        var material = GetBaseMaterial();
+        var minX = connectedLeft ? -0.5f - JoinOverlap : -exposedHalfExtent;
+        var maxX = connectedRight ? 0.5f + JoinOverlap : exposedHalfExtent;
+        var minZ = connectedDown ? -0.5f - JoinOverlap : -exposedHalfExtent;
+        var maxZ = connectedUp ? 0.5f + JoinOverlap : exposedHalfExtent;
+        var offset = new Vector3((minX + maxX) * 0.5f, localY, (minZ + maxZ) * 0.5f);
+        var scale = new Vector3(maxX - minX, height, maxZ - minZ);
 
-        // Only exposed edges get a rail. Shared edges between cells remain open,
-        // so the brown frame reads as one perimeter around the complete item.
-        if (!occupied.Contains(cell + Vector2Int.left))
-        {
-            CreateCube("ItemPerimeter_Left",
-                center + new Vector3(-xEdgeOffset, perimeterY, 0f),
-                new Vector3(PerimeterThickness, PerimeterHeight, verticalLength), material);
-        }
-        if (!occupied.Contains(cell + Vector2Int.right))
-        {
-            CreateCube("ItemPerimeter_Right",
-                center + new Vector3(xEdgeOffset, perimeterY, 0f),
-                new Vector3(PerimeterThickness, PerimeterHeight, verticalLength), material);
-        }
-        if (!occupied.Contains(cell + Vector2Int.down))
-        {
-            CreateCube("ItemPerimeter_Bottom",
-                center + new Vector3(0f, perimeterY, -zEdgeOffset),
-                new Vector3(horizontalLength, PerimeterHeight, PerimeterThickness), material);
-        }
-        if (!occupied.Contains(cell + Vector2Int.up))
-        {
-            CreateCube("ItemPerimeter_Top",
-                center + new Vector3(0f, perimeterY, zEdgeOffset),
-                new Vector3(horizontalLength, PerimeterHeight, PerimeterThickness), material);
-        }
+        CreateCube(objectName, cellCenter + offset, scale, material);
     }
 
     private void SetLegacySurfaceVisible(bool visible)
@@ -115,6 +94,17 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         foreach (var renderer in root.GetComponentsInChildren<Renderer>(true))
         {
             renderer.enabled = visible;
+        }
+    }
+
+    private static void EnsureProductionColors()
+    {
+        var colors = DataManager.Instance == null
+            ? null
+            : DataManager.Instance.ProductionLineColorsSO;
+        if (colors != null && colors.Dictionary.Count == 0)
+        {
+            colors.BuildDictionary();
         }
     }
 
@@ -166,7 +156,10 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
     {
         if (SignalMaterials.TryGetValue(colorType, out var material) && material != null) return material;
         var color = Color.white;
-        DataManager.Instance.ProductionLineColorsSO.TryGetValue(colorType, out color);
+        if (!DataManager.Instance.ProductionLineColorsSO.TryGetValue(colorType, out color))
+        {
+            color = Color.white;
+        }
         material = CreateMaterial($"Pizza Box Signal {colorType}", color);
         SignalMaterials[colorType] = material;
         return material;

@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
 {
+    private static Material openingBorderMaterial;
     private DraftUtils.FormattedLogger _logger = new DraftUtils.FormattedLogger(nameof(LevelObjectSpawner));
     [SerializeField] private DraftUtils.TileMap3D tileMap3D;
     [SerializeField] private DraftUtils.ObjectCreator<Container> containerPooler = new();
@@ -60,6 +61,7 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
 
         containerFactory.SpawnFromLevelData(levelData, containerPooler, grid);
         productionLineFactory.SpawnFromLevelData(levelData, productionLinePooler, grid);
+        HideProductionOpeningBorders();
         CacheInitialAddTilePositions();
     }
     public List<Vector2Int> GetAvailableGridPositions()
@@ -231,6 +233,71 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
         _levelData.AddPosition(new SerializableVector2Int(gridPosition));
         ClearTilePool();
         tileMap3D.Generate(_levelData.gridPositions.ConvertAll(pos => pos.ToVector2Int()));
+        HideProductionOpeningBorders();
+    }
+
+    private void HideProductionOpeningBorders()
+    {
+        if (tileMap3D == null || productionLinePooler == null || productionLinePooler.ActiveItems == null)
+        {
+            return;
+        }
+
+        var tiles = tileMap3D.TilePooler.PublicActiveItems;
+        if (tiles == null || tiles.Count == 0 || productionLinePooler.ActiveItems.Count == 0)
+        {
+            return;
+        }
+
+        openingBorderMaterial ??= CreateOpeningBorderMaterial();
+        if (openingBorderMaterial == null)
+        {
+            return;
+        }
+
+        foreach (var line in productionLinePooler.ActiveItems)
+        {
+            if (line == null) continue;
+
+            DraftUtils.TileMapItem nearestTile = null;
+            var nearestDistance = float.MaxValue;
+            foreach (var tile in tiles)
+            {
+                if (tile == null) continue;
+                var distance = Vector3.Distance(tile.transform.position, line.transform.position);
+                if (distance < nearestDistance)
+                {
+                    nearestDistance = distance;
+                    nearestTile = tile;
+                }
+            }
+
+            if (nearestTile == null || nearestDistance > 1.1f) continue;
+            foreach (var renderer in nearestTile.GetComponentsInChildren<MeshRenderer>(true))
+            {
+                if (renderer.name != "TopMid") continue;
+                var materials = renderer.sharedMaterials;
+                if (materials.Length > 1)
+                {
+                    materials[1] = openingBorderMaterial;
+                    renderer.sharedMaterials = materials;
+                }
+            }
+        }
+    }
+
+    private static Material CreateOpeningBorderMaterial()
+    {
+        var shader = Shader.Find("Universal Render Pipeline/Unlit") ?? Shader.Find("Universal Render Pipeline/Lit");
+        if (shader == null) return null;
+
+        var material = new Material(shader) { name = "Opening Border Hidden" };
+        if (material.HasProperty("_Surface")) material.SetFloat("_Surface", 1f);
+        if (material.HasProperty("_BaseColor")) material.SetColor("_BaseColor", new Color(1f, 1f, 1f, 0f));
+        if (material.HasProperty("_Color")) material.SetColor("_Color", new Color(1f, 1f, 1f, 0f));
+        material.renderQueue = 3000;
+        material.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
+        return material;
     }
 
     public void DestroyContainer(Container container)
