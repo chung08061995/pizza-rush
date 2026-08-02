@@ -45,7 +45,7 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
             var connectedUp = occupied.Contains(cell + Vector2Int.up);
             var center = new Vector3(cell.x, 0f, cell.y);
 
-            CreateConnectedCellCube("KraftLid", center, 0.285f - SurfaceDrop, 0.075f, 0.42f, 0.42f, 0f, 0f,
+            CreateConnectedCellCube("KraftLid", center, 0.285f - SurfaceDrop, 0.075f, 0.42f, 0.42f, 0.95f, 0.95f,
                 connectedLeft, connectedRight, connectedDown, connectedUp, GetLidMaterial(signalType));
 
             CreateCube("VerticalStripe", center + Vector3.up * (0.350f - SurfaceDrop),

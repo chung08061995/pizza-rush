@@ -24,6 +24,9 @@ MonoBehaviour:
   safeBottom: 0.18
   minimumOrthographicSize: 0.1
   maximumOrthographicSize: 18
+  kitchenBackgroundObjectName: PR3D_KitchenBackground_Preview
+  kitchenBackgroundAnchorPath: KitchenFixtures/Counter
+  kitchenBackgroundGapCells: 1.22
   mainLightColor: {r: 1, g: 0.941, b: 0.871, a: 1}
   mainLightIntensity: 1.05
   mainLightRotation: {x: 50, y: -30, z: 0}

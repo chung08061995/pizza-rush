@@ -23,6 +23,11 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
     [SerializeField, Min(0.1f)] private float minimumOrthographicSize = 0.1f;
     [SerializeField, Min(0.1f)] private float maximumOrthographicSize = 18f;
 
+    [Header("Kitchen background")]
+    [SerializeField] private string kitchenBackgroundObjectName = "PR3D_KitchenBackground_Preview";
+    [SerializeField] private string kitchenBackgroundAnchorPath = "KitchenFixtures/Counter";
+    [SerializeField, Min(0f)] private float kitchenBackgroundGapCells = 1.22f;
+
     [Header("Directional light")]
     [SerializeField] private Color mainLightColor = Color.white;
     [SerializeField, Min(0f)] private float mainLightIntensity = 1f;
@@ -55,6 +60,33 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
 
     internal float FramingPaddingCells => framingPaddingCells;
     internal float PowerupReserveCells => powerupReserveCells;
+
+    internal void AlignKitchenBackground(Bounds boardBounds, float cellSize)
+    {
+        if (string.IsNullOrWhiteSpace(kitchenBackgroundObjectName))
+        {
+            return;
+        }
+
+        GameObject background = GameObject.Find(kitchenBackgroundObjectName);
+        if (background == null)
+        {
+            return;
+        }
+
+        Transform anchor = background.transform.Find(kitchenBackgroundAnchorPath);
+        Renderer anchorRenderer = anchor != null ? anchor.GetComponent<Renderer>() : null;
+        if (anchorRenderer == null)
+        {
+            return;
+        }
+
+        float targetBackgroundZ = boardBounds.max.z +
+                                  kitchenBackgroundGapCells * Mathf.Max(0.01f, cellSize);
+        Vector3 position = background.transform.position;
+        position.z += targetBackgroundZ - anchorRenderer.bounds.min.z;
+        background.transform.position = position;
+    }
 
     internal void ApplyRenderRig(Camera gameplayCamera, Light directionalLight, Volume globalVolume)
     {
