@@ -24,59 +24,44 @@ Mỗi task phải ưu tiên gọi server **`unityMCP` tại `http://127.0.0.1:80
   Image: docs/reference/pizza-factory-concept.png
   Evidence: `docs/baseline/level-301-baseline.md`, `Assets/_Baseline/Level301_GameView.png`, `Assets/_Baseline/Level301_EndState.png`, `Assets/_Baseline/Level301_FullRun_Complete.mp4` (Unity Recorder, 1080x1920/30 FPS, continuous timer `01:22` to `Time Up`).
 
-- [ ] [PR3D-002] Tạo Blender master scene
-  Thiết lập đơn vị mét, trục Y-up/forward-Z, camera portrait, collection, quy tắc đặt tên, preset export và concept `docs/reference/pizza-factory-concept.png`. Dùng Blender MCP để dựng scene; dùng Unity MCP để kiểm tra import thử trong Unity.
-  Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
-  Image: docs/reference/pizza-factory-concept.png
-
-- [ ] [PR3D-003] Dựng board và bộ tile
-  Dựng tray/frame 7×7 và visual tile theo concept nhưng giữ nguyên cell size, pivot và vị trí grid. Dùng Blender MCP để model và Unity MCP để đối chiếu Level 301 trong Unity.
-  Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
-  Image: docs/reference/pizza-factory-concept.png
-
-- [ ] [PR3D-004] Dựng bộ ray procedural
-  Dựng ray thẳng, ray cong 90° có thể mirror/rotate, support, mũi tên và connector board khớp production place hiện tại. Dùng Blender MCP để tạo kit và Unity MCP để kiểm tra anchor, hướng ray và khoảng cách.
-  Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
-  Image: docs/reference/pizza-factory-concept.png
-
-- [ ] [PR3D-005] Dựng hệ thống cổng màu
-  Dựng một gate mesh với mười variant material/emission dùng chung, không đổi entry/exit transform. Dùng Blender MCP để tạo mesh/material và Unity MCP để kiểm tra màu, emission và vị trí cổng.
-  Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
-  Image: docs/reference/pizza-factory-concept.png
-
-- [ ] [PR3D-006] Dựng pizza và variant topping
-  Dựng một mesh pizza tam giác với mười variant topping/màu dễ phân biệt ở kích thước điện thoại bằng material, không nhân bản mesh. Dùng Blender MCP để tạo asset và Unity MCP để kiểm tra readability trong Game view.
-  Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
-  Image: docs/reference/pizza-factory-concept.png
-
-- [ ] [PR3D-007] Thay visual container Level 301
-  Thay visual cho shape 1×1, 1×2, 1×3, T và Ice nhưng giữ nguyên root, collider, place và component reference. Dùng Unity MCP để kiểm tra prefab/runtime; không sửa enum, JSON, drag hoặc collider.
-  Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
-  Image: docs/reference/pizza-factory-concept.png
-
-- [ ] [PR3D-008] Dựng environment bếp pizza
-  Tạo lò và các family wall/floor/counter, shelf, đèn, jar/bowl, basil, dụng cụ và crate nguyên liệu có thể instance. Dùng Blender MCP cho model/procedural asset, Unity MCP để kiểm tra ánh sáng, camera portrait và safe area.
-  Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
-  Image: docs/reference/pizza-factory-concept.png
-
-- [ ] [PR3D-009] Tối ưu và export asset
-  Apply transform, cleanup topology, UV/atlas, LOD, shared material, export FBX/GLB và tạo `PR3D_manifest.json`. Dùng Blender MCP để export; dùng Unity MCP kiểm tra import, scale, pivot và material.
-  Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
-  Image: docs/reference/pizza-factory-concept.png
-
-- [ ] [PR3D-010] Tích hợp visual prefab vào Unity
-  Chỉ thêm hoặc thay visual child/material; không đổi script, enum, JSON, collider hay serialized gameplay root. Dùng Unity MCP để thao tác prefab, apply thay đổi và kiểm tra reference trước khi lưu.
-  Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
-  Image: docs/reference/pizza-factory-concept.png
-
-- [ ] [PR3D-011] Validate Level 301
-  Chơi hết level và kiểm tra drag, Ice, pizza transfer, hướng ray, gate, ba portrait ratio, console, frame time, memory, HUD, booster và vùng quảng cáo. Dùng Unity MCP để chạy test, chụp evidence và đọc profiler.
-  Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
-  Image: docs/reference/pizza-factory-concept.png
-
-- [ ] [PR3D-012] Review vertical slice và quyết định rollout
-  So sánh evidence trước/sau, liệt kê lỗi cần sửa và chỉ tạo plan riêng cho 319 level còn lại sau khi được duyệt. Dùng Unity MCP để mở evidence/runtime và Blender MCP để review asset source.
-  Công cụ: gọi server `unityMCP` (`http://127.0.0.1:8080/mcp`) để kiểm tra Unity và Blender MCP cho asset; nếu MCP không khả dụng, ghi rõ và không tự sửa gameplay contract.
+- [ ] [PR3D-SEQ-001] Hoàn thiện vertical slice Pizza Rush 3D
+  Thực hiện toàn bộ phần 3D còn lại như một task hybrid duy nhất để mọi thay đổi dùng chung một worktree và branch. Trước khi làm lại PR3D-002/003, kiểm tra các attempt đã archive và chỉ tái sử dụng/cherry-pick phần đã xác minh; không merge nguyên branch cũ một cách mù quáng.
+  Mode: hybrid
+  Subtasks:
+    1. [PR3D-002] Tạo và xác minh Blender master scene
+       Phase: 1
+       Thiết lập đơn vị mét, trục Y-up/forward-Z, camera portrait, collection, naming, export preset và concept reference. Kiểm tra attempt PR3D-002 cũ, tái sử dụng asset hợp lệ rồi xác minh import thử bằng Unity MCP.
+    2. [PR3D-003] Dựng và xác minh board cùng bộ tile
+       Phase: 2
+       Chỉ sở hữu `Assets/_Projects/Art/PR3D/Board/` và Blender source tương ứng. Dựng tray/frame 7×7 và tile visual nhưng giữ nguyên cell size, pivot và grid position. Kiểm tra attempt PR3D-003 cũ, tái sử dụng phần đạt yêu cầu và đối chiếu Level 301 trong Unity.
+    3. [PR3D-004] Dựng bộ ray procedural
+       Phase: 2
+       Chỉ sở hữu `Assets/_Projects/Art/PR3D/Rails/` và Blender source tương ứng. Dựng ray thẳng, ray cong 90° có thể mirror/rotate, support, mũi tên và connector khớp production-line place hiện tại; xác minh anchor, hướng và khoảng cách bằng Unity MCP.
+    4. [PR3D-005] Dựng hệ thống cổng màu
+       Phase: 2
+       Chỉ sở hữu `Assets/_Projects/Art/PR3D/Gates/` và Blender source tương ứng. Dựng một gate mesh với mười variant material/emission dùng chung, giữ nguyên entry/exit transform và kiểm tra màu, emission, vị trí trong Unity.
+    5. [PR3D-006] Dựng pizza và variant topping
+       Phase: 2
+       Chỉ sở hữu `Assets/_Projects/Art/PR3D/Pizza/` và Blender source tương ứng. Dựng một pizza mesh với mười variant topping/màu dễ phân biệt ở kích thước điện thoại, không nhân bản mesh và kiểm tra readability trong Game view.
+    6. [PR3D-007] Thay visual container Level 301
+       Phase: 2
+       Chỉ sở hữu `Assets/_Projects/Art/PR3D/Containers/` và Blender source tương ứng; chưa sửa prefab dùng chung ở phase này. Dựng visual cho shape 1×1, 1×2, 1×3, T và Ice, giữ nguyên yêu cầu root, collider, place, component reference, enum, JSON và drag behavior cho phase tích hợp.
+    7. [PR3D-008] Dựng environment bếp pizza
+       Phase: 2
+       Chỉ sở hữu `Assets/_Projects/Art/PR3D/Environment/` và Blender source tương ứng. Tạo lò và các family wall/floor/counter, shelf, đèn, jar/bowl, basil, dụng cụ và ingredient crate có thể instance; kiểm tra camera portrait và safe area.
+    8. [PR3D-009] Tối ưu và export asset
+       Phase: 3
+       Apply transform, cleanup topology, UV/atlas, LOD, shared material, export FBX/GLB và tạo `PR3D_manifest.json`; kiểm tra scale, pivot và material trong Unity.
+    9. [PR3D-010] Tích hợp visual prefab vào Unity
+       Phase: 4
+       Chỉ thêm hoặc thay visual child/material; không đổi script, enum, JSON, collider hoặc serialized gameplay root. Apply prefab và kiểm tra reference trước khi lưu.
+    10. [PR3D-011] Validate Level 301
+        Phase: 5
+        Chơi hết level; kiểm tra drag, Ice, pizza transfer, ray, gate, ba portrait ratio, Console, frame time, memory, HUD, booster và vùng quảng cáo.
+    11. [PR3D-012] Review vertical slice và quyết định rollout
+        Phase: 6
+        So sánh evidence trước/sau, liệt kê lỗi cần sửa và chỉ tạo plan riêng cho 319 level còn lại sau khi được duyệt.
+  Công cụ cho mọi bước: Blender MCP dùng để dựng/chỉnh/export asset; `unityMCP` tại `http://127.0.0.1:8080/mcp` dùng để kiểm tra Unity. Nếu MCP cần thiết không khả dụng, dừng đúng bước đang làm và báo blocker, không tự thay đổi gameplay contract.
   Image: docs/reference/pizza-factory-concept.png
 
 ## Acceptance criteria

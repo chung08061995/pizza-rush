@@ -74,8 +74,10 @@ Ads and IAP are behind interfaces with swappable implementations and stubs for e
 ## Project memory and Forge plans
 
 - Treat `README.md`, `docs/`, and this file as durable project memory; update the relevant document when behavior, architecture, art contracts, or delivery workflow changes.
-- Forge Desktop v1.0.13 scans `docs/plans/**/*.md`. Only unchecked tasks under an exact `## Tasks` heading are imported. Every task must use a unique ID such as `- [ ] [PR3D-001] Title`.
+- Forge Desktop v1.0.19 scans `docs/plans/**/*.md`. Only unchecked tasks under an exact `## Tasks` heading are imported. Every task must use a unique ID such as `- [ ] [PR3D-001] Title`.
 - Keep task descriptions indented beneath their task line. Acceptance checkboxes belong under `## Acceptance criteria`, not under `## Tasks`.
+- When dependent steps touch overlapping files or assets, define one parent with `Mode: sequential` and numbered items below `Subtasks:`. Forge must run them in one attempt/worktree/branch; do not create separate top-level cards for the same steps.
+- When independent steps have disjoint ownership, use `Mode: hybrid` and a positive `Phase:` per sub-task. Tasks in the same phase run via sub-agents in parallel; phases run in order. State exclusive file/asset ownership in each parallel sub-task.
 - Do not expose secrets, API keys, keystores, or local absolute paths in Markdown.
 
 ## 3D vertical slice rules
