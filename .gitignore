@@ -18,3 +18,37 @@ CoffeeRunMigration/Extracted/
 *.apk
 *.apks
 *.aab
+
+# Unity/IDE generated project files.
+*.csproj
+*.slnx
+
+# Local builds and agent checkpoints.
+Builds*/
+.codex-backups/
+store-assets/
+
+# Editor recovery, recordings, and generated previews.
+Assets/_Recovery/
+Assets/_Recovery.meta
+Assets/_Baseline/*.mp4
+Assets/_Baseline/*.mp4.meta
+Assets/__PR3D*/
+Assets/__PR3D*.meta
+Assets/_Projects/Art/PR3D/*Options/
+Assets/_Projects/Art/PR3D/*Options.meta
+Assets/_Projects/Art/PR3D/**/Previews/
+Assets/_Projects/Art/PR3D/**/Previews.meta
+Assets/_Projects/Art/PR3D/PizzaItems/Imported/
+Assets/_Projects/Art/PR3D/PizzaItems/Imported.meta
+Assets/_Projects/Art/PR3D/PizzaItems/Source/**/*.glb
+Assets/_Projects/Art/PR3D/PizzaItems/Source/**/*.glb.meta
+Assets/_Projects/Art/PR3D/PizzaItems/Source/**/*Reference.png
+Assets/_Projects/Art/PR3D/PizzaItems/Source/**/*Reference.png.meta
+Assets/_Projects/Art/PR3D/PizzaItems/preview_models.html
+Assets/_Projects/Art/PR3D/PizzaItems/preview_models.html.meta
+
+# Tool caches and local backup copies.
+**/__pycache__/
+*.py[cod]
+Assets/Plugins/Android/mainTemplate.gradle.backup*
