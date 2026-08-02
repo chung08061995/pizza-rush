@@ -44,13 +44,37 @@ public class UsingAddTileSkillState : DraftUtils.IState
                 DataManager.Instance.Using(ItemType.Skill_AddTile, -1);
                 GameAnalytics.LogItemEvent(GameAnalytics.SkillUse, ItemType.Skill_AddTile);
                 CancelSkill();
+                return;
             }
+
+            // Do not trap gameplay input in Add Tile selection mode. Dragging a
+            // container cancels the unconsumed skill and begins that drag in
+            // the same frame, so the original pointer-down is not lost.
+            TryBeginContainerDrag(Input.mousePosition, Camera.main);
         }
+    }
+
+    internal bool TryBeginContainerDrag(Vector3 screenPosition, Camera camera)
+    {
+        if (!_levelRunner.GameplayStateMachine.TryChangeToDragContainerStateAndBeginDrag(
+                screenPosition,
+                camera))
+        {
+            return false;
+        }
+
+        RestoreGameplayPopup();
+        return true;
     }
 
     public void CancelSkill()
     {
         _levelRunner.GameplayStateMachine.ChangeToDragContainerState();
+        RestoreGameplayPopup();
+    }
+
+    private static void RestoreGameplayPopup()
+    {
         PopupManager.Instance.HidePopupUsingSkill();
         PopupManager.Instance.GetPopupSkillGameplay();
     }

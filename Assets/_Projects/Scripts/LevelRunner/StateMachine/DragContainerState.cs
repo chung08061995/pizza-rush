@@ -112,18 +112,8 @@ public class DragContainerState : DraftUtils.IState
         // Phát hiện bắt đầu kéo: nhấn chuột trái
         if (Input.GetMouseButtonDown(0))
         {
-            bool found = TryGetContainerUnderScreenPoint(
-                Input.mousePosition,
-                Camera.main,
-                out Container containerUnderMouse);
-
-            if (found && containerUnderMouse != null && ContainerDataUtils.CanMoving(containerUnderMouse.Data.containerData))
+            if (TryBeginDragAtScreenPoint(Input.mousePosition, Camera.main))
             {
-                if (containerUnderMouse.IsFull())
-                {
-                    return;
-                }
-                BeginDrag(progressDragContainerData, containerUnderMouse);
                 return;
             }
         }
@@ -147,6 +137,39 @@ public class DragContainerState : DraftUtils.IState
     /// Tile colliders are rebuilt by the Add Tile skill and can otherwise
     /// cover container colliders on some devices.
     /// </summary>
+    internal bool TryFindDraggableContainerAtScreenPoint(
+        Vector3 screenPosition,
+        Camera camera,
+        out Container container)
+    {
+        if (!TryGetContainerUnderScreenPoint(screenPosition, camera, out container) ||
+            container == null ||
+            !ContainerDataUtils.CanMoving(container.Data.containerData) ||
+            container.IsFull())
+        {
+            container = null;
+            return false;
+        }
+
+        return true;
+    }
+
+    internal bool TryBeginDragAtScreenPoint(Vector3 screenPosition, Camera camera)
+    {
+        if (!TryFindDraggableContainerAtScreenPoint(screenPosition, camera, out var container))
+        {
+            return false;
+        }
+
+        BeginDrag(progressDragContainerData, container);
+        return true;
+    }
+
+    internal void BeginDrag(Container container)
+    {
+        BeginDrag(progressDragContainerData, container);
+    }
+
     private static bool TryGetContainerUnderScreenPoint(
         Vector3 screenPosition,
         Camera camera,

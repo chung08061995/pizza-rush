@@ -84,6 +84,21 @@ public class GameplayStateMachine
         stateMachine.ChangeStateByKey(GameplayStateType.UsingAddTileSkill);
     }
 
+    internal bool TryChangeToDragContainerStateAndBeginDrag(Vector3 screenPosition, Camera camera)
+    {
+        if (!dragContainerState.TryFindDraggableContainerAtScreenPoint(
+                screenPosition,
+                camera,
+                out var container))
+        {
+            return false;
+        }
+
+        ChangeToDragContainerState();
+        dragContainerState.BeginDrag(container);
+        return true;
+    }
+
     public void ChangeToUsingSplitTileSkillState()
     {
         stateMachine.ChangeStateByKey(GameplayStateType.UsingSplitTileSkill);
