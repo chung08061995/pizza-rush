@@ -42,6 +42,10 @@ MonoBehaviour:
   boardBorder: {r: 0.88699996, g: 0.88699996, b: 0.88699996, a: 1}
   conveyorRoad: {r: 0.7294118, g: 0.7294118, b: 0.8235295, a: 1}
   conveyorBorder: {r: 0.007843138, g: 0.8313726, b: 0.86666673, a: 1}
+  boardGrid: {r: 0.58, g: 0.31, b: 0.14, a: 1}
+  boardGridInsetCells: 0.075
+  boardGridLineWidthCells: 0.02
+  boardGridHeightOffset: 0.21
   gameplayVolumeProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
   floorMaterial: {fileID: 2100000, guid: 90e1551f3f4fcfb4c946265de75aba86, type: 2}
   boardTileMaterials:

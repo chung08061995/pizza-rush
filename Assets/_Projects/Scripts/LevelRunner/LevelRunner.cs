@@ -240,6 +240,7 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         }
 
         gameplayVisualConfig.ApplyRenderRig(mainCamera, mainLight, globalVolume);
+        gameplayVisualConfig.ApplyBoardGrid(levelObjectSpawner);
         Bounds visualBounds = CalculateVisualBounds(levelData, out float cellSize);
         gameplayVisualConfig.AlignKitchenBackground(visualBounds, cellSize);
         gameplayVisualConfig.FrameCamera(mainCamera, visualBounds, cellSize);

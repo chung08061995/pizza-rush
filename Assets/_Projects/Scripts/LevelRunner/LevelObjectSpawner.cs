@@ -17,6 +17,11 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
 
     private DraftUtils.GridXZ grid = new();
     private readonly List<Vector2Int> _initialAddTilePositions = new();
+    private BoardGridThemeVisual _boardGridVisual;
+    private Color _boardGridColor;
+    private float _boardGridInsetCells;
+    private float _boardGridLineWidthCells;
+    private float _boardGridHeightOffset;
 
     public DraftUtils.GridXZ Grid => grid;
     public DraftUtils.Pooler<ProductionLine> ProductionLinePooler => productionLinePooler;
@@ -41,6 +46,33 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
     public void SetGrid(DraftUtils.GridXZ newGrid)
     {
         grid = newGrid;
+    }
+
+    internal void ApplyBoardGridVisual(
+        Color color,
+        float insetCells,
+        float lineWidthCells,
+        float heightOffset)
+    {
+        _boardGridColor = color;
+        _boardGridInsetCells = insetCells;
+        _boardGridLineWidthCells = lineWidthCells;
+        _boardGridHeightOffset = heightOffset;
+
+        if (_root == null)
+        {
+            return;
+        }
+
+        _boardGridVisual = _root.GetComponentInChildren<BoardGridThemeVisual>(true);
+        if (_boardGridVisual == null)
+        {
+            var visualObject = new GameObject(BoardGridThemeVisual.ObjectName);
+            visualObject.transform.SetParent(_root, false);
+            _boardGridVisual = visualObject.AddComponent<BoardGridThemeVisual>();
+        }
+
+        RefreshBoardGridVisual();
     }
     public void SetData(LevelData levelData, Transform root)
     {
@@ -234,6 +266,23 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
         ClearTilePool();
         tileMap3D.Generate(_levelData.gridPositions.ConvertAll(pos => pos.ToVector2Int()));
         HideProductionOpeningBorders();
+        RefreshBoardGridVisual();
+    }
+
+    private void RefreshBoardGridVisual()
+    {
+        if (_boardGridVisual == null || _levelData == null)
+        {
+            return;
+        }
+
+        _boardGridVisual.Rebuild(
+            grid,
+            _levelData.gridPositions,
+            _boardGridColor,
+            _boardGridInsetCells,
+            _boardGridLineWidthCells,
+            _boardGridHeightOffset);
     }
 
     private void HideProductionOpeningBorders()

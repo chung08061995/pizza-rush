@@ -49,6 +49,12 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
     [SerializeField] private Color conveyorRoad = new(0.7294118f, 0.7294118f, 0.8235295f, 1f);
     [SerializeField] private Color conveyorBorder = new(0.007843138f, 0.8313726f, 0.86666673f, 1f);
 
+    [Header("Board grid - Option F")]
+    [SerializeField] private Color boardGrid = new(0.58f, 0.31f, 0.14f, 1f);
+    [SerializeField, Range(0f, 0.45f)] private float boardGridInsetCells = 0.075f;
+    [SerializeField, Range(0.005f, 0.25f)] private float boardGridLineWidthCells = 0.02f;
+    [SerializeField, Min(0f)] private float boardGridHeightOffset = 0.21f;
+
     [Header("Authoritative assets")]
     [SerializeField] private VolumeProfile gameplayVolumeProfile;
     [SerializeField] private Material floorMaterial;
@@ -60,6 +66,20 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
 
     internal float FramingPaddingCells => framingPaddingCells;
     internal float PowerupReserveCells => powerupReserveCells;
+
+    internal void ApplyBoardGrid(LevelObjectSpawner levelObjectSpawner)
+    {
+        if (levelObjectSpawner == null)
+        {
+            return;
+        }
+
+        levelObjectSpawner.ApplyBoardGridVisual(
+            boardGrid,
+            boardGridInsetCells,
+            boardGridLineWidthCells,
+            boardGridHeightOffset);
+    }
 
     internal void AlignKitchenBackground(Bounds boardBounds, float cellSize)
     {
