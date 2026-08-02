@@ -11,11 +11,19 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
     // Slightly overlap only internal joins so rasterization cannot expose hairline seams.
     private const float JoinOverlap = 0.006f;
     private const float LidTintStrength = 0.55f;
+    private const float CornerBracketY = 0.241f;
+    private const float CornerBracketEdge = 0.39f;
+    private const float CornerBracketInset = 0.09f;
+    private const float CornerBracketLength = 0.22f;
+    private const float CornerBracketWidth = 0.045f;
     private static readonly Color KraftLidColor = new(0.88f, 0.72f, 0.43f);
+    private static readonly Color CornerBracketColor = new(0.34f, 0.14f, 0.055f);
     private static readonly Dictionary<ColorType, Material> SignalMaterials = new();
     private static readonly Dictionary<ColorType, Material> LidMaterials = new();
+    private static Material cornerBracketMaterial;
 
     private Transform visualRoot;
+    private readonly List<Mesh> generatedMeshes = new();
 
     public void Apply(ContainerData data, IReadOnlyList<Vector2Int> occupiedCells)
     {
@@ -55,6 +63,113 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
             CreateCube("StripeCenter", center + Vector3.up * (0.370f - SurfaceDrop),
                 new Vector3(0.09f, 0.008f, 0.09f), signalMaterial);
         }
+
+        CreateItemCornerBrackets(occupiedCells);
+    }
+
+    private void CreateItemCornerBrackets(IReadOnlyList<Vector2Int> occupiedCells)
+    {
+        var occupied = new HashSet<Vector2Int>(occupiedCells);
+        var vertices = new List<Vector3>(32);
+        var triangles = new List<int>(48);
+        foreach (Vector2Int cell in occupiedCells)
+        {
+            bool leftExposed = !occupied.Contains(cell + Vector2Int.left);
+            bool rightExposed = !occupied.Contains(cell + Vector2Int.right);
+            bool bottomExposed = !occupied.Contains(cell + Vector2Int.down);
+            bool topExposed = !occupied.Contains(cell + Vector2Int.up);
+
+            if (leftExposed && bottomExposed)
+            {
+                AddCornerBracket(
+                    vertices, triangles, cell, -1f, -1f);
+            }
+            if (rightExposed && bottomExposed)
+            {
+                AddCornerBracket(
+                    vertices, triangles, cell, 1f, -1f);
+            }
+            if (leftExposed && topExposed)
+            {
+                AddCornerBracket(
+                    vertices, triangles, cell, -1f, 1f);
+            }
+            if (rightExposed && topExposed)
+            {
+                AddCornerBracket(
+                    vertices, triangles, cell, 1f, 1f);
+            }
+        }
+
+        var bracketObject = new GameObject("ItemCornerBrackets");
+        bracketObject.layer = gameObject.layer;
+        bracketObject.transform.SetParent(visualRoot, false);
+        var mesh = new Mesh
+        {
+            name = "Pizza Box Item Corner Brackets Mesh",
+            hideFlags = HideFlags.DontSave
+        };
+        mesh.SetVertices(vertices);
+        mesh.SetTriangles(triangles, 0);
+        mesh.RecalculateBounds();
+        generatedMeshes.Add(mesh);
+
+        bracketObject.AddComponent<MeshFilter>().sharedMesh = mesh;
+        var renderer = bracketObject.AddComponent<MeshRenderer>();
+        renderer.sharedMaterial = GetCornerBracketMaterial();
+        renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        renderer.receiveShadows = false;
+        renderer.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
+        renderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
+        renderer.motionVectorGenerationMode =
+            UnityEngine.MotionVectorGenerationMode.ForceNoMotion;
+    }
+
+    private static void AddCornerBracket(
+        List<Vector3> vertices,
+        List<int> triangles,
+        Vector2Int cell,
+        float edgeX,
+        float edgeZ)
+    {
+        Vector3 corner = new(
+            cell.x + edgeX * CornerBracketEdge,
+            CornerBracketY,
+            cell.y + edgeZ * CornerBracketEdge);
+        float inwardX = -edgeX;
+        float inwardZ = -edgeZ;
+        AddTopQuad(
+            vertices,
+            triangles,
+            corner + Vector3.right * inwardX * CornerBracketInset,
+            CornerBracketLength * 0.5f,
+            CornerBracketWidth * 0.5f);
+        AddTopQuad(
+            vertices,
+            triangles,
+            corner + Vector3.forward * inwardZ * CornerBracketInset,
+            CornerBracketWidth * 0.5f,
+            CornerBracketLength * 0.5f);
+    }
+
+    private static void AddTopQuad(
+        List<Vector3> vertices,
+        List<int> triangles,
+        Vector3 center,
+        float halfWidth,
+        float halfDepth)
+    {
+        int index = vertices.Count;
+        vertices.Add(center + new Vector3(-halfWidth, 0f, -halfDepth));
+        vertices.Add(center + new Vector3(-halfWidth, 0f, halfDepth));
+        vertices.Add(center + new Vector3(halfWidth, 0f, halfDepth));
+        vertices.Add(center + new Vector3(halfWidth, 0f, -halfDepth));
+        triangles.Add(index);
+        triangles.Add(index + 1);
+        triangles.Add(index + 2);
+        triangles.Add(index);
+        triangles.Add(index + 2);
+        triangles.Add(index + 3);
     }
 
     private void CreateConnectedCellCube(
@@ -120,6 +235,7 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
 
     private void Clear()
     {
+        DestroyGeneratedMeshes();
         if (visualRoot == null)
         {
             visualRoot = transform.Find(VisualRootName);
@@ -129,6 +245,22 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         if (Application.isPlaying) Destroy(visualRoot.gameObject);
         else DestroyImmediate(visualRoot.gameObject);
         visualRoot = null;
+    }
+
+    private void OnDestroy()
+    {
+        DestroyGeneratedMeshes();
+    }
+
+    private void DestroyGeneratedMeshes()
+    {
+        foreach (Mesh mesh in generatedMeshes)
+        {
+            if (mesh == null) continue;
+            if (Application.isPlaying) Destroy(mesh);
+            else DestroyImmediate(mesh);
+        }
+        generatedMeshes.Clear();
     }
 
     private void CreateCube(string objectName, Vector3 localPosition, Vector3 localScale, Material material)
@@ -175,6 +307,28 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         material = CreateMaterial($"Pizza Box Signal {colorType}", color);
         SignalMaterials[colorType] = material;
         return material;
+    }
+
+    private static Material GetCornerBracketMaterial()
+    {
+        if (cornerBracketMaterial != null)
+        {
+            return cornerBracketMaterial;
+        }
+
+        var shader = Shader.Find("Universal Render Pipeline/Unlit") ??
+                     Shader.Find("Universal Render Pipeline/Lit") ??
+                     Shader.Find("Standard");
+        cornerBracketMaterial = new Material(shader)
+        {
+            name = "Pizza Box Item Corner Brackets",
+            color = CornerBracketColor
+        };
+        if (cornerBracketMaterial.HasProperty("_BaseColor"))
+        {
+            cornerBracketMaterial.SetColor("_BaseColor", CornerBracketColor);
+        }
+        return cornerBracketMaterial;
     }
 
     private static Material CreateMaterial(string materialName, Color color)
