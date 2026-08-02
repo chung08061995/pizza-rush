@@ -52,3 +52,8 @@ Assets/_Projects/Art/PR3D/PizzaItems/preview_models.html.meta
 **/__pycache__/
 *.py[cod]
 Assets/Plugins/Android/mainTemplate.gradle.backup*
+
+# Firebase regenerates these from the checked-in Android/iOS service configs.
+Assets/Plugins/Android/FirebaseCrashlytics.androidlib/res/values/crashlytics_build_id.xml
+Assets/StreamingAssets/google-services-desktop.json
+Assets/StreamingAssets/google-services-desktop.json.meta
