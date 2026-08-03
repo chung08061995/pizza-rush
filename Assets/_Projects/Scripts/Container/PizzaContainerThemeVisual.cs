@@ -64,7 +64,59 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
                 new Vector3(0.09f, 0.008f, 0.09f), signalMaterial);
         }
 
+        AlignPizzaLandingSlots(occupiedCells);
         CreateItemCornerBrackets(occupiedCells);
+    }
+
+    private void AlignPizzaLandingSlots(IReadOnlyList<Vector2Int> occupiedCells)
+    {
+        var landingRoots = new List<Transform>();
+        foreach (Transform child in GetComponentsInChildren<Transform>(true))
+        {
+            if (child.name == "PizzeCompleted")
+            {
+                landingRoots.Add(child);
+            }
+        }
+
+        var remainingCells = new List<Vector2Int>(occupiedCells);
+        foreach (Transform landingRoot in landingRoots)
+        {
+            if (landingRoot.childCount == 0 || remainingCells.Count == 0)
+            {
+                continue;
+            }
+
+            var slotCenter = Vector3.zero;
+            for (var i = 0; i < landingRoot.childCount; i++)
+            {
+                slotCenter += transform.InverseTransformPoint(landingRoot.GetChild(i).position);
+            }
+            slotCenter /= landingRoot.childCount;
+
+            var nearestIndex = 0;
+            var nearestDistance = float.PositiveInfinity;
+            for (var i = 0; i < remainingCells.Count; i++)
+            {
+                var cell = remainingCells[i];
+                var offsetX = cell.x - slotCenter.x;
+                var offsetZ = cell.y - slotCenter.z;
+                var distance = offsetX * offsetX + offsetZ * offsetZ;
+                if (distance < nearestDistance)
+                {
+                    nearestDistance = distance;
+                    nearestIndex = i;
+                }
+            }
+
+            var targetCell = remainingCells[nearestIndex];
+            var alignmentOffset = new Vector3(
+                targetCell.x - slotCenter.x,
+                0f,
+                targetCell.y - slotCenter.z);
+            landingRoot.position += transform.TransformVector(alignmentOffset);
+            remainingCells.RemoveAt(nearestIndex);
+        }
     }
 
     private void CreateItemCornerBrackets(IReadOnlyList<Vector2Int> occupiedCells)

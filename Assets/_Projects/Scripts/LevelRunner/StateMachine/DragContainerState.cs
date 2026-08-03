@@ -54,6 +54,9 @@ public class ProgressDragContainerData
 [System.Serializable]
 public class DragContainerState : DraftUtils.IState
 {
+    // Keep completed pizzas visibly seated above the kraft lid instead of hidden inside it.
+    private const float CompletedPizzaLandingHeight = 0.18f;
+
     /// <summary>
     /// Tham chiếu đến LevelRunner để truy cập các thành phần game khác.
     /// </summary>
@@ -641,14 +644,15 @@ public class DragContainerState : DraftUtils.IState
             var capturedStartLocal = startLocal;
             var capturedProduction = production;
             var capturedTargetPlace = targetPlace;
+            var capturedTargetLocalPosition = Vector3.up * CompletedPizzaLandingHeight;
             var startRotation = capturedProduction.transform.localRotation;
 
             DOVirtual.Float(0, 1, duration, t =>
             {
                 if (capturedProduction != null && capturedProduction.transform != null)
                 {
-                    // Interpolate local position từ vị trí ban đầu đến Vector3.zero (vị trí cuối)
-                    var linearPos = Vector3.Lerp(capturedStartLocal, Vector3.zero, t);
+                    // Interpolate tới mặt trên của nắp để pizza không bị che khi tiếp đất.
+                    var linearPos = Vector3.Lerp(capturedStartLocal, capturedTargetLocalPosition, t);
                     capturedProduction.transform.localPosition = linearPos;
 
                     // Cộng arc vào world position (trục Y world) để không bị ảnh hưởng bởi rotation của parent
@@ -672,6 +676,14 @@ public class DragContainerState : DraftUtils.IState
             }).SetTarget(capturedProduction.transform).SetEase(DataManager.Instance.ParametterGameConfigSO.ProductionEase)
             .OnComplete(() =>
             {
+                if (capturedProduction != null && capturedProduction.transform != null)
+                {
+                    capturedProduction.transform.localPosition = capturedTargetLocalPosition;
+                    capturedProduction.transform.localScale = Vector3.one;
+                    capturedProduction.transform.localRotation = Quaternion.identity;
+                    capturedProduction.SetBlendShapeWeight("Pizza_Expand", 0f);
+                }
+
                 VibrationManager.Vibrate(VibrationType.ItemPlaced);
 
                 if (container != null && container.transform != null)
