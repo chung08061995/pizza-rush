@@ -10,24 +10,21 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
 {
     private const string VisualRootName = "__PizzaContainerTheme";
     private const float LidTopY = 0.184f;
-    private const float SideBottomY = 0.094f;
-    private const float OuterInset = 0.055f;
-    private const float CornerChamfer = 0.085f;
-    private const float RimWidth = 0.035f;
-    private const float SeamWidth = 0.014f;
+    private const float SideBottomY = 0.12f;
+    private const float OuterInset = 0.035f;
+    private const float CornerChamfer = 0.075f;
+    private const float SeamWidth = 0.008f;
     private const float SeamEndInset = 0.105f;
     private const float MarkerHeight = 0.022f;
     private const float MarkerLength = 0.34f;
     private const float MarkerWidth = 0.072f;
-    private const float LidColorStrength = 0.82f;
+    private const float LidColorStrength = 0.92f;
 
     private static readonly Color KraftLidColor = new(0.88f, 0.72f, 0.43f, 1f);
-    private static readonly Color KraftSideColor = new(0.48f, 0.23f, 0.085f, 1f);
     private static readonly Dictionary<ColorType, Material> LidMaterials = new();
-    private static readonly Dictionary<ColorType, Material> RimMaterials = new();
+    private static readonly Dictionary<ColorType, Material> SideMaterials = new();
     private static readonly Dictionary<ColorType, Material> SeamMaterials = new();
     private static readonly Dictionary<ColorType, Material> MarkerMaterials = new();
-    private static Material kraftSideMaterial;
 
     private readonly List<Mesh> generatedMeshes = new();
     private Transform visualRoot;
@@ -60,19 +57,10 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
                 occupiedCells, LidTopY, OuterInset, CornerChamfer),
             GetLidMaterial(lidColor));
         AddMeshObject(
-            "PremiumBox_KraftSide",
+            "PremiumBox_ColorSide",
             PizzaBoxFootprintMeshBuilder.BuildOuterSide(
                 occupiedCells, LidTopY, SideBottomY, OuterInset, CornerChamfer),
-            GetKraftSideMaterial());
-        AddMeshObject(
-            "PremiumBox_OuterRim",
-            PizzaBoxFootprintMeshBuilder.BuildOuterRim(
-                occupiedCells,
-                LidTopY + 0.001f,
-                OuterInset,
-                CornerChamfer,
-                RimWidth),
-            GetRimMaterial(primaryColor));
+            GetSideMaterial(lidColor));
 
         if (occupiedCells.Count > 1)
         {
@@ -296,32 +284,21 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         {
             return material;
         }
-        Color color = colorType == ColorType.None
-            ? KraftLidColor
-            : Color.Lerp(KraftLidColor, GetSignalColor(colorType), LidColorStrength);
+        Color color = GetLidColor(colorType);
         material = CreateMaterial($"Premium Pizza Box Lid {colorType}", color, 0.3f);
         LidMaterials[colorType] = material;
         return material;
     }
 
-    private static Material GetRimMaterial(ColorType colorType)
+    private static Material GetSideMaterial(ColorType colorType)
     {
-        if (RimMaterials.TryGetValue(colorType, out Material material) && material != null)
+        if (SideMaterials.TryGetValue(colorType, out Material material) && material != null)
         {
             return material;
         }
-        Color baseColor = colorType == ColorType.None
-            ? KraftLidColor
-            : GetSignalColor(colorType);
-        // Keep the outline in the item's hue. Mixing every rim toward brown
-        // makes purple, cyan, and blue boxes harder to distinguish at phone size.
-        Color color = new(
-            baseColor.r * 0.72f,
-            baseColor.g * 0.72f,
-            baseColor.b * 0.72f,
-            baseColor.a);
-        material = CreateMaterial($"Premium Pizza Box Rim {colorType}", color, 0.2f);
-        RimMaterials[colorType] = material;
+        Color color = ScaleRgb(GetLidColor(colorType), 0.82f);
+        material = CreateMaterial($"Premium Pizza Box Side {colorType}", color, 0.18f);
+        SideMaterials[colorType] = material;
         return material;
     }
 
@@ -331,10 +308,7 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         {
             return material;
         }
-        Color baseColor = colorType == ColorType.None
-            ? KraftLidColor
-            : GetSignalColor(colorType);
-        Color color = Color.Lerp(baseColor, Color.black, 0.2f);
+        Color color = ScaleRgb(GetLidColor(colorType), 0.88f);
         material = CreateMaterial($"Premium Pizza Box Seam {colorType}", color, 0.14f);
         SeamMaterials[colorType] = material;
         return material;
@@ -349,23 +323,27 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         Color baseColor = GetSignalColor(colorType);
         float luminance = baseColor.r * 0.2126f + baseColor.g * 0.7152f + baseColor.b * 0.0722f;
         Color color = luminance > 0.58f
-            ? Color.Lerp(baseColor, Color.black, 0.26f)
+            ? ScaleRgb(baseColor, 0.76f)
             : Color.Lerp(baseColor, Color.white, 0.34f);
         material = CreateMaterial($"Premium Pizza Box Marker {colorType}", color, 0.34f);
         MarkerMaterials[colorType] = material;
         return material;
     }
 
-    private static Material GetKraftSideMaterial()
+    private static Color GetLidColor(ColorType colorType)
     {
-        if (kraftSideMaterial == null)
-        {
-            kraftSideMaterial = CreateMaterial(
-                "Premium Pizza Box Kraft Side",
-                KraftSideColor,
-                0.12f);
-        }
-        return kraftSideMaterial;
+        return colorType == ColorType.None
+            ? KraftLidColor
+            : Color.Lerp(KraftLidColor, GetSignalColor(colorType), LidColorStrength);
+    }
+
+    private static Color ScaleRgb(Color color, float multiplier)
+    {
+        return new Color(
+            color.r * multiplier,
+            color.g * multiplier,
+            color.b * multiplier,
+            color.a);
     }
 
     private static Material CreateMaterial(string materialName, Color color, float smoothness)
