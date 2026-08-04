@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
 {
+    private const float BoardGridVisualLocalY = -0.2f;
     private static Material openingBorderMaterial;
     private DraftUtils.FormattedLogger _logger = new DraftUtils.FormattedLogger(nameof(LevelObjectSpawner));
     [SerializeField] private DraftUtils.TileMap3D tileMap3D;
@@ -279,6 +280,10 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
             return;
         }
 
+        var localPosition = _boardGridVisual.transform.localPosition;
+        localPosition.y = 0f;
+        _boardGridVisual.transform.localPosition = localPosition;
+
         _boardGridVisual.Rebuild(
             grid,
             _levelData.gridPositions,
@@ -287,6 +292,9 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
             _boardGridInsetCells,
             _boardGridLineWidthCells,
             _boardGridHeightOffset);
+
+        localPosition.y = BoardGridVisualLocalY;
+        _boardGridVisual.transform.localPosition = localPosition;
     }
 
     private void HideProductionOpeningBorders()
