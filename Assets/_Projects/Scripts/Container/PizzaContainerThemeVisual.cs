@@ -1,35 +1,42 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 /// <summary>
-/// Adds the approved pizza-box surface without changing container physics or level data.
+/// Adds the approved premium pizza-box surface without changing container
+/// transforms, colliders, level data, or serialized prefab contracts.
 /// </summary>
 public sealed class PizzaContainerThemeVisual : MonoBehaviour
 {
     private const string VisualRootName = "__PizzaContainerTheme";
-    private const float SurfaceDrop = 0.155f;
-    // Slightly overlap only internal joins so rasterization cannot expose hairline seams.
-    private const float JoinOverlap = 0.006f;
-    private const float LidTintStrength = 0.55f;
-    private const float CornerBracketY = 0.241f;
-    private const float CornerBracketEdge = 0.39f;
-    private const float CornerBracketInset = 0.09f;
-    private const float CornerBracketLength = 0.22f;
-    private const float CornerBracketWidth = 0.045f;
-    private static readonly Color KraftLidColor = new(0.88f, 0.72f, 0.43f);
-    private static readonly Color CornerBracketColor = new(0.34f, 0.14f, 0.055f);
-    private static readonly Dictionary<ColorType, Material> SignalMaterials = new();
-    private static readonly Dictionary<ColorType, Material> LidMaterials = new();
-    private static Material cornerBracketMaterial;
+    private const float LidTopY = 0.184f;
+    private const float SideBottomY = 0.094f;
+    private const float OuterInset = 0.055f;
+    private const float CornerChamfer = 0.085f;
+    private const float RimWidth = 0.035f;
+    private const float SeamWidth = 0.014f;
+    private const float SeamEndInset = 0.105f;
+    private const float MarkerHeight = 0.022f;
+    private const float MarkerLength = 0.34f;
+    private const float MarkerWidth = 0.072f;
+    private const float LidColorStrength = 0.82f;
 
-    private Transform visualRoot;
+    private static readonly Color KraftLidColor = new(0.88f, 0.72f, 0.43f, 1f);
+    private static readonly Color KraftSideColor = new(0.48f, 0.23f, 0.085f, 1f);
+    private static readonly Dictionary<ColorType, Material> LidMaterials = new();
+    private static readonly Dictionary<ColorType, Material> RimMaterials = new();
+    private static readonly Dictionary<ColorType, Material> SeamMaterials = new();
+    private static readonly Dictionary<ColorType, Material> MarkerMaterials = new();
+    private static Material kraftSideMaterial;
+
     private readonly List<Mesh> generatedMeshes = new();
+    private Transform visualRoot;
 
     public void Apply(ContainerData data, IReadOnlyList<Vector2Int> occupiedCells)
     {
         Clear();
-        var useLegacySurface = data == null ||
-            data.containerMaterialType == ContainerMaterialType.Ice;
+        bool useLegacySurface = data == null ||
+                                data.containerMaterialType == ContainerMaterialType.Ice;
         SetLegacySurfaceVisible(useLegacySurface);
         if (useLegacySurface || occupiedCells == null || occupiedCells.Count == 0)
         {
@@ -41,31 +48,155 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         visualRoot.gameObject.layer = gameObject.layer;
 
         EnsureProductionColors();
-        var occupied = new HashSet<Vector2Int>(occupiedCells);
-        var signalType = data.isStone ? ColorType.Gray : data.containerColorData.colorType;
-        var signalMaterial = GetSignalMaterial(signalType);
+        ColorType primaryColor = GetPrimaryColor(data);
+        ColorType lidColor = data.containerColorData != null &&
+                             data.containerColorData.isMultiColor
+            ? ColorType.None
+            : primaryColor;
 
-        foreach (var cell in occupiedCells)
+        AddMeshObject(
+            "PremiumBox_Lid",
+            PizzaBoxFootprintMeshBuilder.BuildLid(
+                occupiedCells, LidTopY, OuterInset, CornerChamfer),
+            GetLidMaterial(lidColor));
+        AddMeshObject(
+            "PremiumBox_KraftSide",
+            PizzaBoxFootprintMeshBuilder.BuildOuterSide(
+                occupiedCells, LidTopY, SideBottomY, OuterInset, CornerChamfer),
+            GetKraftSideMaterial());
+        AddMeshObject(
+            "PremiumBox_OuterRim",
+            PizzaBoxFootprintMeshBuilder.BuildOuterRim(
+                occupiedCells,
+                LidTopY + 0.001f,
+                OuterInset,
+                CornerChamfer,
+                RimWidth),
+            GetRimMaterial(primaryColor));
+
+        if (occupiedCells.Count > 1)
         {
-            var connectedLeft = occupied.Contains(cell + Vector2Int.left);
-            var connectedRight = occupied.Contains(cell + Vector2Int.right);
-            var connectedDown = occupied.Contains(cell + Vector2Int.down);
-            var connectedUp = occupied.Contains(cell + Vector2Int.up);
-            var center = new Vector3(cell.x, 0f, cell.y);
+            AddMeshObject(
+                "PremiumBox_PressedSeams",
+                PizzaBoxFootprintMeshBuilder.BuildInternalSeams(
+                    occupiedCells,
+                    LidTopY + 0.002f,
+                    SeamWidth,
+                    SeamEndInset),
+                GetSeamMaterial(primaryColor));
+        }
 
-            CreateConnectedCellCube("KraftLid", center, 0.285f - SurfaceDrop, 0.075f, 0.42f, 0.42f, 0.95f, 0.95f,
-                connectedLeft, connectedRight, connectedDown, connectedUp, GetLidMaterial(signalType));
-
-            CreateCube("VerticalStripe", center + Vector3.up * (0.350f - SurfaceDrop),
-                new Vector3(0.09f, 0.016f, 0.50f), signalMaterial);
-            CreateCube("HorizontalStripe", center + Vector3.up * (0.350f - SurfaceDrop),
-                new Vector3(0.50f, 0.016f, 0.09f), signalMaterial);
-            CreateCube("StripeCenter", center + Vector3.up * (0.370f - SurfaceDrop),
-                new Vector3(0.09f, 0.008f, 0.09f), signalMaterial);
+        foreach (KeyValuePair<ColorType, List<Vector2Int>> markerGroup in
+                 BuildMarkerGroups(data, occupiedCells))
+        {
+            AddMeshObject(
+                $"PremiumBox_Markers_{markerGroup.Key}",
+                PizzaBoxFootprintMeshBuilder.BuildMarkers(
+                    markerGroup.Value,
+                    LidTopY + 0.003f,
+                    LidTopY + MarkerHeight,
+                    MarkerLength,
+                    MarkerWidth),
+                GetMarkerMaterial(markerGroup.Key));
         }
 
         AlignPizzaLandingSlots(occupiedCells);
-        CreateItemCornerBrackets(occupiedCells);
+    }
+
+    private static Dictionary<ColorType, List<Vector2Int>> BuildMarkerGroups(
+        ContainerData data,
+        IReadOnlyList<Vector2Int> occupiedCells)
+    {
+        var groups = new Dictionary<ColorType, List<Vector2Int>>();
+        ColorType primaryColor = GetPrimaryColor(data);
+        ContainerColorData colorData = data.containerColorData;
+        if (data.isStone || colorData == null || !colorData.isMultiColor ||
+            colorData.colors == null || colorData.colors.Count < 2)
+        {
+            groups[primaryColor] = new List<Vector2Int>(occupiedCells);
+            return groups;
+        }
+
+        int cellIndex = 0;
+        for (int colorIndex = 0;
+             colorIndex < colorData.colors.Count && cellIndex < occupiedCells.Count;
+             colorIndex++)
+        {
+            ColorType color = colorData.colors[colorIndex];
+            int remainingColors = colorData.colors.Count - colorIndex;
+            int remainingCells = occupiedCells.Count - cellIndex;
+            int cellsForColor = Mathf.Max(1, remainingCells / remainingColors);
+            if (colorData.colorAmounts != null && colorIndex < colorData.colorAmounts.Count)
+            {
+                cellsForColor = Mathf.Max(
+                    1,
+                    Mathf.RoundToInt(colorData.colorAmounts[colorIndex] / 4f));
+            }
+
+            for (int count = 0;
+                 count < cellsForColor && cellIndex < occupiedCells.Count;
+                 count++, cellIndex++)
+            {
+                AddMarkerCell(groups, color, occupiedCells[cellIndex]);
+            }
+        }
+
+        while (cellIndex < occupiedCells.Count)
+        {
+            AddMarkerCell(groups, primaryColor, occupiedCells[cellIndex]);
+            cellIndex++;
+        }
+        return groups;
+    }
+
+    private static void AddMarkerCell(
+        Dictionary<ColorType, List<Vector2Int>> groups,
+        ColorType color,
+        Vector2Int cell)
+    {
+        if (!groups.TryGetValue(color, out List<Vector2Int> cells))
+        {
+            cells = new List<Vector2Int>();
+            groups[color] = cells;
+        }
+        cells.Add(cell);
+    }
+
+    private static ColorType GetPrimaryColor(ContainerData data)
+    {
+        if (data == null)
+        {
+            return ColorType.None;
+        }
+        if (data.isStone)
+        {
+            return ColorType.Gray;
+        }
+        return data.containerColorData == null
+            ? ColorType.None
+            : data.containerColorData.colorType;
+    }
+
+    private void AddMeshObject(string objectName, Mesh mesh, Material material)
+    {
+        if (mesh == null || mesh.vertexCount == 0)
+        {
+            DestroyGeneratedObject(mesh);
+            return;
+        }
+
+        generatedMeshes.Add(mesh);
+        var meshObject = new GameObject(objectName);
+        meshObject.layer = gameObject.layer;
+        meshObject.transform.SetParent(visualRoot, false);
+        meshObject.AddComponent<MeshFilter>().sharedMesh = mesh;
+        var renderer = meshObject.AddComponent<MeshRenderer>();
+        renderer.sharedMaterial = material;
+        renderer.shadowCastingMode = ShadowCastingMode.Off;
+        renderer.receiveShadows = false;
+        renderer.lightProbeUsage = LightProbeUsage.Off;
+        renderer.reflectionProbeUsage = ReflectionProbeUsage.Off;
+        renderer.motionVectorGenerationMode = MotionVectorGenerationMode.ForceNoMotion;
     }
 
     private void AlignPizzaLandingSlots(IReadOnlyList<Vector2Int> occupiedCells)
@@ -87,21 +218,21 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
                 continue;
             }
 
-            var slotCenter = Vector3.zero;
-            for (var i = 0; i < landingRoot.childCount; i++)
+            Vector3 slotCenter = Vector3.zero;
+            for (int i = 0; i < landingRoot.childCount; i++)
             {
                 slotCenter += transform.InverseTransformPoint(landingRoot.GetChild(i).position);
             }
             slotCenter /= landingRoot.childCount;
 
-            var nearestIndex = 0;
-            var nearestDistance = float.PositiveInfinity;
-            for (var i = 0; i < remainingCells.Count; i++)
+            int nearestIndex = 0;
+            float nearestDistance = float.PositiveInfinity;
+            for (int i = 0; i < remainingCells.Count; i++)
             {
-                var cell = remainingCells[i];
-                var offsetX = cell.x - slotCenter.x;
-                var offsetZ = cell.y - slotCenter.z;
-                var distance = offsetX * offsetX + offsetZ * offsetZ;
+                Vector2Int cell = remainingCells[i];
+                float offsetX = cell.x - slotCenter.x;
+                float offsetZ = cell.y - slotCenter.z;
+                float distance = offsetX * offsetX + offsetZ * offsetZ;
                 if (distance < nearestDistance)
                 {
                     nearestDistance = distance;
@@ -109,7 +240,7 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
                 }
             }
 
-            var targetCell = remainingCells[nearestIndex];
+            Vector2Int targetCell = remainingCells[nearestIndex];
             var alignmentOffset = new Vector3(
                 targetCell.x - slotCenter.x,
                 0f,
@@ -117,146 +248,6 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
             landingRoot.position += transform.TransformVector(alignmentOffset);
             remainingCells.RemoveAt(nearestIndex);
         }
-    }
-
-    private void CreateItemCornerBrackets(IReadOnlyList<Vector2Int> occupiedCells)
-    {
-        var occupied = new HashSet<Vector2Int>(occupiedCells);
-        var vertices = new List<Vector3>(32);
-        var triangles = new List<int>(48);
-        foreach (Vector2Int cell in occupiedCells)
-        {
-            bool leftExposed = !occupied.Contains(cell + Vector2Int.left);
-            bool rightExposed = !occupied.Contains(cell + Vector2Int.right);
-            bool bottomExposed = !occupied.Contains(cell + Vector2Int.down);
-            bool topExposed = !occupied.Contains(cell + Vector2Int.up);
-
-            if (leftExposed && bottomExposed)
-            {
-                AddCornerBracket(
-                    vertices, triangles, cell, -1f, -1f);
-            }
-            if (rightExposed && bottomExposed)
-            {
-                AddCornerBracket(
-                    vertices, triangles, cell, 1f, -1f);
-            }
-            if (leftExposed && topExposed)
-            {
-                AddCornerBracket(
-                    vertices, triangles, cell, -1f, 1f);
-            }
-            if (rightExposed && topExposed)
-            {
-                AddCornerBracket(
-                    vertices, triangles, cell, 1f, 1f);
-            }
-        }
-
-        var bracketObject = new GameObject("ItemCornerBrackets");
-        bracketObject.layer = gameObject.layer;
-        bracketObject.transform.SetParent(visualRoot, false);
-        var mesh = new Mesh
-        {
-            name = "Pizza Box Item Corner Brackets Mesh",
-            hideFlags = HideFlags.DontSave
-        };
-        mesh.SetVertices(vertices);
-        mesh.SetTriangles(triangles, 0);
-        mesh.RecalculateBounds();
-        generatedMeshes.Add(mesh);
-
-        bracketObject.AddComponent<MeshFilter>().sharedMesh = mesh;
-        var renderer = bracketObject.AddComponent<MeshRenderer>();
-        renderer.sharedMaterial = GetCornerBracketMaterial();
-        renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-        renderer.receiveShadows = false;
-        renderer.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
-        renderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
-        renderer.motionVectorGenerationMode =
-            UnityEngine.MotionVectorGenerationMode.ForceNoMotion;
-    }
-
-    private static void AddCornerBracket(
-        List<Vector3> vertices,
-        List<int> triangles,
-        Vector2Int cell,
-        float edgeX,
-        float edgeZ)
-    {
-        Vector3 corner = new(
-            cell.x + edgeX * CornerBracketEdge,
-            CornerBracketY,
-            cell.y + edgeZ * CornerBracketEdge);
-        float inwardX = -edgeX;
-        float inwardZ = -edgeZ;
-        AddTopQuad(
-            vertices,
-            triangles,
-            corner + Vector3.right * inwardX * CornerBracketInset,
-            CornerBracketLength * 0.5f,
-            CornerBracketWidth * 0.5f);
-        AddTopQuad(
-            vertices,
-            triangles,
-            corner + Vector3.forward * inwardZ * CornerBracketInset,
-            CornerBracketWidth * 0.5f,
-            CornerBracketLength * 0.5f);
-    }
-
-    private static void AddTopQuad(
-        List<Vector3> vertices,
-        List<int> triangles,
-        Vector3 center,
-        float halfWidth,
-        float halfDepth)
-    {
-        int index = vertices.Count;
-        vertices.Add(center + new Vector3(-halfWidth, 0f, -halfDepth));
-        vertices.Add(center + new Vector3(-halfWidth, 0f, halfDepth));
-        vertices.Add(center + new Vector3(halfWidth, 0f, halfDepth));
-        vertices.Add(center + new Vector3(halfWidth, 0f, -halfDepth));
-        triangles.Add(index);
-        triangles.Add(index + 1);
-        triangles.Add(index + 2);
-        triangles.Add(index);
-        triangles.Add(index + 2);
-        triangles.Add(index + 3);
-    }
-
-    private void CreateConnectedCellCube(
-        string objectName,
-        Vector3 cellCenter,
-        float localY,
-        float height,
-        float exposedHalfExtentX,
-        float exposedHalfExtentZ,
-        float fixedXScale,
-        float fixedZScale,
-        bool connectedLeft,
-        bool connectedRight,
-        bool connectedDown,
-        bool connectedUp,
-        Material material)
-    {
-        var minX = connectedLeft ? -0.5f - JoinOverlap : -exposedHalfExtentX;
-        var maxX = connectedRight ? 0.5f + JoinOverlap : exposedHalfExtentX;
-        var minZ = connectedDown ? -0.5f - JoinOverlap : -exposedHalfExtentZ;
-        var maxZ = connectedUp ? 0.5f + JoinOverlap : exposedHalfExtentZ;
-        if (fixedXScale > 0f)
-        {
-            minX = -fixedXScale * 0.5f;
-            maxX = fixedXScale * 0.5f;
-        }
-        if (fixedZScale > 0f)
-        {
-            minZ = -fixedZScale * 0.5f;
-            maxZ = fixedZScale * 0.5f;
-        }
-        var offset = new Vector3((minX + maxX) * 0.5f, localY, (minZ + maxZ) * 0.5f);
-        var scale = new Vector3(maxX - minX, height, maxZ - minZ);
-
-        CreateCube(objectName, cellCenter + offset, scale, material);
     }
 
     private void SetLegacySurfaceVisible(bool visible)
@@ -267,8 +258,11 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
 
     private static void SetRenderersVisible(Transform root, bool visible)
     {
-        if (root == null) return;
-        foreach (var renderer in root.GetComponentsInChildren<Renderer>(true))
+        if (root == null)
+        {
+            return;
+        }
+        foreach (Renderer renderer in root.GetComponentsInChildren<Renderer>(true))
         {
             renderer.enabled = visible;
         }
@@ -276,13 +270,126 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
 
     private static void EnsureProductionColors()
     {
-        var colors = DataManager.Instance == null
+        ColorsSO colors = DataManager.Instance == null
             ? null
             : DataManager.Instance.ProductionLineColorsSO;
         if (colors != null && colors.Dictionary.Count == 0)
         {
             colors.BuildDictionary();
         }
+    }
+
+    private static Color GetSignalColor(ColorType colorType)
+    {
+        if (DataManager.Instance != null &&
+            DataManager.Instance.ProductionLineColorsSO != null &&
+            DataManager.Instance.ProductionLineColorsSO.TryGetValue(colorType, out Color color))
+        {
+            return color;
+        }
+        return colorType == ColorType.None ? KraftLidColor : Color.white;
+    }
+
+    private static Material GetLidMaterial(ColorType colorType)
+    {
+        if (LidMaterials.TryGetValue(colorType, out Material material) && material != null)
+        {
+            return material;
+        }
+        Color color = colorType == ColorType.None
+            ? KraftLidColor
+            : Color.Lerp(KraftLidColor, GetSignalColor(colorType), LidColorStrength);
+        material = CreateMaterial($"Premium Pizza Box Lid {colorType}", color, 0.3f);
+        LidMaterials[colorType] = material;
+        return material;
+    }
+
+    private static Material GetRimMaterial(ColorType colorType)
+    {
+        if (RimMaterials.TryGetValue(colorType, out Material material) && material != null)
+        {
+            return material;
+        }
+        Color baseColor = colorType == ColorType.None
+            ? KraftLidColor
+            : GetSignalColor(colorType);
+        // Keep the outline in the item's hue. Mixing every rim toward brown
+        // makes purple, cyan, and blue boxes harder to distinguish at phone size.
+        Color color = new(
+            baseColor.r * 0.72f,
+            baseColor.g * 0.72f,
+            baseColor.b * 0.72f,
+            baseColor.a);
+        material = CreateMaterial($"Premium Pizza Box Rim {colorType}", color, 0.2f);
+        RimMaterials[colorType] = material;
+        return material;
+    }
+
+    private static Material GetSeamMaterial(ColorType colorType)
+    {
+        if (SeamMaterials.TryGetValue(colorType, out Material material) && material != null)
+        {
+            return material;
+        }
+        Color baseColor = colorType == ColorType.None
+            ? KraftLidColor
+            : GetSignalColor(colorType);
+        Color color = Color.Lerp(baseColor, Color.black, 0.2f);
+        material = CreateMaterial($"Premium Pizza Box Seam {colorType}", color, 0.14f);
+        SeamMaterials[colorType] = material;
+        return material;
+    }
+
+    private static Material GetMarkerMaterial(ColorType colorType)
+    {
+        if (MarkerMaterials.TryGetValue(colorType, out Material material) && material != null)
+        {
+            return material;
+        }
+        Color baseColor = GetSignalColor(colorType);
+        float luminance = baseColor.r * 0.2126f + baseColor.g * 0.7152f + baseColor.b * 0.0722f;
+        Color color = luminance > 0.58f
+            ? Color.Lerp(baseColor, Color.black, 0.26f)
+            : Color.Lerp(baseColor, Color.white, 0.34f);
+        material = CreateMaterial($"Premium Pizza Box Marker {colorType}", color, 0.34f);
+        MarkerMaterials[colorType] = material;
+        return material;
+    }
+
+    private static Material GetKraftSideMaterial()
+    {
+        if (kraftSideMaterial == null)
+        {
+            kraftSideMaterial = CreateMaterial(
+                "Premium Pizza Box Kraft Side",
+                KraftSideColor,
+                0.12f);
+        }
+        return kraftSideMaterial;
+    }
+
+    private static Material CreateMaterial(string materialName, Color color, float smoothness)
+    {
+        Shader shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
+        var material = new Material(shader)
+        {
+            name = materialName,
+            color = color,
+            hideFlags = HideFlags.DontSave
+        };
+        if (material.HasProperty("_BaseColor"))
+        {
+            material.SetColor("_BaseColor", color);
+        }
+        if (material.HasProperty("_Smoothness"))
+        {
+            material.SetFloat("_Smoothness", smoothness);
+        }
+        if (material.HasProperty("_Metallic"))
+        {
+            material.SetFloat("_Metallic", 0f);
+        }
+        return material;
     }
 
     private void Clear()
@@ -292,10 +399,19 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         {
             visualRoot = transform.Find(VisualRootName);
         }
-        if (visualRoot == null) return;
+        if (visualRoot == null)
+        {
+            return;
+        }
 
-        if (Application.isPlaying) Destroy(visualRoot.gameObject);
-        else DestroyImmediate(visualRoot.gameObject);
+        if (Application.isPlaying)
+        {
+            Destroy(visualRoot.gameObject);
+        }
+        else
+        {
+            DestroyImmediate(visualRoot.gameObject);
+        }
         visualRoot = null;
     }
 
@@ -308,86 +424,24 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
     {
         foreach (Mesh mesh in generatedMeshes)
         {
-            if (mesh == null) continue;
-            if (Application.isPlaying) Destroy(mesh);
-            else DestroyImmediate(mesh);
+            DestroyGeneratedObject(mesh);
         }
         generatedMeshes.Clear();
     }
 
-    private void CreateCube(string objectName, Vector3 localPosition, Vector3 localScale, Material material)
+    private static void DestroyGeneratedObject(Object generatedObject)
     {
-        var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cube.name = objectName;
-        cube.layer = gameObject.layer;
-        cube.transform.SetParent(visualRoot, false);
-        cube.transform.localPosition = localPosition;
-        cube.transform.localScale = localScale;
-        var collider = cube.GetComponent<Collider>();
-        if (Application.isPlaying) Destroy(collider);
-        else DestroyImmediate(collider);
-        var renderer = cube.GetComponent<Renderer>();
-        renderer.sharedMaterial = material;
-        if (objectName == "KraftLid" || objectName == "BoxBase")
+        if (generatedObject == null)
         {
-            renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            return;
         }
-    }
-
-    private static Material GetLidMaterial(ColorType colorType)
-    {
-        if (LidMaterials.TryGetValue(colorType, out var material) && material != null) return material;
-
-        if (!DataManager.Instance.ProductionLineColorsSO.TryGetValue(colorType, out var signalColor))
+        if (Application.isPlaying)
         {
-            signalColor = KraftLidColor;
+            Destroy(generatedObject);
         }
-        var tintedLidColor = Color.Lerp(KraftLidColor, signalColor, LidTintStrength);
-        material = CreateMaterial($"Pizza Box Tinted Lid {colorType}", tintedLidColor);
-        LidMaterials[colorType] = material;
-        return material;
-    }
-
-    private static Material GetSignalMaterial(ColorType colorType)
-    {
-        if (SignalMaterials.TryGetValue(colorType, out var material) && material != null) return material;
-        var color = Color.white;
-        if (!DataManager.Instance.ProductionLineColorsSO.TryGetValue(colorType, out color))
+        else
         {
-            color = Color.white;
+            DestroyImmediate(generatedObject);
         }
-        material = CreateMaterial($"Pizza Box Signal {colorType}", color);
-        SignalMaterials[colorType] = material;
-        return material;
-    }
-
-    private static Material GetCornerBracketMaterial()
-    {
-        if (cornerBracketMaterial != null)
-        {
-            return cornerBracketMaterial;
-        }
-
-        var shader = Shader.Find("Universal Render Pipeline/Unlit") ??
-                     Shader.Find("Universal Render Pipeline/Lit") ??
-                     Shader.Find("Standard");
-        cornerBracketMaterial = new Material(shader)
-        {
-            name = "Pizza Box Item Corner Brackets",
-            color = CornerBracketColor
-        };
-        if (cornerBracketMaterial.HasProperty("_BaseColor"))
-        {
-            cornerBracketMaterial.SetColor("_BaseColor", CornerBracketColor);
-        }
-        return cornerBracketMaterial;
-    }
-
-    private static Material CreateMaterial(string materialName, Color color)
-    {
-        var shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
-        var material = new Material(shader) { name = materialName, color = color };
-        if (material.HasProperty("_Smoothness")) material.SetFloat("_Smoothness", 0.28f);
-        return material;
     }
 }
