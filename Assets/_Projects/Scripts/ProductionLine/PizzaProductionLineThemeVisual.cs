@@ -8,6 +8,20 @@ using UnityEngine;
 /// </summary>
 public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
 {
+    private struct ContactLampVisual
+    {
+        public Renderer renderer;
+        public Color color;
+        public Vector3 baseScale;
+
+        public ContactLampVisual(Renderer renderer, Color color, Vector3 baseScale)
+        {
+            this.renderer = renderer;
+            this.color = color;
+            this.baseScale = baseScale;
+        }
+    }
+
     private struct RailPiece
     {
         public Vector3 start;
@@ -23,7 +37,17 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
     }
 
     private const string VisualRootName = "__PizzaProductionLineTheme";
+    private const float ContactLampLongSize = 0.82f;
+    private const float ContactLampShortSize = 0.19f;
+    private const float ContactLampHeight = 0.055f;
+    private const float ContactLampPulseDuration = 1.35f;
+    private const float ContactLampMinEmission = 0.24f;
+    private const float ContactLampMaxEmission = 0.68f;
+    private const float ContactLampMaxColorLift = 0.12f;
+    private const float ContactLampMaxScaleLift = 0.025f;
     private static readonly Dictionary<ColorType, Material> RailMaterials = new();
+    private readonly List<ContactLampVisual> contactLamps = new();
+    private MaterialPropertyBlock contactLampPropertyBlock;
     private ProductionLine productionLine;
     private bool refreshRequested;
     private Transform visualRoot;
@@ -41,9 +65,13 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!refreshRequested) return;
-        refreshRequested = false;
-        Rebuild();
+        if (refreshRequested)
+        {
+            refreshRequested = false;
+            Rebuild();
+        }
+
+        AnimateContactLamps();
     }
 
     private void Rebuild()
@@ -177,13 +205,56 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
         var bounds = renderers[0].bounds;
         for (var i = 1; i < renderers.Length; i++) bounds.Encapsulate(renderers[i].bounds);
 
-        var scale = new Vector3(Mathf.Max(0.12f, bounds.size.x * 1.18f), 0.055f,
-            Mathf.Max(0.12f, bounds.size.z * 1.18f));
+        var alongX = bounds.size.x >= bounds.size.z;
+        var scale = alongX
+            ? new Vector3(ContactLampLongSize, ContactLampHeight, ContactLampShortSize)
+            : new Vector3(ContactLampShortSize, ContactLampHeight, ContactLampLongSize);
         var center = new Vector3(bounds.center.x, bounds.max.y + 0.012f, bounds.center.z);
-        CreateCube($"ContactLamp_{requiredColor}", center, scale, GetRailMaterial(requiredColor), true);
+        var color = GetSignalColor(requiredColor);
+        var renderer = CreateCube($"ContactLamp_{requiredColor}", center, scale,
+            GetRailMaterial(requiredColor), true);
+        if (renderer == null) return;
+
+        renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        renderer.receiveShadows = false;
+        contactLamps.Add(new ContactLampVisual(renderer, color, scale));
     }
 
-    private void CreateCube(string objectName, Vector3 position, Vector3 scale, Material material, bool worldSpace)
+    private void AnimateContactLamps()
+    {
+        if (contactLamps.Count == 0) return;
+        contactLampPropertyBlock ??= new MaterialPropertyBlock();
+
+        var normalizedPulse = (Mathf.Sin(Time.time * Mathf.PI * 2f / ContactLampPulseDuration) + 1f) * 0.5f;
+        normalizedPulse = Mathf.SmoothStep(0f, 1f, normalizedPulse);
+        var emissionStrength = Mathf.Lerp(ContactLampMinEmission, ContactLampMaxEmission, normalizedPulse);
+        var scaleMultiplier = 1f + ContactLampMaxScaleLift * normalizedPulse;
+
+        for (var index = contactLamps.Count - 1; index >= 0; index--)
+        {
+            var lamp = contactLamps[index];
+            if (lamp.renderer == null)
+            {
+                contactLamps.RemoveAt(index);
+                continue;
+            }
+
+            lamp.renderer.GetPropertyBlock(contactLampPropertyBlock);
+            var highlightedColor = Color.Lerp(lamp.color, Color.white,
+                ContactLampMaxColorLift * normalizedPulse);
+            contactLampPropertyBlock.SetColor("_BaseColor", highlightedColor);
+            contactLampPropertyBlock.SetColor("_Color", highlightedColor);
+            contactLampPropertyBlock.SetColor("_EmissionColor", lamp.color * emissionStrength);
+            lamp.renderer.SetPropertyBlock(contactLampPropertyBlock);
+            lamp.renderer.transform.localScale = new Vector3(
+                lamp.baseScale.x * scaleMultiplier,
+                lamp.baseScale.y,
+                lamp.baseScale.z * scaleMultiplier);
+        }
+    }
+
+    private Renderer CreateCube(string objectName, Vector3 position, Vector3 scale, Material material,
+        bool worldSpace)
     {
         var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.name = objectName;
@@ -195,7 +266,9 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
         var collider = cube.GetComponent<Collider>();
         if (Application.isPlaying) Destroy(collider);
         else DestroyImmediate(collider);
-        cube.GetComponent<Renderer>().sharedMaterial = material;
+        var renderer = cube.GetComponent<Renderer>();
+        renderer.sharedMaterial = material;
+        return renderer;
     }
 
     private static Transform FindDescendant(Transform parent, string targetName)
@@ -212,8 +285,7 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
     private static Material GetRailMaterial(ColorType colorType)
     {
         if (RailMaterials.TryGetValue(colorType, out var material) && material != null) return material;
-        var color = Color.white;
-        DataManager.Instance.ProductionLineColorsSO.TryGetValue(colorType, out color);
+        var color = GetSignalColor(colorType);
         var shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
         material = new Material(shader) { name = $"Pizza Rail {colorType}", color = color };
         if (material.HasProperty("_Smoothness")) material.SetFloat("_Smoothness", 0.38f);
@@ -226,8 +298,17 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
         return material;
     }
 
+    private static Color GetSignalColor(ColorType colorType)
+    {
+        var colors = DataManager.Instance == null ? null : DataManager.Instance.ProductionLineColorsSO;
+        if (colors == null) return Color.white;
+        if (colors.Dictionary.Count == 0) colors.BuildDictionary();
+        return colors.TryGetValue(colorType, out var color) ? color : Color.white;
+    }
+
     private void Clear()
     {
+        contactLamps.Clear();
         if (visualRoot == null) visualRoot = transform.Find(VisualRootName);
         if (visualRoot == null) return;
         if (Application.isPlaying) Destroy(visualRoot.gameObject);
