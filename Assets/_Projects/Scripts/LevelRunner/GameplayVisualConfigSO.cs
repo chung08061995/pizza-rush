@@ -42,7 +42,7 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
 
     [Header("Environment palette")]
     [SerializeField] private Color cameraBackground = new(0.24f, 0.21f, 0.18f, 1f);
-    [SerializeField] private Color floor = new(0.56f, 0.50f, 0.43f, 1f);
+    [SerializeField] private Color floor = new(0.62f, 0.57f, 0.49f, 1f);
     [SerializeField] private Color boardTile = new(0.93f, 0.90f, 0.84f, 1f);
     [SerializeField] private Color boardGround = new(0.93f, 0.90f, 0.84f, 1f);
     [SerializeField] private Color boardBorder = new(0.88f, 0.83f, 0.74f, 1f);

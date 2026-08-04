@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 1031080663}
   - component: {fileID: 1031080662}
   - component: {fileID: 1031080661}
+  - component: {fileID: 1031080665}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -583,6 +584,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1031080665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031080660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d686c9844dd48af99b97facb6170a0, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::PremiumFloorTileGridVisual
+  tileSize: 1.5
+  grooveWidth: 0.026
+  highlightWidth: 0.012
+  highlightOffset: 0.024
+  heightOffset: 0.004
+  grooveColor: {r: 0.54, g: 0.49, b: 0.42, a: 1}
+  highlightColor: {r: 0.69, g: 0.63, b: 0.54, a: 1}
 --- !u!1001 &8072829871237294694
 PrefabInstance:
   m_ObjectHideFlags: 0
