@@ -35,24 +35,25 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
     [SerializeField, Range(0f, 1f)] private float hardShadowStrength = 1f;
 
     [Header("Ambient gradient")]
-    [SerializeField] private Color ambientSky = Rgb(0x1C, 0x4B, 0xCF);
-    [SerializeField] private Color ambientEquator = Rgb(0xA7, 0x89, 0xA8);
-    [SerializeField] private Color ambientGround = new(0.047f, 0.043f, 0.035f, 1f);
+    [SerializeField] private Color ambientSky = new(0.42f, 0.40f, 0.36f, 1f);
+    [SerializeField] private Color ambientEquator = new(0.32f, 0.29f, 0.25f, 1f);
+    [SerializeField] private Color ambientGround = new(0.10f, 0.085f, 0.07f, 1f);
     [SerializeField, Range(0f, 2f)] private float ambientIntensity = 1f;
 
     [Header("Environment palette")]
-    [SerializeField] private Color cameraBackground = Rgb(0x31, 0x4D, 0x79);
-    [SerializeField] private Color floor = new(0.66760784f, 0.7199137f, 0.74509805f, 1f);
-    [SerializeField] private Color boardTile = new(0.88699996f, 0.88699996f, 0.88699996f, 1f);
-    [SerializeField] private Color boardGround = new(0.88699996f, 0.88699996f, 0.88699996f, 1f);
-    [SerializeField] private Color boardBorder = new(0.88699996f, 0.88699996f, 0.88699996f, 1f);
+    [SerializeField] private Color cameraBackground = new(0.24f, 0.21f, 0.18f, 1f);
+    [SerializeField] private Color floor = new(0.56f, 0.50f, 0.43f, 1f);
+    [SerializeField] private Color boardTile = new(0.93f, 0.90f, 0.84f, 1f);
+    [SerializeField] private Color boardGround = new(0.93f, 0.90f, 0.84f, 1f);
+    [SerializeField] private Color boardBorder = new(0.88f, 0.83f, 0.74f, 1f);
     [SerializeField] private Color conveyorRoad = new(0.7294118f, 0.7294118f, 0.8235295f, 1f);
     [SerializeField] private Color conveyorBorder = new(0.007843138f, 0.8313726f, 0.86666673f, 1f);
 
-    [Header("Board grid - Option F")]
-    [SerializeField] private Color boardGrid = new(0.58f, 0.31f, 0.14f, 1f);
-    [SerializeField, Range(0f, 0.45f)] private float boardGridInsetCells = 0.075f;
-    [SerializeField, Range(0.005f, 0.25f)] private float boardGridLineWidthCells = 0.02f;
+    [Header("Board grid - Premium pressed tray")]
+    [SerializeField] private Color boardGrid = new(0.66f, 0.55f, 0.43f, 1f);
+    [SerializeField] private Color boardGridHighlight = new(0.98f, 0.95f, 0.89f, 1f);
+    [SerializeField, Range(0f, 0.45f)] private float boardGridInsetCells = 0.065f;
+    [SerializeField, Range(0.005f, 0.25f)] private float boardGridLineWidthCells = 0.014f;
     [SerializeField, Min(0f)] private float boardGridHeightOffset = 0.21f;
 
     [Header("Authoritative assets")]
@@ -76,6 +77,7 @@ internal sealed class GameplayVisualConfigSO : ScriptableObject
 
         levelObjectSpawner.ApplyBoardGridVisual(
             boardGrid,
+            boardGridHighlight,
             boardGridInsetCells,
             boardGridLineWidthCells,
             boardGridHeightOffset);

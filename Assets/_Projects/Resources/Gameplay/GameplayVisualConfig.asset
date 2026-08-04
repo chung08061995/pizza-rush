@@ -31,23 +31,24 @@ MonoBehaviour:
   mainLightIntensity: 1.05
   mainLightRotation: {x: 50, y: -30, z: 0}
   hardShadowStrength: 1
-  ambientSky: {r: 0.18, g: 0.23, b: 0.29, a: 1}
-  ambientEquator: {r: 0.36, g: 0.3, b: 0.27, a: 1}
-  ambientGround: {r: 0.1, g: 0.07, b: 0.055, a: 1}
+  ambientSky: {r: 0.42, g: 0.4, b: 0.36, a: 1}
+  ambientEquator: {r: 0.32, g: 0.29, b: 0.25, a: 1}
+  ambientGround: {r: 0.1, g: 0.085, b: 0.07, a: 1}
   ambientIntensity: 0.85
-  cameraBackground: {r: 0.075, g: 0.12, b: 0.16, a: 1}
-  floor: {r: 0.66760784, g: 0.7199137, b: 0.74509805, a: 1}
-  boardTile: {r: 0.88699996, g: 0.88699996, b: 0.88699996, a: 1}
-  boardGround: {r: 0.88699996, g: 0.88699996, b: 0.88699996, a: 1}
-  boardBorder: {r: 0.88699996, g: 0.88699996, b: 0.88699996, a: 1}
+  cameraBackground: {r: 0.24, g: 0.21, b: 0.18, a: 1}
+  floor: {r: 0.56, g: 0.5, b: 0.43, a: 1}
+  boardTile: {r: 0.93, g: 0.9, b: 0.84, a: 1}
+  boardGround: {r: 0.93, g: 0.9, b: 0.84, a: 1}
+  boardBorder: {r: 0.88, g: 0.83, b: 0.74, a: 1}
   conveyorRoad: {r: 0.7294118, g: 0.7294118, b: 0.8235295, a: 1}
   conveyorBorder: {r: 0.007843138, g: 0.8313726, b: 0.86666673, a: 1}
-  boardGrid: {r: 0.58, g: 0.31, b: 0.14, a: 1}
-  boardGridInsetCells: 0.075
-  boardGridLineWidthCells: 0.02
+  boardGrid: {r: 0.66, g: 0.55, b: 0.43, a: 1}
+  boardGridHighlight: {r: 0.98, g: 0.95, b: 0.89, a: 1}
+  boardGridInsetCells: 0.065
+  boardGridLineWidthCells: 0.014
   boardGridHeightOffset: 0.21
   gameplayVolumeProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
-  floorMaterial: {fileID: 2100000, guid: 90e1551f3f4fcfb4c946265de75aba86, type: 2}
+  floorMaterial: {fileID: 2100000, guid: f5181040e032b44e4ac762ac9c0503a2, type: 2}
   boardTileMaterials:
   - {fileID: 2100000, guid: fc8a308aa1839fe4fb2f4ab9266d7164, type: 2}
   boardGroundMaterials:

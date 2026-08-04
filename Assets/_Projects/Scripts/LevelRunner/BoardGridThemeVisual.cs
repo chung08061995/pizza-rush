@@ -10,12 +10,14 @@ internal sealed class BoardGridThemeVisual : MonoBehaviour
     private MeshFilter _meshFilter;
     private MeshRenderer _meshRenderer;
     private Mesh _mesh;
-    private Material _material;
+    private Material _grooveMaterial;
+    private Material _highlightMaterial;
 
     internal void Rebuild(
         DraftUtils.GridXZ grid,
         IReadOnlyList<SerializableVector2Int> gridPositions,
-        Color color,
+        Color grooveColor,
+        Color highlightColor,
         float insetCells,
         float lineWidthCells,
         float heightOffset)
@@ -43,28 +45,59 @@ internal sealed class BoardGridThemeVisual : MonoBehaviour
         float halfSpanX = Mathf.Max(lineWidthX * 0.5f, cellSizeX * 0.5f - insetX);
         float halfSpanZ = Mathf.Max(lineWidthZ * 0.5f, cellSizeZ * 0.5f - insetZ);
 
-        var vertices = new List<Vector3>(gridPositions.Count * 16);
-        var triangles = new List<int>(gridPositions.Count * 24);
+        float highlightInsetX = Mathf.Min(halfSpanX - lineWidthX, lineWidthX * 0.7f);
+        float highlightInsetZ = Mathf.Min(halfSpanZ - lineWidthZ, lineWidthZ * 0.7f);
+        float highlightWidthX = Mathf.Max(cellSizeX * 0.004f, lineWidthX * 0.42f);
+        float highlightWidthZ = Mathf.Max(cellSizeZ * 0.004f, lineWidthZ * 0.42f);
+
+        var vertices = new List<Vector3>(gridPositions.Count * 32);
+        var grooveTriangles = new List<int>(gridPositions.Count * 24);
+        var highlightTriangles = new List<int>(gridPositions.Count * 24);
         for (int i = 0; i < gridPositions.Count; i++)
         {
             Vector3 center = grid.CellToWorld(gridPositions[i].ToVector2Int());
             center.y += heightOffset;
 
-            AddQuad(vertices, triangles, center + Vector3.forward * (halfSpanZ - lineWidthZ * 0.5f),
-                halfSpanX, lineWidthZ * 0.5f);
-            AddQuad(vertices, triangles, center - Vector3.forward * (halfSpanZ - lineWidthZ * 0.5f),
-                halfSpanX, lineWidthZ * 0.5f);
-            AddQuad(vertices, triangles, center + Vector3.right * (halfSpanX - lineWidthX * 0.5f),
-                lineWidthX * 0.5f, halfSpanZ);
-            AddQuad(vertices, triangles, center - Vector3.right * (halfSpanX - lineWidthX * 0.5f),
-                lineWidthX * 0.5f, halfSpanZ);
+            AddFrame(vertices, grooveTriangles, center, halfSpanX, halfSpanZ, lineWidthX, lineWidthZ);
+
+            Vector3 highlightCenter = center + Vector3.up * 0.002f;
+            AddFrame(
+                vertices,
+                highlightTriangles,
+                highlightCenter,
+                halfSpanX - highlightInsetX,
+                halfSpanZ - highlightInsetZ,
+                highlightWidthX,
+                highlightWidthZ);
         }
 
         _mesh.Clear();
         _mesh.SetVertices(vertices);
-        _mesh.SetTriangles(triangles, 0);
+        _mesh.subMeshCount = 2;
+        _mesh.SetTriangles(grooveTriangles, 0);
+        _mesh.SetTriangles(highlightTriangles, 1);
         _mesh.RecalculateBounds();
-        SetMaterialColor(color);
+        SetMaterialColor(_grooveMaterial, grooveColor);
+        SetMaterialColor(_highlightMaterial, highlightColor);
+    }
+
+    private void AddFrame(
+        List<Vector3> vertices,
+        List<int> triangles,
+        Vector3 center,
+        float halfSpanX,
+        float halfSpanZ,
+        float lineWidthX,
+        float lineWidthZ)
+    {
+        AddQuad(vertices, triangles, center + Vector3.forward * (halfSpanZ - lineWidthZ * 0.5f),
+                halfSpanX, lineWidthZ * 0.5f);
+        AddQuad(vertices, triangles, center - Vector3.forward * (halfSpanZ - lineWidthZ * 0.5f),
+                halfSpanX, lineWidthZ * 0.5f);
+        AddQuad(vertices, triangles, center + Vector3.right * (halfSpanX - lineWidthX * 0.5f),
+                lineWidthX * 0.5f, halfSpanZ);
+        AddQuad(vertices, triangles, center - Vector3.right * (halfSpanX - lineWidthX * 0.5f),
+                lineWidthX * 0.5f, halfSpanZ);
     }
 
     private void EnsureRenderComponents()
@@ -94,7 +127,7 @@ internal sealed class BoardGridThemeVisual : MonoBehaviour
             _meshFilter.sharedMesh = _mesh;
         }
 
-        if (_material == null)
+        if (_grooveMaterial == null || _highlightMaterial == null)
         {
             Shader shader = Shader.Find("Universal Render Pipeline/Unlit");
             if (shader == null)
@@ -104,12 +137,9 @@ internal sealed class BoardGridThemeVisual : MonoBehaviour
 
             if (shader != null)
             {
-                _material = new Material(shader)
-                {
-                    name = "Board Grid Inset Frames Material",
-                    hideFlags = HideFlags.DontSave
-                };
-                _meshRenderer.sharedMaterial = _material;
+                _grooveMaterial = CreateMaterial(shader, "Board Grid Groove Material");
+                _highlightMaterial = CreateMaterial(shader, "Board Grid Highlight Material");
+                _meshRenderer.sharedMaterials = new[] { _grooveMaterial, _highlightMaterial };
             }
         }
 
@@ -120,20 +150,29 @@ internal sealed class BoardGridThemeVisual : MonoBehaviour
         _meshRenderer.motionVectorGenerationMode = MotionVectorGenerationMode.ForceNoMotion;
     }
 
-    private void SetMaterialColor(Color color)
+    private static Material CreateMaterial(Shader shader, string materialName)
     {
-        if (_material == null)
+        return new Material(shader)
+        {
+            name = materialName,
+            hideFlags = HideFlags.DontSave
+        };
+    }
+
+    private static void SetMaterialColor(Material material, Color color)
+    {
+        if (material == null)
         {
             return;
         }
 
-        if (_material.HasProperty("_BaseColor"))
+        if (material.HasProperty("_BaseColor"))
         {
-            _material.SetColor("_BaseColor", color);
+            material.SetColor("_BaseColor", color);
         }
-        else if (_material.HasProperty("_Color"))
+        else if (material.HasProperty("_Color"))
         {
-            _material.SetColor("_Color", color);
+            material.SetColor("_Color", color);
         }
     }
 
@@ -168,9 +207,14 @@ internal sealed class BoardGridThemeVisual : MonoBehaviour
             Destroy(_mesh);
         }
 
-        if (_material != null)
+        if (_grooveMaterial != null)
         {
-            Destroy(_material);
+            Destroy(_grooveMaterial);
+        }
+
+        if (_highlightMaterial != null)
+        {
+            Destroy(_highlightMaterial);
         }
     }
 }

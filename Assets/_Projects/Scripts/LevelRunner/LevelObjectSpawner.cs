@@ -19,6 +19,7 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
     private readonly List<Vector2Int> _initialAddTilePositions = new();
     private BoardGridThemeVisual _boardGridVisual;
     private Color _boardGridColor;
+    private Color _boardGridHighlightColor;
     private float _boardGridInsetCells;
     private float _boardGridLineWidthCells;
     private float _boardGridHeightOffset;
@@ -50,11 +51,13 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
 
     internal void ApplyBoardGridVisual(
         Color color,
+        Color highlightColor,
         float insetCells,
         float lineWidthCells,
         float heightOffset)
     {
         _boardGridColor = color;
+        _boardGridHighlightColor = highlightColor;
         _boardGridInsetCells = insetCells;
         _boardGridLineWidthCells = lineWidthCells;
         _boardGridHeightOffset = heightOffset;
@@ -280,6 +283,7 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
             grid,
             _levelData.gridPositions,
             _boardGridColor,
+            _boardGridHighlightColor,
             _boardGridInsetCells,
             _boardGridLineWidthCells,
             _boardGridHeightOffset);
