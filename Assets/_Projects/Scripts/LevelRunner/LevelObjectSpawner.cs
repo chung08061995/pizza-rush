@@ -647,11 +647,13 @@ public class LevelObjectSpawner : DraftUtils.DraftMonoBehaviour
 
                 // Bay nhảy cầu vồng sang vị trí mới trong container phân tách
                 var currentContainer = container;
-                production.transform.DOLocalJump(Vector3.zero, jumpPower: 1.5f, numJumps: 1, duration: 0.4f)
+                var capturedPlace = place;
+                production.transform.DOLocalJump(Vector3.up * 0.18f, jumpPower: 1.5f, numJumps: 1, duration: 0.4f)
                     .SetDelay(delay)
                     .SetEase(Ease.OutQuad)
                     .OnComplete(() =>
                     {
+                        capturedPlace.NotifyLanded(true);
                         landedCount++;
                         if (landedCount >= totalAnimations)
                         {

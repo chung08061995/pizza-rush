@@ -10,13 +10,27 @@ public class ContainerPlace : DraftUtils.DraftMonoBehaviour
     [SerializeField] private Transform pizza;
 
     [ShowInInspector][ReadOnly] private Production _production;
+    private ContainerPlaces owner;
     public Transform Pin => pin;
     public Transform Pizza => pizza;
     public Production Production => _production;
 
+    private void Awake()
+    {
+        owner = GetComponentInParent<ContainerPlaces>();
+    }
+
     public void SetProduction(Production production)
     {
         _production = production;
+        owner ??= GetComponentInParent<ContainerPlaces>();
+        owner?.NotifyAssigned(this);
+    }
+
+    public void NotifyLanded(bool animate = true)
+    {
+        owner ??= GetComponentInParent<ContainerPlaces>();
+        owner?.NotifyLanded(this, animate);
     }
 
     public bool Empty()
@@ -34,11 +48,16 @@ public class ContainerPlace : DraftUtils.DraftMonoBehaviour
         {
             if (_production.gameObject != null)
             {
+                _production.transform.DOKill();
+                _production.QuarterVisual?.SetCompletionFlash(0f);
                 _production.gameObject.SetActive(false);
                 _production.transform.SetParent(null);
             }
             _production = null;
         }
+
+        owner ??= GetComponentInParent<ContainerPlaces>();
+        owner?.NotifyRemoved(this);
 
         if (pin != null)
         {
@@ -57,6 +76,9 @@ public class ContainerPlace : DraftUtils.DraftMonoBehaviour
             production.transform.DOKill();
             production.transform.SetParent(null, true);
         }
+
+        owner ??= GetComponentInParent<ContainerPlaces>();
+        owner?.NotifyRemoved(this);
 
         return production;
     }

@@ -714,10 +714,6 @@ public class DragContainerState : DraftUtils.IState
                     float tRotation = t > threshold ? (t - threshold) / (1f - threshold) : 0f;
                     capturedProduction.transform.localRotation = Quaternion.Slerp(startRotation, Quaternion.identity, tRotation);
 
-                    // Set blend shape weight for Pizza_Expand
-                    float tBlendThreshold = 0.6f;
-                    float tBlend = t > tBlendThreshold ? (t - tBlendThreshold) / (1f - tBlendThreshold) : 0f;
-                    capturedProduction.SetBlendShapeWeight("Pizza_Expand", 100 - tBlend * 100f);
                 }
             }).SetTarget(capturedProduction.transform).SetEase(DataManager.Instance.ParametterGameConfigSO.ProductionEase)
             .OnComplete(() =>
@@ -727,7 +723,7 @@ public class DragContainerState : DraftUtils.IState
                     capturedProduction.transform.localPosition = capturedTargetLocalPosition;
                     capturedProduction.transform.localScale = Vector3.one;
                     capturedProduction.transform.localRotation = Quaternion.identity;
-                    capturedProduction.SetBlendShapeWeight("Pizza_Expand", 0f);
+                    capturedTargetPlace.NotifyLanded(true);
                 }
 
                 VibrationManager.Vibrate(VibrationType.ItemPlaced);

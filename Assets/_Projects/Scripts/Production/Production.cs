@@ -10,14 +10,28 @@ public class Production : DraftUtils.DraftMonoBehaviour
     [SerializeField] private DraftUtils.RendererMonoBehaviour rendererMono;
     [SerializeField] private List<SkinnedMeshRenderer> skins = new();
     [SerializeField] private Renderer colorMarker;
+    private PizzaQuarterVisual quarterVisual;
     public List<SkinnedMeshRenderer> Skins => skins;
 
     public ColorType ColorType { get; set; }
     public DraftUtils.RendererMonoBehaviour RendererMono => rendererMono;
     public int CurrentIndex { get; set; }
+    public PizzaQuarterVisual QuarterVisual => quarterVisual;
+
+    private void Awake()
+    {
+        EnsureQuarterVisual();
+    }
+
+    private void OnEnable()
+    {
+        EnsureQuarterVisual();
+        quarterVisual.SetCompletionFlash(0f);
+    }
 
     public void SetData(ColorType colorType)
     {
+        EnsureQuarterVisual();
         if (DataManager.Instance.ProductionLineColorsSO.TryGetValue(colorType, out var materialColor))
         {
             SetMaterial(materialColor);
@@ -44,18 +58,38 @@ public class Production : DraftUtils.DraftMonoBehaviour
     }
     public void SetSkinColor(Color color)
     {
-        SetRendererColor(colorMarker, color);
+        EnsureQuarterVisual();
+        quarterVisual.SetGameplayColor(color);
+    }
 
-        foreach (var skin in skins)
+    private void EnsureQuarterVisual()
+    {
+        if (quarterVisual != null)
         {
-            if (skin == null) continue;
+            return;
+        }
 
-            // Dùng materials (instance) để không ảnh hưởng tới shared material của các object khác
-            foreach (var mat in skin.materials)
+        // Hide the previous full-pizza renderers but preserve their prefab
+        // references and gameplay root for a reversible visual experiment.
+        foreach (Renderer renderer in GetComponentsInChildren<Renderer>(true))
+        {
+            if (renderer != null)
             {
-                SetMaterialColor(mat, color);
+                renderer.enabled = false;
             }
         }
+        foreach (ParticleSystem particle in GetComponentsInChildren<ParticleSystem>(true))
+        {
+            particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            particle.gameObject.SetActive(false);
+        }
+
+        quarterVisual = GetComponent<PizzaQuarterVisual>();
+        if (quarterVisual == null)
+        {
+            quarterVisual = gameObject.AddComponent<PizzaQuarterVisual>();
+        }
+        quarterVisual.Initialize();
     }
 
     private static void SetRendererColor(Renderer targetRenderer, Color color)
