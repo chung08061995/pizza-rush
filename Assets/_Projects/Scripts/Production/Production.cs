@@ -26,6 +26,7 @@ public class Production : DraftUtils.DraftMonoBehaviour
     private void OnEnable()
     {
         EnsureQuarterVisual();
+        quarterVisual.SetAssemblyMode(false);
         quarterVisual.SetCompletionFlash(0f);
     }
 

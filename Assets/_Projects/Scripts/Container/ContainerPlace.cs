@@ -49,6 +49,7 @@ public class ContainerPlace : DraftUtils.DraftMonoBehaviour
             if (_production.gameObject != null)
             {
                 _production.transform.DOKill();
+                _production.QuarterVisual?.SetAssemblyMode(false);
                 _production.QuarterVisual?.SetCompletionFlash(0f);
                 _production.gameObject.SetActive(false);
                 _production.transform.SetParent(null);
@@ -74,6 +75,7 @@ public class ContainerPlace : DraftUtils.DraftMonoBehaviour
         if (production != null && production.gameObject != null)
         {
             production.transform.DOKill();
+            production.QuarterVisual?.SetAssemblyMode(false);
             production.transform.SetParent(null, true);
         }
 

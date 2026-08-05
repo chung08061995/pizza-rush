@@ -27,6 +27,7 @@ public sealed class PizzaQuarterVisual : MonoBehaviour
     private static Material sharedMaterial;
 
     private MeshRenderer meshRenderer;
+    private Transform visualRoot;
     private MaterialPropertyBlock properties;
     private Color gameplayColor = Color.white;
     private float completionFlash;
@@ -37,7 +38,17 @@ public sealed class PizzaQuarterVisual : MonoBehaviour
         EnsureRenderer();
         gameplayColor = Color.white;
         completionFlash = 0f;
+        SetAssemblyMode(false);
         ApplyProperties();
+    }
+
+    public void SetAssemblyMode(bool assembled)
+    {
+        EnsureSharedResources();
+        EnsureRenderer();
+        visualRoot.localPosition = assembled
+            ? Vector3.zero
+            : new Vector3(QuarterHalfExtent, 0f, QuarterHalfExtent);
     }
 
     public void SetGameplayColor(Color color)
@@ -79,7 +90,7 @@ public sealed class PizzaQuarterVisual : MonoBehaviour
             return;
         }
 
-        Transform visualRoot = transform.Find(VisualRootName);
+        visualRoot = transform.Find(VisualRootName);
         if (visualRoot == null)
         {
             visualRoot = new GameObject(VisualRootName).transform;
@@ -171,7 +182,10 @@ public sealed class PizzaQuarterVisual : MonoBehaviour
         int segments,
         Color vertexColor)
     {
-        Vector2 center = new(QuarterHalfExtent, QuarterHalfExtent);
+        // In assembly mode the radial centre is the Production pivot. The
+        // rail mode adds a half-quarter offset so the wedge remains centred
+        // inside the narrow lane.
+        Vector2 center = Vector2.zero;
         float startAngle = Mathf.PI;
         float endAngle = Mathf.PI * 1.5f;
 

@@ -116,6 +116,7 @@ public sealed class PizzaQuarterAssemblyVisual : MonoBehaviour
             }
 
             production.transform.DOKill();
+            production.QuarterVisual?.SetAssemblyMode(true);
             Vector3 target = GetAssemblyLocalPosition(place, CompletedInset);
             Quaternion targetRotation = GetQuarterRotation(place);
             if (!animate)
@@ -162,6 +163,7 @@ public sealed class PizzaQuarterAssemblyVisual : MonoBehaviour
             return;
         }
         production.transform.DOKill();
+        production.QuarterVisual?.SetAssemblyMode(true);
         production.transform.localPosition = GetAssemblyLocalPosition(place, 0f);
         production.transform.localRotation = GetQuarterRotation(place);
         production.transform.localScale = Vector3.one;
@@ -175,25 +177,59 @@ public sealed class PizzaQuarterAssemblyVisual : MonoBehaviour
             return new Vector3(inset, LandingHeight, inset);
         }
 
-        // Pizza is a quadrant anchor inside the cell. Compensating its local
-        // offset places all four quarter pivots around the shared cell centre.
-        Vector3 quadrantOffset = place.Pizza.localPosition;
-        return new Vector3(-quadrantOffset.x + inset, LandingHeight, -quadrantOffset.z + inset);
+        // The four Pizza anchors have different local rotations. Calculate the
+        // shared centre in world space, then convert it into this anchor's
+        // local space; negating localPosition alone is wrong when an anchor is
+        // rotated (it was the source of the diagonal/off-cell pieces).
+        Vector3 center = GetCellCenterWorld();
+        center += owner.transform.up * LandingHeight;
+        center += owner.transform.right * inset;
+        center += owner.transform.forward * inset;
+        return place.Pizza.InverseTransformPoint(center);
     }
 
     private Quaternion GetQuarterRotation(ContainerPlace place)
     {
-        int index = GetQuarterIndex(place);
-        // The source mesh occupies the back-left quadrant; rotate it into the
-        // corresponding slot so four quarters retain a thin '+' seam.
-        int rotation = index switch
+        if (place == null || place.Pizza == null)
         {
-            1 => 270,
-            2 => 90,
-            3 => 180,
-            _ => 0
-        };
-        return Quaternion.Euler(0f, rotation, 0f);
+            return Quaternion.identity;
+        }
+
+        Vector3 worldDelta = place.Pizza.position - GetCellCenterWorld();
+        Vector3 delta = owner.transform.InverseTransformDirection(worldDelta);
+        float angle;
+        if (delta.x >= 0f)
+        {
+            angle = delta.z >= 0f ? 180f : 270f;
+        }
+        else
+        {
+            angle = delta.z >= 0f ? 90f : 0f;
+        }
+
+        Quaternion worldRotation = owner.transform.rotation * Quaternion.Euler(0f, angle, 0f);
+        return Quaternion.Inverse(place.Pizza.rotation) * worldRotation;
+    }
+
+    private Vector3 GetCellCenterWorld()
+    {
+        if (owner == null || owner.Places == null || owner.Places.Count == 0)
+        {
+            return transform.position;
+        }
+
+        Vector3 center = Vector3.zero;
+        int count = 0;
+        foreach (ContainerPlace place in owner.Places)
+        {
+            if (place == null || place.Pizza == null)
+            {
+                continue;
+            }
+            center += place.Pizza.position;
+            count++;
+        }
+        return count == 0 ? transform.position : center / count;
     }
 
     private void ResetVisuals()
