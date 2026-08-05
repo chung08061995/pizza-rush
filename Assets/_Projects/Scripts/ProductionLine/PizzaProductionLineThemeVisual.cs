@@ -41,6 +41,7 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
     private const string VisualRootName = "__PizzaProductionLineTheme";
     private const float ContactLampLongSize = 0.96f;
     private const float ContactLampShortSize = 0.24f;
+    private const float RailColorWidth = 0.32f;
     private const float ContactLampHeight = 0.055f;
     private const float ContactLampPulseDuration = 1.35f;
     private const float ContactLampMinEmission = 0.08f;
@@ -213,8 +214,8 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
         center.y = 0.011f;
         var alongX = Mathf.Abs(delta.x) > Mathf.Abs(delta.z);
         var scale = alongX
-            ? new Vector3(length + 0.025f, 0.016f, 0.34f)
-            : new Vector3(0.34f, 0.016f, length + 0.025f);
+            ? new Vector3(length + 0.025f, 0.016f, RailColorWidth)
+            : new Vector3(RailColorWidth, 0.016f, length + 0.025f);
         CreateCube($"Rail_{colorType}", center, scale, GetRailMaterial(colorType), true);
     }
 
