@@ -52,6 +52,7 @@ public class ContainerFlyAwayState : DraftUtils.IState
                     {
                         coverInstance.transform.localRotation = Quaternion.identity;
                     }
+                    PizzaGiftTwineSealVisual.ApplyTo(coverInstance);
                     coverInstance.transform.localScale = Vector3.zero;
 
                     var targetScale = _container.Data != null && _container.Data.flipX
