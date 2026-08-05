@@ -12,12 +12,14 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
     {
         public Renderer renderer;
         public Color color;
+        public ColorType colorType;
         public Vector3 baseScale;
 
-        public ContactLampVisual(Renderer renderer, Color color, Vector3 baseScale)
+        public ContactLampVisual(Renderer renderer, Color color, ColorType colorType, Vector3 baseScale)
         {
             this.renderer = renderer;
             this.color = color;
+            this.colorType = colorType;
             this.baseScale = baseScale;
         }
     }
@@ -37,16 +39,21 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
     }
 
     private const string VisualRootName = "__PizzaProductionLineTheme";
-    private const float ContactLampLongSize = 0.82f;
-    private const float ContactLampShortSize = 0.19f;
+    private const float ContactLampLongSize = 0.96f;
+    private const float ContactLampShortSize = 0.24f;
     private const float ContactLampHeight = 0.055f;
     private const float ContactLampPulseDuration = 1.35f;
-    private const float ContactLampMinEmission = 0.24f;
+    private const float ContactLampMinEmission = 0.08f;
     private const float ContactLampMaxEmission = 0.68f;
     private const float ContactLampMaxColorLift = 0.12f;
     private const float ContactLampMaxScaleLift = 0.025f;
     private static readonly Dictionary<ColorType, Material> RailMaterials = new();
+    private static readonly Dictionary<ColorType, Material> IngredientMaterials = new();
+    private static ColorType highlightedColor = ColorType.None;
+    private static ColorType hintedColor = ColorType.None;
+    private static float hintExpiresAt;
     private readonly List<ContactLampVisual> contactLamps = new();
+    private readonly List<Mesh> generatedMeshes = new();
     private MaterialPropertyBlock contactLampPropertyBlock;
     private ProductionLine productionLine;
     private bool refreshRequested;
@@ -61,6 +68,22 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
     public void RequestRefresh()
     {
         refreshRequested = true;
+    }
+
+    public static void SetHighlightedColor(ColorType colorType)
+    {
+        highlightedColor = colorType;
+    }
+
+    public static void ClearHighlightedColor()
+    {
+        highlightedColor = ColorType.None;
+    }
+
+    public static void ShowHintColor(ColorType colorType, float duration)
+    {
+        hintedColor = colorType;
+        hintExpiresAt = Time.unscaledTime + Mathf.Max(0f, duration);
     }
 
     private void LateUpdate()
@@ -217,7 +240,34 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
 
         renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         renderer.receiveShadows = false;
-        contactLamps.Add(new ContactLampVisual(renderer, color, scale));
+        contactLamps.Add(new ContactLampVisual(renderer, color, requiredColor, scale));
+        CreateIngredientIcon(requiredColor, center, bounds.max.y + 0.075f);
+    }
+
+    private void CreateIngredientIcon(ColorType colorType, Vector3 center, float topY)
+    {
+        Mesh mesh = PizzaBoxFootprintMeshBuilder.BuildIngredientIcon(
+            colorType,
+            Vector2.zero,
+            0.145f,
+            0f);
+        if (mesh == null || mesh.vertexCount == 0)
+        {
+            if (Application.isPlaying) Destroy(mesh);
+            else DestroyImmediate(mesh);
+            return;
+        }
+        generatedMeshes.Add(mesh);
+
+        var iconObject = new GameObject($"ContactIngredient_{colorType}");
+        iconObject.layer = gameObject.layer;
+        iconObject.transform.SetParent(visualRoot, true);
+        iconObject.transform.position = new Vector3(center.x, topY, center.z);
+        iconObject.AddComponent<MeshFilter>().sharedMesh = mesh;
+        var renderer = iconObject.AddComponent<MeshRenderer>();
+        renderer.sharedMaterial = GetIngredientMaterial(colorType);
+        renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        renderer.receiveShadows = false;
     }
 
     private void AnimateContactLamps()
@@ -227,8 +277,6 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
 
         var normalizedPulse = (Mathf.Sin(Time.time * Mathf.PI * 2f / ContactLampPulseDuration) + 1f) * 0.5f;
         normalizedPulse = Mathf.SmoothStep(0f, 1f, normalizedPulse);
-        var emissionStrength = Mathf.Lerp(ContactLampMinEmission, ContactLampMaxEmission, normalizedPulse);
-        var scaleMultiplier = 1f + ContactLampMaxScaleLift * normalizedPulse;
 
         for (var index = contactLamps.Count - 1; index >= 0; index--)
         {
@@ -239,11 +287,25 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
                 continue;
             }
 
+            bool hintActive = highlightedColor == ColorType.None &&
+                              hintedColor != ColorType.None &&
+                              Time.unscaledTime < hintExpiresAt;
+            if (!hintActive && Time.unscaledTime >= hintExpiresAt)
+            {
+                hintedColor = ColorType.None;
+            }
+            bool isHighlighted = (highlightedColor != ColorType.None &&
+                                  highlightedColor == lamp.colorType) ||
+                                 (hintActive && hintedColor == lamp.colorType);
+            var pulse = isHighlighted ? normalizedPulse : 0f;
+            var emissionStrength = Mathf.Lerp(ContactLampMinEmission, ContactLampMaxEmission, pulse);
+            var scaleMultiplier = 1f + ContactLampMaxScaleLift * pulse;
+
             lamp.renderer.GetPropertyBlock(contactLampPropertyBlock);
-            var highlightedColor = Color.Lerp(lamp.color, Color.white,
-                ContactLampMaxColorLift * normalizedPulse);
-            contactLampPropertyBlock.SetColor("_BaseColor", highlightedColor);
-            contactLampPropertyBlock.SetColor("_Color", highlightedColor);
+            var lampColor = Color.Lerp(lamp.color, Color.white,
+                ContactLampMaxColorLift * pulse);
+            contactLampPropertyBlock.SetColor("_BaseColor", lampColor);
+            contactLampPropertyBlock.SetColor("_Color", lampColor);
             contactLampPropertyBlock.SetColor("_EmissionColor", lamp.color * emissionStrength);
             lamp.renderer.SetPropertyBlock(contactLampPropertyBlock);
             lamp.renderer.transform.localScale = new Vector3(
@@ -298,6 +360,32 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
         return material;
     }
 
+    private static Material GetIngredientMaterial(ColorType colorType)
+    {
+        if (IngredientMaterials.TryGetValue(colorType, out var material) && material != null)
+        {
+            return material;
+        }
+
+        var baseColor = GetSignalColor(colorType);
+        float luminance = baseColor.r * 0.2126f + baseColor.g * 0.7152f + baseColor.b * 0.0722f;
+        var iconColor = luminance > 0.55f
+            ? baseColor * 0.58f
+            : Color.Lerp(baseColor, Color.white, 0.58f);
+        iconColor.a = 1f;
+        var shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
+        material = new Material(shader)
+        {
+            name = $"Pizza Gate Ingredient {colorType}",
+            color = iconColor,
+            hideFlags = HideFlags.DontSave
+        };
+        if (material.HasProperty("_BaseColor")) material.SetColor("_BaseColor", iconColor);
+        if (material.HasProperty("_Smoothness")) material.SetFloat("_Smoothness", 0.28f);
+        IngredientMaterials[colorType] = material;
+        return material;
+    }
+
     private static Color GetSignalColor(ColorType colorType)
     {
         var colors = DataManager.Instance == null ? null : DataManager.Instance.ProductionLineColorsSO;
@@ -309,6 +397,13 @@ public sealed class PizzaProductionLineThemeVisual : MonoBehaviour
     private void Clear()
     {
         contactLamps.Clear();
+        foreach (Mesh mesh in generatedMeshes)
+        {
+            if (mesh == null) continue;
+            if (Application.isPlaying) Destroy(mesh);
+            else DestroyImmediate(mesh);
+        }
+        generatedMeshes.Clear();
         if (visualRoot == null) visualRoot = transform.Find(VisualRootName);
         if (visualRoot == null) return;
         if (Application.isPlaying) Destroy(visualRoot.gameObject);

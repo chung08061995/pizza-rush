@@ -104,6 +104,11 @@ public class GameplayStateMachine
         stateMachine.ChangeStateByKey(GameplayStateType.UsingSplitTileSkill);
     }
 
+    public bool TryGetHintCandidate(out Container container)
+    {
+        return dragContainerState.TryGetHintCandidate(out container);
+    }
+
     private bool WinPredicate()
     {
         var spawner = _data.LevelObjectSpawner;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -11,23 +12,29 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
     private const string VisualRootName = "__PizzaContainerTheme";
     private const float LidTopY = 0.184f;
     private const float SideBottomY = 0.12f;
-    private const float OuterInset = 0.035f;
-    private const float CornerChamfer = 0.075f;
-    private const float SeamWidth = 0.008f;
+    private const float OuterInset = 0.045f;
+    private const float CornerChamfer = 0.095f;
+    private const float SeamWidth = 0.01f;
     private const float SeamEndInset = 0.105f;
-    private const float MarkerHeight = 0.022f;
-    private const float MarkerLength = 0.34f;
-    private const float MarkerWidth = 0.072f;
+    private const float OuterRimWidth = 0.032f;
+    private const float CornerDimpleInset = 0.085f;
+    private const float CornerDimpleRadius = 0.034f;
+    private const float StampOuterRadius = 0.155f;
+    private const float StampInnerRadius = 0.115f;
+    private const float StampCoreRadius = 0.035f;
     private const float LidColorStrength = 0.92f;
 
     private static readonly Color KraftLidColor = new(0.88f, 0.72f, 0.43f, 1f);
     private static readonly Dictionary<ColorType, Material> LidMaterials = new();
     private static readonly Dictionary<ColorType, Material> SideMaterials = new();
+    private static readonly Dictionary<ColorType, Material> RimMaterials = new();
     private static readonly Dictionary<ColorType, Material> SeamMaterials = new();
     private static readonly Dictionary<ColorType, Material> MarkerMaterials = new();
-
+    private static readonly Dictionary<ColorType, Material> StampInnerMaterials = new();
+    private static readonly Dictionary<ColorType, Material> StampCoreMaterials = new();
     private readonly List<Mesh> generatedMeshes = new();
     private Transform visualRoot;
+    private Tween interactionTween;
 
     public void Apply(ContainerData data, IReadOnlyList<Vector2Int> occupiedCells)
     {
@@ -61,6 +68,25 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
             PizzaBoxFootprintMeshBuilder.BuildOuterSide(
                 occupiedCells, LidTopY, SideBottomY, OuterInset, CornerChamfer),
             GetSideMaterial(lidColor));
+        AddMeshObject(
+            "PremiumBox_OuterRim",
+            PizzaBoxFootprintMeshBuilder.BuildOuterRim(
+                occupiedCells,
+                LidTopY + 0.004f,
+                OuterInset,
+                CornerChamfer,
+                OuterRimWidth),
+            GetRimMaterial(lidColor));
+
+        AddMeshObject(
+            "PremiumBox_CornerDimples",
+            PizzaBoxFootprintMeshBuilder.BuildOuterCornerDimples(
+                occupiedCells,
+                LidTopY + 0.007f,
+                OuterInset,
+                CornerDimpleInset,
+                CornerDimpleRadius),
+            GetSeamMaterial(primaryColor));
 
         if (occupiedCells.Count > 1)
         {
@@ -78,17 +104,79 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
                  BuildMarkerGroups(data, occupiedCells))
         {
             AddMeshObject(
-                $"PremiumBox_Markers_{markerGroup.Key}",
-                PizzaBoxFootprintMeshBuilder.BuildMarkers(
+                $"PremiumBox_StampOuter_{markerGroup.Key}",
+                PizzaBoxFootprintMeshBuilder.BuildRoundStampLayer(
                     markerGroup.Value,
-                    LidTopY + 0.003f,
-                    LidTopY + MarkerHeight,
-                    MarkerLength,
-                    MarkerWidth),
+                    LidTopY + 0.008f,
+                    StampOuterRadius),
                 GetMarkerMaterial(markerGroup.Key));
+            AddMeshObject(
+                $"PremiumBox_StampInner_{markerGroup.Key}",
+                PizzaBoxFootprintMeshBuilder.BuildRoundStampLayer(
+                    markerGroup.Value,
+                    LidTopY + 0.010f,
+                    StampInnerRadius),
+                GetStampInnerMaterial(markerGroup.Key));
+            AddMeshObject(
+                $"PremiumBox_StampCore_{markerGroup.Key}",
+                PizzaBoxFootprintMeshBuilder.BuildRoundStampLayer(
+                    markerGroup.Value,
+                    LidTopY + 0.012f,
+                    StampCoreRadius),
+                GetStampCoreMaterial(markerGroup.Key));
+        }
+        AlignPizzaLandingSlots(occupiedCells);
+    }
+
+    /// <summary>
+    /// Raises the visual hierarchy slightly in scale while the player is
+    /// dragging this container.  This is presentation-only; the gameplay
+    /// transform and colliders remain owned by Container/state machine code.
+    /// </summary>
+    public void BeginInteraction()
+    {
+        if (visualRoot == null)
+        {
+            return;
         }
 
-        AlignPizzaLandingSlots(occupiedCells);
+        interactionTween?.Kill();
+        interactionTween = visualRoot
+            .DOScale(Vector3.one * 1.035f, 0.12f)
+            .SetEase(Ease.OutQuad);
+    }
+
+    public void EndInteraction(bool accepted)
+    {
+        if (visualRoot == null)
+        {
+            return;
+        }
+
+        interactionTween?.Kill();
+        var sequence = DOTween.Sequence();
+        if (accepted)
+        {
+            sequence.Append(visualRoot.DOScale(Vector3.one * 1.055f, 0.06f));
+        }
+        sequence.Append(visualRoot.DOScale(Vector3.one, accepted ? 0.16f : 0.12f))
+            .SetEase(Ease.OutQuad);
+        interactionTween = sequence;
+    }
+
+    public void ShowHintPulse()
+    {
+        if (visualRoot == null)
+        {
+            return;
+        }
+
+        interactionTween?.Kill();
+        visualRoot.localScale = Vector3.one;
+        interactionTween = visualRoot
+            .DOPunchScale(Vector3.one * 0.035f, 0.5f, 2, 0.35f)
+            .SetEase(Ease.OutQuad)
+            .SetLink(gameObject, LinkBehaviour.KillOnDisable);
     }
 
     private static Dictionary<ColorType, List<Vector2Int>> BuildMarkerGroups(
@@ -302,6 +390,18 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
         return material;
     }
 
+    private static Material GetRimMaterial(ColorType colorType)
+    {
+        if (RimMaterials.TryGetValue(colorType, out Material material) && material != null)
+        {
+            return material;
+        }
+        Color color = Color.Lerp(GetLidColor(colorType), Color.white, 0.1f);
+        material = CreateMaterial($"Premium Pizza Box Bevel {colorType}", color, 0.32f);
+        RimMaterials[colorType] = material;
+        return material;
+    }
+
     private static Material GetSeamMaterial(ColorType colorType)
     {
         if (SeamMaterials.TryGetValue(colorType, out Material material) && material != null)
@@ -327,6 +427,31 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
             : Color.Lerp(baseColor, Color.white, 0.34f);
         material = CreateMaterial($"Premium Pizza Box Marker {colorType}", color, 0.34f);
         MarkerMaterials[colorType] = material;
+        return material;
+    }
+
+    private static Material GetStampInnerMaterial(ColorType colorType)
+    {
+        if (StampInnerMaterials.TryGetValue(colorType, out Material material) && material != null)
+        {
+            return material;
+        }
+        Color color = Color.Lerp(GetLidColor(colorType), Color.white, 0.24f);
+        material = CreateMaterial($"Premium Pizza Box Stamp Inner {colorType}", color, 0.24f);
+        StampInnerMaterials[colorType] = material;
+        return material;
+    }
+
+    private static Material GetStampCoreMaterial(ColorType colorType)
+    {
+        if (StampCoreMaterials.TryGetValue(colorType, out Material material) && material != null)
+        {
+            return material;
+        }
+        Color warmKraft = new(0.64f, 0.31f, 0.12f, 1f);
+        Color color = Color.Lerp(GetLidColor(colorType), warmKraft, 0.24f);
+        material = CreateMaterial($"Premium Pizza Box Stamp Core {colorType}", color, 0.2f);
+        StampCoreMaterials[colorType] = material;
         return material;
     }
 
@@ -395,6 +520,7 @@ public sealed class PizzaContainerThemeVisual : MonoBehaviour
 
     private void OnDestroy()
     {
+        interactionTween?.Kill();
         DestroyGeneratedMeshes();
     }
 

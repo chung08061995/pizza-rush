@@ -18,6 +18,8 @@ public class PopupGameplay : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<
 
     private const float CoffeeTimeBonusSeconds = 10f;
     private const float CoffeeTimeFlyDuration = 0.7f;
+    private int _resolvedContainers;
+    private int _totalContainers;
 
     private void Start()
     {
@@ -28,10 +30,32 @@ public class PopupGameplay : DraftUtils.SingletonDontDestroyOnLoadMonoBehaviour<
     public void SetData(float time)
     {
         SetTimeText(time);
-        levelText.text = string.Format(GameConstain.StringFormats.LevelDisplayFormat, DataManager.Instance.level.Value);
+        RefreshLevelAndProgressText();
         goldView.RemaningText.ValueToDisplayTextFunc = x => DraftUtils.Utils.Common.FormatNumber((int)x);
         goldView.SetData(ItemType.Gold);
         ApplyHudTypography();
+    }
+
+    public void SetContainerProgress(int resolved, int total)
+    {
+        _resolvedContainers = Mathf.Max(0, resolved);
+        _totalContainers = Mathf.Max(0, total);
+        RefreshLevelAndProgressText();
+    }
+
+    private void RefreshLevelAndProgressText()
+    {
+        if (levelText == null)
+        {
+            return;
+        }
+
+        string level = string.Format(
+            GameConstain.StringFormats.LevelDisplayFormat,
+            DataManager.Instance.level.Value);
+        levelText.text = _totalContainers > 0
+            ? $"{level}\n<size=62%>{Mathf.Min(_resolvedContainers, _totalContainers)}/{_totalContainers}</size>"
+            : level;
     }
 
     private void ApplyHudTypography()

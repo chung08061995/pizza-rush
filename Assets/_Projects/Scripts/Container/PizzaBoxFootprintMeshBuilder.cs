@@ -7,6 +7,237 @@ using UnityEngine;
 /// </summary>
 internal static class PizzaBoxFootprintMeshBuilder
 {
+    internal static Mesh BuildIngredientIcon(
+        ColorType colorType,
+        Vector2 center,
+        float size,
+        float topY)
+    {
+        var vertices = new List<Vector3>(32);
+        var triangles = new List<int>(48);
+        float half = size * 0.5f;
+
+        switch (colorType)
+        {
+            case ColorType.Red: // pepperoni
+                AddDisc(vertices, triangles, center, half, topY, 12);
+                break;
+            case ColorType.Green: // basil leaf
+            case ColorType.Lime:
+                AddLeaf(vertices, triangles, center, half, topY,
+                    colorType == ColorType.Lime ? -28f : 24f);
+                break;
+            case ColorType.Blue: // olive ring
+            case ColorType.Cyan: // onion ring
+            case ColorType.DarkPurple:
+                AddRing(vertices, triangles, center, half, half * 0.48f, topY, 12);
+                break;
+            case ColorType.White: // mozzarella
+            case ColorType.Pink: // ham
+                AddRoundedStamp(vertices, triangles, center, half, topY,
+                    colorType == ColorType.Pink ? 18f : 45f);
+                break;
+            case ColorType.Orange: // pepper slice
+                AddRing(vertices, triangles, center, half, half * 0.58f, topY, 8);
+                break;
+            case ColorType.Yellow: // cheese wedge
+                AddTriangle(vertices, triangles, center, half, topY);
+                break;
+            case ColorType.Brown: // mushroom
+            case ColorType.Gray:
+                AddMushroom(vertices, triangles, center, half, topY);
+                break;
+            case ColorType.Violet: // eggplant
+                AddLeaf(vertices, triangles, center, half, topY, -48f);
+                break;
+            case ColorType.Navy: // anchovy
+                AddFish(vertices, triangles, center, half, topY);
+                break;
+            default:
+                AddDisc(vertices, triangles, center, half, topY, 10);
+                break;
+        }
+
+        return CreateMesh($"Pizza Ingredient Icon {colorType}", vertices, triangles);
+    }
+
+    private static void AddDisc(
+        List<Vector3> vertices,
+        List<int> triangles,
+        Vector2 center,
+        float radius,
+        float y,
+        int segments)
+    {
+        int centerIndex = vertices.Count;
+        vertices.Add(new Vector3(center.x, y, center.y));
+        for (int index = 0; index < segments; index++)
+        {
+            float angle = index * Mathf.PI * 2f / segments;
+            vertices.Add(new Vector3(
+                center.x + Mathf.Cos(angle) * radius,
+                y,
+                center.y + Mathf.Sin(angle) * radius));
+        }
+        for (int index = 0; index < segments; index++)
+        {
+            int next = (index + 1) % segments;
+            triangles.Add(centerIndex);
+            triangles.Add(centerIndex + next + 1);
+            triangles.Add(centerIndex + index + 1);
+        }
+    }
+
+    private static void AddRing(
+        List<Vector3> vertices,
+        List<int> triangles,
+        Vector2 center,
+        float outerRadius,
+        float innerRadius,
+        float y,
+        int segments)
+    {
+        int start = vertices.Count;
+        for (int index = 0; index < segments; index++)
+        {
+            float angle = index * Mathf.PI * 2f / segments;
+            float cos = Mathf.Cos(angle);
+            float sin = Mathf.Sin(angle);
+            vertices.Add(new Vector3(center.x + cos * outerRadius, y, center.y + sin * outerRadius));
+            vertices.Add(new Vector3(center.x + cos * innerRadius, y, center.y + sin * innerRadius));
+        }
+        for (int index = 0; index < segments; index++)
+        {
+            int next = (index + 1) % segments;
+            int outer = start + index * 2;
+            int inner = outer + 1;
+            int nextOuter = start + next * 2;
+            int nextInner = nextOuter + 1;
+            triangles.Add(outer);
+            triangles.Add(inner);
+            triangles.Add(nextOuter);
+            triangles.Add(nextOuter);
+            triangles.Add(inner);
+            triangles.Add(nextInner);
+        }
+    }
+
+    private static void AddLeaf(
+        List<Vector3> vertices,
+        List<int> triangles,
+        Vector2 center,
+        float half,
+        float y,
+        float rotation)
+    {
+        AddRotatedPolygon(vertices, triangles, center, y, rotation,
+            new Vector2(0f, half),
+            new Vector2(-half * 0.72f, 0f),
+            new Vector2(0f, -half),
+            new Vector2(half * 0.72f, 0f));
+    }
+
+    private static void AddRoundedStamp(
+        List<Vector3> vertices,
+        List<int> triangles,
+        Vector2 center,
+        float half,
+        float y,
+        float rotation)
+    {
+        float corner = half * 0.64f;
+        AddRotatedPolygon(vertices, triangles, center, y, rotation,
+            new Vector2(-corner, half),
+            new Vector2(corner, half),
+            new Vector2(half, corner),
+            new Vector2(half, -corner),
+            new Vector2(corner, -half),
+            new Vector2(-corner, -half),
+            new Vector2(-half, -corner),
+            new Vector2(-half, corner));
+    }
+
+    private static void AddTriangle(
+        List<Vector3> vertices,
+        List<int> triangles,
+        Vector2 center,
+        float half,
+        float y)
+    {
+        AddTopPolygon(vertices, triangles, new List<Vector2>
+        {
+            center + new Vector2(0f, half),
+            center + new Vector2(-half, -half * 0.75f),
+            center + new Vector2(half, -half * 0.75f)
+        }, y);
+    }
+
+    private static void AddMushroom(
+        List<Vector3> vertices,
+        List<int> triangles,
+        Vector2 center,
+        float half,
+        float y)
+    {
+        AddTopRect(vertices, triangles,
+            center.x - half * 0.25f,
+            center.x + half * 0.25f,
+            center.y - half,
+            center.y + half * 0.18f,
+            y);
+        AddTopPolygon(vertices, triangles, new List<Vector2>
+        {
+            center + new Vector2(-half, half * 0.05f),
+            center + new Vector2(-half * 0.72f, half * 0.72f),
+            center + new Vector2(0f, half),
+            center + new Vector2(half * 0.72f, half * 0.72f),
+            center + new Vector2(half, half * 0.05f)
+        }, y);
+    }
+
+    private static void AddFish(
+        List<Vector3> vertices,
+        List<int> triangles,
+        Vector2 center,
+        float half,
+        float y)
+    {
+        AddTopPolygon(vertices, triangles, new List<Vector2>
+        {
+            center + new Vector2(-half * 0.55f, 0f),
+            center + new Vector2(0f, half * 0.55f),
+            center + new Vector2(half * 0.72f, 0f),
+            center + new Vector2(0f, -half * 0.55f)
+        }, y);
+        AddTopPolygon(vertices, triangles, new List<Vector2>
+        {
+            center + new Vector2(-half * 0.45f, 0f),
+            center + new Vector2(-half, half * 0.62f),
+            center + new Vector2(-half, -half * 0.62f)
+        }, y);
+    }
+
+    private static void AddRotatedPolygon(
+        List<Vector3> vertices,
+        List<int> triangles,
+        Vector2 center,
+        float y,
+        float rotation,
+        params Vector2[] points)
+    {
+        float radians = rotation * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(radians);
+        float sin = Mathf.Sin(radians);
+        var polygon = new List<Vector2>(points.Length);
+        foreach (Vector2 point in points)
+        {
+            polygon.Add(center + new Vector2(
+                point.x * cos - point.y * sin,
+                point.x * sin + point.y * cos));
+        }
+        AddTopPolygon(vertices, triangles, polygon, y);
+    }
+
     internal static Mesh BuildLid(
         IReadOnlyList<Vector2Int> cells,
         float topY,
@@ -221,22 +452,57 @@ internal static class PizzaBoxFootprintMeshBuilder
         return CreateMesh("Premium Pizza Box Pressed Seams", vertices, triangles);
     }
 
-    internal static Mesh BuildMarkers(
+    internal static Mesh BuildOuterCornerDimples(
         IReadOnlyList<Vector2Int> cells,
-        float bottomY,
         float topY,
-        float markerLength,
-        float markerWidth)
+        float outerInset,
+        float centerInset,
+        float radius)
     {
-        var vertices = new List<Vector3>(cells.Count * 40);
-        var triangles = new List<int>(cells.Count * 60);
+        var occupied = new HashSet<Vector2Int>(cells);
+        var vertices = new List<Vector3>(cells.Count * 13);
+        var triangles = new List<int>(cells.Count * 36);
+        float edge = 0.5f - outerInset;
+
         foreach (Vector2Int cell in cells)
         {
-            var center = new Vector3(cell.x, 0f, cell.y);
-            AddBox(vertices, triangles, center, markerWidth, markerLength, bottomY, topY);
-            AddBox(vertices, triangles, center, markerLength, markerWidth, bottomY, topY);
+            GetExposure(occupied, cell, out bool left, out bool right, out bool down, out bool up);
+            float x0 = cell.x - edge;
+            float x1 = cell.x + edge;
+            float z0 = cell.y - edge;
+            float z1 = cell.y + edge;
+
+            if (left && down)
+                AddDisc(vertices, triangles, new Vector2(x0 + centerInset, z0 + centerInset), radius, topY, 10);
+            if (left && up)
+                AddDisc(vertices, triangles, new Vector2(x0 + centerInset, z1 - centerInset), radius, topY, 10);
+            if (right && up)
+                AddDisc(vertices, triangles, new Vector2(x1 - centerInset, z1 - centerInset), radius, topY, 10);
+            if (right && down)
+                AddDisc(vertices, triangles, new Vector2(x1 - centerInset, z0 + centerInset), radius, topY, 10);
         }
-        return CreateMesh("Premium Pizza Box Embossed Markers", vertices, triangles);
+
+        return CreateMesh("Premium Pizza Box Corner Dimples", vertices, triangles);
+    }
+
+    internal static Mesh BuildRoundStampLayer(
+        IReadOnlyList<Vector2Int> cells,
+        float topY,
+        float radius)
+    {
+        var vertices = new List<Vector3>(cells.Count * 17);
+        var triangles = new List<int>(cells.Count * 48);
+        foreach (Vector2Int cell in cells)
+        {
+            AddDisc(
+                vertices,
+                triangles,
+                new Vector2(cell.x, cell.y),
+                radius,
+                topY,
+                16);
+        }
+        return CreateMesh("Premium Pizza Box Round Stamp Layer", vertices, triangles);
     }
 
     private static void GetExposure(
@@ -391,34 +657,6 @@ internal static class PizzaBoxFootprintMeshBuilder
             triangles.Add(first + i);
             triangles.Add(first + (i + 1) % polygon.Count);
         }
-    }
-
-    private static void AddBox(
-        List<Vector3> vertices,
-        List<int> triangles,
-        Vector3 center,
-        float sizeX,
-        float sizeZ,
-        float bottomY,
-        float topY)
-    {
-        float halfX = sizeX * 0.5f;
-        float halfZ = sizeZ * 0.5f;
-        AddTopRect(vertices, triangles,
-            center.x - halfX, center.x + halfX,
-            center.z - halfZ, center.z + halfZ, topY);
-        AddDoubleSidedWall(vertices, triangles,
-            new Vector2(center.x - halfX, center.z - halfZ),
-            new Vector2(center.x - halfX, center.z + halfZ), topY, bottomY);
-        AddDoubleSidedWall(vertices, triangles,
-            new Vector2(center.x - halfX, center.z + halfZ),
-            new Vector2(center.x + halfX, center.z + halfZ), topY, bottomY);
-        AddDoubleSidedWall(vertices, triangles,
-            new Vector2(center.x + halfX, center.z + halfZ),
-            new Vector2(center.x + halfX, center.z - halfZ), topY, bottomY);
-        AddDoubleSidedWall(vertices, triangles,
-            new Vector2(center.x + halfX, center.z - halfZ),
-            new Vector2(center.x - halfX, center.z - halfZ), topY, bottomY);
     }
 
     private static void AddDoubleSidedWall(

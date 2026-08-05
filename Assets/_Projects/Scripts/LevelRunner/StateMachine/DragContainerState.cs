@@ -173,6 +173,45 @@ public class DragContainerState : DraftUtils.IState
         BeginDrag(progressDragContainerData, container);
     }
 
+    internal bool TryGetHintCandidate(out Container candidate)
+    {
+        candidate = null;
+        var spawner = _levelRunner?.LevelObjectSpawner;
+        if (spawner?.ContainerPooler?.ActiveItems == null)
+        {
+            return false;
+        }
+
+        foreach (Container container in spawner.ContainerPooler.ActiveItems)
+        {
+            if (container == null || container.isAnimating || container.IsFlyingAway ||
+                container.Data?.containerData == null ||
+                !ContainerDataUtils.CanMoving(container.Data.containerData) ||
+                container.IsFull())
+            {
+                continue;
+            }
+
+            var available = spawner.GetAvailableGridPositionsIgnore(container);
+            var reachableCells = GetConnectedValidBaseCells(
+                container,
+                spawner.Grid,
+                container.transform.position,
+                new HashSet<Vector2Int>(available ?? new List<Vector2Int>()));
+
+            foreach (Vector2Int cell in reachableCells)
+            {
+                if (spawner.TryGetProductionNearAndSamleColor(container, cell, out _))
+                {
+                    candidate = container;
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     private static bool TryGetContainerUnderScreenPoint(
         Vector3 screenPosition,
         Camera camera,
@@ -439,6 +478,9 @@ public class DragContainerState : DraftUtils.IState
     internal void BeginDrag(ProgressDragContainerData progresData, Container container)
     {
         progresData.selectedContainer = container;
+        container.GetComponentInChildren<PizzaContainerThemeVisual>()?.BeginInteraction();
+        var selectedColor = container.Data?.containerData?.containerColorData?.colorType ?? ColorType.None;
+        PizzaProductionLineThemeVisual.SetHighlightedColor(selectedColor);
         progresData.startGridPos = container.transform.position;
 
         var newPos = progresData.selectedContainer.transform.position;
@@ -479,6 +521,10 @@ public class DragContainerState : DraftUtils.IState
             return;
         }
 
+        var selectedContainer = progressData.selectedContainer;
+        selectedContainer.GetComponentInChildren<PizzaContainerThemeVisual>()?.EndInteraction(true);
+        PizzaProductionLineThemeVisual.ClearHighlightedColor();
+
         var connectedCells = progressData.cachedConnectedCells;
 
         // Chống đâm xuyên đường chéo: Snap về vị trí target gần nhất của container thay vì vị trí visual đang di chuyển dở dang
@@ -499,7 +545,7 @@ public class DragContainerState : DraftUtils.IState
             levelRunner.LevelTracking.dragContainerTimes.Notifier.Notify();
         }
 
-        if (_levelRunner.LevelObjectSpawner.TryGetProductionNearAndSamleColor(progressData.selectedContainer, nearestCell, out var productionLine))
+        if (_levelRunner.LevelObjectSpawner.TryGetProductionNearAndSamleColor(selectedContainer, nearestCell, out var productionLine))
         {
             var color = productionLine.ProductionPooler.ActiveItems[0].ColorType;
 
@@ -510,7 +556,7 @@ public class DragContainerState : DraftUtils.IState
                 return;
             }
 
-            var sortedEmptyPlaces = progressData.selectedContainer.GetEmptyPlacesForColor(color);
+            var sortedEmptyPlaces = selectedContainer.GetEmptyPlacesForColor(color);
 
             var firstColors = ProductionLineRuntimeDataExensions.GetFirstColors(productionLine.Data, color);
 
@@ -524,8 +570,8 @@ public class DragContainerState : DraftUtils.IState
             var allProductionInLineColorAsContainer = productionLine.GetAllProductionInLineSampleColorAsContainer(color, productionLine)
                 .GetRange(0, numberToRelease);
 
-            MoveProductionsToContainerLogic(productionLine, progressData.selectedContainer, color);
-            _levelRunner.StartCoroutine(AnimationMove(progressData.selectedContainer, productionLine, allProductionInLineColorAsContainer, sortedEmptyPlaces));
+            MoveProductionsToContainerLogic(productionLine, selectedContainer, color);
+            _levelRunner.StartCoroutine(AnimationMove(selectedContainer, productionLine, allProductionInLineColorAsContainer, sortedEmptyPlaces));
         }
         progressData.selectedContainer = null;
     }

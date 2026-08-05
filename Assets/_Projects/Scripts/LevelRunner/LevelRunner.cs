@@ -30,6 +30,10 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
     public DraftUtils.TimeCountdown FreezeTimer => _freezeTimer;
     private bool _isFreezeTime = false;
     private float _lastVisualAspect = -1f;
+    private int _totalProgressContainers;
+    private float _idleHintElapsed;
+    private const float IdleHintDelay = 6f;
+    private const float HintPulseDuration = 1.15f;
     public bool IsFreezeTime => _isFreezeTime;
 
     public void StartFreezeTime(float duration)
@@ -71,6 +75,7 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
 
     private void LevelTracking_ResolvedContainer_OnChanged()
     {
+        UpdateGameplayProgress();
         foreach (var container in levelObjectSpawner.ContainerPooler.ActiveItems.ToList())
         {
             var containerData = container.Data?.containerData;
@@ -128,6 +133,7 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
     private void Update()
     {
         gameplayStateMachine.StateMachine.Update();
+        UpdateIdleHint();
 
         if (_isFreezeTime)
         {
@@ -146,6 +152,34 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         }
 
         RefreshVisualsWhenAspectChanges();
+    }
+
+    private void UpdateIdleHint()
+    {
+        if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0) || Input.touchCount > 0)
+        {
+            _idleHintElapsed = 0f;
+            return;
+        }
+
+        _idleHintElapsed += Time.unscaledDeltaTime;
+        if (_idleHintElapsed < IdleHintDelay)
+        {
+            return;
+        }
+        _idleHintElapsed = 0f;
+
+        if (!gameplayStateMachine.TryGetHintCandidate(out Container container) || container == null)
+        {
+            return;
+        }
+
+        container.GetComponentInChildren<PizzaContainerThemeVisual>()?.ShowHintPulse();
+        ColorType color = container.Data?.containerData?.containerColorData?.colorType ?? ColorType.None;
+        if (color != ColorType.None)
+        {
+            PizzaProductionLineThemeVisual.ShowHintColor(color, HintPulseDuration);
+        }
     }
 
     public void AddTime(float extraSeconds)
@@ -172,6 +206,8 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
 
         _levelData = levelData;
         levelObjectSpawner.SetData(levelData, transform);
+        _totalProgressContainers = CountProgressContainers();
+        UpdateGameplayProgress();
         gameplayStateMachine.SetData(this);
 
         float levelDuration = levelData.duration > 0f
@@ -188,6 +224,49 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         RefreshEditorInfiniteTime();
 #endif
         ApplyGameplayVisuals(levelData);
+    }
+
+    private int CountProgressContainers()
+    {
+        if (levelObjectSpawner?.ContainerPooler?.ActiveItems == null)
+        {
+            return 0;
+        }
+
+        int total = 0;
+        foreach (Container container in levelObjectSpawner.ContainerPooler.ActiveItems)
+        {
+            ContainerData containerData = container?.Data?.containerData;
+            if (containerData == null || containerData.isStone)
+            {
+                continue;
+            }
+
+            if (containerData.containerMaterialType == ContainerMaterialType.Ice &&
+                containerData.containerIceData?.innerContainerData != null)
+            {
+                containerData = containerData.containerIceData.innerContainerData;
+            }
+
+            var colorData = containerData.containerColorData;
+            total += colorData != null && colorData.isLayerBox && colorData.colors != null
+                ? Mathf.Max(1, colorData.colors.Count)
+                : 1;
+        }
+        return total;
+    }
+
+    private void UpdateGameplayProgress()
+    {
+        PopupGameplay popup = PopupManager.Instance?.popupGameplayReference?.instance;
+        if (popup == null)
+        {
+            return;
+        }
+
+        popup.SetContainerProgress(
+            _levelTracking.resolvedContainer.Value,
+            _totalProgressContainers);
     }
 
 #if UNITY_EDITOR
@@ -222,7 +301,7 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
                 "Gameplay/GameplayVisualConfig");
         }
 
-        Camera mainCamera = Camera.main;
+        Camera mainCamera = ResolveGameplayCamera();
         DisableNonAuthoritativeCameras(mainCamera);
         Light mainLight = FindObjectsByType<Light>(
                 FindObjectsInactive.Exclude,
@@ -292,6 +371,12 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
 
     private static void DisableNonAuthoritativeCameras(Camera authoritativeCamera)
     {
+        if (authoritativeCamera == null)
+        {
+            Debug.LogError("Gameplay camera could not be resolved. Keeping existing cameras enabled.");
+            return;
+        }
+
         foreach (Camera camera in FindObjectsByType<Camera>(
                      FindObjectsInactive.Exclude,
                      FindObjectsSortMode.None))
@@ -301,6 +386,18 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
                 camera.gameObject.SetActive(false);
             }
         }
+    }
+
+    private Camera ResolveGameplayCamera()
+    {
+        Camera sceneCamera = FindObjectsByType<Camera>(
+                FindObjectsInactive.Exclude,
+                FindObjectsSortMode.None)
+            .FirstOrDefault(camera =>
+                camera.gameObject.scene == gameObject.scene &&
+                camera.CompareTag("MainCamera"));
+
+        return sceneCamera != null ? sceneCamera : Camera.main;
     }
 
     private void EndGame()

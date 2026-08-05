@@ -15,4 +15,5 @@ These assets are an uncommitted visual experiment for Level 301. Existing level 
 - Selected production asset: `Source/Kenney/FBX/pizza.fbx` with `Source/Kenney/FBX/Textures/colormap.png`; Unity's built-in FBX importer preserves the palette correctly.
 - Source files are kept immutable under `Source/`. The earlier GLB/Quaternius experiments are not part of the production commit.
 - No animation is required. The preview should use additive model children and preserve the existing gameplay prefab contracts.
+- `Models/PizzaDepthVisual.mesh` is a deterministic Unity-cylinder mesh with three submeshes for contact shadow, raised crust, and cheese body. `KenneyProductionPizza.prefab` renders it through one additive visual child with shared URP materials; it has no collider and does not change the production pool contract.
 - The candidate models were checked on 2026-08-01. The Fab marketplace pizza packs were not imported because their license terms were not sufficiently verifiable for this experiment.
