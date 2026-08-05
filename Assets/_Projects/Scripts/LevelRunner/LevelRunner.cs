@@ -302,6 +302,7 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         }
 
         Camera mainCamera = ResolveGameplayCamera();
+        EnableAuthoritativeCamera(mainCamera);
         DisableNonAuthoritativeCameras(mainCamera);
         Light mainLight = FindObjectsByType<Light>(
                 FindObjectsInactive.Exclude,
@@ -378,20 +379,34 @@ public class LevelRunner : DraftUtils.DraftMonoBehaviour
         }
 
         foreach (Camera camera in FindObjectsByType<Camera>(
-                     FindObjectsInactive.Exclude,
+                     FindObjectsInactive.Include,
                      FindObjectsSortMode.None))
         {
             if (camera != authoritativeCamera)
             {
-                camera.gameObject.SetActive(false);
+                camera.enabled = false;
             }
         }
+    }
+
+    private static void EnableAuthoritativeCamera(Camera authoritativeCamera)
+    {
+        if (authoritativeCamera == null)
+        {
+            return;
+        }
+
+        authoritativeCamera.gameObject.SetActive(true);
+        authoritativeCamera.enabled = true;
+        authoritativeCamera.targetTexture = null;
+        authoritativeCamera.targetDisplay = 0;
+        authoritativeCamera.rect = new Rect(0f, 0f, 1f, 1f);
     }
 
     private Camera ResolveGameplayCamera()
     {
         Camera sceneCamera = FindObjectsByType<Camera>(
-                FindObjectsInactive.Exclude,
+                FindObjectsInactive.Include,
                 FindObjectsSortMode.None)
             .FirstOrDefault(camera =>
                 camera.gameObject.scene == gameObject.scene &&
