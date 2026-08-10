@@ -56,6 +56,11 @@ namespace DraftUtils.Ads
         public bool HasValidAndroidProductionIds =>
             androidConfig != null && androidConfig.HasValidAdMobProductionIds;
 
+        // Odin evaluates the InfoBox condition while compiling player assemblies too,
+        // so this member must remain available outside UNITY_EDITOR.
+        private bool HasInvalidAndroidProductionIds =>
+            SdkType == AdSDKType.AdMob && !TestMode && !HasValidAndroidProductionIds;
+
 #if UNITY_EDITOR
         [TitleGroup("Production IDs")]
         [Button("Apply App IDs to Google Mobile Ads Settings", ButtonSizes.Large)]
@@ -122,8 +127,6 @@ namespace DraftUtils.Ads
         private bool IsAdMob => SdkType == AdSDKType.AdMob;
         private bool CanSyncAdMobAppIds =>
             IsAdMob && androidConfig != null && androidConfig.HasValidAdMobAppId;
-        private bool HasInvalidAndroidProductionIds =>
-            IsAdMob && !TestMode && !HasValidAndroidProductionIds;
 #endif
     }
 }
