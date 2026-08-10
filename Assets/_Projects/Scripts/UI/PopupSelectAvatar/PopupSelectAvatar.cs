@@ -19,6 +19,8 @@ public class PopupSelectAvatar : DraftUtils.DraftMonoBehaviour
 
     private void Start()
     {
+        ConfigureNameInputVisual();
+
         popup.closeButton.RegisterClickEvents();
         popup.closeButton.OnClickAction = popup.HideWithAnimation;
 
@@ -29,6 +31,79 @@ public class PopupSelectAvatar : DraftUtils.DraftMonoBehaviour
 
         confirmButton.onClick.AddListener(ClickConfirmButton);
 
+    }
+
+    private void ConfigureNameInputVisual()
+    {
+        if (nameChangeInput == null || nameText == null)
+        {
+            return;
+        }
+
+        // Previously the editable field lived off-screen under a nearly transparent helper,
+        // while a separate label displayed the name. The keyboard could open, but TMP drew
+        // the caret at X=-10000. Put the real input in the label's responsive layout instead.
+        var inputRect = nameChangeInput.transform as RectTransform;
+        var labelRect = nameText.rectTransform;
+        if (inputRect != null && labelRect.parent != null)
+        {
+            inputRect.SetParent(labelRect.parent, false);
+            inputRect.anchorMin = labelRect.anchorMin;
+            inputRect.anchorMax = labelRect.anchorMax;
+            inputRect.pivot = labelRect.pivot;
+            inputRect.anchoredPosition = labelRect.anchoredPosition;
+            inputRect.sizeDelta = labelRect.sizeDelta;
+            inputRect.localRotation = labelRect.localRotation;
+            inputRect.localScale = labelRect.localScale;
+            inputRect.SetSiblingIndex(labelRect.GetSiblingIndex() + 1);
+        }
+
+        var inputBackground = nameChangeInput.GetComponent<Image>();
+        if (inputBackground != null)
+        {
+            var backgroundColor = inputBackground.color;
+            backgroundColor.a = 0f;
+            inputBackground.color = backgroundColor;
+            inputBackground.raycastTarget = true;
+        }
+
+        var inputText = nameChangeInput.textComponent;
+        if (inputText != null)
+        {
+            inputText.font = nameText.font;
+            inputText.fontSharedMaterial = nameText.fontSharedMaterial;
+            inputText.fontSize = nameText.fontSize;
+            inputText.fontStyle = nameText.fontStyle;
+            inputText.alignment = nameText.alignment;
+            inputText.color = nameText.color;
+            inputText.enableAutoSizing = nameText.enableAutoSizing;
+            inputText.fontSizeMin = nameText.fontSizeMin;
+            inputText.fontSizeMax = nameText.fontSizeMax;
+            inputText.margin = nameText.margin;
+        }
+
+        var placeholderText = nameChangeInput.placeholder as TMP_Text;
+        if (placeholderText != null)
+        {
+            var placeholderColor = nameText.color;
+            placeholderColor.a = 0.55f;
+
+            placeholderText.text = "Enter Name";
+            placeholderText.font = nameText.font;
+            placeholderText.fontSharedMaterial = nameText.fontSharedMaterial;
+            placeholderText.fontStyle = nameText.fontStyle;
+            placeholderText.alignment = nameText.alignment;
+            placeholderText.color = placeholderColor;
+            placeholderText.enableAutoSizing = true;
+            placeholderText.fontSizeMin = 30f;
+            placeholderText.fontSizeMax = Mathf.Min(nameText.fontSize, 40f);
+            placeholderText.margin = nameText.margin;
+        }
+
+        nameChangeInput.customCaretColor = true;
+        nameChangeInput.caretColor = nameText.color;
+        nameChangeInput.caretWidth = 2;
+        nameText.gameObject.SetActive(false);
     }
 
     public void SetData()
