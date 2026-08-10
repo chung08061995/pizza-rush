@@ -36,6 +36,7 @@ public class PopupSettingContent : DraftUtils.DraftMonoBehaviour
         _settingListenersRegistered = true;
 
         musicButton.ApplyImmediate(_musicVolume.Value);
+        AudioToggleVisualState.Apply(musicButton, _musicVolume.Value);
         vibrateButton.ApplyImmediate(_vibrate.Value);
     }
 
@@ -65,6 +66,7 @@ public class PopupSettingContent : DraftUtils.DraftMonoBehaviour
     private void RefreshMusicButton()
     {
         musicButton.ApplyWithAnimation(_musicVolume.Value);
+        AudioToggleVisualState.Apply(musicButton, _musicVolume.Value);
     }
 
     private void RefreshVibrateButton()
