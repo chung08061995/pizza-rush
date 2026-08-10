@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a187246822bbb47529482707f3e0eff8, type: 3}
   m_Name: GoogleMobileAdsSettings
   m_EditorClassIdentifier: 
-  adMobAndroidAppId: ca-app-pub-3940256099942544~3347511713
+  adMobAndroidAppId: ca-app-pub-3103526383875763~3958076789
   adMobIOSAppId: ca-app-pub-3940256099942544~1458002511
   enableKotlinXCoroutinesPackagingOption: 1
   enableGradleBuildPreProcessor: 1
   disableOptimizeInitialization: 0
   disableOptimizeAdLoading: 0
-  userTrackingUsageDescription: Your device identifier may be used to deliver and measure relevant advertising.
+  userTrackingUsageDescription: Your device identifier may be used to deliver and
+    measure relevant advertising.
   userLanguage: en
   overrideDefaultGmaAndroidSdk: 0
   selectedGmaAndroidSdk: 0

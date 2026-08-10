@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: AdMob_AdsConfig
   m_EditorClassIdentifier: 
   SdkType: 2
-  TestMode: 1
+  TestMode: 0
   androidConfig:
-    appId: ca-app-pub-3940256099942544~3347511713
-    bannerId: ca-app-pub-3940256099942544/6300978111
-    interstitialId: ca-app-pub-3940256099942544/1033173712
-    rewardedId: ca-app-pub-3940256099942544/5224354917
+    appId: ca-app-pub-3103526383875763~3958076789
+    bannerId: ca-app-pub-3103526383875763/2231042087
+    interstitialId: ca-app-pub-3103526383875763/6740032652
+    rewardedId: ca-app-pub-3103526383875763/6693031272
   iosConfig:
     appId: 
     bannerId: 
